@@ -1,5 +1,5 @@
-# What is Unify? #
-
+# Unify? #
+![Логотип](https://user-images.githubusercontent.com/40734767/166156028-630bddea-5b20-4f23-9fd0-ff39ebfac985.png)
 ### Unify is a fresh look at simple apps for simple tasks. ###
 - Edit some text: create an article about you invention
 - Take a note as fast, as it should be

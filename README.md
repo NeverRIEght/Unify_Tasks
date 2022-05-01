@@ -1,5 +1,4 @@
-# Unify? #
-![Логотип](https://user-images.githubusercontent.com/40734767/166156028-630bddea-5b20-4f23-9fd0-ff39ebfac985.png)
+![Логотип 500px](https://user-images.githubusercontent.com/40734767/166156249-0cb058f6-838f-4b9d-954e-af01fa3d2225.png)
 ### Unify is a fresh look at simple apps for simple tasks. ###
 - Edit some text: create an article about you invention
 - Take a note as fast, as it should be

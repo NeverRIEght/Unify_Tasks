@@ -1,6 +1,6 @@
 # Unify
 
-### What is Unify? ### 
+# What is Unify? #
 ### Unify is a fresh look at simple apps for simple tasks. ###
 - Edit some text: create an article about you invention
 - Take a note as fast, as it should be

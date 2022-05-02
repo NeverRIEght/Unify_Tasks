@@ -1,0 +1,16 @@
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\Unify_Tasks.exe.config
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\Unify_Tasks.exe
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\Unify_Tasks.pdb
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.csproj.AssemblyReference.cache
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.csproj.SuggestedBindingRedirects.cache
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\MainWindow.g.cs
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\App.g.cs
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks_MarkupCompile.cache
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks_MarkupCompile.lref
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\MainWindow.baml
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.g.resources
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.Properties.Resources.resources
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.csproj.GenerateResource.cache
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.csproj.CoreCompileInputs.cache
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.exe
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.pdb

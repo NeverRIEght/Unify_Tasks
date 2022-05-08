@@ -23,6 +23,7 @@ namespace Unify_Tasks
         public LoginWindow()
         {
             InitializeComponent();
+            this.Title = "Unify - Log In";
         }
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
@@ -32,7 +33,10 @@ namespace Unify_Tasks
 
         private void NewAcc_Click(object sender, RoutedEventArgs e)
         {
-
+            Window RegisterWindow1 = new RegisterWindow();
+            RegisterWindow1.Title = "Unify - Register";
+            RegisterWindow1.Show();
+            this.Close();
         }
 
         private void LoginBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)

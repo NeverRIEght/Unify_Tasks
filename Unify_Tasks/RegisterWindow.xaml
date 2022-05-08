@@ -5,8 +5,196 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Unify_Tasks"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="450" Width="800">
-    <Grid>
-        
+        Height="650"
+        Width="800"
+        WindowStyle="ToolWindow"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="/Fonts/#Gilroy" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontFamily" Value="/Fonts/#Gilroy" />
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#646a74" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="MaxLength" Value="24" />
+            <Setter Property="MinWidth" Value="280px" />
+        </Style>
+    </Window.Resources>
+    <Grid Background="#323439">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15px" />
+            <RowDefinition Height="255px" />
+            <RowDefinition Height="15px" />
+            <RowDefinition Height="35px" />
+            <RowDefinition Height="12px" />
+            <RowDefinition Height="18px" />
+            <RowDefinition Height="10px" />
+            <RowDefinition Height="22px" />
+            <RowDefinition Height="15px" />
+            <RowDefinition Height="50px" />
+            <RowDefinition Height="20px" />
+            <RowDefinition Height="22px" />
+            <RowDefinition Height="15px" />
+            <RowDefinition Height="50px" />
+            <RowDefinition Height="15px" />
+            <RowDefinition Height="30px" />
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3125*" />
+            <ColumnDefinition Width="0.6875*" />
+        </Grid.ColumnDefinitions>
+
+
+        <Image
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Source="Images/Logo.png"
+            RenderOptions.BitmapScalingMode="HighQuality">
+        </Image>
+        <!--Logo-->
+
+        <TextBlock
+            Grid.Row="3"
+            Grid.RowSpan="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Text="Welcome to Unify!"
+            FontWeight="Medium"
+            FontStyle="Italic"
+            FontSize="48px">
+
+        </TextBlock>
+        <!--Welcome to Unify!-->
+
+        <TextBlock
+            Grid.Row="7"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="Choose Nickname"
+            FontWeight="Medium"
+            FontStyle="Italic"
+            FontSize="18px">
+        </TextBlock>
+        <!--Nickname header-->
+
+        <Border
+            Grid.Row="9"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Height="50px"
+            Width="300px"
+            CornerRadius="10"
+            Background="#646a74">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="20"
+                    Color="Black"
+                    Opacity="0.5"/>
+            </Border.Effect>
+            <TextBox x:Name="NickBox"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="10, 0, 10, 0"
+            Text="Your Nick"
+            FontWeight="Medium"
+            FontSize="18px"
+            IsKeyboardFocusedChanged="NickBox_IsKeyboardFocusedChanged">
+            </TextBox>
+        </Border>
+        <!--Nickname border-->
+
+        <TextBlock
+            Grid.Row="11"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="Choose Password"
+            FontWeight="Medium"
+            FontStyle="Italic"
+            FontSize="18px">
+        </TextBlock>
+        <!--Password header-->
+
+        <Border
+            Grid.Row="13"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Height="50px"
+            Width="300px"
+            CornerRadius="10"
+            Background="#646a74">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="20"
+                    Color="Black"
+                    Opacity="0.5"/>
+            </Border.Effect>
+            <TextBox x:Name="PasswordBox"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="10, 0, 10, 0"
+            Text="Your Password"
+            FontWeight="Medium"
+            FontSize="18px"
+            IsKeyboardFocusedChanged="PasswordBox_IsKeyboardFocusedChanged">
+            </TextBox>
+        </Border>
+        <!--Password border-->
+
+        <Border
+            Grid.Row="15"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Height="30px"
+            Width="155px"
+            CornerRadius="10"
+            Background="#646a74">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="20"
+                    Color="Black"
+                    Opacity="0.5"/>
+            </Border.Effect>
+
+            <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Text="Register"
+            FontWeight="Medium"
+            FontStyle="Italic"
+            FontSize="18px">
+            </TextBlock>
+
+        </Border>
+        <!--Go ahead border-->
+
+        <Button
+            Grid.Row="15"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            MinWidth="155px"
+            MinHeight="30px"
+            Opacity="0"
+            Click="Register_Click">
+        </Button>
+        <!--Register button-->
     </Grid>
 </Window>

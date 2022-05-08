@@ -14,3 +14,5 @@ D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\De
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.pdb
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\LoginWindow.g.cs
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\LoginWindow.baml
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\RegisterWindow.g.cs
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\RegisterWindow.baml

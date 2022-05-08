@@ -8,14 +8,24 @@
         Height="650"
         Width="800"
         WindowStyle="ToolWindow"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="FontFamily" Value="/Fonts/#Gilroy" />
             <Setter Property="Foreground" Value="White" />
         </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontFamily" Value="/Fonts/#Gilroy" />
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#646a74" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="MaxLength" Value="24" />
+            <Setter Property="MinWidth" Value="280px" />
+        </Style>
     </Window.Resources>
     <Grid Background="#323439">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="15px" />
             <RowDefinition Height="255px" />
@@ -36,8 +46,8 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250px" />
-            <ColumnDefinition Width="550px" />
+            <ColumnDefinition Width="0.3125*" />
+            <ColumnDefinition Width="0.6875*" />
         </Grid.ColumnDefinitions>
         
         
@@ -66,16 +76,30 @@
         
         <TextBlock
             Grid.Row="5"
-            Grid.Column="1"
-            HorizontalAlignment="Left"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            MinWidth="155px"
             Text="Don`t have an account?"
             FontWeight="Light"
             FontStyle="Italic"
             TextDecorations="Underline"
             FontSize="14px">
         </TextBlock> <!--Don`t have an account-->
-        
+
+        <Button
+            Grid.Row="5"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            MinWidth="155px"
+            MinHeight="18px"
+            Opacity="0"
+            Click="NewAcc_Click">
+        </Button> <!--New account button-->
+
         <TextBlock
             Grid.Row="7"
             Grid.Column="1"
@@ -96,7 +120,21 @@
             Width="300px"
             CornerRadius="10"
             Background="#646a74">
-            
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="20"
+                    Color="Black"
+                    Opacity="0.5"/>
+            </Border.Effect>
+            <TextBox x:Name="LoginBox"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="10, 0, 10, 0"
+            Text="Your Login"
+            FontWeight="Medium"
+            FontSize="18px"
+            IsKeyboardFocusedChanged="LoginBox_IsKeyboardFocusedChanged">
+            </TextBox>
         </Border> <!--Login border-->
         
         <TextBlock
@@ -109,7 +147,7 @@
             FontStyle="Italic"
             FontSize="18px">
         </TextBlock> <!--Password header-->
-        
+
         <Border
             Grid.Row="13"
             Grid.Column="1"
@@ -119,7 +157,21 @@
             Width="300px"
             CornerRadius="10"
             Background="#646a74">
-
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="20"
+                    Color="Black"
+                    Opacity="0.5"/>
+            </Border.Effect>
+            <TextBox x:Name="PasswordBox"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="10, 0, 10, 0"
+            Text="Your Password"
+            FontWeight="Medium"
+            FontSize="18px"
+            IsKeyboardFocusedChanged="PasswordBox_IsKeyboardFocusedChanged">
+            </TextBox>
         </Border> <!--Password border-->
         
         <Border
@@ -132,6 +184,12 @@
             Width="155px"
             CornerRadius="10"
             Background="#646a74">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="20"
+                    Color="Black"
+                    Opacity="0.5"/>
+            </Border.Effect>
 
             <TextBlock
             HorizontalAlignment="Center"
@@ -143,5 +201,17 @@
             </TextBlock>
             
         </Border> <!--Go ahead border-->
+    
+        <Button
+            Grid.Row="15"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            MinWidth="155px"
+            MinHeight="30px"
+            Opacity="0"
+            Click="LogIn_Click">
+        </Button> <!--Log in button-->
     </Grid>
 </Window>

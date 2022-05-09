@@ -32,7 +32,7 @@ namespace Unify_Tasks.Pages
 
         private void NewAcc_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Register());
         }
 
         private void LoginBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)

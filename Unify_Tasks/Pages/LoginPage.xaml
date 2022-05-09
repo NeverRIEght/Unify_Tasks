@@ -96,7 +96,7 @@
         <Button
             Grid.Row="5"
             Grid.Column="0"
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="3"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             MinWidth="155px"

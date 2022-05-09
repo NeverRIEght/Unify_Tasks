@@ -8,9 +8,9 @@
         mc:Ignorable="d"
         Title="Unify"
         Icon="/Images/Logo.png"
-        Height="450"
-        Width="800">
-    <Grid>
-        <Frame x:Name="LoginPage" NavigationUIVisibility="Hidden"></Frame>
+        Height="800"
+        Width="1300">
+    <Grid Background="#323439">
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

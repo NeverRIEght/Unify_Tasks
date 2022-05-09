@@ -23,7 +23,7 @@ namespace Unify_Tasks
         public MainWindow()
         {
             InitializeComponent();
-            LoginPage.Content = new Register();
+            MainFrame.Content = new Login();
         }
     }
 }

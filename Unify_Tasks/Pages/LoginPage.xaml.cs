@@ -18,17 +18,16 @@ namespace Unify_Tasks.Pages
     /// <summary>
     /// Логика взаимодействия для Register.xaml
     /// </summary>
-    public partial class Register : Page
+    public partial class Login : Page
     {
-        public Register()
+        public Login()
         {
             InitializeComponent();
-            this.Title = "Unify - Log In";
         }
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new HomePage());
         }
 
         private void NewAcc_Click(object sender, RoutedEventArgs e)

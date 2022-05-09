@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Unify_Tasks"
+        xmlns:login="clr-namespace:Unify_Tasks.Pages"
         mc:Ignorable="d"
         Title="Unify"
         Icon="/Images/Logo.png"
         Height="450"
         Width="800">
-    <Grid Background="#3A3E44">
-        <Frame x:Name="MainFrame"></Frame>
+    <Grid>
+        <Frame x:Name="LoginPage" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

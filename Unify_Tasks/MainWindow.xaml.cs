@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Unify_Tasks.Pages;
 
 namespace Unify_Tasks
 {
@@ -22,6 +23,7 @@ namespace Unify_Tasks
         public MainWindow()
         {
             InitializeComponent();
+            LoginPage.Content = new Register();
         }
     }
 }

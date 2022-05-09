@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="Unify_Tasks.UserControls.TaskListElement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Unify_Tasks.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="70"
+             d:DesignWidth="1000">
+    <Grid Background="#2f3136" Margin="0, 5, 0, 5" MinHeight="70px">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.285*"/>
+            <RowDefinition Height="0.42*"/>
+            <RowDefinition Height="0.285*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.02*" />
+            <ColumnDefinition Width="0.03*" />
+            <ColumnDefinition Width="0.02*" />
+            <ColumnDefinition Width="0.385*" />
+            <ColumnDefinition Width="0.1*" />
+            <ColumnDefinition Width="0.09*" />
+            <ColumnDefinition Width="0.02*" />
+            <ColumnDefinition Width="0.08*" MinWidth="80px"/>
+            <ColumnDefinition Width="0.01*" MinWidth="10px"/>
+            <ColumnDefinition Width="0.08*" MinWidth="80px"/>
+            <ColumnDefinition Width="0.01*" MinWidth="10px"/>
+            <ColumnDefinition Width="0.03*" />
+            <ColumnDefinition Width="0.025*" />
+            <ColumnDefinition Width="0.03*" />
+            <ColumnDefinition Width="0.025*" />
+            <ColumnDefinition Width="0.025*" />
+            <ColumnDefinition Width="0.02*" />
+        </Grid.ColumnDefinitions>
+        <CheckBox
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="#646a75">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="3"
+            Foreground="White"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="Text">
+        </TextBlock>
+        <Image
+            Grid.Row="1"
+            Grid.Column="5"
+            Source="/UserControls/OpenNote.png">
+        </Image>
+        <WrapPanel
+            x:Name="TagsList"
+            Grid.Row="1"
+            Grid.Column="7"
+            Grid.ColumnSpan="4"
+            ItemWidth="80px"
+            ItemHeight="30px">
+        </WrapPanel>
+        <Image
+            Grid.Row="1"
+            Grid.Column="11"
+            Source="/UserControls/TagControl.png"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+        </Image>
+        <Image
+            Grid.Row="1"
+            Grid.Column="13"
+            Source="/UserControls/Watch.png"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+        </Image>
+        <Image
+            Grid.Row="1"
+            Grid.Column="15"
+            Source="/UserControls/Trashcan.png"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+        </Image>
+    </Grid>
+</UserControl>

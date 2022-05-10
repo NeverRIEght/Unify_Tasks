@@ -22,7 +22,7 @@ namespace Unify_Tasks.Models
     
         public int TagID { get; set; }
         public int ProjectID { get; set; }
-        public string TagText { get; set; }
+        public string TagHeader { get; set; }
         public string TagColor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

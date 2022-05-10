@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Unify_Tasks.Models;
 
 namespace Unify_Tasks.Pages
 {
@@ -27,7 +28,7 @@ namespace Unify_Tasks.Pages
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            string Login = NickBox.Text.Trim().ToLower();
+            string Login = NickBox.Text.Trim();
             string Password = PasswordBox.Text;
 
             if (Login.Length < 5)
@@ -36,7 +37,7 @@ namespace Unify_Tasks.Pages
                 NickBoxBorder.Background = Brushes.DarkRed;
                 NickBox.Background = Brushes.DarkRed;
             }
-            else if (Login.Length < 20)
+            else if (Login.Length > 20)
             {
                 NickBox.ToolTip = "Nickname length must be less than 20 characters";
                 NickBoxBorder.Background = Brushes.DarkRed;
@@ -44,6 +45,16 @@ namespace Unify_Tasks.Pages
             }
             else
             {
+                using (var context = new Unify_TasksEntities())
+                {
+                    context.Users.Local.Add(new User()
+                    {
+                        login = Login,
+                        password = Password,
+                    });
+                    context.SaveChanges();
+                }
+                MessageBox.Show("Register Success!");
                 NavigationService.Navigate(new Login());
             }
         }

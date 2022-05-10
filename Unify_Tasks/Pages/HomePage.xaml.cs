@@ -14,6 +14,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Unify_Tasks.UserControls;
+using Unify_Tasks.Models;
 
 namespace Unify_Tasks.Pages
 {
@@ -51,6 +52,18 @@ namespace Unify_Tasks.Pages
                 Separator sep1 = new Separator();
                 sep1.Opacity = 0;
                 sep1.Height = 0.2 * project1.Height;
+
+
+                using (var context = new Unify_TasksEntities())
+                {
+                    context.Projects.Local.Add(new Project()
+                    {
+                        ProjectHeader = "Project" + i.ToString(),
+                        UserID = 1,
+                    });
+                    context.SaveChanges();
+                }
+                MessageBox.Show("Project created!");
 
 
                 stackProjects.Children.Add(sep1);

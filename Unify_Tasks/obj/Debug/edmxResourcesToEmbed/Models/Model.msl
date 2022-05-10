@@ -22,6 +22,7 @@
       <EntityTypeMapping TypeName="Unify_TasksModel.Project">
         <MappingFragment StoreEntitySet="Projects">
           <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ProjectHeader" ColumnName="ProjectHeader" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -31,7 +32,7 @@
         <MappingFragment StoreEntitySet="Tags">
           <ScalarProperty Name="TagID" ColumnName="TagID" />
           <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
-          <ScalarProperty Name="TagText" ColumnName="TagText" />
+          <ScalarProperty Name="TagHeader" ColumnName="TagHeader" />
           <ScalarProperty Name="TagColor" ColumnName="TagColor" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -40,6 +41,7 @@
       <EntityTypeMapping TypeName="Unify_TasksModel.Task">
         <MappingFragment StoreEntitySet="Tasks">
           <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
           <ScalarProperty Name="Header" ColumnName="Header" />
           <ScalarProperty Name="NoteID" ColumnName="NoteID" />
         </MappingFragment>

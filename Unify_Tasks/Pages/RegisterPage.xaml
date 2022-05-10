@@ -47,7 +47,7 @@
             <ColumnDefinition Width="0.3125*" />
             <ColumnDefinition Width="0.6875*" />
         </Grid.ColumnDefinitions>
-
+        
 
         <Image
             Grid.Row="1"
@@ -87,7 +87,7 @@
         </TextBlock>
         <!--Nickname header-->
 
-        <Border
+        <Border x:Name="NickBoxBorder"
             Grid.Row="9"
             Grid.Column="1"
             HorizontalAlignment="Left"
@@ -126,7 +126,7 @@
         </TextBlock>
         <!--Password header-->
 
-        <Border
+        <Border x:Name="PasswordBoxBorder"
             Grid.Row="13"
             Grid.Column="1"
             HorizontalAlignment="Left"

@@ -27,7 +27,25 @@ namespace Unify_Tasks.Pages
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Login());
+            string Login = NickBox.Text.Trim().ToLower();
+            string Password = PasswordBox.Text;
+
+            if (Login.Length < 5)
+            {
+                NickBox.ToolTip = "Nickname length must be more than 5 characters";
+                NickBoxBorder.Background = Brushes.DarkRed;
+                NickBox.Background = Brushes.DarkRed;
+            }
+            else if (Login.Length < 20)
+            {
+                NickBox.ToolTip = "Nickname length must be less than 20 characters";
+                NickBoxBorder.Background = Brushes.DarkRed;
+                NickBox.Background = Brushes.DarkRed;
+            }
+            else
+            {
+                NavigationService.Navigate(new Login());
+            }
         }
 
         private void PasswordBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -61,5 +79,7 @@ namespace Unify_Tasks.Pages
                 NickBox.Style = whiteText;
             }
         }
+
+        
     }
 }

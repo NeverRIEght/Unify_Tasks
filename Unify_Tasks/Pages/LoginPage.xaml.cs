@@ -66,5 +66,11 @@ namespace Unify_Tasks.Pages
                 PasswordBox.Style = whiteText;
             }
         }
+
+        private void LoginBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string currLogin = LoginBox.Text;
+            /*if(currLogin < 5)*/
+        }
     }
 }

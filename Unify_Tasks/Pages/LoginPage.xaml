@@ -140,7 +140,8 @@
             Text="Your Login"
             FontWeight="Medium"
             FontSize="18px"
-            IsKeyboardFocusedChanged="LoginBox_IsKeyboardFocusedChanged">
+            IsKeyboardFocusedChanged="LoginBox_IsKeyboardFocusedChanged"
+            TextChanged="LoginBox_TextChanged">
             </TextBox>
         </Border>
         <!--Login border-->

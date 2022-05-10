@@ -56,3 +56,8 @@ D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\De
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.csproj.CoreCompileInputs.cache
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.exe
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.pdb
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\EntityFramework.dll
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\EntityFramework.SqlServer.dll
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\EntityFramework.xml
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\EntityFramework.SqlServer.xml
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.csproj.CopyComplete

@@ -14,17 +14,11 @@
         </Grid.ColumnDefinitions>
         <Grid x:Name="sidepanelGrid" Grid.Column="0" Background="#2f3136">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.025*"/>
-                <RowDefinition Height="0.05625*"/>
-                <RowDefinition Height="0.025*"/>
-                <RowDefinition Height="0.05625*"/>
-                <RowDefinition Height="0.03*"/>
-                <RowDefinition Height="0.02*"/>
-                <RowDefinition Height="0.00625*"/>
-                <RowDefinition Height="0.00625*"/>
-                <RowDefinition Height="0.74*"/>
-                <RowDefinition Height="0.00625*"/>
-                <RowDefinition Height="0.0375*"/>
+                <RowDefinition Height="0.0825*"/>
+                <RowDefinition Height="0.075*"/>
+                <RowDefinition Height="0.0475*"/>
+                <RowDefinition Height="0.7525*"/>
+                <RowDefinition Height="0.0425*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.125*"/>

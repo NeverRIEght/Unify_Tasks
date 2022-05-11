@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Unify_Tasks.Pages"
       xmlns:main="clr-namespace:Unify_Tasks" 
       mc:Ignorable="d" 
-      d:DesignHeight="640" d:DesignWidth="1300"
+      d:DesignHeight="800" d:DesignWidth="1300"
       x:Name="LoginPage">
 
     <Page.Resources>

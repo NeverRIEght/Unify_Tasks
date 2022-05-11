@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Unify_Tasks.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1300"
-      FontFamily="/Fonts/#Gilroy">
+      FontFamily="/Fonts/#Gilroy"
+      Loaded="Page_Loaded">
 
     <Grid x:Name="layoutGrid">
         <Grid.ColumnDefinitions>
@@ -19,45 +20,109 @@
             Background="#2f3136">
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.0825*"/>
-                <RowDefinition Height="0.075*"/>
+                <RowDefinition Height="0.025*"/>
+                <RowDefinition Height="0.0575*"/>
+                <RowDefinition Height="0.01875*"/>
+                <RowDefinition Height="0.0575*"/>
                 <RowDefinition Height="0.0475*"/>
-                <RowDefinition Height="0.7525*"/>
-                <RowDefinition Height="0.0425*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.04375*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.125*"/>
-                <ColumnDefinition Width="0.06*"/>
-                <ColumnDefinition Width="0.73*"/>
-                <ColumnDefinition Width="0.06*"/>
-                <ColumnDefinition Width="0.125*"/>
+                <ColumnDefinition Width="0.08*" />
+                <ColumnDefinition Width="0.06*" />
+                <ColumnDefinition Width="0.72*" />
+                <ColumnDefinition Width="0.06*" />
+                <ColumnDefinition Width="0.08*" />
             </Grid.ColumnDefinitions>
 
             <Border
-                x:Name="profileCard"
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.Column="1"
                 Grid.ColumnSpan="3"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Height="46px"
-                Width="200px"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
                 Background="#3a3e44"
                 CornerRadius="10">
-                
-                <!--Card here-->
-                
+
+                <Grid
+                    x:Name="CardGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.025*" />
+                        <ColumnDefinition Width="0.16*" />
+                        <ColumnDefinition Width="0.615*" />
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition Width="0.04*" />
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition Width="0.04*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Rectangle
+                        x:Name="AvatarRect"
+                        Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        MinWidth="30"
+                        MinHeight="30"
+                        Fill="#8157ae"
+                        RadiusX="10"
+                        RadiusY="10">
+                    </Rectangle>
+
+                    <TextBlock
+                        Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        x:Name="AvatarLetter"
+                        Foreground="White"
+                        FontSize="18px"
+                        FontWeight="Medium"
+                        FontStyle="Italic"
+                        >A
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Column="2"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 10, 0"
+                        x:Name="UserName"
+                        Foreground="White"
+                        FontSize="14px"
+                        FontWeight="Medium"
+                        >Admin
+                    </TextBlock>
+
+                    <Image
+                        Grid.Column="3"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Source="/Images/Settings.png"
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        MouseUp="Settings_MouseUp">
+                    </Image>
+
+                    <Image
+                        Grid.Column="5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Source="/Images/Exit.png"
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        MouseUp="LogOf_MouseUp">
+                    </Image>
+
+                </Grid>
+
             </Border>
             <!--User Card-->
 
             <Border
                 x:Name="NewProject"
-                Grid.Row="1"
+                Grid.Row="3"
                 Grid.Column="2"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Width="170px"
-                Height="46px"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                MinWidth="190px"
                 Background="#3a3e44"
                 CornerRadius="10">
 
@@ -74,12 +139,10 @@
             <!--New Project Border-->
 
             <Button
-                Grid.Row="1"
+                Grid.Row="3"
                 Grid.Column="2"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Width="170px"
-                Height="46px"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
                 Opacity="0"
                 Click="NewProject_Click">
                 
@@ -87,8 +150,8 @@
             <!--New Project Button-->
             
             <TextBlock
+                Grid.Row="4"
                 Grid.Column="2"
-                Grid.Row="2"
                 FontSize="12pt"
                 FontWeight="Light"
                 HorizontalAlignment="Center"
@@ -99,7 +162,7 @@
             <!-- Recent -->
             
             <Border
-                Grid.Row="3"
+                Grid.Row="5"
                 Grid.Column="1"
                 Grid.ColumnSpan="3"
                 Background="#3a3e44"
@@ -139,7 +202,7 @@
             <TextBox
                 Grid.Row="1"
                 Grid.Column="2"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Width="922px"
                 Height="60px"

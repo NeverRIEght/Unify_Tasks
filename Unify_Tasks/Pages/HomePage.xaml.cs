@@ -36,6 +36,11 @@ namespace Unify_Tasks.Pages
             helloButton.BeginAnimation(Button.WidthProperty, buttonAnimation);*/
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void appendProjects(int length)
         {
             for (int i = 0; i < length; i++)
@@ -116,7 +121,18 @@ namespace Unify_Tasks.Pages
 
         private void NewProject_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Project created!");
+        }
 
+        private void Settings_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Settings!");
+        }
+
+        private void LogOf_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Log Off!");
+            NavigationService.Navigate(new Login());
         }
     }
 }

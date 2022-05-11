@@ -7,7 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="70"
              d:DesignWidth="1000">
-    <Grid Background="#2f3136" Margin="0, 5, 0, 5" MinHeight="70px">
+    <Grid
+        MinHeight="70px">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="0.285*"/>
             <RowDefinition Height="0.42*"/>
@@ -15,23 +17,32 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.02*" />
-            <ColumnDefinition Width="0.03*" />
+            <ColumnDefinition Width="0.032*" />
+            <ColumnDefinition Width="0.531*" />
+            <ColumnDefinition Width="0.095*" />
             <ColumnDefinition Width="0.02*" />
-            <ColumnDefinition Width="0.385*" />
-            <ColumnDefinition Width="0.1*" />
-            <ColumnDefinition Width="0.09*" />
-            <ColumnDefinition Width="0.02*" />
-            <ColumnDefinition Width="0.08*" MinWidth="80px"/>
-            <ColumnDefinition Width="0.01*" MinWidth="10px"/>
-            <ColumnDefinition Width="0.08*" MinWidth="80px"/>
-            <ColumnDefinition Width="0.01*" MinWidth="10px"/>
+            <ColumnDefinition Width="0.085*" />
+            <ColumnDefinition Width="0.006*" />
+            <ColumnDefinition Width="0.085*" />
+            <ColumnDefinition Width="0.006*" />
             <ColumnDefinition Width="0.03*" />
-            <ColumnDefinition Width="0.025*" />
+            <ColumnDefinition Width="0.01*" />
             <ColumnDefinition Width="0.03*" />
-            <ColumnDefinition Width="0.025*" />
-            <ColumnDefinition Width="0.025*" />
-            <ColumnDefinition Width="0.02*" />
+            <ColumnDefinition Width="0.01*" />
+            <ColumnDefinition Width="0.03*" />
+            <ColumnDefinition Width="0.01*" />
         </Grid.ColumnDefinitions>
+
+        <Border
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="20"
+            CornerRadius="10"
+            Background="#3d4046">
+            
+        </Border>
+        
         <CheckBox
             Grid.Row="1"
             Grid.Column="1"
@@ -39,50 +50,110 @@
             VerticalAlignment="Center"
             Background="#646a75">
             <CheckBox.LayoutTransform>
-                <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                <ScaleTransform ScaleX="2" ScaleY="2" />
             </CheckBox.LayoutTransform>
         </CheckBox>
-        <TextBlock
+        
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="2"
+            Foreground="White"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Margin="10, 0, 10, 0"
+            Background="Transparent"
+            BorderThickness="0"
+            FontWeight="Medium"
+            FontSize="21"
+            MaxLength="45"
+            Text="Textnsjnvjndsnvnsdnvnsdnnvsknjisvsidnvinsinvns">
+        </TextBox>
+
+        <Image
             Grid.Row="1"
             Grid.Column="3"
-            Foreground="White"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Text="Text">
-        </TextBlock>
-        <Image
-            Grid.Row="1"
-            Grid.Column="5"
-            Source="/UserControls/OpenNote.png">
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            Source="/Images/OpenNote.png"
+            RenderOptions.BitmapScalingMode="HighQuality">
         </Image>
-        <WrapPanel
-            x:Name="TagsList"
-            Grid.Row="1"
-            Grid.Column="7"
-            Grid.ColumnSpan="4"
-            ItemWidth="80px"
-            ItemHeight="30px">
-        </WrapPanel>
+        
         <Image
+            x:Name="TagControl"
+            Grid.Row="1"
+            Grid.Column="9"
+            Source="/Images/TagControl.png"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            MouseEnter="TagControl_MouseEnter"
+            MouseLeave="TagControl_MouseLeave">
+        </Image>
+
+        <Image
+            x:Name="TagControlBrown"
+            Grid.Row="1"
+            Grid.Column="9"
+            Source="/Images/TagControlBrown.png"
+            Opacity="0"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            MouseEnter="TagControl_MouseEnter"
+            MouseLeave="TagControl_MouseLeave"
+            MouseUp="TagControlBrown_MouseUp">
+        </Image>
+
+        <Image
+            x:Name="Watch"
             Grid.Row="1"
             Grid.Column="11"
-            Source="/UserControls/TagControl.png"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center">
+            Source="/Images/Watch.png"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            MouseEnter="Watch_MouseEnter"
+            MouseLeave="Watch_MouseLeave">
         </Image>
+
         <Image
+            x:Name="WatchBlue"
+            Grid.Row="1"
+            Grid.Column="11"
+            Opacity="0"
+            Source="/Images/WatchBlue.png"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            MouseEnter="Watch_MouseEnter"
+            MouseLeave="Watch_MouseLeave"
+            MouseUp="WatchBlue_MouseUp">
+        </Image>
+
+        <Image
+            x:Name="Trash"
             Grid.Row="1"
             Grid.Column="13"
-            Source="/UserControls/Watch.png"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center">
+            Source="/Images/Trashcan.png"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            MouseEnter="Trash_MouseEnter"
+            MouseLeave="Trash_MouseLeave">
         </Image>
+
         <Image
+            x:Name="TrashRed"
+            Opacity="0"
             Grid.Row="1"
-            Grid.Column="15"
-            Source="/UserControls/Trashcan.png"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center">
+            Grid.Column="13"
+            Source="/Images/TrashcanRed.png"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            MouseEnter="Trash_MouseEnter"
+            MouseLeave="Trash_MouseLeave"
+            MouseUp="TrashRed_MouseUp">
         </Image>
     </Grid>
 </UserControl>

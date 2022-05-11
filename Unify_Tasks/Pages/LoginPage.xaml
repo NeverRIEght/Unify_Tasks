@@ -98,6 +98,7 @@
             <!--Login header-->
 
             <Border
+                x:Name="LoginBorder"
             Grid.Row="2"
             Grid.Column="1"
             HorizontalAlignment="Left"
@@ -137,6 +138,7 @@
             <!--Password header-->
 
             <Border
+                x:Name="PasswordBorder"
             Grid.Row="4"
             Grid.Column="1"
             HorizontalAlignment="Left"

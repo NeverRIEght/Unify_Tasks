@@ -14,12 +14,11 @@
             BorderBrush="White"
             BorderThickness="1px"
             CornerRadius="6">
+            
             <TextBlock
                 Text="{Binding TagText, ElementName=TagListElement}"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center">
-                
-                
             </TextBlock>
         </Border>
     </Grid>

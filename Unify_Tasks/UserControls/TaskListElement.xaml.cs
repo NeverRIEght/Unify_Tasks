@@ -26,6 +26,55 @@ namespace Unify_Tasks.UserControls
             DataContext = this;
         }
 
+        private void Trash_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Trash.Opacity = 0;
+            TrashRed.Opacity = 1;
+        }
 
+        private void Trash_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Trash.Opacity = 1;
+            TrashRed.Opacity = 0;
+        }
+
+        private void TrashRed_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Задача удалена!");
+        }
+
+        private void Watch_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Watch.Opacity = 0;
+            WatchBlue.Opacity = 1;
+        }
+
+        private void Watch_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Watch.Opacity = 1;
+            WatchBlue.Opacity = 0;
+        }
+
+        private void WatchBlue_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Задаем время!");
+        }
+
+        private void TagControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            TagControl.Opacity = 0;
+            TagControlBrown.Opacity = 1;
+        }
+
+        private void TagControl_MouseLeave(object sender, MouseEventArgs e)
+        {
+            TagControl.Opacity = 1;
+            TagControlBrown.Opacity = 0;
+        }
+
+        private void TagControlBrown_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Задаем теги!");
+        }
     }
 }

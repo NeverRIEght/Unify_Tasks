@@ -21,6 +21,7 @@ namespace Unify_Tasks.Pages
     /// </summary>
     public partial class Register : Page
     {
+
         public Register()
         {
             InitializeComponent();
@@ -37,7 +38,8 @@ namespace Unify_Tasks.Pages
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             string Login = NickBox.Text.Trim();
-            string Password = PasswordBox.Text;
+            string Password = PasswordBox.Text.Trim();
+            string RPassword = RepeatPasswordBox.Text.Trim();
 
             if (Login.Length < 5)
             {
@@ -50,7 +52,24 @@ namespace Unify_Tasks.Pages
                 NickBox.ToolTip = "Nickname length must be less than 20 characters";
                 NickBoxBorder.Background = Brushes.DarkRed;
                 NickBox.Background = Brushes.DarkRed;
+            } else if (Password.Length > 20)
+            {
+                PasswordBox.ToolTip = "Password length must be less than 20 characters";
+                PasswordBoxBorder.Background = Brushes.DarkRed;
+                PasswordBox.Background = Brushes.DarkRed;
+
+            } else if (Password.Length < 5)
+            {
+                PasswordBox.ToolTip = "Password length must be more than 5 characters";
+                PasswordBoxBorder.Background = Brushes.DarkRed;
+                PasswordBox.Background = Brushes.DarkRed;
+            } else if(Password != RPassword)
+            {
+                RepeatPasswordBox.ToolTip = "Check yours passwords";
+                RepeatPasswordBoxBorder.Background = Brushes.DarkRed;
+                RepeatPasswordBox.Background = Brushes.DarkRed;
             }
+
             else
             {
                 using (var context = new Unify_TasksEntities())

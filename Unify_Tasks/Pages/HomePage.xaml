@@ -194,7 +194,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.04*"/>
                 <ColumnDefinition Width="0.015*"/>
-                <ColumnDefinition Width="0.89*"/>
+                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.09*"/>
                 <ColumnDefinition Width="0.015*"/>
                 <ColumnDefinition Width="0.04*"/>
             </Grid.ColumnDefinitions>
@@ -218,7 +219,7 @@
             <Border
                 Grid.Row="3"
                 Grid.Column="1"
-                Grid.ColumnSpan="3"
+                Grid.ColumnSpan="4"
                 Background="#2f3136"
                 CornerRadius="10">
 
@@ -233,7 +234,32 @@
 
             </Border>
             <!--Task List Border-->
-            
+            <Image
+            x:Name="Trash"
+            Grid.Row="1"
+            Grid.Column="3"
+            Source="/Images/Trashcan.png"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            MouseEnter="Trash_MouseEnter"
+            MouseLeave="Trash_MouseLeave">
+            </Image>
+
+            <Image
+            x:Name="TrashRed"
+            Opacity="0"
+            Grid.Row="1"
+            Grid.Column="3"
+            Source="/Images/TrashcanRed.png"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            MouseEnter="Trash_MouseEnter"
+            MouseLeave="Trash_MouseLeave"
+            MouseUp="TrashRed_MouseUp">
+            </Image>
+
         </Grid>
     </Grid>
 </Page>

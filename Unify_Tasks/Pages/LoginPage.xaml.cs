@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Unify_Tasks.Models;
 
 namespace Unify_Tasks.Pages
 {
@@ -35,7 +36,34 @@ namespace Unify_Tasks.Pages
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
+            /*string login = LoginBox.Text.Trim();
+            string password = PasswordBox.Text.Trim();
+
+            User authUser = null;
+            using (var context = new Unify_TasksEntities())
+            {
+                authUser = context.Users.Where(b => b.login == login && b.password == password).FirstOrDefault();
+            }
+            if (authUser != null)
+            {
+                HomePage homePage = new HomePage();
+                NavigationService.Navigate(new HomePage());
+            }
+            else
+            {
+                LoginBorder.Background = Brushes.DarkRed;
+                LoginBox.Background = Brushes.DarkRed;
+                PasswordBorder.Background = Brushes.DarkRed;
+                PasswordBox.Background = Brushes.DarkRed;
+
+                LoginBox.ToolTip = "Login or password ";
+                PasswordBox.ToolTip = "Check yours passwords";
+
+                MessageBox.Show("Данные для входа неверны");
+            }*/
+
             NavigationService.Navigate(new HomePage());
+
         }
 
         private void NewAcc_Click(object sender, RoutedEventArgs e)

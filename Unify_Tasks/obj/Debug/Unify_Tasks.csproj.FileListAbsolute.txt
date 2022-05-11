@@ -96,3 +96,5 @@ T:\150G\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\o
 T:\150G\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.csproj.CopyComplete
 T:\150G\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.exe
 T:\150G\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.pdb
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Resources\ColorsDictionary.baml
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\App.baml

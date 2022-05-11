@@ -64,7 +64,7 @@
                         VerticalAlignment="Center"
                         MinWidth="30"
                         MinHeight="30"
-                        Fill="#8157ae"
+                        Fill="{DynamicResource CustomPurple}"
                         RadiusX="10"
                         RadiusY="10">
                     </Rectangle>

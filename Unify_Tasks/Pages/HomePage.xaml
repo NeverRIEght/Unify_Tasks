@@ -5,14 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Unify_Tasks.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1300">
+      d:DesignHeight="800" d:DesignWidth="1300"
+      FontFamily="/Fonts/#Gilroy">
 
     <Grid x:Name="layoutGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"/>
             <ColumnDefinition Width="0.8*"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="sidepanelGrid" Grid.Column="0" Background="#2f3136">
+        <Grid
+            x:Name="sidepanelGrid"
+            Grid.Column="0"
+            Background="#2f3136">
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.0825*"/>
                 <RowDefinition Height="0.075*"/>
@@ -27,61 +32,145 @@
                 <ColumnDefinition Width="0.06*"/>
                 <ColumnDefinition Width="0.125*"/>
             </Grid.ColumnDefinitions>
-            <Border x:Name="profileCard" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" Background="#3d4045" CornerRadius="10"></Border>
-            <Border Grid.Column="2" Grid.Row="3" Background="#3d4045" CornerRadius="10">
+
+            <Border
+                x:Name="profileCard"
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Height="46px"
+                Width="200px"
+                Background="#3a3e44"
+                CornerRadius="10">
+                
+                <!--Card here-->
+                
+            </Border>
+            <!--User Card-->
+
+            <Border
+                x:Name="NewProject"
+                Grid.Row="1"
+                Grid.Column="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Width="170px"
+                Height="46px"
+                Background="#3a3e44"
+                CornerRadius="10">
+
                 <TextBlock
-                    FontFamily="Gilroy"
-                    FontSize="18pt"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Foreground="#b5b5b5"
-                    FontWeight="Normal"
-                    >New Project
+                    Text="New Project"
+                    FontWeight="Medium"
+                    Foreground="White"
+                    FontSize="24px">
                 </TextBlock>
-                <!-- New Project -->
+
             </Border>
+            <!--New Project Border-->
+
+            <Button
+                Grid.Row="1"
+                Grid.Column="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Width="170px"
+                Height="46px"
+                Opacity="0"
+                Click="NewProject_Click">
+                
+            </Button>
+            <!--New Project Button-->
+            
             <TextBlock
                 Grid.Column="2"
-                Grid.Row="5"
-                FontFamily="Gilroy"
+                Grid.Row="2"
                 FontSize="12pt"
+                FontWeight="Light"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center"
+                VerticalAlignment="Bottom"
                 Foreground="White"
                 >Recent
             </TextBlock>
             <!-- Recent -->
-            <Border Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="7" Grid.RowSpan="2" Background="#3d4045" CornerRadius="10">
-                <ScrollViewer VerticalScrollBarVisibility="Visible">
-                    <StackPanel x:Name="stackProjects">
+            
+            <Border
+                Grid.Row="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                Background="#3a3e44"
+                CornerRadius="10">
+                
+                <ScrollViewer
+                    VerticalScrollBarVisibility="Visible">
 
-                    </StackPanel>
+                    <StackPanel x:Name="stackProjects" />
+                    
                 </ScrollViewer>
+                
             </Border>
+            <!--Projects List-->
+            
         </Grid>
-        <Grid x:Name="mainpanelGrid" Grid.Column="1" Background="#3a3e44">
+        <Grid
+            x:Name="mainpanelGrid"
+            Grid.Column="1"
+            Background="#3a3e44">
+            
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.0925*"/>
-                <RowDefinition Height="0.06625*"/>
+                <RowDefinition Height="0.0825*"/>
+                <RowDefinition Height="0.075*"/>
                 <RowDefinition Height="0.0475*"/>
-                <RowDefinition Height="0.00625*"/>
-                <RowDefinition Height="0.74*"/>
-                <RowDefinition Height="0.00625*"/>
-                <RowDefinition Height="0.0375*"/>
+                <RowDefinition Height="0.7525*"/>
+                <RowDefinition Height="0.0425*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.025"/>
-                <!--0.025-->
-                <ColumnDefinition Width="0.033*"/>
-                <!--0.033-->
-                <ColumnDefinition Width="0.812*"/>
-                <!---->
-                <ColumnDefinition Width="0.13*"/>
-                <!--0.13-->
+                <ColumnDefinition Width="0.04*"/>
+                <ColumnDefinition Width="0.015*"/>
+                <ColumnDefinition Width="0.89*"/>
+                <ColumnDefinition Width="0.015*"/>
+                <ColumnDefinition Width="0.04*"/>
             </Grid.ColumnDefinitions>
-            <ScrollViewer Grid.Row="4" Grid.Column="2">
-                <StackPanel x:Name="TasksList" />
-            </ScrollViewer>
+
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Width="922px"
+                Height="60px"
+                Foreground="White"
+                Background="Transparent"
+                BorderThickness="0"
+                FontWeight="Medium"
+                FontSize="50px"
+                Text="Name your project"
+                MaxLength="30">
+            </TextBox>
+
+            <Border
+                Grid.Row="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                Background="#2f3136"
+                CornerRadius="10">
+
+                <ScrollViewer
+                Grid.Row="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="3">
+                    
+                    <StackPanel x:Name="TasksList" />
+                
+                </ScrollViewer>
+
+            </Border>
+            <!--Task List Border-->
+            
         </Grid>
     </Grid>
 </Page>

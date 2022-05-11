@@ -54,7 +54,7 @@ namespace Unify_Tasks.Pages
                 sep1.Height = 0.2 * project1.Height;
 
 
-                using (var context = new Unify_TasksEntities())
+                /*using (var context = new Unify_TasksEntities())
                 {
                     context.Projects.Local.Add(new Project()
                     {
@@ -63,7 +63,7 @@ namespace Unify_Tasks.Pages
                     });
                     context.SaveChanges();
                 }
-                MessageBox.Show("Project created!");
+                MessageBox.Show("Project created!");*/
 
 
                 stackProjects.Children.Add(sep1);
@@ -112,6 +112,11 @@ namespace Unify_Tasks.Pages
                     break;
             }
             task1.TagsList.Children.Add(tag1);
+        }
+
+        private void NewProject_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

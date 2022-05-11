@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Unify_Tasks.DialogWindows;
 
 namespace Unify_Tasks.UserControls
 {
@@ -58,6 +59,8 @@ namespace Unify_Tasks.UserControls
         private void WatchBlue_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Задаем время!");
+            DateWindow date1 = new DateWindow();
+            date1.Show();
         }
 
         private void TagControl_MouseEnter(object sender, MouseEventArgs e)

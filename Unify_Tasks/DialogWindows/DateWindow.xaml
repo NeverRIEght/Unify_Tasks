@@ -1,0 +1,21 @@
+﻿<Window x:Class="Unify_Tasks.DialogWindows.DateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Unify_Tasks.DialogWindows"
+        mc:Ignorable="d"
+        Title="Choose date" Height="200" Width="200"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow">
+    <Grid Background="#323439">
+        <Calendar
+            x:Name="Calendar1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            IsTodayHighlighted="False"
+            SelectionMode="SingleDate"
+            SelectedDatesChanged="Calendar_SelectedDatesChanged">
+        </Calendar>
+    </Grid>
+</Window>

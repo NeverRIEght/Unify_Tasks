@@ -7,7 +7,8 @@
       xmlns:main="clr-namespace:Unify_Tasks" 
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1300"
-      x:Name="LoginPage">
+      x:Name="LoginPage"
+      Loaded="LoginPage_Loaded">
 
     <Page.Resources>
         <Style TargetType="{x:Type TextBlock}">
@@ -28,112 +29,89 @@
         VerticalAlignment="Center">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="15px" />
-            <RowDefinition Height="255px" />
-            <RowDefinition Height="15px" />
-            <RowDefinition Height="35px" />
-            <RowDefinition Height="12px" />
-            <RowDefinition Height="18px" />
-            <RowDefinition Height="10px" />
-            <RowDefinition Height="22px" />
-            <RowDefinition Height="15px" />
-            <RowDefinition Height="50px" />
-            <RowDefinition Height="20px" />
-            <RowDefinition Height="22px" />
-            <RowDefinition Height="15px" />
-            <RowDefinition Height="50px" />
-            <RowDefinition Height="15px" />
-            <RowDefinition Height="30px" />
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="0.425*" />
+            <RowDefinition Height="0.47*" MinHeight="380px"/>
+            <RowDefinition Height="0.105*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.36*" />
-            <ColumnDefinition Width="0.28*" />
-            <ColumnDefinition Width="0.36*" />
+            <ColumnDefinition Width="0.35*" />
+            <ColumnDefinition Width="0.3*" MinWidth="400px"/>
+            <ColumnDefinition Width="0.35*" />
         </Grid.ColumnDefinitions>
 
 
         <Image
-            Grid.Row="1"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
+            Grid.Row="0"
+            Grid.Column="1"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            VerticalAlignment="Bottom"
             Source="/Images/Logo.png"
+            Stretch="Uniform"
             RenderOptions.BitmapScalingMode="HighQuality">
         </Image>
         <!--Logo-->
 
-        <TextBlock
-            Grid.Row="3"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Text="Welcome Back!"
-            FontWeight="Medium"
-            FontStyle="Italic"
-            FontSize="48px">
+        <Grid
+            Grid.Row="1"
+            Grid.Column="1">
 
-        </TextBlock>
-        <!--Welcome back!-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.17*" MinHeight="30px"/>
+                <RowDefinition Height="0.085*" MinHeight="35px"/>
+                <RowDefinition Height="0.23*" MinHeight="86px"/>
+                <RowDefinition Height="0.05*" MinHeight="20px"/>
+                <RowDefinition Height="0.23*" MinHeight="86px"/>
+                <RowDefinition Height="0.17*" MinHeight="54px"/>
+                <RowDefinition Height="0.06*" MinHeight="23px"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="0.75*" MinWidth="300px"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
-        <TextBlock
-            Grid.Row="5"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            MinWidth="155px"
-            Text="Don`t have an account?"
+            <TextBlock
+                x:Name="Welcome"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Text="Welcome Back!"
+                FontWeight="Medium"
+                FontStyle="Italic"
+                FontSize="50px">
+
+            </TextBlock>
+            <!--Welcome back!-->
+
+            <TextBlock
+            Grid.Row="2"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text="Login"
             FontWeight="Light"
             FontStyle="Italic"
-            TextDecorations="Underline"
-            FontSize="14px">
-        </TextBlock>
-        <!--Don`t have an account-->
-
-        <Button
-            Grid.Row="5"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            MinWidth="155px"
-            MinHeight="18px"
-            Opacity="0"
-            Click="NewAcc_Click">
-        </Button>
-        <!--New account button-->
-
-        <TextBlock
-            Grid.Row="7"
-            Grid.Column="1"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Text="Login"
-            FontWeight="Medium"
-            FontStyle="Italic"
             FontSize="18px">
-        </TextBlock>
-        <!--Login header-->
+            </TextBlock>
+            <!--Login header-->
 
-        <Border
-            Grid.Row="9"
+            <Border
+            Grid.Row="2"
             Grid.Column="1"
             HorizontalAlignment="Left"
-            VerticalAlignment="Center"
+            VerticalAlignment="Bottom"
             Height="50px"
-            Width="300px"
             CornerRadius="10"
             Background="#646a74">
-            <Border.Effect>
-                <DropShadowEffect
+                <Border.Effect>
+                    <DropShadowEffect
                     BlurRadius="20"
                     Color="Black"
                     Opacity="0.5"/>
-            </Border.Effect>
-            <TextBox x:Name="LoginBox"
+                </Border.Effect>
+                <TextBox x:Name="LoginBox"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Margin="10, 0, 10, 0"
@@ -142,38 +120,37 @@
             FontSize="18px"
             IsKeyboardFocusedChanged="LoginBox_IsKeyboardFocusedChanged"
             TextChanged="LoginBox_TextChanged">
-            </TextBox>
-        </Border>
-        <!--Login border-->
+                </TextBox>
+            </Border>
+            <!--Login border-->
 
-        <TextBlock
-            Grid.Row="11"
+            <TextBlock
+            Grid.Row="4"
             Grid.Column="1"
             HorizontalAlignment="Left"
-            VerticalAlignment="Center"
+            VerticalAlignment="Top"
             Text="Password"
-            FontWeight="Medium"
+            FontWeight="Light"
             FontStyle="Italic"
             FontSize="18px">
-        </TextBlock>
-        <!--Password header-->
+            </TextBlock>
+            <!--Password header-->
 
-        <Border
-            Grid.Row="13"
+            <Border
+            Grid.Row="4"
             Grid.Column="1"
             HorizontalAlignment="Left"
-            VerticalAlignment="Center"
+            VerticalAlignment="Bottom"
             Height="50px"
-            Width="300px"
             CornerRadius="10"
             Background="#646a74">
-            <Border.Effect>
-                <DropShadowEffect
+                <Border.Effect>
+                    <DropShadowEffect
                     BlurRadius="20"
                     Color="Black"
                     Opacity="0.5"/>
-            </Border.Effect>
-            <TextBox x:Name="PasswordBox"
+                </Border.Effect>
+                <TextBox x:Name="PasswordBox"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Margin="10, 0, 10, 0"
@@ -181,20 +158,19 @@
             FontWeight="Medium"
             FontSize="18px"
             IsKeyboardFocusedChanged="PasswordBox_IsKeyboardFocusedChanged">
-            </TextBox>
-        </Border>
-        <!--Password border-->
+                </TextBox>
+            </Border>
+            <!--Password border-->
 
-        <Border
-            Grid.Row="15"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Height="30px"
-            Width="155px"
-            CornerRadius="10"
-            Background="#646a74">
+            <Border
+                Grid.Row="5"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Height="30px"
+                Width="155px"
+                CornerRadius="10"
+                Background="#646a74">
             <Border.Effect>
                 <DropShadowEffect
                     BlurRadius="20"
@@ -203,28 +179,56 @@
             </Border.Effect>
 
             <TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Text="Log In"
-            FontWeight="Medium"
-            FontStyle="Italic"
-            FontSize="18px">
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="Log In"
+                FontWeight="Light"
+                FontStyle="Italic"
+                FontSize="18px"
+                Foreground="White">
             </TextBlock>
 
-        </Border>
-        <!--Go ahead border-->
+            </Border>
+            <!--Go ahead border-->
 
-        <Button
-            Grid.Row="15"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
+            <Button
+            Grid.Row="5"
+            Grid.Column="1"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
+            VerticalAlignment="Bottom"
             MinWidth="155px"
             MinHeight="30px"
             Opacity="0"
             Click="LogIn_Click">
-        </Button>
-        <!--Log in button-->
+            </Button>
+            <!--Log in button-->
+
+            <TextBlock
+            Grid.Row="6"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            MinWidth="155px"
+            Text="Don`t have an account?"
+            FontWeight="Light"
+            FontStyle="Italic"
+            TextDecorations="Underline"
+            FontSize="14px">
+            </TextBlock>
+            <!--Don`t have an account-->
+
+            <Button
+            Grid.Row="6"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            MinWidth="155px"
+            MinHeight="18px"
+            Opacity="0"
+            Click="NewAcc_Click">
+            </Button>
+            <!--Don`t have an account button-->
+            
+        </Grid>
     </Grid>
 </Page>

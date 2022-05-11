@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Unify_Tasks.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1300"
-      Title="RegisterPage">
+      Title="RegisterPage"
+      Loaded="Page_Loaded">
 
     <Page.Resources>
         <Style TargetType="{x:Type TextBlock}">
@@ -26,14 +27,12 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3625*" />
-            <RowDefinition Height="0.6*" />
+            <RowDefinition Height="0.6*" MinHeight="480px" />
             <RowDefinition Height="0.0375*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.35*" />
-            <ColumnDefinition Width="0.04*" />
-            <ColumnDefinition Width="0.22*" />
-            <ColumnDefinition Width="0.04*" />
+            <ColumnDefinition Width="0.3*" MinWidth="300px" />
             <ColumnDefinition Width="0.35*" />
         </Grid.ColumnDefinitions>
         
@@ -41,7 +40,6 @@
         <Image
             Grid.Row="0"
             Grid.Column="1"
-            Grid.ColumnSpan="3"
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
             Source="/Images/Logo.png"
@@ -49,7 +47,7 @@
         </Image><!--Logo-->
         <Grid
             Grid.Row="1"
-            Grid.Column="2">
+            Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.15*" />
                 <RowDefinition Height="0.05*" />
@@ -61,140 +59,160 @@
                 <RowDefinition Height="0.05*" />
                 <RowDefinition Height="0.13*" />
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="0.75*" MinWidth="300px"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
             <TextBlock
-            Grid.Row="0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Text="New UnifyID"
-            FontWeight="Medium"
-            FontStyle="Italic"
-            FontSize="48px">
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Text="New UnifyID"
+                FontWeight="Medium"
+                FontStyle="Italic"
+                FontSize="50px">
 
             </TextBlock>
             <!--New UnifyID-->
 
             <TextBlock
-            Grid.Row="2"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="Choose Nickname"
-            FontWeight="Light"
-            FontStyle="Italic"
-            FontSize="18px">
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Text="Choose Nickname"
+                FontWeight="Light"
+                FontStyle="Italic"
+                FontSize="18px">
             </TextBlock>
             <!--Nickname header-->
 
-            <Border x:Name="NickBoxBorder"
-            Grid.Row="2"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Height="50px"
-            CornerRadius="10"
-            Background="#646a74">
+            <Border
+                x:Name="NickBoxBorder"
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Height="50px"
+                CornerRadius="10"
+                Background="#646a74">
                 <Border.Effect>
                     <DropShadowEffect
-                    BlurRadius="20"
-                    Color="Black"
-                    Opacity="0.5"/>
+                        BlurRadius="20"
+                        Color="Black"
+                        Opacity="0.5"/>
                 </Border.Effect>
-                <TextBox x:Name="NickBox"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Margin="10, 0, 10, 0"
-            Text="Your Nick"
-            FontWeight="Medium"
-            FontSize="18px"
-            IsKeyboardFocusedChanged="NickBox_IsKeyboardFocusedChanged">
+                <TextBox
+                    x:Name="NickBox"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="10, 0, 10, 0"
+                    Text="Your Nick"
+                    FontWeight="Medium"
+                    FontSize="18px"
+                    IsKeyboardFocusedChanged="NickBox_IsKeyboardFocusedChanged">
                 </TextBox>
             </Border>
             <!--Nickname border-->
 
             <TextBlock
-            Grid.Row="4"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="Choose Password"
-            FontWeight="Light"
-            FontStyle="Italic"
-            FontSize="18px">
+                Grid.Row="4"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Text="Choose Password"
+                FontWeight="Light"
+                FontStyle="Italic"
+                FontSize="18px">
             </TextBlock>
             <!--Password header-->
 
-            <Border x:Name="PasswordBoxBorder"
-            Grid.Row="4"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Height="50px"
-            CornerRadius="10"
-            Background="#646a74">
+            <Border
+                x:Name="PasswordBoxBorder"
+                Grid.Row="4"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Height="50px"
+                CornerRadius="10"
+                Background="#646a74">
                 <Border.Effect>
                     <DropShadowEffect
-                    BlurRadius="20"
-                    Color="Black"
-                    Opacity="0.5"/>
+                        BlurRadius="20"
+                        Color="Black"
+                        Opacity="0.5"/>
                 </Border.Effect>
-                <TextBox x:Name="PasswordBox"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Margin="10, 0, 10, 0"
-            Text="Your Password"
-            FontWeight="Medium"
-            FontSize="18px"
-            IsKeyboardFocusedChanged="PasswordBox_IsKeyboardFocusedChanged">
+                <TextBox
+                    x:Name="PasswordBox"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="10, 0, 10, 0"
+                    Text="Your Password"
+                    FontWeight="Medium"
+                    FontSize="18px"
+                    IsKeyboardFocusedChanged="PasswordBox_IsKeyboardFocusedChanged">
                 </TextBox>
             </Border>
             <!--Password border-->
 
             <TextBlock
-            Grid.Row="6"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="Repeat Password"
-            FontWeight="Light"
-            FontStyle="Italic"
-            FontSize="18px">
+                Grid.Row="6"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Text="Repeat Password"
+                FontWeight="Light"
+                FontStyle="Italic"
+                FontSize="18px">
             </TextBlock>
             <!--Repeat Password header-->
 
-            <Border x:Name="RepeatPasswordBoxBorder"
-            Grid.Row="6"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Height="50px"
-            CornerRadius="10"
-            Background="#646a74">
+            <Border
+                x:Name="RepeatPasswordBoxBorder"
+                Grid.Row="6"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Height="50px"
+                CornerRadius="10"
+                Background="#646a74">
                 <Border.Effect>
                     <DropShadowEffect
-                    BlurRadius="20"
-                    Color="Black"
-                    Opacity="0.5"/>
+                        BlurRadius="20"
+                        Color="Black"
+                        Opacity="0.5"/>
                 </Border.Effect>
-                <TextBox x:Name="RepeatPasswordBox"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Margin="10, 0, 10, 0"
-            Text="Repeat Password"
-            FontWeight="Medium"
-            FontSize="18px"
-            IsKeyboardFocusedChanged="PasswordBox_IsKeyboardFocusedChanged">
+                <TextBox
+                    x:Name="RepeatPasswordBox"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="10, 0, 10, 0"
+                    Text="Repeat Password"
+                    FontWeight="Medium"
+                    FontSize="18px"
+                    IsKeyboardFocusedChanged="PasswordBox_IsKeyboardFocusedChanged">
                 </TextBox>
             </Border>
             <!--Repeat Password border-->
 
-            <Border x:Name="GoAheadBorder"
-            Grid.Row="8"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Height="30px"
-            Width="155px"
-            CornerRadius="10"
-            Background="#646a74">
+            <Border
+                x:Name="GoAheadBorder"
+                Grid.Row="8"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Height="30px"
+                Width="155px"
+                CornerRadius="10"
+                Background="#646a74">
                 <Border.Effect>
                     <DropShadowEffect
-                    BlurRadius="20"
-                    Color="Black"
-                    Opacity="0.5"/>
+                        BlurRadius="20"
+                        Color="Black"
+                        Opacity="0.5"/>
                 </Border.Effect>
 
                 <TextBlock x:Name="CreateID"
@@ -210,31 +228,46 @@
             <!--Go ahead border-->
 
             <Button
-            Grid.Row="15"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            MinWidth="155px"
-            MinHeight="30px"
-            Opacity="0"
-            Click="Register_Click">
+                Grid.Row="8"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                MinWidth="155px"
+                MinHeight="30px"
+                Opacity="0"
+                Click="Register_Click">
             </Button>
             <!--Register button-->
 
+            <TextBlock
+                Grid.Row="8"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Text="Back to Login"
+                FontWeight="Light"
+                FontStyle="Italic"
+                FontSize="14px"
+                MinWidth="88px"
+                MinHeight="17"
+                Foreground="White"
+                TextDecorations="Underline">
+            </TextBlock>
+            <!--Back to login-->
+
+            <Button
+                Grid.Row="8"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                MinWidth="88px"
+                MinHeight="17px"
+                Opacity="0"
+                Click="BackLogin_Click">
+            </Button>
+            <!--Back to login Button-->
         </Grid>
 
-        <TextBlock
-            Grid.Row="2"
-            Grid.Column="2"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Text="Back to Login"
-            FontWeight="Light"
-            FontStyle="Italic"
-            FontSize="14px"
-            Foreground="White"
-            TextDecorations="Underline">
-        </TextBlock>
+        
     </Grid>
 </Page>

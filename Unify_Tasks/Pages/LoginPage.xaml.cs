@@ -25,6 +25,14 @@ namespace Unify_Tasks.Pages
             InitializeComponent();
         }
 
+        private void LoginPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainWindow win = (MainWindow)Window.GetWindow(this);
+
+            win.MinWidth = 430;
+            win.MinHeight = 550;
+        }
+
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new HomePage());

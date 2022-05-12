@@ -92,6 +92,7 @@
                         Foreground="White"
                         FontSize="14px"
                         FontWeight="Medium"
+                        MouseUp="AvatarRect_MouseUp"
                         >Admin
                     </TextBlock>
 

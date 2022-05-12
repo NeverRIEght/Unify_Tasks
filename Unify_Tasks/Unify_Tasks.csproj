@@ -70,6 +70,9 @@
     <Compile Include="DialogWindows\DateWindow.xaml.cs">
       <DependentUpon>DateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DialogWindows\TagControlWindow.xaml.cs">
+      <DependentUpon>TagControlWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="DialogWindows\DateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogWindows\TagControlWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

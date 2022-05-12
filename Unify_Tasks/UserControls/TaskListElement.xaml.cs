@@ -99,7 +99,8 @@ namespace Unify_Tasks.UserControls
 
         private void TagControlBrown_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Задаем теги!");
+            TagControlWindow win1 = new TagControlWindow();
+            win1.Show();
         }
 
         private void Task_MouseEnter(object sender, MouseEventArgs e)

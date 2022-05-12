@@ -189,10 +189,39 @@ namespace Unify_Tasks.Pages
 
         private void AvatarRect_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            if(AvatarColor == 8)
+            {
+                AvatarColor = 1;
+            }
+            else
+            {
+                AvatarColor += 1;
+            }
             switch(AvatarColor)
             {
                 case 1:
-                    //AvatarRect.Fill = 
+                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomGreen");
+                    break;
+                case 2:
+                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomBlue");
+                    break;
+                case 3:
+                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomBrown");
+                    break;
+                case 4:
+                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomRed");
+                    break;
+                case 5:
+                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomGray");
+                    break;
+                case 6:
+                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomYellow");
+                    break;
+                case 7:
+                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomPink");
+                    break;
+                case 8:
+                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomPurple");
                     break;
             }
         }

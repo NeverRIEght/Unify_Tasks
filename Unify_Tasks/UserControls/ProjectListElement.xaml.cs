@@ -25,6 +25,7 @@ namespace Unify_Tasks
             InitializeComponent();
             DataContext = this;
         }
+
         public static readonly DependencyProperty ProjectsTextProperty =
         DependencyProperty.Register(
         name: "ProjectsText",
@@ -39,5 +40,21 @@ namespace Unify_Tasks
             get => (string)GetValue(ProjectsTextProperty);
             set => SetValue(ProjectsTextProperty, value);
         }
+
+        public static readonly DependencyProperty ProjectsIDProperty =
+        DependencyProperty.Register(
+        name: "ProjectsID",
+        propertyType: typeof(int),
+        ownerType: typeof(ProjectListElement),
+        typeMetadata: new FrameworkPropertyMetadata(
+        defaultValue: 1,
+        flags: FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public int ProjectsID
+        {
+            get => (int)GetValue(ProjectsIDProperty);
+            set => SetValue(ProjectsIDProperty, value);
+        }
+
     }
 }

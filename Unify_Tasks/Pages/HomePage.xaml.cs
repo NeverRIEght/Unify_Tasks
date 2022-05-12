@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Unify_Tasks.UserControls;
 using Unify_Tasks.Models;
 using Unify_Tasks.DialogWindows;
+using Unify_Tasks;
 
 namespace Unify_Tasks.Pages
 {
@@ -25,13 +26,12 @@ namespace Unify_Tasks.Pages
     public partial class HomePage : Page
     {
         static MainWindow w1 = (MainWindow)Application.Current.MainWindow;
-        int[] projects = {};
         public int AvatarColor = 1;
 
         public HomePage()
         {
             InitializeComponent();
-            appendProjects(40);
+            //appendProjects(40);
             appendTasks(40);
 
             /*DoubleAnimation buttonAnimation = new DoubleAnimation();
@@ -43,54 +43,31 @@ namespace Unify_Tasks.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            /*Project currProjects = null;
 
             using (var context = new Unify_TasksEntities())
             {
-                currProjects = (Project)context.Projects.Where(b => b.UserID == w1.currUser);
-            }
-            if (currProjects != null)
-            {
-                HomePage homePage = new HomePage();
-                NavigationService.Navigate(new HomePage());
-                w1.currUser = authUser.UserID;
-            }*/
-        }
-
-        private void appendProjects(int length)
-        {
-            for (int i = 0; i < length; i++)
-            {
-                ProjectListElement project1 = new ProjectListElement();
-                if (i == length - 1)
+                var currProjects = from p in context.Projects
+                                   where p.UserID == w1.currUser
+                                   orderby p.ProjectID
+                                   select p;
+                if(currProjects != null)
                 {
-                    project1.underline.Visibility = Visibility.Hidden;
-                }
-                project1.ProjectsText = "12345678901234567890";
-                project1.Name = "project" + i.ToString();
-                project1.Margin = new Thickness(0, 5, 0, 0);
-                project1.MouseDown += new MouseButtonEventHandler(recentClick);
-
-
-                /*using (var context = new Unify_TasksEntities())
-                {
-                    context.Projects.Local.Add(new Project()
+                    foreach(var everyProject in currProjects)
                     {
-                        ProjectHeader = "Project" + i.ToString(),
-                        UserID = 1,
-                    });
-                    context.SaveChanges();
+                        ProjectListElement project1 = new ProjectListElement();
+                        project1.ProjectsText = everyProject.ProjectHeader;
+                        project1.Margin = new Thickness(0, 5, 0, 0);
+                        project1.ProjectsID = everyProject.ProjectID;
+                        //project1.MouseUp += new MouseButtonEventHandler(recentClick);
+
+                        project1.MouseUp += (object s, MouseButtonEventArgs ev) =>
+                        {
+                            MessageBox.Show("You clicked project " + everyProject.ProjectID);
+                        };
+                        stackProjects.Children.Add(project1);
+                    }
                 }
-                MessageBox.Show("Project created!");*/
-
-
-                stackProjects.Children.Add(project1);
             }
-        }
-
-        private void recentClick(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hello, world!");
         }
 
         private void appendTasks(int length)

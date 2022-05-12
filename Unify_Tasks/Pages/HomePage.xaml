@@ -80,6 +80,7 @@
                         FontSize="18px"
                         FontWeight="Medium"
                         FontStyle="Italic"
+                        MouseUp="AvatarRect_MouseUp"
                         >A
                     </TextBlock>
 

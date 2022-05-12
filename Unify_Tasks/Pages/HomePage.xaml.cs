@@ -25,6 +25,7 @@ namespace Unify_Tasks.Pages
     public partial class HomePage : Page
     {
         static MainWindow w1 = (MainWindow)Application.Current.MainWindow;
+        int[] projects = {};
         public int AvatarColor = 1;
 
         public HomePage()
@@ -42,7 +43,18 @@ namespace Unify_Tasks.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            /*Project currProjects = null;
 
+            using (var context = new Unify_TasksEntities())
+            {
+                currProjects = (Project)context.Projects.Where(b => b.UserID == w1.currUser);
+            }
+            if (currProjects != null)
+            {
+                HomePage homePage = new HomePage();
+                NavigationService.Navigate(new HomePage());
+                w1.currUser = authUser.UserID;
+            }*/
         }
 
         private void appendProjects(int length)

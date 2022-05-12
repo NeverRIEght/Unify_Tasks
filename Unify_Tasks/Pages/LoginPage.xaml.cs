@@ -21,6 +21,8 @@ namespace Unify_Tasks.Pages
     /// </summary>
     public partial class Login : Page
     {
+        static MainWindow w1 = (MainWindow)Application.Current.MainWindow;
+
         public Login()
         {
             InitializeComponent();
@@ -36,7 +38,7 @@ namespace Unify_Tasks.Pages
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            /*string login = LoginBox.Text.Trim();
+            string login = LoginBox.Text.Trim();
             string password = PasswordBox.Text.Trim();
 
             User authUser = null;
@@ -48,6 +50,7 @@ namespace Unify_Tasks.Pages
             {
                 HomePage homePage = new HomePage();
                 NavigationService.Navigate(new HomePage());
+                w1.currUser = authUser.UserID;
             }
             else
             {
@@ -60,9 +63,9 @@ namespace Unify_Tasks.Pages
                 PasswordBox.ToolTip = "Check yours passwords";
 
                 MessageBox.Show("Данные для входа неверны");
-            }*/
+            }
 
-            NavigationService.Navigate(new HomePage());
+            //NavigationService.Navigate(new HomePage());
 
         }
 

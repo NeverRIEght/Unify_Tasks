@@ -193,7 +193,7 @@
                     Text="Repeat Password"
                     FontWeight="Medium"
                     FontSize="18px"
-                    IsKeyboardFocusedChanged="PasswordBox_IsKeyboardFocusedChanged">
+                    IsKeyboardFocusedChanged="RepeatPasswordBox_IsKeyboardFocusedChanged">
                 </TextBox>
             </Border>
             <!--Repeat Password border-->

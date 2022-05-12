@@ -75,7 +75,7 @@ namespace Unify_Tasks.Pages
             }
             else if(Password != RPassword)
             {
-                RepeatPasswordBox.ToolTip = "Check your password";
+                RepeatPasswordBox.ToolTip = "Passwords do not match";
                 RepeatPasswordBoxBorder.Background = Brushes.DarkRed;
                 RepeatPasswordBox.Background = Brushes.DarkRed;
             }
@@ -99,9 +99,9 @@ namespace Unify_Tasks.Pages
 
         private void PasswordBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (NickBox.Text == "Your Password")
+            if (PasswordBox.Text == "Your Password")
             {
-                NickBox.Text = "";
+                PasswordBox.Text = "";
                 Style whiteText = new Style();
 
                 whiteText.Setters.Add(new Setter { Property = Control.ForegroundProperty, Value = new SolidColorBrush(Colors.White) });
@@ -152,6 +152,22 @@ namespace Unify_Tasks.Pages
         private void BackLogin_MouseLeave(object sender, MouseEventArgs e)
         {
             this.Cursor = Cursors.Arrow;
+        }
+
+        private void RepeatPasswordBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (RepeatPasswordBox.Text == "Repeat Password")
+            {
+                RepeatPasswordBox.Text = "";
+                Style whiteText = new Style();
+
+                whiteText.Setters.Add(new Setter { Property = Control.ForegroundProperty, Value = new SolidColorBrush(Colors.White) });
+                whiteText.Setters.Add(new Setter { Property = Control.BackgroundProperty, Value = new SolidColorBrush(Color.FromRgb(100, 106, 116)) });
+                whiteText.Setters.Add(new Setter { Property = Control.FontFamilyProperty, Value = new FontFamily("/Fonts/#Gilroy") });
+                RepeatPasswordBox.Width = 280;
+                RepeatPasswordBox.BorderThickness = new Thickness(0);
+                RepeatPasswordBox.Style = whiteText;
+            }
         }
     }
 }

@@ -31,19 +31,11 @@ namespace Unify_Tasks.Pages
         public HomePage()
         {
             InitializeComponent();
-            //appendProjects(40);
-            appendTasks(40);
-
-            /*DoubleAnimation buttonAnimation = new DoubleAnimation();
-            buttonAnimation.From = helloButton.ActualWidth;
-            buttonAnimation.To = 150;
-            buttonAnimation.Duration = TimeSpan.FromSeconds(3);
-            helloButton.BeginAnimation(Button.WidthProperty, buttonAnimation);*/
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
+            //
             using (var context = new Unify_TasksEntities())
             {
                 var currProjects = from p in context.Projects
@@ -58,7 +50,6 @@ namespace Unify_Tasks.Pages
                         project1.ProjectsText = everyProject.ProjectHeader;
                         project1.Margin = new Thickness(0, 5, 0, 0);
                         project1.ProjectsID = everyProject.ProjectID;
-                        //project1.MouseUp += new MouseButtonEventHandler(recentClick);
 
                         project1.MouseUp += (object s, MouseButtonEventArgs ev) =>
                         {
@@ -77,54 +68,27 @@ namespace Unify_Tasks.Pages
                                     {
                                         TaskListElement task1 = new TaskListElement();
                                         task1.TaskHeader.Text = everyTask.Header;
-
+                                        task1.Margin = new Thickness(5, 5, 0, 0);
+                                        if (everyTask.Status == 1)
+                                        {
+                                            task1.IsReady.IsChecked = true;
+                                        }
+                                        else
+                                        {
+                                            task1.IsReady.IsChecked = false;
+                                        }
                                         TasksList.Children.Add(task1);
                                     }
                                 }
                             }
-                            
-
-                            MessageBox.Show("You clicked project " + everyProject.ProjectID);
                         };
+
                         stackProjects.Children.Add(project1);
                     }
                 }
             }
         }
 
-        private void appendTasks(int length)
-        {
-            for (int i = 0; i < length; i++)
-            {
-                TaskListElement task1 = new TaskListElement();
-                task1.Margin = new Thickness(5, 0, 5, 0);
-                /*appendTag(task1, "TextTagTextTagTextTagTextTagTextTag", "Red");
-                appendTag(task1, "TextTag", "Green");
-                appendTag(task1, "TextTag", "Blue");
-                appendTag(task1, "TextTag", "Green");
-                appendTag(task1, "TextTag", "Red");*/
-
-                Separator sep1 = new Separator();
-                sep1.Opacity = 0;
-                sep1.Height = 0.2 * task1.Height;
-
-                if (i == 0)
-                {
-                    TasksList.Children.Add(sep1);
-                }
-
-                TasksList.Children.Add(task1);
-                
-                if (i != length - 1)
-                {
-                    Separator sep2 = new Separator();
-                    sep2.Opacity = 0;
-                    sep2.Height = 0.2 * task1.Height;
-                    TasksList.Children.Add(sep2);
-                }
-                
-            }
-        }
 
         /*private void appendTag(TaskListElement task1, string text, string color)
         {

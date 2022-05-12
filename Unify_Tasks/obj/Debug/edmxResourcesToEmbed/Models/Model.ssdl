@@ -38,6 +38,7 @@
     </Key>
     <Property Name="TaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" />
     <Property Name="Header" Type="varchar" MaxLength="70" Nullable="false" />
     <Property Name="NoteID" Type="int" Nullable="false" />
   </EntityType>
@@ -49,7 +50,7 @@
     <Property Name="login" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="password" Type="varchar(max)" Nullable="false" />
   </EntityType>
-  <Association Name="FK__CrossElem__TagID__32E0915F">
+  <Association Name="FK__CrossElem__TagID__33D4B598">
     <End Role="Tags" Type="Self.Tags" Multiplicity="0..1" />
     <End Role="CrossElements" Type="Self.CrossElements" Multiplicity="*" />
     <ReferentialConstraint>
@@ -61,7 +62,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CrossElem__TaskI__31EC6D26">
+  <Association Name="FK__CrossElem__TaskI__32E0915F">
     <End Role="Tasks" Type="Self.Tasks" Multiplicity="0..1" />
     <End Role="CrossElements" Type="Self.CrossElements" Multiplicity="*" />
     <ReferentialConstraint>
@@ -85,7 +86,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Tags__ProjectID__2F10007B">
+  <Association Name="FK__Tags__ProjectID__300424B4">
     <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
     <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
     <ReferentialConstraint>
@@ -97,7 +98,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Tasks__NoteID__2C3393D0">
+  <Association Name="FK__Tasks__NoteID__2D27B809">
     <End Role="Notes" Type="Self.Notes" Multiplicity="1" />
     <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
     <ReferentialConstraint>
@@ -128,11 +129,11 @@
     <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__CrossElem__TagID__32E0915F" Association="Self.FK__CrossElem__TagID__32E0915F">
+    <AssociationSet Name="FK__CrossElem__TagID__33D4B598" Association="Self.FK__CrossElem__TagID__33D4B598">
       <End Role="Tags" EntitySet="Tags" />
       <End Role="CrossElements" EntitySet="CrossElements" />
     </AssociationSet>
-    <AssociationSet Name="FK__CrossElem__TaskI__31EC6D26" Association="Self.FK__CrossElem__TaskI__31EC6D26">
+    <AssociationSet Name="FK__CrossElem__TaskI__32E0915F" Association="Self.FK__CrossElem__TaskI__32E0915F">
       <End Role="Tasks" EntitySet="Tasks" />
       <End Role="CrossElements" EntitySet="CrossElements" />
     </AssociationSet>
@@ -140,11 +141,11 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="Projects" EntitySet="Projects" />
     </AssociationSet>
-    <AssociationSet Name="FK__Tags__ProjectID__2F10007B" Association="Self.FK__Tags__ProjectID__2F10007B">
+    <AssociationSet Name="FK__Tags__ProjectID__300424B4" Association="Self.FK__Tags__ProjectID__300424B4">
       <End Role="Projects" EntitySet="Projects" />
       <End Role="Tags" EntitySet="Tags" />
     </AssociationSet>
-    <AssociationSet Name="FK__Tasks__NoteID__2C3393D0" Association="Self.FK__Tasks__NoteID__2C3393D0">
+    <AssociationSet Name="FK__Tasks__NoteID__2D27B809" Association="Self.FK__Tasks__NoteID__2D27B809">
       <End Role="Notes" EntitySet="Notes" />
       <End Role="Tasks" EntitySet="Tasks" />
     </AssociationSet>

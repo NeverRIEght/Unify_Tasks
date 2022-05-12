@@ -62,6 +62,28 @@ namespace Unify_Tasks.Pages
 
                         project1.MouseUp += (object s, MouseButtonEventArgs ev) =>
                         {
+
+                            TasksList.Children.Clear();
+                            using (var context1 = new Unify_TasksEntities())
+                            {
+                                var currTasks = from p in context1.Tasks
+                                                where p.ProjectID == project1.ProjectsID
+                                                orderby p.TaskID
+                                                select p;
+
+                                if (currTasks != null)
+                                {
+                                    foreach (var everyTask in currTasks)
+                                    {
+                                        TaskListElement task1 = new TaskListElement();
+                                        task1.TaskHeader.Text = everyTask.Header;
+
+                                        TasksList.Children.Add(task1);
+                                    }
+                                }
+                            }
+                            
+
                             MessageBox.Show("You clicked project " + everyProject.ProjectID);
                         };
                         stackProjects.Children.Add(project1);

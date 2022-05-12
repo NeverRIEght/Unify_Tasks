@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Unify_Tasks.UserControls;
 using Unify_Tasks.Models;
+using Unify_Tasks.DialogWindows;
 
 namespace Unify_Tasks.Pages
 {
@@ -23,6 +24,9 @@ namespace Unify_Tasks.Pages
     /// </summary>
     public partial class HomePage : Page
     {
+        public int currUser { get; set; }
+        public int currProject { get; set; }
+
         public HomePage()
         {
             InitializeComponent();

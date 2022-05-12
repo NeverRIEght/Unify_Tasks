@@ -31,6 +31,7 @@ namespace Unify_Tasks.DialogWindows
         {
             DateTime? selectedDate = Calendar1.SelectedDate;
             Date1 = selectedDate;
+            this.DialogResult = true;
         }
     }
 }

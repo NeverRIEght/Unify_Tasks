@@ -6,9 +6,12 @@
              xmlns:local="clr-namespace:Unify_Tasks.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="70"
-             d:DesignWidth="1000">
+             d:DesignWidth="1000"
+             Loaded="UserControl_Loaded">
     <Grid
-        MinHeight="70px">
+        MinHeight="70px"
+        MouseEnter="Task_MouseEnter"
+        MouseLeave="Task_MouseLeave">
         
         <Grid.RowDefinitions>
             <RowDefinition Height="0.285*"/>
@@ -70,10 +73,12 @@
         </TextBox>
 
         <Image
+            x:Name="OpenNote"
             Grid.Row="1"
             Grid.Column="3"
             VerticalAlignment="Stretch"
             HorizontalAlignment="Stretch"
+            Opacity="0"
             Source="/Images/OpenNote.png"
             RenderOptions.BitmapScalingMode="HighQuality">
         </Image>

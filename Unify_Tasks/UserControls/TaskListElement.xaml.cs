@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Unify_Tasks.DialogWindows;
+using Unify_Tasks.Pages;
 
 namespace Unify_Tasks.UserControls
 {
@@ -25,6 +26,11 @@ namespace Unify_Tasks.UserControls
         {
             InitializeComponent();
             DataContext = this;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void Trash_MouseEnter(object sender, MouseEventArgs e)
@@ -58,9 +64,13 @@ namespace Unify_Tasks.UserControls
 
         private void WatchBlue_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Задаем время!");
             DateWindow date1 = new DateWindow();
             date1.Show();
+
+            if(date1.ShowDialog() == true)
+            {
+                 
+            }
         }
 
         private void TagControl_MouseEnter(object sender, MouseEventArgs e)
@@ -79,5 +89,16 @@ namespace Unify_Tasks.UserControls
         {
             MessageBox.Show("Задаем теги!");
         }
+
+        private void Task_MouseEnter(object sender, MouseEventArgs e)
+        {
+            OpenNote.Opacity = 1;
+
+        }
+        private void Task_MouseLeave(object sender, MouseEventArgs e)
+        {
+            OpenNote.Opacity = 0;
+        }
+
     }
 }

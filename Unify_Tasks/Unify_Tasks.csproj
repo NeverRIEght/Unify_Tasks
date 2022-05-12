@@ -230,6 +230,8 @@
     <Resource Include="Images\TrashcanRed.png" />
     <Resource Include="Images\TagControlBrown.png" />
     <Resource Include="Images\WatchBlue.png" />
+    <Resource Include="Images\NewTask.png" />
+    <Resource Include="Images\NewTaskGreen.png" />
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

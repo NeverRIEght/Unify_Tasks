@@ -234,5 +234,24 @@ namespace Unify_Tasks.Pages
         {
             this.Cursor = Cursors.Arrow;
         }
+
+        private void NewTaskGreen_MouseEnter(object sender, MouseEventArgs e)
+        {
+            NewTask.Opacity = 0;
+            NewTaskGreen.Opacity = 1;
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void NewTaskGreen_MouseLeave(object sender, MouseEventArgs e)
+        {
+            NewTask.Opacity = 1;
+            NewTaskGreen.Opacity = 0;
+            this.Cursor = Cursors.Arrow;
+        }
+
+        private void NewTaskGreen_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("New Task!");
+        }
     }
 }

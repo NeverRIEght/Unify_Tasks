@@ -195,8 +195,9 @@
             Background="#3a3e44">
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.0825*"/>
+                <RowDefinition Height="0.0075*"/>
                 <RowDefinition Height="0.075*" MinHeight="60px"/>
+                <RowDefinition Height="0.075*"/>
                 <RowDefinition Height="0.0475*"/>
                 <RowDefinition Height="0.7525*"/>
                 <RowDefinition Height="0.0425*"/>
@@ -227,16 +228,13 @@
             </TextBox>
 
             <Border
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="1"
                 Grid.ColumnSpan="4"
                 Background="#2f3136"
                 CornerRadius="10">
 
-                <ScrollViewer
-                Grid.Row="3"
-                Grid.Column="1"
-                Grid.ColumnSpan="3">
+                <ScrollViewer>
                     
                     <StackPanel x:Name="TasksList" />
                 
@@ -244,30 +242,57 @@
 
             </Border>
             <!--Task List Border-->
+            
             <Image
-            x:Name="Trash"
-            Grid.Row="1"
-            Grid.Column="3"
-            Source="/Images/Trashcan.png"
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
-            RenderOptions.BitmapScalingMode="HighQuality"
-            MouseEnter="Trash_MouseEnter"
-            MouseLeave="Trash_MouseLeave">
+                x:Name="Trash"
+                Grid.Row="1"
+                Grid.Column="3"
+                MaxHeight="50px"
+                Source="/Images/Trashcan.png"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                RenderOptions.BitmapScalingMode="HighQuality">
             </Image>
 
             <Image
-            x:Name="TrashRed"
-            Opacity="0"
-            Grid.Row="1"
-            Grid.Column="3"
-            Source="/Images/TrashcanRed.png"
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
-            RenderOptions.BitmapScalingMode="HighQuality"
-            MouseEnter="Trash_MouseEnter"
-            MouseLeave="Trash_MouseLeave"
-            MouseUp="TrashRed_MouseUp">
+                x:Name="TrashRed"
+                Opacity="0"
+                Grid.Row="1"
+                Grid.Column="3"
+                MaxHeight="50px"
+                Source="/Images/TrashcanRed.png"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                RenderOptions.BitmapScalingMode="HighQuality"
+                MouseEnter="Trash_MouseEnter"
+                MouseLeave="Trash_MouseLeave"
+                MouseUp="TrashRed_MouseUp">
+            </Image>
+
+            <Image
+                x:Name="NewTask"
+                Grid.Row="2"
+                Grid.Column="3"
+                MaxHeight="45px"
+                Source="/Images/NewTask.png"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                RenderOptions.BitmapScalingMode="HighQuality">
+            </Image>
+
+            <Image
+                x:Name="NewTaskGreen"
+                Grid.Row="2"
+                Grid.Column="3"
+                MaxHeight="45px"
+                Opacity="0"
+                Source="/Images/NewTaskGreen.png"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                RenderOptions.BitmapScalingMode="HighQuality"
+                MouseEnter="NewTaskGreen_MouseEnter"
+                MouseLeave="NewTaskGreen_MouseLeave"
+                MouseUp="NewTaskGreen_MouseUp">
             </Image>
 
         </Grid>

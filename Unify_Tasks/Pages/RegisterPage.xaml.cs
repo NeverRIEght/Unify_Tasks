@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -52,23 +53,33 @@ namespace Unify_Tasks.Pages
                 NickBox.ToolTip = "Nickname length must be less than 20 characters";
                 NickBoxBorder.Background = Brushes.DarkRed;
                 NickBox.Background = Brushes.DarkRed;
-            } else if (Password.Length > 20)
+            }
+            else if (!Regex.Match(Login, "^[A-Za-z0-9]+$").Success)
+            {
+                NickBox.ToolTip = "Login must contains only english letters and numbers";
+                NickBoxBorder.Background = Brushes.DarkRed;
+                NickBox.Background = Brushes.DarkRed;
+            }
+            else if (Password.Length > 20)
             {
                 PasswordBox.ToolTip = "Password length must be less than 20 characters";
                 PasswordBoxBorder.Background = Brushes.DarkRed;
                 PasswordBox.Background = Brushes.DarkRed;
 
-            } else if (Password.Length < 5)
+            }
+            else if (Password.Length < 5)
             {
                 PasswordBox.ToolTip = "Password length must be more than 5 characters";
                 PasswordBoxBorder.Background = Brushes.DarkRed;
                 PasswordBox.Background = Brushes.DarkRed;
-            } else if(Password != RPassword)
+            }
+            else if(Password != RPassword)
             {
-                RepeatPasswordBox.ToolTip = "Check yours passwords";
+                RepeatPasswordBox.ToolTip = "Check your password";
                 RepeatPasswordBoxBorder.Background = Brushes.DarkRed;
                 RepeatPasswordBox.Background = Brushes.DarkRed;
             }
+            
 
             else
             {

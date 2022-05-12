@@ -47,7 +47,15 @@ namespace Unify_Tasks.UserControls
 
         private void TrashRed_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Задача удалена!");
+            MessageBoxResult result1 = MessageBox.Show("Are you sure you want to delete the task?", "Unify", MessageBoxButton.YesNo);
+            switch (result1)
+            {
+                case MessageBoxResult.Yes:
+                    MessageBox.Show("Task deleted successfully");
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
         }
 
         private void Watch_MouseEnter(object sender, MouseEventArgs e)
@@ -92,13 +100,16 @@ namespace Unify_Tasks.UserControls
 
         private void Task_MouseEnter(object sender, MouseEventArgs e)
         {
-            OpenNote.Opacity = 1;
-
+            OpenNote.Visibility = Visibility.Visible;
         }
         private void Task_MouseLeave(object sender, MouseEventArgs e)
         {
-            OpenNote.Opacity = 0;
+            OpenNote.Visibility = Visibility.Hidden;
         }
 
+        private void OpenNote_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Open Note!");
+        }
     }
 }

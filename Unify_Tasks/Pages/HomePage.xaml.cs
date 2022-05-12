@@ -154,7 +154,6 @@ namespace Unify_Tasks.Pages
 
         private void LogOf_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Log Off!");
             NavigationService.Navigate(new Login());
         }
 
@@ -172,7 +171,15 @@ namespace Unify_Tasks.Pages
 
         private void TrashRed_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Проект удален!");
+            MessageBoxResult result1 = MessageBox.Show("Are you sure you want to delete the project?", "Unify", MessageBoxButton.YesNo);
+            switch(result1)
+            {
+                case MessageBoxResult.Yes:
+                    MessageBox.Show("Project deleted successfully");
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
         }
     }
 }

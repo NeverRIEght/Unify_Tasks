@@ -78,9 +78,10 @@
             Grid.Column="3"
             VerticalAlignment="Stretch"
             HorizontalAlignment="Stretch"
-            Opacity="0"
+            Visibility="Hidden"
             Source="/Images/OpenNote.png"
-            RenderOptions.BitmapScalingMode="HighQuality">
+            RenderOptions.BitmapScalingMode="HighQuality"
+            MouseUp="OpenNote_MouseUp">
         </Image>
         
         <Image

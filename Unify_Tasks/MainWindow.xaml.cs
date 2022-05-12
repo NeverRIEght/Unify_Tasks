@@ -24,6 +24,7 @@ namespace Unify_Tasks
         public DateTime? currDate { get; set; }
         public int currUser { get; set; }
         public int currProject { get; set; }
+        public int currTask { get; set; }
 
         public MainWindow()
         {

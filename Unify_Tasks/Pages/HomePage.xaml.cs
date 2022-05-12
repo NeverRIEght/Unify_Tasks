@@ -30,8 +30,8 @@ namespace Unify_Tasks.Pages
         public HomePage()
         {
             InitializeComponent();
-            appendProjects(5);
-            appendTasks(5);
+            appendProjects(40);
+            appendTasks(40);
 
             /*DoubleAnimation buttonAnimation = new DoubleAnimation();
             buttonAnimation.From = helloButton.ActualWidth;

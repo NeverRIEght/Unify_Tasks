@@ -19,19 +19,21 @@ namespace Unify_Tasks.DialogWindows
     /// </summary>
     public partial class DateWindow : Window
     {
-
-        public DateTime? Date1 { get; set; }
-
         public DateWindow()
         {
             InitializeComponent();
         }
 
+        static MainWindow w1 = (MainWindow)Application.Current.MainWindow;
+
         private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-            DateTime? selectedDate = Calendar1.SelectedDate;
-            Date1 = selectedDate;
-            this.DialogResult = true;
+            DateTime? selectedDate = null;
+            selectedDate = Calendar1.SelectedDate;
+            if(selectedDate != null)
+            {
+                w1.currDate = selectedDate;
+            }
         }
     }
 }

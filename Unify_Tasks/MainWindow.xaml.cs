@@ -20,6 +20,11 @@ namespace Unify_Tasks
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public DateTime? currDate { get; set; }
+        public int currUser { get; set; }
+        public int currProject { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();

@@ -24,9 +24,8 @@ namespace Unify_Tasks.Pages
     /// </summary>
     public partial class HomePage : Page
     {
+        static MainWindow w1 = (MainWindow)Application.Current.MainWindow;
         public int AvatarColor = 1;
-        public int currUser { get; set; }
-        public int currProject { get; set; }
 
         public HomePage()
         {

@@ -77,11 +77,6 @@ namespace Unify_Tasks.UserControls
         {
             DateWindow date1 = new DateWindow();
             date1.Show();
-
-            if(date1.ShowDialog() == true)
-            {
-                 
-            }
         }
 
         private void TagControl_MouseEnter(object sender, MouseEventArgs e)

@@ -25,6 +25,7 @@ namespace Unify_Tasks
         public int currUser { get; set; }
         public int currProject { get; set; }
         public int currTask { get; set; }
+        public int lastNote { get; set; }
 
         public MainWindow()
         {

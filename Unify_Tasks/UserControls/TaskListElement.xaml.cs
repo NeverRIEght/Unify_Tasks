@@ -143,5 +143,20 @@ namespace Unify_Tasks.UserControls
                 TaskHeader.FontSize = 16;
             }
         }
+
+        public static readonly DependencyProperty TasksIDProperty =
+        DependencyProperty.Register(
+        name: "TasksID",
+        propertyType: typeof(int),
+        ownerType: typeof(TaskListElement),
+        typeMetadata: new FrameworkPropertyMetadata(
+        defaultValue: 1,
+        flags: FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        public int ProjectsID
+        {
+            get => (int)GetValue(TasksIDProperty);
+            set => SetValue(TasksIDProperty, value);
+        }
     }
 }

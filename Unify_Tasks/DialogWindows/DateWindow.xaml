@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Unify_Tasks.DialogWindows"
         mc:Ignorable="d"
-        Title="Choose date" Height="200" Width="200"
+        Title="Choose date" Height="250" Width="200"
         WindowStartupLocation="CenterScreen"
         WindowStyle="ToolWindow">
     <Grid Background="#323439">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
         <Calendar
             x:Name="Calendar1"
             HorizontalAlignment="Center"
@@ -17,5 +21,17 @@
             SelectionMode="SingleDate"
             SelectedDatesChanged="Calendar_SelectedDatesChanged">
         </Calendar>
+        <TextBlock
+            x:Name="Confirm"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            TextDecorations="Underline"
+            Foreground="White"
+            MouseEnter="TextBlock_MouseEnter"
+            MouseLeave="TextBlock_MouseLeave"
+            MouseUp="TextBlock_MouseUp">
+            Confirm
+        </TextBlock>
     </Grid>
 </Window>

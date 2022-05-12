@@ -50,7 +50,7 @@
                     x:Name="CardGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.025*" />
-                        <ColumnDefinition Width="0.16*" />
+                        <ColumnDefinition Width="0.16*" MinWidth="30px"/>
                         <ColumnDefinition Width="0.615*" />
                         <ColumnDefinition Width="0.1*" MinWidth="20px"/>
                         <ColumnDefinition Width="0.04*" />
@@ -156,7 +156,7 @@
                 MouseLeave="Button_MouseLeave">
             </Button>
             <!--New Project Button-->
-            
+
             <TextBlock
                 Grid.Row="4"
                 Grid.Column="2"
@@ -165,7 +165,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
                 Foreground="White"
-                >Recent
+                >Projects
             </TextBlock>
             <!-- Recent -->
             
@@ -198,40 +198,48 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.0075*"/>
                 <RowDefinition Height="0.075*" MinHeight="60px"/>
-                <RowDefinition Height="0.075*"/>
-                <RowDefinition Height="0.0475*"/>
-                <RowDefinition Height="0.7525*"/>
+                <RowDefinition Height="0.075*" MinHeight="60px"/>
+                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="0.01*"/>
+                <RowDefinition Height="0.7425*"/>
                 <RowDefinition Height="0.0425*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.04*"/>
                 <ColumnDefinition Width="0.015*"/>
-                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.015*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.585*"/>
                 <ColumnDefinition Width="0.09*"/>
                 <ColumnDefinition Width="0.015*"/>
                 <ColumnDefinition Width="0.04*"/>
             </Grid.ColumnDefinitions>
 
             <TextBox
+                x:Name="ProjectName"
                 Grid.Row="1"
                 Grid.Column="2"
+                Grid.ColumnSpan="4"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
-                Width="922px"
                 Height="60px"
                 Foreground="White"
                 Background="Transparent"
                 BorderThickness="0"
                 FontWeight="Medium"
                 FontSize="50px"
-                Text="Name your project"
+                Text=""
+                Visibility="Hidden"
                 MaxLength="20">
             </TextBox>
 
             <Border
-                Grid.Row="4"
+                x:Name="TasksViewer"
+                Visibility="Hidden"
+                Grid.Row="5"
                 Grid.Column="1"
-                Grid.ColumnSpan="4"
+                Grid.ColumnSpan="7"
                 Background="#2f3136"
                 CornerRadius="10">
 
@@ -247,19 +255,22 @@
             <Image
                 x:Name="Trash"
                 Grid.Row="1"
-                Grid.Column="3"
+                Grid.Column="6"
                 MaxHeight="50px"
                 Source="/Images/Trashcan.png"
+                Visibility="Hidden"
                 VerticalAlignment="Stretch"
                 HorizontalAlignment="Stretch"
                 RenderOptions.BitmapScalingMode="HighQuality">
             </Image>
+            <!--Trash-->
 
             <Image
                 x:Name="TrashRed"
+                Visibility="Hidden"
                 Opacity="0"
                 Grid.Row="1"
-                Grid.Column="3"
+                Grid.Column="6"
                 MaxHeight="50px"
                 Source="/Images/TrashcanRed.png"
                 VerticalAlignment="Stretch"
@@ -269,33 +280,31 @@
                 MouseLeave="Trash_MouseLeave"
                 MouseUp="TrashRed_MouseUp">
             </Image>
+            <!--TrashRed-->
 
-            <Image
+            <Border
                 x:Name="NewTask"
-                Grid.Row="2"
-                Grid.Column="3"
-                MaxHeight="45px"
-                Source="/Images/NewTask.png"
-                VerticalAlignment="Stretch"
+                Grid.Row="3"
+                Grid.Column="2"
                 HorizontalAlignment="Stretch"
-                RenderOptions.BitmapScalingMode="HighQuality">
-            </Image>
-
-            <Image
-                x:Name="NewTaskGreen"
-                Grid.Row="2"
-                Grid.Column="3"
-                MaxHeight="45px"
-                Opacity="0"
-                Source="/Images/NewTaskGreen.png"
                 VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch"
-                RenderOptions.BitmapScalingMode="HighQuality"
-                MouseEnter="NewTaskGreen_MouseEnter"
-                MouseLeave="NewTaskGreen_MouseLeave"
-                MouseUp="NewTaskGreen_MouseUp">
-            </Image>
+                Background="#2f3136"
+                CornerRadius="10"
+                Visibility="Hidden"
+                MouseEnter="Button_MouseEnter"
+                MouseLeave="Button_MouseLeave"
+                MouseUp="NewTask_MouseUp">
 
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="New Task"
+                    FontWeight="Light"
+                    FontStyle="Italic"
+                    Foreground="White"
+                    FontSize="22px">
+                </TextBlock>
+            </Border>
         </Grid>
     </Grid>
 </Page>

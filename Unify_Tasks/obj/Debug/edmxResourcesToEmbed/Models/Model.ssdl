@@ -13,7 +13,7 @@
       <PropertyRef Name="NoteID" />
     </Key>
     <Property Name="NoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Notepath" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Notepath" Type="varchar" MaxLength="300" />
   </EntityType>
   <EntityType Name="Projects">
     <Key>
@@ -21,14 +21,14 @@
     </Key>
     <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProjectHeader" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" />
   </EntityType>
   <EntityType Name="Tags">
     <Key>
       <PropertyRef Name="TagID" />
     </Key>
     <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="ProjectID" Type="int" />
     <Property Name="TagHeader" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="TagColor" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
@@ -37,10 +37,11 @@
       <PropertyRef Name="TaskID" />
     </Key>
     <Property Name="TaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="ProjectID" Type="int" />
     <Property Name="Status" Type="int" />
     <Property Name="Header" Type="varchar" MaxLength="70" Nullable="false" />
-    <Property Name="NoteID" Type="int" Nullable="false" />
+    <Property Name="NoteID" Type="int" />
+    <Property Name="Planned" Type="datetime" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -75,7 +76,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Projects__UserID__267ABA7A">
-    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Users">
@@ -87,7 +88,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Tags__ProjectID__300424B4">
-    <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+    <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
     <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Projects">
@@ -99,7 +100,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Tasks__NoteID__2D27B809">
-    <End Role="Notes" Type="Self.Notes" Multiplicity="1" />
+    <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
     <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Notes">
@@ -111,7 +112,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Tasks__ProjectID__2B3F6F97">
-    <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+    <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
     <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Projects">

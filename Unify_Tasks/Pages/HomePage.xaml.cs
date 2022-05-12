@@ -35,11 +35,17 @@ namespace Unify_Tasks.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            using (var context = new Unify_TasksEntities())
+            {
+                var LastNote = context.Notes.Where(p => p.NoteID == p.NoteID).LastOrDefault();
+                w1.lastNote = LastNote.NoteID;
+            }
             UpdateProjects();
         }
 
         private void UpdateProjects()
         {
+            stackProjects.Children.Clear();
             using (var context = new Unify_TasksEntities())
             {
                 var currProjects = from p in context.Projects
@@ -90,7 +96,7 @@ namespace Unify_Tasks.Pages
                     {
                         TaskListElement task1 = new TaskListElement();
                         task1.TaskHeader.Text = everyTask.Header;
-                        task1.ProjectsID = everyTask.ProjectID;
+                        task1.ProjectsID = (int)everyTask.ProjectID;
                         task1.Margin = new Thickness(5, 5, 0, 0);
                         if (everyTask.Status == 1)
                         {
@@ -221,10 +227,11 @@ namespace Unify_Tasks.Pages
                 if (toDelete != null)
                 {
                     context.Projects.Remove(toDelete);
-                    MessageBox.Show("Project deleted!");
                     UpdateProjects();
                     UpdateTasks();
+                    MessageBox.Show("Project deleted!");
                 }
+                context.SaveChanges();
             }
         }
 
@@ -287,7 +294,6 @@ namespace Unify_Tasks.Pages
 
         private void NewTask_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            
             using (var context = new Unify_TasksEntities())
             {
                 string path = Environment.CurrentDirectory + "\\Notes\\Note_" + w1.lastNote + 1 + ".rtf";

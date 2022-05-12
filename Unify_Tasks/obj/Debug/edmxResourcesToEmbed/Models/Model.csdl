@@ -15,7 +15,7 @@
       <PropertyRef Name="NoteID" />
     </Key>
     <Property Name="NoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Notepath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Notepath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Tasks" Relationship="Self.FK__Tasks__NoteID__2D27B809" FromRole="Notes" ToRole="Tasks" />
   </EntityType>
   <EntityType Name="Project">
@@ -24,7 +24,7 @@
     </Key>
     <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ProjectHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" />
     <NavigationProperty Name="User" Relationship="Self.FK__Projects__UserID__267ABA7A" FromRole="Projects" ToRole="Users" />
     <NavigationProperty Name="Tags" Relationship="Self.FK__Tags__ProjectID__300424B4" FromRole="Projects" ToRole="Tags" />
     <NavigationProperty Name="Tasks" Relationship="Self.FK__Tasks__ProjectID__2B3F6F97" FromRole="Projects" ToRole="Tasks" />
@@ -34,7 +34,7 @@
       <PropertyRef Name="TagID" />
     </Key>
     <Property Name="TagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="ProjectID" Type="Int32" />
     <Property Name="TagHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TagColor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="CrossElements" Relationship="Self.FK__CrossElem__TagID__33D4B598" FromRole="Tags" ToRole="CrossElements" />
@@ -45,10 +45,11 @@
       <PropertyRef Name="TaskID" />
     </Key>
     <Property Name="TaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="ProjectID" Type="Int32" />
     <Property Name="Status" Type="Int32" />
     <Property Name="Header" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="NoteID" Type="Int32" Nullable="false" />
+    <Property Name="NoteID" Type="Int32" />
+    <Property Name="Planned" Type="DateTime" Precision="3" />
     <NavigationProperty Name="CrossElements" Relationship="Self.FK__CrossElem__TaskI__32E0915F" FromRole="Tasks" ToRole="CrossElements" />
     <NavigationProperty Name="Note" Relationship="Self.FK__Tasks__NoteID__2D27B809" FromRole="Tasks" ToRole="Notes" />
     <NavigationProperty Name="Project" Relationship="Self.FK__Tasks__ProjectID__2B3F6F97" FromRole="Tasks" ToRole="Projects" />
@@ -87,7 +88,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Tasks__NoteID__2D27B809">
-    <End Role="Notes" Type="Self.Note" Multiplicity="1" />
+    <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
     <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Notes">
@@ -99,7 +100,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Projects__UserID__267ABA7A">
-    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
     <End Role="Projects" Type="Self.Project" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Users">
@@ -111,7 +112,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Tags__ProjectID__300424B4">
-    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+    <End Role="Projects" Type="Self.Project" Multiplicity="0..1" />
     <End Role="Tags" Type="Self.Tag" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Projects">
@@ -123,7 +124,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Tasks__ProjectID__2B3F6F97">
-    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+    <End Role="Projects" Type="Self.Project" Multiplicity="0..1" />
     <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Projects">

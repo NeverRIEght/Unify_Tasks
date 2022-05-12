@@ -21,7 +21,7 @@ namespace Unify_Tasks.Models
         }
     
         public int TagID { get; set; }
-        public int ProjectID { get; set; }
+        public Nullable<int> ProjectID { get; set; }
         public string TagHeader { get; set; }
         public string TagColor { get; set; }
     

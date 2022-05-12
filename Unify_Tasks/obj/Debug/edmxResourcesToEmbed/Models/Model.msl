@@ -45,6 +45,7 @@
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Header" ColumnName="Header" />
           <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+          <ScalarProperty Name="Planned" ColumnName="Planned" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

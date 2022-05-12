@@ -23,7 +23,7 @@ namespace Unify_Tasks.Models
     
         public int ProjectID { get; set; }
         public string ProjectHeader { get; set; }
-        public int UserID { get; set; }
+        public Nullable<int> UserID { get; set; }
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

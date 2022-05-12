@@ -194,14 +194,16 @@
             <!--Go ahead border-->
 
             <Button
-            Grid.Row="5"
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            MinWidth="155px"
-            MinHeight="30px"
-            Opacity="0"
-            Click="LogIn_Click">
+                Grid.Row="5"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                MinWidth="155px"
+                MinHeight="30px"
+                Opacity="0"
+                Click="LogIn_Click"
+                MouseEnter="LogIn_MouseEnter"
+                MouseLeave="LogIn_MouseLeave">
             </Button>
             <!--Log in button-->
 
@@ -220,14 +222,16 @@
             <!--Don`t have an account-->
 
             <Button
-            Grid.Row="6"
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            MinWidth="155px"
-            MinHeight="18px"
-            Opacity="0"
-            Click="NewAcc_Click">
+                Grid.Row="6"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                MinWidth="155px"
+                MinHeight="18px"
+                Opacity="0"
+                Click="NewAcc_Click"
+                MouseEnter="NewAcc_MouseEnter"
+                MouseLeave="NewAcc_MouseLeave">
             </Button>
             <!--Don`t have an account button-->
             

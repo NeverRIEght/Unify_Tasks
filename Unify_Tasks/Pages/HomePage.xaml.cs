@@ -24,14 +24,15 @@ namespace Unify_Tasks.Pages
     /// </summary>
     public partial class HomePage : Page
     {
+        public int AvatarColor = 1;
         public int currUser { get; set; }
         public int currProject { get; set; }
 
         public HomePage()
         {
             InitializeComponent();
-            appendProjects(1);
-            appendTasks(10);
+            appendProjects(5);
+            appendTasks(5);
 
             /*DoubleAnimation buttonAnimation = new DoubleAnimation();
             buttonAnimation.From = helloButton.ActualWidth;
@@ -54,13 +55,10 @@ namespace Unify_Tasks.Pages
                 {
                     project1.underline.Visibility = Visibility.Hidden;
                 }
-                project1.ProjectsText = "Project 1";
+                project1.ProjectsText = "12345678901234567890";
                 project1.Name = "project" + i.ToString();
+                project1.Margin = new Thickness(0, 5, 0, 0);
                 project1.MouseDown += new MouseButtonEventHandler(recentClick);
-
-                Separator sep1 = new Separator();
-                sep1.Opacity = 0;
-                sep1.Height = 0.2 * project1.Height;
 
 
                 /*using (var context = new Unify_TasksEntities())
@@ -75,7 +73,6 @@ namespace Unify_Tasks.Pages
                 MessageBox.Show("Project created!");*/
 
 
-                stackProjects.Children.Add(sep1);
                 stackProjects.Children.Add(project1);
             }
         }
@@ -180,6 +177,34 @@ namespace Unify_Tasks.Pages
                 case MessageBoxResult.No:
                     break;
             }
+        }
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            MainWindow win = (MainWindow)Window.GetWindow(this);
+
+            win.MinWidth = 1060;
+
+        }
+
+        private void AvatarRect_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            switch(AvatarColor)
+            {
+                case 1:
+                    //AvatarRect.Fill = 
+                    break;
+            }
+        }
+
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
         }
     }
 }

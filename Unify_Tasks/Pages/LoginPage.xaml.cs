@@ -108,5 +108,25 @@ namespace Unify_Tasks.Pages
             string currLogin = LoginBox.Text;
             /*if(currLogin < 5)*/
         }
+
+        private void LogIn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void LogIn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
+        }
+
+        private void NewAcc_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void NewAcc_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
+        }
     }
 }

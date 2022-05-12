@@ -235,7 +235,9 @@
                 MinWidth="155px"
                 MinHeight="30px"
                 Opacity="0"
-                Click="Register_Click">
+                Click="Register_Click"
+                MouseEnter="CreateID_MouseEnter"
+                MouseLeave="CreateID_MouseLeave">
             </Button>
             <!--Register button-->
 
@@ -263,7 +265,9 @@
                 MinWidth="88px"
                 MinHeight="17px"
                 Opacity="0"
-                Click="BackLogin_Click">
+                Click="BackLogin_Click"
+                MouseEnter="BackLogin_MouseEnter"
+                MouseLeave="BackLogin_MouseLeave">
             </Button>
             <!--Back to login Button-->
         </Grid>

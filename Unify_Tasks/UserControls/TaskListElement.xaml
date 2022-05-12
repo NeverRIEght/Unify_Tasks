@@ -7,33 +7,35 @@
              mc:Ignorable="d" 
              d:DesignHeight="70"
              d:DesignWidth="1000"
-             Loaded="UserControl_Loaded">
+             Loaded="UserControl_Loaded"
+             SizeChanged="UserControl_SizeChanged">
     <Grid
+        x:Name="TaskGrid"
         MinHeight="70px"
         MouseEnter="Task_MouseEnter"
         MouseLeave="Task_MouseLeave">
         
         <Grid.RowDefinitions>
             <RowDefinition Height="0.285*"/>
-            <RowDefinition Height="0.42*"/>
+            <RowDefinition Height="0.42*" MinHeight="30px"/>
             <RowDefinition Height="0.285*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.02*" MinWidth="8px"/>
+            <ColumnDefinition Width="0.032*" MinWidth="30px"/>
+            <ColumnDefinition Width="0.531*" MinWidth="480px"/>
+            <ColumnDefinition Width="0.095*" MinWidth="95px"/>
             <ColumnDefinition Width="0.02*" />
-            <ColumnDefinition Width="0.032*" />
-            <ColumnDefinition Width="0.531*" />
-            <ColumnDefinition Width="0.095*" />
-            <ColumnDefinition Width="0.02*" />
-            <ColumnDefinition Width="0.085*" />
+            <ColumnDefinition Width="0.085*" MinWidth="85px"/>
             <ColumnDefinition Width="0.006*" />
-            <ColumnDefinition Width="0.085*" />
+            <ColumnDefinition Width="0.085*" MinWidth="85px"/>
             <ColumnDefinition Width="0.006*" />
-            <ColumnDefinition Width="0.03*" />
-            <ColumnDefinition Width="0.01*" />
-            <ColumnDefinition Width="0.03*" />
-            <ColumnDefinition Width="0.01*" />
-            <ColumnDefinition Width="0.03*" />
-            <ColumnDefinition Width="0.01*" />
+            <ColumnDefinition Width="0.03*" MinWidth="30px"/>
+            <ColumnDefinition Width="0.01*" MinWidth="8px" />
+            <ColumnDefinition Width="0.03*" MinWidth="30px" />
+            <ColumnDefinition Width="0.01*" MinWidth="8px" />
+            <ColumnDefinition Width="0.03*" MinWidth="30px" />
+            <ColumnDefinition Width="0.01*" MinWidth="8px"/>
         </Grid.ColumnDefinitions>
 
         <Border
@@ -58,6 +60,7 @@
         </CheckBox>
         
         <TextBox
+            x:Name="TaskHeader"
             Grid.Row="1"
             Grid.Column="2"
             Foreground="White"
@@ -81,6 +84,8 @@
             Visibility="Hidden"
             Source="/Images/OpenNote.png"
             RenderOptions.BitmapScalingMode="HighQuality"
+            MouseEnter="OpenNote_MouseEnter"
+            MouseLeave="OpenNote_MouseLeave"
             MouseUp="OpenNote_MouseUp">
         </Image>
         
@@ -88,6 +93,7 @@
             x:Name="TagControl"
             Grid.Row="1"
             Grid.Column="9"
+            Visibility="Hidden"
             Source="/Images/TagControl.png"
             VerticalAlignment="Stretch"
             HorizontalAlignment="Stretch"
@@ -115,6 +121,7 @@
             Grid.Row="1"
             Grid.Column="11"
             Source="/Images/Watch.png"
+            Visibility="Hidden"
             VerticalAlignment="Stretch"
             HorizontalAlignment="Stretch"
             RenderOptions.BitmapScalingMode="HighQuality"

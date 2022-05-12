@@ -37,12 +37,14 @@ namespace Unify_Tasks.UserControls
         {
             Trash.Opacity = 0;
             TrashRed.Opacity = 1;
+            this.Cursor = Cursors.Hand;
         }
 
         private void Trash_MouseLeave(object sender, MouseEventArgs e)
         {
             Trash.Opacity = 1;
             TrashRed.Opacity = 0;
+            this.Cursor = Cursors.Arrow;
         }
 
         private void TrashRed_MouseUp(object sender, MouseButtonEventArgs e)
@@ -62,12 +64,13 @@ namespace Unify_Tasks.UserControls
         {
             Watch.Opacity = 0;
             WatchBlue.Opacity = 1;
+            this.Cursor = Cursors.Hand;
         }
-
         private void Watch_MouseLeave(object sender, MouseEventArgs e)
         {
             Watch.Opacity = 1;
             WatchBlue.Opacity = 0;
+            this.Cursor = Cursors.Arrow;
         }
 
         private void WatchBlue_MouseUp(object sender, MouseButtonEventArgs e)
@@ -85,12 +88,13 @@ namespace Unify_Tasks.UserControls
         {
             TagControl.Opacity = 0;
             TagControlBrown.Opacity = 1;
+            this.Cursor = Cursors.Hand;
         }
-
         private void TagControl_MouseLeave(object sender, MouseEventArgs e)
         {
             TagControl.Opacity = 1;
             TagControlBrown.Opacity = 0;
+            this.Cursor = Cursors.Arrow;
         }
 
         private void TagControlBrown_MouseUp(object sender, MouseButtonEventArgs e)
@@ -101,15 +105,47 @@ namespace Unify_Tasks.UserControls
         private void Task_MouseEnter(object sender, MouseEventArgs e)
         {
             OpenNote.Visibility = Visibility.Visible;
+            TagControl.Visibility = Visibility.Visible;
+            Watch.Visibility = Visibility.Visible;
         }
         private void Task_MouseLeave(object sender, MouseEventArgs e)
         {
             OpenNote.Visibility = Visibility.Hidden;
+            TagControl.Visibility = Visibility.Hidden;
+            Watch.Visibility = Visibility.Hidden;
+        }
+
+        private void OpenNote_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+        private void OpenNote_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
         }
 
         private void OpenNote_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Open Note!");
+        }
+
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            MainWindow win = (MainWindow)Window.GetWindow(this);
+            if (win.Width <= 1300)
+            {
+                TaskGrid.ColumnDefinitions[5].MinWidth = 10;
+                TaskGrid.ColumnDefinitions[7].MinWidth = 0;
+            }
+
+            if (TaskHeader.Width > 520)
+            {
+                TaskHeader.FontSize = 21;
+            }
+            if (TaskHeader.Width <= 520)
+            {
+                TaskHeader.FontSize = 16;
+            }
         }
     }
 }

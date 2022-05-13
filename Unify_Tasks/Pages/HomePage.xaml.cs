@@ -137,12 +137,43 @@ namespace Unify_Tasks.Pages
                                         if (toRename != null)
                                         {
                                             toRename.Header = task1.TaskHeader.Text;
-                                            context.SaveChangesAsync();
+                                            context.SaveChanges();
                                         }
                                     }
                                 }
                             };
+                            task1.IsReady.Checked += (object sender, RoutedEventArgs e) =>
+                            {
+                                if(w1.currTask != 0)
+                                {
+                                    using (var context = new Unify_TasksEntities())
+                                    {
+                                        Models.Task ThisTask = context.Tasks.Where(b => b.TaskID == w1.currTask).FirstOrDefault();
 
+                                        if (ThisTask != null)
+                                        {
+                                            ThisTask.Status = 1;
+                                            context.SaveChanges();
+                                        }
+                                    }
+                                }
+                            };
+                            task1.IsReady.Unchecked += (object sender, RoutedEventArgs e) =>
+                            {
+                                if (w1.currTask != 0)
+                                {
+                                    using (var context = new Unify_TasksEntities())
+                                    {
+                                        Models.Task ThisTask = context.Tasks.Where(b => b.TaskID == w1.currTask).FirstOrDefault();
+
+                                        if (ThisTask != null)
+                                        {
+                                            ThisTask.Status = 0;
+                                            context.SaveChanges();
+                                        }
+                                    }
+                                }
+                            };
                             task1.WatchBlue.MouseUp += (object sender, MouseButtonEventArgs e) =>
                             {
                                 DateWindow date1 = new DateWindow();
@@ -155,6 +186,11 @@ namespace Unify_Tasks.Pages
                 }
             }
             
+        }
+
+        private void IsReady_Checked(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public void DeleteTask(int toDeleteID)
@@ -387,7 +423,7 @@ namespace Unify_Tasks.Pages
                 if(toRename != null)
                 {
                     toRename.ProjectHeader = ProjectName.Text;
-                    context.SaveChangesAsync();
+                    context.SaveChanges();
                     UpdateProjects();
                 }
             }

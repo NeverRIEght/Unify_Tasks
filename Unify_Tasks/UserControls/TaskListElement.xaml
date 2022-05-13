@@ -72,7 +72,7 @@
             BorderThickness="0"
             FontWeight="Medium"
             FontSize="21"
-            MaxLength="45"
+            MaxLength="30"
             Text="Textnsjnvjndsnvnsdnvnsdnnvsknjisvsidnvinsinvns">
         </TextBox>
 

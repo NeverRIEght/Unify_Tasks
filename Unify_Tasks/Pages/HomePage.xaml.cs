@@ -96,7 +96,7 @@ namespace Unify_Tasks.Pages
                         {
                             TaskListElement task1 = new TaskListElement();
                             task1.TaskHeader.Text = everyTask.Header;
-                            task1.ProjectsID = (int)everyTask.ProjectID;
+                            task1.TasksID = (int)everyTask.TaskID;
                             task1.Margin = new Thickness(5, 5, 0, 0);
                             if (everyTask.Status == 1)
                             {
@@ -109,7 +109,20 @@ namespace Unify_Tasks.Pages
 
                             task1.MouseEnter += (object s, MouseEventArgs ev) =>
                             {
-                                w1.currTask = task1.ProjectsID;
+                                w1.currTask = task1.TasksID;
+                            };
+                            task1.TrashRed.MouseUp += (object sender, MouseButtonEventArgs e) =>
+                            {
+                                int toDeleteID = w1.currTask;
+                                MessageBoxResult result1 = MessageBox.Show("Are you sure you want to delete the task?", "Unify", MessageBoxButton.YesNo);
+                                switch (result1)
+                                {
+                                    case MessageBoxResult.Yes:
+                                        DeleteTask(toDeleteID);
+                                        break;
+                                    case MessageBoxResult.No:
+                                        break;
+                                }
                             };
 
                             TasksList.Children.Add(task1);
@@ -118,6 +131,25 @@ namespace Unify_Tasks.Pages
                 }
             }
             
+        }
+
+        public void DeleteTask(int toDeleteID)
+        {
+            if (toDeleteID != 0)
+            {
+                Models.Task toDelete = null;
+                using (var context = new Unify_TasksEntities())
+                {
+                    toDelete = context.Tasks.Where(b => b.TaskID == toDeleteID).FirstOrDefault();
+
+                    if (toDelete != null)
+                    {
+                        context.Tasks.Remove(toDelete);
+                        context.SaveChanges();
+                        UpdateTasks();
+                    }
+                }
+            }
         }
 
         /*private void appendTag(TaskListElement task1, string text, string color)

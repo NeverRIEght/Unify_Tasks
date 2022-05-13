@@ -166,8 +166,7 @@
             HorizontalAlignment="Stretch"
             RenderOptions.BitmapScalingMode="HighQuality"
             MouseEnter="Trash_MouseEnter"
-            MouseLeave="Trash_MouseLeave"
-            MouseUp="TrashRed_MouseUp">
+            MouseLeave="Trash_MouseLeave">
         </Image>
     </Grid>
 </UserControl>

@@ -50,35 +50,7 @@ namespace Unify_Tasks.UserControls
             this.Cursor = Cursors.Arrow;
         }
 
-        private void TrashRed_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            MessageBoxResult result1 = MessageBox.Show("Are you sure you want to delete the task?", "Unify", MessageBoxButton.YesNo);
-            switch (result1)
-            {
-                case MessageBoxResult.Yes:
-                    DeleteTask();
-                    break;
-                case MessageBoxResult.No:
-                    break;
-            }
-        }
-
-        public void DeleteTask()
-        {
-            if(w1.currTask != 0)
-            {
-                Models.Task toDelete = null;
-                using (var context = new Unify_TasksEntities())
-                {
-                    toDelete = context.Tasks.Where(b => b.TaskID == w1.currTask).FirstOrDefault();
-
-                    if (toDelete != null)
-                    {
-                        context.Tasks.Remove(toDelete);
-                    }
-                }
-            }
-        }
+        
 
         private void Watch_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -173,7 +145,7 @@ namespace Unify_Tasks.UserControls
         defaultValue: 1,
         flags: FrameworkPropertyMetadataOptions.AffectsMeasure));
 
-        public int ProjectsID
+        public int TasksID
         {
             get => (int)GetValue(TasksIDProperty);
             set => SetValue(TasksIDProperty, value);

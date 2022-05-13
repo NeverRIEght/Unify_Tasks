@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Unify_Tasks.Models;
 
 namespace Unify_Tasks.DialogWindows
 {
@@ -19,25 +20,40 @@ namespace Unify_Tasks.DialogWindows
     /// </summary>
     public partial class DateWindow : Window
     {
+        public DateTime? selectedDate = null;
         public DateWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            using (var context = new Unify_TasksEntities())
+            {
+                Models.Task thisTask = context.Tasks.Where(b => b.TaskID == w1.currTask).FirstOrDefault();
+
+                if (thisTask != null)
+                {
+                    Calendar1.SelectedDate = thisTask.Planned;
+                }
+            }
         }
 
         static MainWindow w1 = (MainWindow)Application.Current.MainWindow;
 
         private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-            DateTime? selectedDate = null;
             selectedDate = Calendar1.SelectedDate;
-            if(selectedDate != null)
-            {
-                w1.currDate = selectedDate;
-            }
+            
         }
 
         private void TextBlock_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            if (selectedDate != null)
+            {
+                w1.currDate = selectedDate;
+            }
+            this.DialogResult = true;
             this.Close();
         }
 

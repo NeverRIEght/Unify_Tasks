@@ -176,9 +176,29 @@ namespace Unify_Tasks.Pages
                             };
                             task1.WatchBlue.MouseUp += (object sender, MouseButtonEventArgs e) =>
                             {
+                                int ThisID = w1.currTask;
                                 DateWindow date1 = new DateWindow();
-                                date1.Show();
+                                date1.ShowDialog();
+                                if (date1.DialogResult != null)
+                                    if (date1.DialogResult==true)
+                                    {
+                                        if(ThisID != 0)
+                                        {
+                                            using (var context = new Unify_TasksEntities())
+                                            {
+                                                Models.Task ThisTask = context.Tasks.Where(b => b.TaskID == w1.currTask).FirstOrDefault();
+
+                                                if(ThisTask != null)
+                                                {
+                                                    ThisTask.Planned = w1.currDate;
+                                                    context.SaveChanges();
+                                                }
+                                            }
+                                        }
+                                    }
                             };
+
+
 
                             TasksList.Children.Add(task1);
                         }

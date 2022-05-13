@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Choose date" Height="250" Width="200"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="ToolWindow">
+        WindowStyle="ToolWindow"
+        Loaded="Window_Loaded">
     <Grid Background="#323439">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.8*"/>

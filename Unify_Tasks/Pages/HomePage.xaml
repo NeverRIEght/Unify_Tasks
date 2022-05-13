@@ -231,7 +231,8 @@
                 FontSize="50px"
                 Text=""
                 Visibility="Hidden"
-                MaxLength="20">
+                MaxLength="20"
+                TextChanged="ProjectName_TextChanged">
             </TextBox>
 
             <Border

@@ -124,6 +124,30 @@ namespace Unify_Tasks.Pages
                                         break;
                                 }
                             };
+                            task1.TaskHeader.TextChanged += (object sender, TextChangedEventArgs e) =>
+                            {
+                                int toRenameID = w1.currTask;
+                                if (toRenameID != 0)
+                                {
+                                    Models.Task toRename = null;
+                                    using (var context = new Unify_TasksEntities())
+                                    {
+                                        toRename = context.Tasks.Where(b => b.TaskID == toRenameID).FirstOrDefault();
+
+                                        if (toRename != null)
+                                        {
+                                            toRename.Header = task1.TaskHeader.Text;
+                                            context.SaveChangesAsync();
+                                        }
+                                    }
+                                }
+                            };
+
+                            task1.WatchBlue.MouseUp += (object sender, MouseButtonEventArgs e) =>
+                            {
+                                DateWindow date1 = new DateWindow();
+                                date1.Show();
+                            };
 
                             TasksList.Children.Add(task1);
                         }
@@ -350,6 +374,22 @@ namespace Unify_Tasks.Pages
                 }
                 UpdateTasks();
                 MessageBox.Show("Task Created!");
+            }
+        }
+
+        private void ProjectName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Project toRename = null;
+            using (var context = new Unify_TasksEntities())
+            {
+                toRename = context.Projects.Where(p => p.ProjectID == w1.currProject).FirstOrDefault();
+
+                if(toRename != null)
+                {
+                    toRename.ProjectHeader = ProjectName.Text;
+                    context.SaveChangesAsync();
+                    UpdateProjects();
+                }
             }
         }
     }

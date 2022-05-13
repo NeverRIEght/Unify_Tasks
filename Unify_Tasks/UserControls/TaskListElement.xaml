@@ -140,8 +140,7 @@
             HorizontalAlignment="Stretch"
             RenderOptions.BitmapScalingMode="HighQuality"
             MouseEnter="Watch_MouseEnter"
-            MouseLeave="Watch_MouseLeave"
-            MouseUp="WatchBlue_MouseUp">
+            MouseLeave="Watch_MouseLeave">
         </Image>
 
         <Image

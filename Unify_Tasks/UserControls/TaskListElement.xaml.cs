@@ -65,12 +65,6 @@ namespace Unify_Tasks.UserControls
             this.Cursor = Cursors.Arrow;
         }
 
-        private void WatchBlue_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            DateWindow date1 = new DateWindow();
-            date1.Show();
-        }
-
         private void TagControl_MouseEnter(object sender, MouseEventArgs e)
         {
             TagControl.Opacity = 0;
@@ -150,8 +144,5 @@ namespace Unify_Tasks.UserControls
             get => (int)GetValue(TasksIDProperty);
             set => SetValue(TasksIDProperty, value);
         }
-
-
-
     }
 }

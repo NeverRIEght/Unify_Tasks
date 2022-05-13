@@ -32,9 +32,26 @@ namespace Unify_Tasks.DialogWindows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            NoteEditor win = (NoteEditor)Window.GetWindow(this);
+
+            win.MinWidth = 800;
+            win.MinHeight = 450;
+            win.MaxWidth = 800;
+            win.MaxHeight = 450;
+
             using (var context = new Unify_TasksEntities())
             {
+                var thisNote = context.Tasks.Where(n => n.TaskID == w1.currTask).FirstOrDefault();
 
+                if (File.Exists(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                {
+                    using (FileStream fs = File.OpenRead(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                    {
+                        TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
+
+                        range1.Load(fs, DataFormats.Rtf);
+                    }
+                }
             }
         }
 
@@ -47,7 +64,14 @@ namespace Unify_Tasks.DialogWindows
 
                 if (thisNote != null)
                 {
-                    //using (FileStream fs = File.Create(currPath + "/Notes"))
+                    using (FileStream fs = File.Create(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                    {
+                        TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
+
+                        range1.Save(fs, DataFormats.Rtf);
+                        this.DialogResult = true;
+                        this.Close();
+                    }
                 }
             }
         }

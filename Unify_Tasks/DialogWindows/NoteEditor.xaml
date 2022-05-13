@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:Unify_Tasks.DialogWindows"
         mc:Ignorable="d"
         Title="NoteEditor" Height="450" Width="800"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow"
+        ResizeMode="NoResize">
     <Grid Background="{DynamicResource DarkI}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.8*"/>
@@ -14,6 +17,7 @@
         </Grid.RowDefinitions>
 
         <RichTextBox
+            x:Name="NoteText"
             Foreground="White"
             Background="{DynamicResource LightI}"
             Margin="5">

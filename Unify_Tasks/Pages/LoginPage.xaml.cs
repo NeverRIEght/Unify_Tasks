@@ -51,6 +51,7 @@ namespace Unify_Tasks.Pages
                 HomePage homePage = new HomePage();
                 NavigationService.Navigate(new HomePage());
                 w1.currUser = authUser.UserID;
+                w1.userNickname = authUser.login;
             }
             else
             {

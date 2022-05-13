@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="Assign Tags" Height="480" Width="500"
         WindowStartupLocation="CenterScreen"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        WindowStyle="ToolWindow"
+        ResizeMode="NoResize">
 
     <Window.Resources>
         <Style TargetType="{x:Type TextBlock}">

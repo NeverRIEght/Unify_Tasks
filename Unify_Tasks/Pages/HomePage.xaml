@@ -89,12 +89,12 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Margin="10, 0, 10, 0"
-                        x:Name="UserName"
+                        x:Name="UserNameBox"
                         Foreground="White"
                         FontSize="14px"
                         FontWeight="Medium"
                         MouseUp="AvatarRect_MouseUp"
-                        >Admin
+                        Text="">
                     </TextBlock>
 
                     <Image
@@ -102,6 +102,7 @@
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         Source="/Images/Settings.png"
+                        Visibility="Hidden"
                         RenderOptions.BitmapScalingMode="HighQuality"
                         MouseEnter="Button_MouseEnter"
                         MouseLeave="Button_MouseLeave"

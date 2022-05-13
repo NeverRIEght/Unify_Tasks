@@ -35,6 +35,7 @@ namespace Unify_Tasks.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            UserNameBox.Text = w1.userNickname;
             UpdateProjects();
         }
 
@@ -197,11 +198,11 @@ namespace Unify_Tasks.Pages
                                         }
                                     }
                             };
-                            /*task1.OpenNote.MouseUp += (object sender, MouseButtonEventArgs e) =>
+                            task1.OpenNote.MouseUp += (object sender, MouseButtonEventArgs e) =>
                             {
                                 NoteEditor ed1 = new NoteEditor();
                                 ed1.ShowDialog();
-                            };*/
+                            };
 
 
 

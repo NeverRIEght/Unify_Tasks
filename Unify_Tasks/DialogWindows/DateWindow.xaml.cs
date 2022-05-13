@@ -28,6 +28,13 @@ namespace Unify_Tasks.DialogWindows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            DateWindow win = (DateWindow)Window.GetWindow(this);
+
+            win.MinWidth = 200;
+            win.MinHeight = 250;
+            win.MaxWidth = 200;
+            win.MaxHeight = 250;
+
             using (var context = new Unify_TasksEntities())
             {
                 Models.Task thisTask = context.Tasks.Where(b => b.TaskID == w1.currTask).FirstOrDefault();

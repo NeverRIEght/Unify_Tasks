@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Unify_Tasks.DialogWindows;
+using Unify_Tasks.Models;
 using Unify_Tasks.Pages;
 
 namespace Unify_Tasks.UserControls
@@ -22,6 +23,8 @@ namespace Unify_Tasks.UserControls
     /// </summary>
     public partial class TaskListElement : UserControl
     {
+        static MainWindow w1 = (MainWindow)Application.Current.MainWindow;
+
         public TaskListElement()
         {
             InitializeComponent();
@@ -53,10 +56,27 @@ namespace Unify_Tasks.UserControls
             switch (result1)
             {
                 case MessageBoxResult.Yes:
-                    MessageBox.Show("Task deleted successfully");
+                    DeleteTask();
                     break;
                 case MessageBoxResult.No:
                     break;
+            }
+        }
+
+        public void DeleteTask()
+        {
+            if(w1.currTask != 0)
+            {
+                Models.Task toDelete = null;
+                using (var context = new Unify_TasksEntities())
+                {
+                    toDelete = context.Tasks.Where(b => b.TaskID == w1.currTask).FirstOrDefault();
+
+                    if (toDelete != null)
+                    {
+                        context.Tasks.Remove(toDelete);
+                    }
+                }
             }
         }
 
@@ -158,5 +178,8 @@ namespace Unify_Tasks.UserControls
             get => (int)GetValue(TasksIDProperty);
             set => SetValue(TasksIDProperty, value);
         }
+
+
+
     }
 }

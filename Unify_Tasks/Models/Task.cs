@@ -21,7 +21,7 @@ namespace Unify_Tasks.Models
         }
     
         public int TaskID { get; set; }
-        public Nullable<int> ProjectID { get; set; }
+        public int ProjectID { get; set; }
         public Nullable<int> Status { get; set; }
         public string Header { get; set; }
         public Nullable<int> NoteID { get; set; }

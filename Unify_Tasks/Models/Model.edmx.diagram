@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="35b967d1b4d147e0af3dcb02d5611713" Name="Diagram1">
+      <Diagram DiagramId="27e9962f066543259c99eaf05756a1d1" Name="Diagram1">
         <EntityTypeShape EntityType="Unify_TasksModel.CrossElement" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Unify_TasksModel.Note" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Unify_TasksModel.Note" Width="1.5" PointX="2.875" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Unify_TasksModel.Project" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="Unify_TasksModel.Tag" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="Unify_TasksModel.Task" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />

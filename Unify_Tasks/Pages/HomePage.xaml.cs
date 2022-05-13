@@ -35,87 +35,89 @@ namespace Unify_Tasks.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            using (var context = new Unify_TasksEntities())
-            {
-                var LastNote = context.Notes.Where(p => p.NoteID == p.NoteID).LastOrDefault();
-                w1.lastNote = LastNote.NoteID;
-            }
             UpdateProjects();
         }
 
-        private void UpdateProjects()
+        public void UpdateProjects()
         {
             stackProjects.Children.Clear();
-            using (var context = new Unify_TasksEntities())
+            if (w1.currUser != 0)
             {
-                var currProjects = from p in context.Projects
-                                   where p.UserID == w1.currUser
-                                   orderby p.ProjectID
-                                   select p;
-                if (currProjects != null)
+                using (var context = new Unify_TasksEntities())
                 {
-                    stackProjects.Children.Clear();
-                    foreach (var everyProject in currProjects)
+                    var currProjects = from p in context.Projects
+                                       where p.UserID == w1.currUser
+                                       orderby p.ProjectID
+                                       select p;
+                    if (currProjects != null)
                     {
-                        ProjectListElement project1 = new ProjectListElement();
-                        project1.ProjectsText = everyProject.ProjectHeader;
-                        project1.Margin = new Thickness(0, 5, 0, 0);
-                        project1.ProjectsID = everyProject.ProjectID;
-
-                        project1.MouseUp += (object s, MouseButtonEventArgs ev) =>
+                        stackProjects.Children.Clear();
+                        foreach (var everyProject in currProjects)
                         {
-                            w1.currProject = project1.ProjectsID;
-                            ProjectName.Text = project1.ProjectsText;
-                            ProjectName.Visibility = Visibility.Visible;
-                            NewTask.Visibility = Visibility.Visible;
-                            TasksViewer.Visibility = Visibility.Visible;
-                            Trash.Visibility = Visibility.Visible;
-                            TrashRed.Visibility = Visibility.Visible;
-                            UpdateTasks();
-                        };
+                            ProjectListElement project1 = new ProjectListElement();
+                            project1.ProjectsText = everyProject.ProjectHeader;
+                            project1.Margin = new Thickness(0, 5, 0, 0);
+                            project1.ProjectsID = everyProject.ProjectID;
 
-                        stackProjects.Children.Add(project1);
+                            project1.MouseUp += (object s, MouseButtonEventArgs ev) =>
+                            {
+                                w1.currProject = project1.ProjectsID;
+                                ProjectName.Text = project1.ProjectsText;
+                                ProjectName.Visibility = Visibility.Visible;
+                                NewTask.Visibility = Visibility.Visible;
+                                TasksViewer.Visibility = Visibility.Visible;
+                                Trash.Visibility = Visibility.Visible;
+                                TrashRed.Visibility = Visibility.Visible;
+                                UpdateTasks();
+                            };
+
+                            stackProjects.Children.Add(project1);
+                        }
                     }
                 }
             }
         }
 
-        private void UpdateTasks()
+        public void UpdateTasks()
         {
             TasksList.Children.Clear();
-            using (var context1 = new Unify_TasksEntities())
+            if (w1.currProject != 0)
             {
-                var currTasks = from p in context1.Tasks
-                                where p.ProjectID == w1.currProject
-                                orderby p.TaskID
-                                select p;
-
-                if (currTasks != null)
+                using (var context1 = new Unify_TasksEntities())
                 {
-                    foreach (var everyTask in currTasks)
+                    var currTasks = from p in context1.Tasks
+                                    where p.ProjectID == w1.currProject
+                                    orderby p.TaskID
+                                    select p;
+
+                    if (currTasks != null)
                     {
-                        TaskListElement task1 = new TaskListElement();
-                        task1.TaskHeader.Text = everyTask.Header;
-                        task1.ProjectsID = (int)everyTask.ProjectID;
-                        task1.Margin = new Thickness(5, 5, 0, 0);
-                        if (everyTask.Status == 1)
+                        foreach (var everyTask in currTasks)
                         {
-                            task1.IsReady.IsChecked = true;
-                        }
-                        else
-                        {
-                            task1.IsReady.IsChecked = false;
-                        }
+                            TaskListElement task1 = new TaskListElement();
+                            task1.TaskHeader.Text = everyTask.Header;
+                            task1.ProjectsID = (int)everyTask.ProjectID;
+                            task1.Margin = new Thickness(5, 5, 0, 0);
+                            if (everyTask.Status == 1)
+                            {
+                                task1.IsReady.IsChecked = true;
+                            }
+                            else
+                            {
+                                task1.IsReady.IsChecked = false;
+                            }
 
-                        task1.MouseEnter += (object s, MouseEventArgs ev) =>
-                        {
-                            w1.currTask = task1.ProjectsID;
-                        };
+                            task1.MouseEnter += (object s, MouseEventArgs ev) =>
+                            {
+                                w1.currTask = task1.ProjectsID;
+                            };
 
-                        TasksList.Children.Add(task1);
+                            TasksList.Children.Add(task1);
+                        }
                     }
                 }
             }
+            
         }
 
         /*private void appendTag(TaskListElement task1, string text, string color)
@@ -192,46 +194,54 @@ namespace Unify_Tasks.Pages
             }
         }
 
-        private void DeleteProject()
+        public void DeleteProject()
         {
-            Project toDelete = null;
-            using (var context = new Unify_TasksEntities())
+            if(w1.currProject != 0 && w1.currUser != 0)
             {
-                toDelete = context.Projects.Where(b => b.ProjectID == w1.currProject).FirstOrDefault();
-
-                var delTasks = from p in context.Tasks
-                               where p.ProjectID == w1.currProject
-                               orderby p.ProjectID
-                               select p;
-
-                if (delTasks != null)
+                Project toDelete = null;
+                using (var context = new Unify_TasksEntities())
                 {
-                    foreach (var everyTask in delTasks)
+                    toDelete = context.Projects.Where(b => b.ProjectID == w1.currProject).FirstOrDefault();
+
+                    var delTasks = from p in context.Tasks
+                                   where p.ProjectID == w1.currProject
+                                   orderby p.ProjectID
+                                   select p;
+
+                    if (delTasks != null)
                     {
-                        var delNotes = from h in context.Notes
-                                       where h.NoteID == everyTask.NoteID
-                                       select h;
-
-                        if (delNotes != null)
+                        foreach (var everyTask in delTasks)
                         {
-                            foreach (Note everyNote in delNotes)
+                            var delNotes = from h in context.Notes
+                                           where h.NoteID == everyTask.NoteID
+                                           select h;
+
+                            if (delNotes != null)
                             {
-                                context.Notes.Remove(everyNote);
+                                foreach (Note everyNote in delNotes)
+                                {
+                                    context.Notes.Remove(everyNote);
+                                }
                             }
+
+                            context.Tasks.Remove(everyTask);
                         }
-
-                        context.Tasks.Remove(everyTask);
                     }
-                }
 
-                if (toDelete != null)
-                {
-                    context.Projects.Remove(toDelete);
-                    UpdateProjects();
-                    UpdateTasks();
-                    MessageBox.Show("Project deleted!");
+                    if (toDelete != null)
+                    {
+                        context.Projects.Remove(toDelete);
+                        context.SaveChanges();
+                        w1.currProject = 0;
+                        ProjectName.Visibility = Visibility.Hidden;
+                        NewTask.Visibility = Visibility.Hidden;
+                        TasksViewer.Visibility = Visibility.Hidden;
+                        Trash.Visibility = Visibility.Hidden;
+                        TrashRed.Visibility = Visibility.Hidden;
+                        UpdateProjects();
+                    }
+                    context.SaveChanges();
                 }
-                context.SaveChanges();
             }
         }
 
@@ -294,28 +304,21 @@ namespace Unify_Tasks.Pages
 
         private void NewTask_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            using (var context = new Unify_TasksEntities())
+            if(w1.currProject != 0)
             {
-                string path = Environment.CurrentDirectory + "\\Notes\\Note_" + w1.lastNote + 1 + ".rtf";
-                context.Notes.Local.Add(new Note()
+                using (var context = new Unify_TasksEntities())
                 {
-                    Notepath = path,
-                });
-                context.SaveChanges();
-                
-                w1.lastNote += 1;
-
-                context.Tasks.Local.Add(new Models.Task()
-                {
-                    ProjectID = w1.currProject,
-                    Status = 0,
-                    Header = "New Task",
-                    NoteID = w1.lastNote,
-                });
-                context.SaveChanges();
+                    context.Tasks.Local.Add(new Models.Task()
+                    {
+                        ProjectID = w1.currProject,
+                        Status = 0,
+                        Header = "New Task",
+                    });
+                    context.SaveChanges();
+                }
+                UpdateTasks();
+                MessageBox.Show("Task Created!");
             }
-            UpdateTasks();
-            MessageBox.Show("Task Created!");
         }
     }
 }

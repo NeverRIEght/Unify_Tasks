@@ -14,19 +14,13 @@ namespace Unify_Tasks.Models
     
     public partial class Tag
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tag()
-        {
-            this.CrossElements = new HashSet<CrossElement>();
-        }
-    
         public int TagID { get; set; }
+        public Nullable<int> TaskID { get; set; }
         public int ProjectID { get; set; }
         public string TagHeader { get; set; }
         public string TagColor { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CrossElement> CrossElements { get; set; }
         public virtual Project Project { get; set; }
+        public virtual Task Task { get; set; }
     }
 }

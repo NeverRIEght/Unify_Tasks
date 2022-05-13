@@ -5,14 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище Unify_TasksModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="CrossElements">
-          <Key>
-            <PropertyRef Name="ElementID" />
-          </Key>
-          <Property Name="ElementID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TaskID" Type="int" />
-          <Property Name="TagID" Type="int" />
-        </EntityType>
         <EntityType Name="Notes">
           <Key>
             <PropertyRef Name="NoteID" />
@@ -33,6 +25,7 @@
             <PropertyRef Name="TagID" />
           </Key>
           <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskID" Type="int" />
           <Property Name="ProjectID" Type="int" Nullable="false" />
           <Property Name="TagHeader" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TagColor" Type="varchar" MaxLength="10" Nullable="false" />
@@ -56,30 +49,6 @@
           <Property Name="login" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="password" Type="varchar(max)" Nullable="false" />
         </EntityType>
-        <Association Name="FK__CrossElem__TagID__33D4B598">
-          <End Role="Tags" Type="Self.Tags" Multiplicity="0..1" />
-          <End Role="CrossElements" Type="Self.CrossElements" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tags">
-              <PropertyRef Name="TagID" />
-            </Principal>
-            <Dependent Role="CrossElements">
-              <PropertyRef Name="TagID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CrossElem__TaskI__32E0915F">
-          <End Role="Tasks" Type="Self.Tasks" Multiplicity="0..1" />
-          <End Role="CrossElements" Type="Self.CrossElements" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tasks">
-              <PropertyRef Name="TaskID" />
-            </Principal>
-            <Dependent Role="CrossElements">
-              <PropertyRef Name="TaskID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Projects__UserID__267ABA7A">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
@@ -92,7 +61,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tags__ProjectID__300424B4">
+        <Association Name="FK__Tags__ProjectID__30F848ED">
           <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
           <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
           <ReferentialConstraint>
@@ -101,6 +70,18 @@
             </Principal>
             <Dependent Role="Tags">
               <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tags__TaskID__300424B4">
+          <End Role="Tasks" Type="Self.Tasks" Multiplicity="0..1" />
+          <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="Tags">
+              <PropertyRef Name="TaskID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -129,26 +110,21 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище Unify_TasksModelContainer">
-          <EntitySet Name="CrossElements" EntityType="Self.CrossElements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__CrossElem__TagID__33D4B598" Association="Self.FK__CrossElem__TagID__33D4B598">
-            <End Role="Tags" EntitySet="Tags" />
-            <End Role="CrossElements" EntitySet="CrossElements" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CrossElem__TaskI__32E0915F" Association="Self.FK__CrossElem__TaskI__32E0915F">
-            <End Role="Tasks" EntitySet="Tasks" />
-            <End Role="CrossElements" EntitySet="CrossElements" />
-          </AssociationSet>
           <AssociationSet Name="FK__Projects__UserID__267ABA7A" Association="Self.FK__Projects__UserID__267ABA7A">
             <End Role="Users" EntitySet="Users" />
             <End Role="Projects" EntitySet="Projects" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tags__ProjectID__300424B4" Association="Self.FK__Tags__ProjectID__300424B4">
+          <AssociationSet Name="FK__Tags__ProjectID__30F848ED" Association="Self.FK__Tags__ProjectID__30F848ED">
             <End Role="Projects" EntitySet="Projects" />
+            <End Role="Tags" EntitySet="Tags" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tags__TaskID__300424B4" Association="Self.FK__Tags__TaskID__300424B4">
+            <End Role="Tasks" EntitySet="Tasks" />
             <End Role="Tags" EntitySet="Tags" />
           </AssociationSet>
           <AssociationSet Name="FK__Tasks__NoteID__2D27B809" Association="Self.FK__Tasks__NoteID__2D27B809">
@@ -165,16 +141,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Unify_TasksModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="CrossElement">
-          <Key>
-            <PropertyRef Name="ElementID" />
-          </Key>
-          <Property Name="ElementID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TaskID" Type="Int32" />
-          <Property Name="TagID" Type="Int32" />
-          <NavigationProperty Name="Tag" Relationship="Self.FK__CrossElem__TagID__33D4B598" FromRole="CrossElements" ToRole="Tags" />
-          <NavigationProperty Name="Task" Relationship="Self.FK__CrossElem__TaskI__32E0915F" FromRole="CrossElements" ToRole="Tasks" />
-        </EntityType>
         <EntityType Name="Note">
           <Key>
             <PropertyRef Name="NoteID" />
@@ -191,7 +157,7 @@
           <Property Name="ProjectHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK__Projects__UserID__267ABA7A" FromRole="Projects" ToRole="Users" />
-          <NavigationProperty Name="Tags" Relationship="Self.FK__Tags__ProjectID__300424B4" FromRole="Projects" ToRole="Tags" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK__Tags__ProjectID__30F848ED" FromRole="Projects" ToRole="Tags" />
           <NavigationProperty Name="Tasks" Relationship="Self.FK__Tasks__ProjectID__2B3F6F97" FromRole="Projects" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="Tag">
@@ -199,11 +165,12 @@
             <PropertyRef Name="TagID" />
           </Key>
           <Property Name="TagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskID" Type="Int32" />
           <Property Name="ProjectID" Type="Int32" Nullable="false" />
           <Property Name="TagHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TagColor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CrossElements" Relationship="Self.FK__CrossElem__TagID__33D4B598" FromRole="Tags" ToRole="CrossElements" />
-          <NavigationProperty Name="Project" Relationship="Self.FK__Tags__ProjectID__300424B4" FromRole="Tags" ToRole="Projects" />
+          <NavigationProperty Name="Project" Relationship="Self.FK__Tags__ProjectID__30F848ED" FromRole="Tags" ToRole="Projects" />
+          <NavigationProperty Name="Task" Relationship="Self.FK__Tags__TaskID__300424B4" FromRole="Tags" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="Task">
           <Key>
@@ -215,9 +182,9 @@
           <Property Name="Header" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NoteID" Type="Int32" />
           <Property Name="Planned" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CrossElements" Relationship="Self.FK__CrossElem__TaskI__32E0915F" FromRole="Tasks" ToRole="CrossElements" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Tasks__NoteID__2D27B809" FromRole="Tasks" ToRole="Notes" />
           <NavigationProperty Name="Project" Relationship="Self.FK__Tasks__ProjectID__2B3F6F97" FromRole="Tasks" ToRole="Projects" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK__Tags__TaskID__300424B4" FromRole="Tasks" ToRole="Tags" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -228,30 +195,6 @@
           <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Projects" Relationship="Self.FK__Projects__UserID__267ABA7A" FromRole="Users" ToRole="Projects" />
         </EntityType>
-        <Association Name="FK__CrossElem__TagID__33D4B598">
-          <End Role="Tags" Type="Self.Tag" Multiplicity="0..1" />
-          <End Role="CrossElements" Type="Self.CrossElement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tags">
-              <PropertyRef Name="TagID" />
-            </Principal>
-            <Dependent Role="CrossElements">
-              <PropertyRef Name="TagID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CrossElem__TaskI__32E0915F">
-          <End Role="Tasks" Type="Self.Task" Multiplicity="0..1" />
-          <End Role="CrossElements" Type="Self.CrossElement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tasks">
-              <PropertyRef Name="TaskID" />
-            </Principal>
-            <Dependent Role="CrossElements">
-              <PropertyRef Name="TaskID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Tasks__NoteID__2D27B809">
           <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
           <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
@@ -276,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Tags__ProjectID__300424B4">
+        <Association Name="FK__Tags__ProjectID__30F848ED">
           <End Role="Projects" Type="Self.Project" Multiplicity="1" />
           <End Role="Tags" Type="Self.Tag" Multiplicity="*" />
           <ReferentialConstraint>
@@ -300,21 +243,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Tags__TaskID__300424B4">
+          <End Role="Tasks" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="Tags" Type="Self.Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tasks">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="Tags">
+              <PropertyRef Name="TaskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Unify_TasksEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CrossElements" EntityType="Self.CrossElement" />
           <EntitySet Name="Notes" EntityType="Self.Note" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
           <EntitySet Name="Tags" EntityType="Self.Tag" />
           <EntitySet Name="Tasks" EntityType="Self.Task" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__CrossElem__TagID__33D4B598" Association="Self.FK__CrossElem__TagID__33D4B598">
-            <End Role="Tags" EntitySet="Tags" />
-            <End Role="CrossElements" EntitySet="CrossElements" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CrossElem__TaskI__32E0915F" Association="Self.FK__CrossElem__TaskI__32E0915F">
-            <End Role="Tasks" EntitySet="Tasks" />
-            <End Role="CrossElements" EntitySet="CrossElements" />
-          </AssociationSet>
           <AssociationSet Name="FK__Tasks__NoteID__2D27B809" Association="Self.FK__Tasks__NoteID__2D27B809">
             <End Role="Notes" EntitySet="Notes" />
             <End Role="Tasks" EntitySet="Tasks" />
@@ -323,13 +269,17 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Projects" EntitySet="Projects" />
           </AssociationSet>
-          <AssociationSet Name="FK__Tags__ProjectID__300424B4" Association="Self.FK__Tags__ProjectID__300424B4">
+          <AssociationSet Name="FK__Tags__ProjectID__30F848ED" Association="Self.FK__Tags__ProjectID__30F848ED">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="Tags" EntitySet="Tags" />
           </AssociationSet>
           <AssociationSet Name="FK__Tasks__ProjectID__2B3F6F97" Association="Self.FK__Tasks__ProjectID__2B3F6F97">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="Tasks" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tags__TaskID__300424B4" Association="Self.FK__Tags__TaskID__300424B4">
+            <End Role="Tasks" EntitySet="Tasks" />
+            <End Role="Tags" EntitySet="Tags" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -338,15 +288,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище Unify_TasksModelContainer" CdmEntityContainer="Unify_TasksEntities">
-          <EntitySetMapping Name="CrossElements">
-            <EntityTypeMapping TypeName="Unify_TasksModel.CrossElement">
-              <MappingFragment StoreEntitySet="CrossElements">
-                <ScalarProperty Name="ElementID" ColumnName="ElementID" />
-                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
-                <ScalarProperty Name="TagID" ColumnName="TagID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Notes">
             <EntityTypeMapping TypeName="Unify_TasksModel.Note">
               <MappingFragment StoreEntitySet="Notes">
@@ -368,6 +309,7 @@
             <EntityTypeMapping TypeName="Unify_TasksModel.Tag">
               <MappingFragment StoreEntitySet="Tags">
                 <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
                 <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
                 <ScalarProperty Name="TagHeader" ColumnName="TagHeader" />
                 <ScalarProperty Name="TagColor" ColumnName="TagColor" />

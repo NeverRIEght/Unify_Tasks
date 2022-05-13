@@ -8,4 +8,6 @@
     <SolidColorBrush x:Key="CustomYellow">#d5984a</SolidColorBrush>
     <SolidColorBrush x:Key="CustomPink">#b45581</SolidColorBrush>
     <SolidColorBrush x:Key="CustomPurple">#8157ae</SolidColorBrush>
+    <SolidColorBrush x:Key="LightI">#373d42</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkI">#2c2f34</SolidColorBrush>
 </ResourceDictionary>

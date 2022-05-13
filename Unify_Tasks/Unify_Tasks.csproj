@@ -70,14 +70,14 @@
     <Compile Include="DialogWindows\DateWindow.xaml.cs">
       <DependentUpon>DateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DialogWindows\NoteEditor.xaml.cs">
+      <DependentUpon>NoteEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DialogWindows\TagControlWindow.xaml.cs">
       <DependentUpon>TagControlWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CrossElement.cs">
-      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -132,6 +132,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="DialogWindows\DateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogWindows\NoteEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -25,7 +25,6 @@ namespace Unify_Tasks.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CrossElement> CrossElements { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }

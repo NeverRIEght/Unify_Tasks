@@ -197,6 +197,11 @@ namespace Unify_Tasks.Pages
                                         }
                                     }
                             };
+                            /*task1.OpenNote.MouseUp += (object sender, MouseButtonEventArgs e) =>
+                            {
+                                NoteEditor ed1 = new NoteEditor();
+                                ed1.ShowDialog();
+                            };*/
 
 
 

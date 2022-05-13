@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище Unify_TasksModelContainer" CdmEntityContainer="Unify_TasksEntities">
-    <EntitySetMapping Name="CrossElements">
-      <EntityTypeMapping TypeName="Unify_TasksModel.CrossElement">
-        <MappingFragment StoreEntitySet="CrossElements">
-          <ScalarProperty Name="ElementID" ColumnName="ElementID" />
-          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
-          <ScalarProperty Name="TagID" ColumnName="TagID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Notes">
       <EntityTypeMapping TypeName="Unify_TasksModel.Note">
         <MappingFragment StoreEntitySet="Notes">
@@ -31,6 +22,7 @@
       <EntityTypeMapping TypeName="Unify_TasksModel.Tag">
         <MappingFragment StoreEntitySet="Tags">
           <ScalarProperty Name="TagID" ColumnName="TagID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
           <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
           <ScalarProperty Name="TagHeader" ColumnName="TagHeader" />
           <ScalarProperty Name="TagColor" ColumnName="TagColor" />

@@ -17,7 +17,7 @@ namespace Unify_Tasks.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Task()
         {
-            this.CrossElements = new HashSet<CrossElement>();
+            this.Tags = new HashSet<Tag>();
         }
     
         public int TaskID { get; set; }
@@ -27,9 +27,9 @@ namespace Unify_Tasks.Models
         public Nullable<int> NoteID { get; set; }
         public Nullable<System.DateTime> Planned { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CrossElement> CrossElements { get; set; }
         public virtual Note Note { get; set; }
         public virtual Project Project { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

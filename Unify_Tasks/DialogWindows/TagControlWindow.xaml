@@ -6,7 +6,24 @@
         xmlns:local="clr-namespace:Unify_Tasks.DialogWindows"
         mc:Ignorable="d"
         Title="Assign Tags" Height="480" Width="500"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="/Fonts/#Gilroy" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontFamily" Value="/Fonts/#Gilroy" />
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#646a74" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="MaxLength" Value="24" />
+            <Setter Property="MinWidth" Value="280px" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.125*"/>
@@ -63,13 +80,354 @@
                     <RowDefinition Height="0.125*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    
+                    <ColumnDefinition Width="0.015*" />
+                    <ColumnDefinition Width="0.45*" />
+                    <ColumnDefinition Width="0.07*" />
+                    <ColumnDefinition Width="0.45*" />
+                    <ColumnDefinition Width="0.015*" />
                 </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="20"
+                    Foreground="White"
+                    FontFamily="/Fonts/#Gilroy"
+                    FontWeight="Medium"
+                    >Name
+                </TextBlock>
+                <!--Name-->
+                
+                <Border
+                    x:Name="TagNameBorder"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Height="50px"
+                    CornerRadius="10"
+                    Background="#646a74">
+                    <Border.Effect>
+                        <DropShadowEffect
+                        BlurRadius="20"
+                        Color="Black"
+                        Opacity="0.5"/>
+                    </Border.Effect>
+                    <TextBox
+                        x:Name="TagNameBox"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10, 0, 10, 0"
+                        FontWeight="Medium"
+                        FontSize="18px"
+                        MaxLength="12"
+                        Foreground="White"
+                        IsKeyboardFocusedChanged="TagNameBox_IsKeyboardFocusedChanged"
+                        Text="Tag Name">
+                    </TextBox>
+                </Border>
+                <!--NameBox-->
+
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="20"
+                    Foreground="White"
+                    FontFamily="/Fonts/#Gilroy"
+                    FontWeight="Medium"
+                    >Color
+                </TextBlock>
+                <!--Color-->
+
+                <Border
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Background="Transparent"
+                    CornerRadius="10">
+                    <Border.Effect>
+                        <DropShadowEffect
+                        BlurRadius="20"
+                        Color="Black"
+                        Opacity="0.5"/>
+                    </Border.Effect>
+
+                    <StackPanel
+                        x:Name="ColorBoard"
+                        HorizontalAlignment="Left">
+
+                        <Border
+                            x:Name="Border1"
+                            MinHeight="20px"
+                            MinWidth="100px"
+                            Background="#2c2f34"
+                            Margin="0, 5, 0, 5"
+                            CornerRadius="10"
+                            MouseUp="Border1_MouseUp">
+
+                            <TextBlock
+                                FontWeight="Medium"
+                                FontSize="18px"
+                                Margin="10, 0, 10, 0"
+                                HorizontalAlignment="Center"
+                                Foreground="{DynamicResource CustomRed}"
+                                >Red
+                            </TextBlock>
+                        </Border>
+                        <Border
+                            x:Name="Border2"
+                            MinHeight="20px"
+                            MinWidth="100px"
+                            Background="#2c2f34"
+                            Margin="0, 5, 0, 5"
+                            CornerRadius="10"
+                            MouseUp="Border2_MouseUp">
+
+                            <TextBlock
+                                FontWeight="Medium"
+                                FontSize="18px"
+                                Margin="10, 0, 10, 0"
+                                HorizontalAlignment="Center"
+                                Foreground="{DynamicResource CustomGreen}"
+                                >Green
+                            </TextBlock>
+                        </Border>
+                        <Border
+                            x:Name="Border3"
+                            MinHeight="20px"
+                            MinWidth="100px"
+                            Background="#2c2f34"
+                            Margin="0, 5, 0, 5"
+                            CornerRadius="10"
+                            MouseUp="Border3_MouseUp">
+
+                            <TextBlock
+                                FontWeight="Medium"
+                                FontSize="18px"
+                                Margin="10, 0, 10, 0"
+                                HorizontalAlignment="Center"
+                                Foreground="{DynamicResource CustomBlue}"
+                                >Blue
+                            </TextBlock>
+                        </Border>
+                        <Border
+                            x:Name="Border4"
+                            MinHeight="20px"
+                            MinWidth="100px"
+                            Background="#2c2f34"
+                            Margin="0, 5, 0, 5"
+                            CornerRadius="10"
+                            MouseUp="Border4_MouseUp">
+
+                            <TextBlock
+                                FontWeight="Medium"
+                                FontSize="18px"
+                                Margin="10, 0, 10, 0"
+                                HorizontalAlignment="Center"
+                                Foreground="{DynamicResource CustomBrown}"
+                                >Brown
+                            </TextBlock>
+                        </Border>
+
+                    </StackPanel>
+
+                </Border>
+                <!--ColorBoard-->
+
+                <Border
+                    Grid.Row="4"
+                    Grid.Column="3"
+                    Background="Transparent"
+                    CornerRadius="10">
+                    <Border.Effect>
+                        <DropShadowEffect
+                        BlurRadius="20"
+                        Color="Black"
+                        Opacity="0.5"/>
+                    </Border.Effect>
+
+                    <StackPanel
+                        x:Name="ColorBoard2"
+                        HorizontalAlignment="Left">
+
+                        <Border
+                            x:Name="Border5"
+                            MinHeight="20px"
+                            MinWidth="100px"
+                            Background="#2c2f34"
+                            Margin="0, 5, 0, 5"
+                            CornerRadius="10"
+                            MouseUp="Border5_MouseUp">
+
+                            <TextBlock
+                                FontWeight="Medium"
+                                FontSize="18px"
+                                Margin="10, 0, 10, 0"
+                                HorizontalAlignment="Center"
+                                Foreground="{DynamicResource CustomGray}"
+                                >Gray
+                            </TextBlock>
+                        </Border>
+                        <Border
+                            x:Name="Border6"
+                            MinHeight="20px"
+                            MinWidth="100px"
+                            Background="#2c2f34"
+                            Margin="0, 5, 0, 5"
+                            CornerRadius="10"
+                            MouseUp="Border6_MouseUp">
+
+                            <TextBlock
+                                FontWeight="Medium"
+                                FontSize="18px"
+                                Margin="10, 0, 10, 0"
+                                HorizontalAlignment="Center"
+                                Foreground="{DynamicResource CustomYellow}"
+                                >Yellow
+                            </TextBlock>
+                        </Border>
+                        <Border
+                            x:Name="Border7"
+                            MinHeight="20px"
+                            MinWidth="100px"
+                            Background="#2c2f34"
+                            Margin="0, 5, 0, 5"
+                            CornerRadius="10"
+                            MouseUp="Border7_MouseUp">
+
+                            <TextBlock
+                                FontWeight="Medium"
+                                FontSize="18px"
+                                Margin="10, 0, 10, 0"
+                                HorizontalAlignment="Center"
+                                Foreground="{DynamicResource CustomPink}"
+                                >Pink
+                            </TextBlock>
+                        </Border>
+                        <Border
+                            x:Name="Border8"
+                            MinHeight="20px"
+                            MinWidth="100px"
+                            Background="#2c2f34"
+                            Margin="0, 5, 0, 5"
+                            CornerRadius="10"
+                            MouseUp="Border8_MouseUp">
+
+                            <TextBlock
+                                FontWeight="Medium"
+                                FontSize="18px"
+                                Margin="10, 0, 10, 0"
+                                HorizontalAlignment="Center"
+                                Foreground="{DynamicResource CustomPurple}"
+                                >Purple
+                            </TextBlock>
+                        </Border>
+
+                    </StackPanel>
+
+                </Border>
+                <!--ColorBoard2-->
+
+
+                <Border
+                    x:Name="DelTag"
+                Grid.Row="5"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Height="30px"
+                Width="100px"
+                CornerRadius="10"
+                Background="#646a74"
+                    MouseUp="DelTag_MouseUp">
+                    <Border.Effect>
+                        <DropShadowEffect
+                    BlurRadius="20"
+                    Color="Black"
+                    Opacity="0.5"/>
+                    </Border.Effect>
+
+                    <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="Delete Tag"
+                FontWeight="Light"
+                FontStyle="Italic"
+                FontSize="18px"
+                Foreground="White">
+                    </TextBlock>
+
+                </Border>
+                <!--Delete Tag-->
+
+                <Border
+                    x:Name="SaveTag"
+                    Grid.Row="5"
+                    Grid.Column="3"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Height="30px"
+                    Width="100px"
+                    CornerRadius="10"
+                    Background="#646a74"
+                    MouseUp="SaveTag_MouseUp">
+                    <Border.Effect>
+                        <DropShadowEffect
+                            BlurRadius="20"
+                            Color="Black"
+                            Opacity="0.5"/>
+                    </Border.Effect>
+
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="Save Tag"
+                        FontWeight="Light"
+                        FontStyle="Italic"
+                        FontSize="18px"
+                        Foreground="White">
+                    </TextBlock>
+
+                </Border>
+                <!--Save Tag-->
+
             </Grid>
             
             <Grid
                 x:Name="RightGrid"
                 Grid.Column="1">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.73*"/>
+                    <RowDefinition Height="0.125*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.015*" />
+                    <ColumnDefinition Width="0.97*" />
+                    <ColumnDefinition Width="0.015*" />
+                </Grid.ColumnDefinitions>
+
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Background="#646a74"
+                    CornerRadius="10">
+                    <Border.Effect>
+                        <DropShadowEffect
+                        BlurRadius="20"
+                        Color="Black"
+                        Opacity="0.5"/>
+                    </Border.Effect>
+
+                    <StackPanel x:Name="TagsBoard" />
+
+                </Border>
+                <!--ColorBoard-->
 
             </Grid>
         </Grid>

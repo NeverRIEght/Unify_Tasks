@@ -103,3 +103,5 @@ D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\De
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\TagControlWindow.g.cs
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\TagControlWindow.baml
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Resources\Scrollbar.baml
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\NoteEditor.g.cs
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\NoteEditor.baml

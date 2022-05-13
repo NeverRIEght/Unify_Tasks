@@ -106,11 +106,6 @@ namespace Unify_Tasks.UserControls
             this.Cursor = Cursors.Arrow;
         }
 
-        private void OpenNote_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("Open Note!");
-        }
-
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             MainWindow win = (MainWindow)Window.GetWindow(this);

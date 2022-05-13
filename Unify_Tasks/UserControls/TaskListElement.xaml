@@ -26,9 +26,9 @@
             <ColumnDefinition Width="0.531*" MinWidth="480px"/>
             <ColumnDefinition Width="0.095*" MinWidth="95px"/>
             <ColumnDefinition Width="0.02*" />
-            <ColumnDefinition Width="0.085*" MinWidth="85px"/>
+            <ColumnDefinition Width="0.085*" MaxWidth="0"/>
             <ColumnDefinition Width="0.006*" />
-            <ColumnDefinition Width="0.085*" MinWidth="85px"/>
+            <ColumnDefinition Width="0.085*" MaxWidth="0"/>
             <ColumnDefinition Width="0.006*" />
             <ColumnDefinition Width="0.03*" MinWidth="30px"/>
             <ColumnDefinition Width="0.01*" MinWidth="8px" />
@@ -86,8 +86,7 @@
             Source="/Images/OpenNote.png"
             RenderOptions.BitmapScalingMode="HighQuality"
             MouseEnter="OpenNote_MouseEnter"
-            MouseLeave="OpenNote_MouseLeave"
-            MouseUp="OpenNote_MouseUp">
+            MouseLeave="OpenNote_MouseLeave">
         </Image>
         
         <Image

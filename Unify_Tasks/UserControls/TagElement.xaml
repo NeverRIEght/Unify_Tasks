@@ -13,12 +13,17 @@
             x:Name="TagBackgroud"
             BorderBrush="White"
             BorderThickness="1px"
-            CornerRadius="6">
+            CornerRadius="6"
+            RenderOptions.BitmapScalingMode="HighQuality">
             
             <TextBlock
                 Text="{Binding TagText, ElementName=TagListElement}"
+                FontSize="18px"
+                FontWeight="Medium"
+                FontFamily="/Fonts/#Gilroy"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center">
+                HorizontalAlignment="Center"
+                RenderOptions.BitmapScalingMode="HighQuality">
             </TextBlock>
         </Border>
     </Grid>

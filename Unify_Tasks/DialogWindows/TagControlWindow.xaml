@@ -5,9 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Unify_Tasks.DialogWindows"
         mc:Ignorable="d"
-        Title="Assign Tags" Height="450" Width="800"
+        Title="Assign Tags" Height="480" Width="500"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.125*"/>
+            <RowDefinition Height="0.875*"/>
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0"
+            Background="#373d42">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="24"
+                Foreground="White"
+                FontFamily="/Fonts/#Gilroy"
+                FontWeight="Medium"
+                >Edit or create tag
+            </TextBlock>
+
+            <TextBlock
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="24"
+                Foreground="White"
+                FontFamily="/Fonts/#Gilroy"
+                FontWeight="Medium"
+                >Tags for this task
+            </TextBlock>
+
+        </Grid>
+        <Grid
+            Grid.Row="1"
+            Background="#2c2f34">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid
+                x:Name="LeftGrid"
+                Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.21*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.42*"/>
+                    <RowDefinition Height="0.125*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    
+                </Grid.ColumnDefinitions>
+            </Grid>
+            
+            <Grid
+                x:Name="RightGrid"
+                Grid.Column="1">
+
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

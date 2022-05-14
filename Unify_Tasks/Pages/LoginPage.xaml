@@ -205,8 +205,8 @@
                 MinHeight="30px"
                 Opacity="0"
                 Click="LogIn_Click"
-                MouseEnter="LogIn_MouseEnter"
-                MouseLeave="LogIn_MouseLeave">
+                MouseEnter="Button_MouseEnter"
+                MouseLeave="Button_MouseLeave">
             </Button>
             <!--Log in button-->
 
@@ -233,8 +233,8 @@
                 MinHeight="18px"
                 Opacity="0"
                 Click="NewAcc_Click"
-                MouseEnter="NewAcc_MouseEnter"
-                MouseLeave="NewAcc_MouseLeave">
+                MouseEnter="Button_MouseEnter"
+                MouseLeave="Button_MouseLeave">
             </Button>
             <!--Don`t have an account button-->
             

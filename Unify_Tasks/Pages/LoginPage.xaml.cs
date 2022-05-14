@@ -31,9 +31,17 @@ namespace Unify_Tasks.Pages
         private void LoginPage_Loaded(object sender, RoutedEventArgs e)
         {
             MainWindow win = (MainWindow)Window.GetWindow(this);
-
             win.MinWidth = 430;
             win.MinHeight = 550;
+        }
+
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
         }
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
@@ -62,8 +70,6 @@ namespace Unify_Tasks.Pages
                 PasswordBox.ToolTip = "Login or password incorrect";
             }
 
-            //NavigationService.Navigate(new HomePage());
-
         }
 
         private void NewAcc_Click(object sender, RoutedEventArgs e)
@@ -71,24 +77,6 @@ namespace Unify_Tasks.Pages
             NavigationService.Navigate(new Register());
         }
 
-        private void LogIn_MouseEnter(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-        }
-
-        private void LogIn_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Arrow;
-        }
-
-        private void NewAcc_MouseEnter(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-        }
-
-        private void NewAcc_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Arrow;
-        }
+        
     }
 }

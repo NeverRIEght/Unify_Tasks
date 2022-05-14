@@ -112,15 +112,15 @@
                     Color="Black"
                     Opacity="0.5"/>
                 </Border.Effect>
-                <TextBox x:Name="LoginBox"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Margin="10, 0, 10, 0"
-            Text="Your Login"
-            FontWeight="Medium"
-            FontSize="18px"
-            IsKeyboardFocusedChanged="LoginBox_IsKeyboardFocusedChanged"
-            TextChanged="LoginBox_TextChanged">
+                <TextBox
+                    x:Name="LoginBox"
+                    CaretBrush="White"
+                    Foreground="White"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="10, 0, 10, 0"
+                    FontWeight="Medium"
+                    FontSize="18px">
                 </TextBox>
             </Border>
             <!--Login border-->
@@ -141,7 +141,7 @@
                 x:Name="PasswordBorder"
             Grid.Row="4"
             Grid.Column="1"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Stretch"
             VerticalAlignment="Bottom"
             Height="50px"
             CornerRadius="10"
@@ -152,15 +152,18 @@
                     Color="Black"
                     Opacity="0.5"/>
                 </Border.Effect>
-                <TextBox x:Name="PasswordBox"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Margin="10, 0, 10, 0"
-            Text="Your Password"
-            FontWeight="Medium"
-            FontSize="18px"
-            IsKeyboardFocusedChanged="PasswordBox_IsKeyboardFocusedChanged">
-                </TextBox>
+                <PasswordBox
+                    x:Name="PasswordBox"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    CaretBrush="White"
+                    Foreground="White"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Margin="10, 0, 10, 0"
+                    FontWeight="Medium"
+                    FontSize="18px">
+                </PasswordBox>
             </Border>
             <!--Password border-->
 

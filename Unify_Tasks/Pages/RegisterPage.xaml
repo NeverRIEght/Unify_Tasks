@@ -107,13 +107,13 @@
                 </Border.Effect>
                 <TextBox
                     x:Name="NickBox"
+                    Foreground="White"
+                    CaretBrush="White"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Margin="10, 0, 10, 0"
-                    Text="Your Nick"
                     FontWeight="Medium"
-                    FontSize="18px"
-                    IsKeyboardFocusedChanged="NickBox_IsKeyboardFocusedChanged">
+                    FontSize="18px">
                 </TextBox>
             </Border>
             <!--Nickname border-->
@@ -134,7 +134,7 @@
                 x:Name="PasswordBoxBorder"
                 Grid.Row="4"
                 Grid.Column="1"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Stretch"
                 VerticalAlignment="Bottom"
                 Height="50px"
                 CornerRadius="10"
@@ -145,16 +145,18 @@
                         Color="Black"
                         Opacity="0.5"/>
                 </Border.Effect>
-                <TextBox
+                <PasswordBox
                     x:Name="PasswordBox"
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
+                    Background="Transparent"
+                    Foreground="White"
+                    CaretBrush="White"
+                    BorderThickness="0"
                     Margin="10, 0, 10, 0"
-                    Text="Your Password"
                     FontWeight="Medium"
-                    FontSize="18px"
-                    IsKeyboardFocusedChanged="PasswordBox_IsKeyboardFocusedChanged">
-                </TextBox>
+                    FontSize="18px">
+                </PasswordBox>
             </Border>
             <!--Password border-->
 
@@ -174,7 +176,7 @@
                 x:Name="RepeatPasswordBoxBorder"
                 Grid.Row="6"
                 Grid.Column="1"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Stretch"
                 VerticalAlignment="Bottom"
                 Height="50px"
                 CornerRadius="10"
@@ -185,16 +187,18 @@
                         Color="Black"
                         Opacity="0.5"/>
                 </Border.Effect>
-                <TextBox
+                <PasswordBox
+                    Foreground="White"
+                    CaretBrush="White"
                     x:Name="RepeatPasswordBox"
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
+                    Background="Transparent"
+                    BorderThickness="0"
                     Margin="10, 0, 10, 0"
-                    Text="Repeat Password"
                     FontWeight="Medium"
-                    FontSize="18px"
-                    IsKeyboardFocusedChanged="RepeatPasswordBox_IsKeyboardFocusedChanged">
-                </TextBox>
+                    FontSize="18px">
+                </PasswordBox>
             </Border>
             <!--Repeat Password border-->
 

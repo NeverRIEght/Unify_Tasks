@@ -39,7 +39,7 @@ namespace Unify_Tasks.Pages
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
             string login = LoginBox.Text.Trim();
-            string password = PasswordBox.Text.Trim();
+            string password = PasswordBox.Password.Trim();
 
             User authUser = null;
             using (var context = new Unify_TasksEntities())
@@ -55,15 +55,11 @@ namespace Unify_Tasks.Pages
             }
             else
             {
-                LoginBorder.Background = Brushes.DarkRed;
-                LoginBox.Background = Brushes.DarkRed;
-                PasswordBorder.Background = Brushes.DarkRed;
-                PasswordBox.Background = Brushes.DarkRed;
+                LoginBox.Foreground = Brushes.DarkRed;
+                PasswordBox.Foreground = Brushes.DarkRed;
 
-                LoginBox.ToolTip = "Login or password ";
-                PasswordBox.ToolTip = "Check yours passwords";
-
-                MessageBox.Show("Данные для входа неверны");
+                LoginBox.ToolTip = "Login or password incorrect";
+                PasswordBox.ToolTip = "Login or password incorrect";
             }
 
             //NavigationService.Navigate(new HomePage());
@@ -73,44 +69,6 @@ namespace Unify_Tasks.Pages
         private void NewAcc_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Register());
-        }
-
-        private void LoginBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if (LoginBox.Text == "Your Login")
-            {
-                LoginBox.Text = "";
-                Style whiteText = new Style();
-
-                whiteText.Setters.Add(new Setter { Property = Control.ForegroundProperty, Value = new SolidColorBrush(Colors.White) });
-                whiteText.Setters.Add(new Setter { Property = Control.BackgroundProperty, Value = new SolidColorBrush(Color.FromRgb(100, 106, 116)) });
-                whiteText.Setters.Add(new Setter { Property = Control.FontFamilyProperty, Value = new FontFamily("/Fonts/#Gilroy") });
-                LoginBox.Width = 280;
-                LoginBox.BorderThickness = new Thickness(0);
-                LoginBox.Style = whiteText;
-            }
-        }
-
-        private void PasswordBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if (PasswordBox.Text == "Your Password")
-            {
-                PasswordBox.Text = "";
-                Style whiteText = new Style();
-
-                whiteText.Setters.Add(new Setter { Property = Control.ForegroundProperty, Value = new SolidColorBrush(Colors.White) });
-                whiteText.Setters.Add(new Setter { Property = Control.BackgroundProperty, Value = new SolidColorBrush(Color.FromRgb(100, 106, 116)) });
-                whiteText.Setters.Add(new Setter { Property = Control.FontFamilyProperty, Value = new FontFamily("/Fonts/#Gilroy") });
-                PasswordBox.Width = 280;
-                PasswordBox.BorderThickness = new Thickness(0);
-                PasswordBox.Style = whiteText;
-            }
-        }
-
-        private void LoginBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string currLogin = LoginBox.Text;
-            /*if(currLogin < 5)*/
         }
 
         private void LogIn_MouseEnter(object sender, MouseEventArgs e)

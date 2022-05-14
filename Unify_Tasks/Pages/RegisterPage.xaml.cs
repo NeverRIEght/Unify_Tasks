@@ -39,8 +39,8 @@ namespace Unify_Tasks.Pages
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             string Login = NickBox.Text.Trim();
-            string Password = PasswordBox.Text.Trim();
-            string RPassword = RepeatPasswordBox.Text.Trim();
+            string Password = PasswordBox.Password.Trim();
+            string RPassword = RepeatPasswordBox.Password.Trim();
 
             if (Login.Length < 5)
             {
@@ -97,38 +97,6 @@ namespace Unify_Tasks.Pages
             }
         }
 
-        private void PasswordBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if (PasswordBox.Text == "Your Password")
-            {
-                PasswordBox.Text = "";
-                Style whiteText = new Style();
-
-                whiteText.Setters.Add(new Setter { Property = Control.ForegroundProperty, Value = new SolidColorBrush(Colors.White) });
-                whiteText.Setters.Add(new Setter { Property = Control.BackgroundProperty, Value = new SolidColorBrush(Color.FromRgb(100, 106, 116)) });
-                whiteText.Setters.Add(new Setter { Property = Control.FontFamilyProperty, Value = new FontFamily("/Fonts/#Gilroy") });
-                PasswordBox.Width = 280;
-                PasswordBox.BorderThickness = new Thickness(0);
-                PasswordBox.Style = whiteText;
-            }
-        }
-
-        private void NickBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if (NickBox.Text == "Your Nick")
-            {
-                NickBox.Text = "";
-                Style whiteText = new Style();
-
-                whiteText.Setters.Add(new Setter { Property = Control.ForegroundProperty, Value = new SolidColorBrush(Colors.White) });
-                whiteText.Setters.Add(new Setter { Property = Control.BackgroundProperty, Value = new SolidColorBrush(Color.FromRgb(100, 106, 116)) });
-                whiteText.Setters.Add(new Setter { Property = Control.FontFamilyProperty, Value = new FontFamily("/Fonts/#Gilroy") });
-                NickBox.Width = 280;
-                NickBox.BorderThickness = new Thickness(0);
-                NickBox.Style = whiteText;
-            }
-        }
-
         private void BackLogin_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Login());
@@ -152,22 +120,6 @@ namespace Unify_Tasks.Pages
         private void BackLogin_MouseLeave(object sender, MouseEventArgs e)
         {
             this.Cursor = Cursors.Arrow;
-        }
-
-        private void RepeatPasswordBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if (RepeatPasswordBox.Text == "Repeat Password")
-            {
-                RepeatPasswordBox.Text = "";
-                Style whiteText = new Style();
-
-                whiteText.Setters.Add(new Setter { Property = Control.ForegroundProperty, Value = new SolidColorBrush(Colors.White) });
-                whiteText.Setters.Add(new Setter { Property = Control.BackgroundProperty, Value = new SolidColorBrush(Color.FromRgb(100, 106, 116)) });
-                whiteText.Setters.Add(new Setter { Property = Control.FontFamilyProperty, Value = new FontFamily("/Fonts/#Gilroy") });
-                RepeatPasswordBox.Width = 280;
-                RepeatPasswordBox.BorderThickness = new Thickness(0);
-                RepeatPasswordBox.Style = whiteText;
-            }
         }
     }
 }

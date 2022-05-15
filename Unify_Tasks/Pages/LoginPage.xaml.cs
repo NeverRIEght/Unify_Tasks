@@ -44,7 +44,7 @@ namespace Unify_Tasks.Pages
             this.Cursor = Cursors.Arrow;
         }
 
-        private void LogIn_Click(object sender, RoutedEventArgs e)
+        private void LogIn_MouseUp(object sender, MouseButtonEventArgs e)
         {
             string login = LoginBox.Text.Trim();
             string password = PasswordBox.Password.Trim();
@@ -69,14 +69,11 @@ namespace Unify_Tasks.Pages
                 LoginBox.ToolTip = "Login or password incorrect";
                 PasswordBox.ToolTip = "Login or password incorrect";
             }
-
         }
 
-        private void NewAcc_Click(object sender, RoutedEventArgs e)
+        private void NewAcc_MouseUp(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new Register());
         }
-
-        
     }
 }

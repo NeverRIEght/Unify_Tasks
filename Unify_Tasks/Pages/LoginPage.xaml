@@ -5,28 +5,44 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Unify_Tasks.Pages"
       xmlns:main="clr-namespace:Unify_Tasks" 
-      mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1300"
+      mc:Ignorable="d"
       x:Name="LoginPage"
+      d:DesignWidth="1300"
+      d:DesignHeight="800"
       Loaded="LoginPage_Loaded">
 
     <Page.Resources>
-        <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="FontFamily" Value="/Fonts/#Gilroy" />
-            <Setter Property="Foreground" Value="White" />
-        </Style>
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="FontFamily" Value="/Fonts/#Gilroy" />
-            <Setter Property="Foreground" Value="LightGray" />
-            <Setter Property="Background" Value="#646a74" />
+            <Setter Property="Foreground" Value="{DynamicResource MainI}" />
+            <Setter Property="CaretBrush" Value="{DynamicResource MainI}" />
+            <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="MaxLength" Value="24" />
             <Setter Property="MinWidth" Value="280px" />
+            <Setter Property="Margin" Value="10, 0, 10, 0" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style TargetType="{x:Type PasswordBox}">
+            <Setter Property="FontFamily" Value="/Fonts/#Gilroy" />
+            <Setter Property="Foreground" Value="{DynamicResource MainI}" />
+            <Setter Property="CaretBrush" Value="{DynamicResource MainI}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="MaxLength" Value="24" />
+            <Setter Property="MinWidth" Value="280px" />
+            <Setter Property="Margin" Value="10, 0, 10, 0" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="Background" Value="{DynamicResource AccentI}" />
+            <Setter Property="CornerRadius" Value="10" />
         </Style>
     </Page.Resources>
-    <Grid
-        Background="#323439"
-        VerticalAlignment="Center">
+    
+    <Grid Background="{DynamicResource BackI}">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="0.425*" />
@@ -38,16 +54,14 @@
             <ColumnDefinition Width="0.3*" MinWidth="400px"/>
             <ColumnDefinition Width="0.35*" />
         </Grid.ColumnDefinitions>
-
-
+        
         <Image
             Grid.Row="0"
             Grid.Column="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
             Source="/Images/Logo.png"
-            Stretch="Uniform"
-            RenderOptions.BitmapScalingMode="HighQuality">
+            Stretch="Uniform">
         </Image>
         <!--Logo-->
 
@@ -81,89 +95,68 @@
                 FontWeight="Medium"
                 FontStyle="Italic"
                 FontSize="50px">
-
             </TextBlock>
             <!--Welcome back!-->
 
             <TextBlock
-            Grid.Row="2"
-            Grid.Column="1"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="Login"
-            FontWeight="Light"
-            FontStyle="Italic"
-            FontSize="18px">
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Text="Login"
+                FontWeight="Light"
+                FontStyle="Italic"
+                FontSize="18px">
             </TextBlock>
             <!--Login header-->
 
             <Border
                 x:Name="LoginBorder"
-            Grid.Row="2"
-            Grid.Column="1"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            Height="50px"
-            CornerRadius="10"
-            Background="#646a74">
-                <Border.Effect>
-                    <DropShadowEffect
-                    BlurRadius="20"
-                    Color="Black"
-                    Opacity="0.5"/>
-                </Border.Effect>
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Height="50px">
+                
                 <TextBox
                     x:Name="LoginBox"
-                    CaretBrush="White"
-                    Foreground="White"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
-                    Margin="10, 0, 10, 0"
                     FontWeight="Medium"
                     FontSize="18px">
                 </TextBox>
+                
             </Border>
-            <!--Login border-->
+            <!--Login input-->
 
             <TextBlock
-            Grid.Row="4"
-            Grid.Column="1"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="Password"
-            FontWeight="Light"
-            FontStyle="Italic"
-            FontSize="18px">
+                Grid.Row="4"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Text="Password"
+                FontWeight="Light"
+                FontStyle="Italic"
+                FontSize="18px">
             </TextBlock>
             <!--Password header-->
 
             <Border
                 x:Name="PasswordBorder"
-            Grid.Row="4"
-            Grid.Column="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Bottom"
-            Height="50px"
-            CornerRadius="10"
-            Background="#646a74">
-                <Border.Effect>
-                    <DropShadowEffect
-                    BlurRadius="20"
-                    Color="Black"
-                    Opacity="0.5"/>
-                </Border.Effect>
+                Grid.Row="4"
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Bottom"
+                Height="50px">
+                
                 <PasswordBox
                     x:Name="PasswordBox"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
-                    CaretBrush="White"
-                    Foreground="White"
-                    Background="Transparent"
-                    BorderThickness="0"
-                    Margin="10, 0, 10, 0"
                     FontWeight="Medium"
                     FontSize="18px">
                 </PasswordBox>
+                
             </Border>
             <!--Password border-->
 
@@ -174,70 +167,38 @@
                 VerticalAlignment="Bottom"
                 Height="30px"
                 Width="155px"
-                CornerRadius="10"
-                Background="#646a74">
-            <Border.Effect>
-                <DropShadowEffect
-                    BlurRadius="20"
-                    Color="Black"
-                    Opacity="0.5"/>
-            </Border.Effect>
+                MouseEnter="Button_MouseEnter"
+                MouseLeave="Button_MouseLeave"
+                MouseUp="LogIn_MouseUp">
 
-            <TextBlock
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Text="Log In"
-                FontWeight="Light"
-                FontStyle="Italic"
-                FontSize="18px"
-                Foreground="White">
-            </TextBlock>
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Text="Log In"
+                    FontWeight="Light"
+                    FontStyle="Italic"
+                    FontSize="18px">
+                </TextBlock>
 
             </Border>
-            <!--Go ahead border-->
-
-            <Button
-                Grid.Row="5"
-                Grid.Column="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                MinWidth="155px"
-                MinHeight="30px"
-                Opacity="0"
-                Click="LogIn_Click"
-                MouseEnter="Button_MouseEnter"
-                MouseLeave="Button_MouseLeave">
-            </Button>
-            <!--Log in button-->
+            <!--Log In-->
 
             <TextBlock
-            Grid.Row="6"
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            MinWidth="155px"
-            Text="Don`t have an account?"
-            FontWeight="Light"
-            FontStyle="Italic"
-            TextDecorations="Underline"
-            FontSize="14px">
-            </TextBlock>
-            <!--Don`t have an account-->
-
-            <Button
                 Grid.Row="6"
                 Grid.Column="1"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
                 MinWidth="155px"
-                MinHeight="18px"
-                Opacity="0"
-                Click="NewAcc_Click"
+                Text="Don`t have an account?"
+                FontWeight="Light"
+                FontStyle="Italic"
+                TextDecorations="Underline"
+                FontSize="14px"
                 MouseEnter="Button_MouseEnter"
-                MouseLeave="Button_MouseLeave">
-            </Button>
-            <!--Don`t have an account button-->
-            
+                MouseLeave="Button_MouseLeave"
+                MouseUp="NewAcc_MouseUp">
+            </TextBlock>
+            <!--Don`t have an account-->
         </Grid>
     </Grid>
 </Page>

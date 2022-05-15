@@ -19,7 +19,7 @@
         <RichTextBox
             x:Name="NoteText"
             Foreground="White"
-            Background="{DynamicResource LightI}"
+            Background="{DynamicResource MediumI}"
             Margin="5">
         </RichTextBox>
 
@@ -27,14 +27,13 @@
             Grid.Row="1"
             Width="200px"
             Height="50px"
-            Background="{DynamicResource LightI}"
+            Background="{DynamicResource MediumI}"
             CornerRadius="10">
 
             <Button
                 BorderThickness="0"
                 Background="Transparent"
                 Foreground="White"
-                FontFamily="/Fonts/#Gilroy"
                 FontWeight="Medium"
                 FontSize="24"
                 Content="Save changes"

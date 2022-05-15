@@ -1,5 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--  Different colors  -->
+    
     <SolidColorBrush x:Key="CustomGreen">#50a576</SolidColorBrush>
     <SolidColorBrush x:Key="CustomBlue">#4478b6</SolidColorBrush>
     <SolidColorBrush x:Key="CustomBrown">#ac694f</SolidColorBrush>
@@ -8,6 +11,13 @@
     <SolidColorBrush x:Key="CustomYellow">#d5984a</SolidColorBrush>
     <SolidColorBrush x:Key="CustomPink">#b45581</SolidColorBrush>
     <SolidColorBrush x:Key="CustomPurple">#8157ae</SolidColorBrush>
+    
+    <!--  Interface colors  -->
+    <SolidColorBrush x:Key="BackI">#2c2f34</SolidColorBrush>
+    <SolidColorBrush x:Key="MediumI">#373d42</SolidColorBrush>
+    <SolidColorBrush x:Key="AccentI">#616974</SolidColorBrush>
+    <SolidColorBrush x:Key="MainI">#ffffff</SolidColorBrush>
+    
     <SolidColorBrush x:Key="LightI">#373d42</SolidColorBrush>
     <SolidColorBrush x:Key="DarkI">#2c2f34</SolidColorBrush>
 </ResourceDictionary>

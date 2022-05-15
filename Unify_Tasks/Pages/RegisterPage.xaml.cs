@@ -45,7 +45,7 @@ namespace Unify_Tasks.Pages
             this.Cursor = Cursors.Arrow;
         }
 
-        private void Register_Click(object sender, RoutedEventArgs e)
+        private void Register_MouseUp(object sender, MouseButtonEventArgs e)
         {
             string Login = NickBox.Text.Trim();
             string Password = PasswordBox.Password.Trim();
@@ -94,13 +94,13 @@ namespace Unify_Tasks.Pages
                 PasswordBox.Background = Brushes.DarkRed;
                 PasswordBoxBorder.Background = Brushes.DarkRed;
             }
-            else if(Password != RPassword)
+            else if (Password != RPassword)
             {
                 RepeatPasswordBox.ToolTip = "Passwords do not match";
                 RepeatPasswordBox.Background = Brushes.DarkRed;
                 RepeatPasswordBoxBorder.Background = Brushes.DarkRed;
             }
-            
+
 
             else
             {
@@ -118,7 +118,7 @@ namespace Unify_Tasks.Pages
             }
         }
 
-        private void BackLogin_Click(object sender, RoutedEventArgs e)
+        private void BackLogin_MouseUp(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new Login());
         }

@@ -21,6 +21,9 @@
             VerticalAlignment="Center"
             IsTodayHighlighted="False"
             SelectionMode="SingleDate"
+            BorderThickness="0"
+            Foreground="White"
+            Background="Black"
             SelectedDatesChanged="Calendar_SelectedDatesChanged">
             <Calendar.LayoutTransform>
                 <ScaleTransform ScaleX="2.1" ScaleY="2.1" />
@@ -33,7 +36,6 @@
             VerticalAlignment="Center"
             TextDecorations="Underline"
             Foreground="White"
-            FontFamily="/Fonts/#Gilroy"
             FontSize="40"
             MouseEnter="TextBlock_MouseEnter"
             MouseLeave="TextBlock_MouseLeave"

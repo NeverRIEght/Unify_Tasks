@@ -28,7 +28,6 @@
             RadiusX="0.5"
             RadiusY="0.5" />
         <TextBlock
-            FontFamily="Gilroy"
             FontSize="14pt"
             Foreground="#b5b5b5"
             Grid.Row="0"

@@ -20,7 +20,6 @@
                 Text="{Binding TagText, ElementName=TagListElement}"
                 FontSize="18px"
                 FontWeight="Medium"
-                FontFamily="/Fonts/#Gilroy"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 RenderOptions.BitmapScalingMode="HighQuality">

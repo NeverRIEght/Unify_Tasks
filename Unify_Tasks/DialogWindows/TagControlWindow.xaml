@@ -45,7 +45,6 @@
                 VerticalAlignment="Center"
                 FontSize="24"
                 Foreground="White"
-                FontFamily="/Fonts/#Gilroy"
                 FontWeight="Medium"
                 >Edit or create tag
             </TextBlock>
@@ -56,7 +55,6 @@
                 VerticalAlignment="Center"
                 FontSize="24"
                 Foreground="White"
-                FontFamily="/Fonts/#Gilroy"
                 FontWeight="Medium"
                 >Tags for this task
             </TextBlock>
@@ -96,7 +94,6 @@
                     VerticalAlignment="Top"
                     FontSize="20"
                     Foreground="White"
-                    FontFamily="/Fonts/#Gilroy"
                     FontWeight="Medium"
                     >Name
                 </TextBlock>
@@ -140,7 +137,6 @@
                     VerticalAlignment="Top"
                     FontSize="20"
                     Foreground="White"
-                    FontFamily="/Fonts/#Gilroy"
                     FontWeight="Medium"
                     >Color
                 </TextBlock>

@@ -36,6 +36,15 @@ namespace Unify_Tasks.Pages
             win.MinHeight = 650;
         }
 
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
+        }
+
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             string Login = NickBox.Text.Trim();
@@ -45,39 +54,51 @@ namespace Unify_Tasks.Pages
             if (Login.Length < 5)
             {
                 NickBox.ToolTip = "Nickname length must be more than 5 characters";
-                NickBoxBorder.Background = Brushes.DarkRed;
                 NickBox.Background = Brushes.DarkRed;
+                NickBoxBorder.Background = Brushes.DarkRed;
             }
             else if (Login.Length > 20)
             {
                 NickBox.ToolTip = "Nickname length must be less than 20 characters";
-                NickBoxBorder.Background = Brushes.DarkRed;
                 NickBox.Background = Brushes.DarkRed;
+                NickBoxBorder.Background = Brushes.DarkRed;
             }
             else if (!Regex.Match(Login, "^[A-Za-z0-9]+$").Success)
             {
                 NickBox.ToolTip = "Login must contains only english letters and numbers";
-                NickBoxBorder.Background = Brushes.DarkRed;
                 NickBox.Background = Brushes.DarkRed;
+                NickBoxBorder.Background = Brushes.DarkRed;
             }
             else if (Password.Length > 20)
             {
                 PasswordBox.ToolTip = "Password length must be less than 20 characters";
-                PasswordBoxBorder.Background = Brushes.DarkRed;
                 PasswordBox.Background = Brushes.DarkRed;
+                PasswordBoxBorder.Background = Brushes.DarkRed;
 
             }
             else if (Password.Length < 5)
             {
                 PasswordBox.ToolTip = "Password length must be more than 5 characters";
-                PasswordBoxBorder.Background = Brushes.DarkRed;
                 PasswordBox.Background = Brushes.DarkRed;
+                PasswordBoxBorder.Background = Brushes.DarkRed;
+            }
+            else if (Regex.Match(Password, "^[A-Za-z]+$").Success)
+            {
+                PasswordBox.ToolTip = "Password must contains numbers too";
+                PasswordBox.Background = Brushes.DarkRed;
+                PasswordBoxBorder.Background = Brushes.DarkRed;
+            }
+            else if (Regex.Match(Password, "^[0-9]+$").Success)
+            {
+                PasswordBox.ToolTip = "Password must contains letters too";
+                PasswordBox.Background = Brushes.DarkRed;
+                PasswordBoxBorder.Background = Brushes.DarkRed;
             }
             else if(Password != RPassword)
             {
                 RepeatPasswordBox.ToolTip = "Passwords do not match";
-                RepeatPasswordBoxBorder.Background = Brushes.DarkRed;
                 RepeatPasswordBox.Background = Brushes.DarkRed;
+                RepeatPasswordBoxBorder.Background = Brushes.DarkRed;
             }
             
 
@@ -100,26 +121,6 @@ namespace Unify_Tasks.Pages
         private void BackLogin_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Login());
-        }
-
-        private void CreateID_MouseEnter(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-        }
-
-        private void CreateID_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Arrow;
-        }
-
-        private void BackLogin_MouseEnter(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-        }
-
-        private void BackLogin_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Arrow;
         }
     }
 }

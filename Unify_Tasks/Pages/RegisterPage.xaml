@@ -4,9 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Unify_Tasks.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1300"
+      mc:Ignorable="d"
       Title="RegisterPage"
+      d:DesignWidth="1300"
+      d:DesignHeight="800"
       Loaded="Page_Loaded">
 
     <Page.Resources>

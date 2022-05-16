@@ -10,34 +10,184 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="ToolWindow"
         ResizeMode="NoResize">
-    <Grid Background="{DynamicResource DarkI}">
+
+    <Grid Background="{DynamicResource BackI}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.8*"/>
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.08*"/>
+            <RowDefinition Height="0.78*"/>
+            <RowDefinition Height="0.14*"/>
         </Grid.RowDefinitions>
 
+        <ToolBarTray
+            MinHeight="35px"
+            Grid.Row="0"
+            VerticalAlignment="Top"
+            Background="{DynamicResource BackI}">
+            <ToolBar
+                Height="35px"
+                Background="{DynamicResource MediumI}"
+                Foreground="{DynamicResource MainI}">
+
+                <ToggleButton
+                    x:Name="BoldButton"
+                    Padding="4 0 4 0"
+                    Margin="5, 0, 5, 0"
+                    FontSize="22"
+                    Checked="BoldButton_Checked"
+                    Unchecked="BoldButton_Unchecked"
+                    >B
+                </ToggleButton>
+                <ToggleButton
+                    x:Name="ItalicButton"
+                    Padding="4 0 4 0"
+                    Margin="5, 0, 5, 0"
+                    FontSize="22"
+                    FontStyle="Italic"
+                    Checked="ItalicButton_Checked"
+                    Unchecked="ItalicButton_Unchecked"
+                    >I
+                </ToggleButton>
+                <ToggleButton
+                    x:Name="UnderlineButton"
+                    FontSize="22"
+                    Margin="5, 0, 5, 0"
+                    Padding="4 0 4 0"
+                    Checked="UnderlineButton_Checked"
+                    Unchecked="UnderlineButton_Unchecked">
+                    
+                    <TextBlock
+                        TextDecorations="Underline"
+                        >U
+                    </TextBlock>
+                    
+                </ToggleButton>
+
+                <ComboBox
+                    Padding="4 0 25 0"
+                    Margin="10, 0, 10, 0"
+                    Name="FontColor"
+                    Background="{DynamicResource AccentI}"
+                    BorderThickness="0"
+                    SelectionChanged="FontColor_SelectionChanged">
+
+                    <ComboBoxItem IsSelected="True">
+                        <TextBlock>
+                            <Rectangle
+                                Fill="Black"
+                                Height="10"
+                                Width="10" />
+                            Black
+                        </TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock>
+                            <Rectangle
+                                Fill="Gray"
+                                Height="10"
+                                Width="10" />
+                            Gray
+                        </TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock>
+                            <Rectangle
+                                Fill="Red"
+                                Height="10"
+                                Width="10" />
+                            Red
+                        </TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock>
+                            <Rectangle
+                                Fill="Blue"
+                                Height="10"
+                                Width="10" />
+                            Blue
+                        </TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock>
+                            <Rectangle
+                                Fill="Green"
+                                Height="10"
+                                Width="10" />
+                            Green
+                        </TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock>
+                            <Rectangle
+                                Fill="Purple"
+                                Height="10"
+                                Width="10" />
+                            Purple
+                        </TextBlock>
+                    </ComboBoxItem>
+
+                </ComboBox>
+
+                <ComboBox
+                    Padding="4 0 25 0"
+                    Margin="10, 0, 10, 0"
+                    Name="FontStyle"
+                    Background="{DynamicResource AccentI}"
+                    BorderThickness="0"
+                    SelectionChanged="FontStyle_SelectionChanged">
+
+                    <ComboBoxItem IsSelected="True">
+                        <TextBlock>
+                            Main font
+                        </TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock>
+                            Header 1
+                        </TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock>
+                            Header 2
+                        </TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock>
+                            Header 3
+                        </TextBlock>
+                    </ComboBoxItem>
+                    
+                </ComboBox>
+
+            </ToolBar>
+        </ToolBarTray>
+        
         <RichTextBox
+            Grid.Row="1"
             x:Name="NoteText"
-            Foreground="White"
+            Foreground="Gray"
+            FontFamily="/Fonts/#Gilroy"
+            FontWeight="Normal"
+            FontSize="14"
             Background="{DynamicResource MediumI}"
             Margin="5">
         </RichTextBox>
 
         <Border
-            Grid.Row="1"
+            Grid.Row="2"
             Width="200px"
             Height="50px"
-            Background="{DynamicResource MediumI}"
-            CornerRadius="10">
+            Background="{DynamicResource AccentI}"
+            CornerRadius="10"
+            MouseUp="Save_MouseUp">
 
-            <Button
-                BorderThickness="0"
-                Background="Transparent"
+            <TextBlock
                 Foreground="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
                 FontWeight="Medium"
                 FontSize="24"
-                Content="Save changes"
-                Click="Button_Click" />
+                Text="Save changes">
+            </TextBlock>
 
         </Border>
         

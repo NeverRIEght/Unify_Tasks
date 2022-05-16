@@ -223,16 +223,21 @@ namespace Unify_Tasks.Pages
         {
             if (toDeleteID != 0)
             {
-                Models.Task toDelete = null;
                 using (var context = new Unify_TasksEntities())
                 {
+                    Models.Task toDelete = null;
+                    Models.Note delNote = null;
+
                     toDelete = context.Tasks.Where(b => b.TaskID == toDeleteID).FirstOrDefault();
 
-                    var delNote = context.Notes.Where(n => n.NoteID == toDeleteID).FirstOrDefault();
-                    
                     if (toDelete != null)
                     {
-                        context.Notes.Remove(delNote);
+                        delNote = context.Notes.Where(n => n.NoteID == toDelete.NoteID).FirstOrDefault();
+
+                        if (delNote != null)
+                        {
+                            context.Notes.Remove(delNote);
+                        }
                         context.Tasks.Remove(toDelete);
                         context.SaveChanges();
                         UpdateTasks();
@@ -319,51 +324,49 @@ namespace Unify_Tasks.Pages
         {
             if(w1.currProject != 0 && w1.currUser != 0)
             {
-                Project toDelete = null;
                 using (var context = new Unify_TasksEntities())
                 {
+                    Project toDelete = null;
                     toDelete = context.Projects.Where(b => b.ProjectID == w1.currProject).FirstOrDefault();
 
-                    var delTasks = from p in context.Tasks
-                                   where p.ProjectID == w1.currProject
-                                   orderby p.ProjectID
-                                   select p;
-
-                    if (delTasks != null)
+                    if(toDelete != null)
                     {
-                        foreach (var everyTask in delTasks)
+                        var delTasks = from p in context.Tasks
+                                       where p.ProjectID == w1.currProject
+                                       select p;
+                        if (delTasks != null)
                         {
-                            var delNotes = from h in context.Notes
-                                           where h.NoteID == everyTask.NoteID
-                                           select h;
-
-                            if (delNotes != null)
+                            foreach (var everyTask in delTasks)
                             {
-                                foreach (Note everyNote in delNotes)
+                                var delNotes = from h in context.Notes
+                                               where h.NoteID == everyTask.NoteID
+                                               select h;
+
+                                if (delNotes != null)
                                 {
-                                    context.Notes.Remove(everyNote);
+                                    foreach (Note everyNote in delNotes)
+                                    {
+                                        context.Notes.Remove(everyNote);
+                                    }
                                 }
+
+                                var delTags = from t in context.Tags
+                                              where t.ProjectID == w1.currProject
+                                              orderby t.ProjectID
+                                              select t;
+
+                                if (delTags != null)
+                                {
+                                    foreach (var everyTag in delTags)
+                                    {
+                                        context.Tags.Remove(everyTag);
+                                    }
+                                }
+
+                                context.Tasks.Remove(everyTask);
                             }
-
-                            context.Tasks.Remove(everyTask);
                         }
-                    }
 
-                    var delTags = from t in context.Tags
-                                  where t.ProjectID == w1.currProject
-                                  orderby t.ProjectID
-                                  select t;
-
-                    if(delTags != null)
-                    {
-                        foreach(var everyTag in delTags)
-                        {
-                            context.Tags.Remove(everyTag);
-                        }
-                    }
-
-                    if (toDelete != null)
-                    {
                         context.Projects.Remove(toDelete);
                         context.SaveChanges();
                         w1.currProject = 0;
@@ -374,7 +377,6 @@ namespace Unify_Tasks.Pages
                         TrashRed.Visibility = Visibility.Hidden;
                         UpdateProjects();
                     }
-                    context.SaveChanges();
                 }
             }
         }

@@ -66,8 +66,15 @@ namespace Unify_Tasks.Pages
                 LoginBox.Foreground = Brushes.DarkRed;
                 PasswordBox.Foreground = Brushes.DarkRed;
 
-                LoginBox.ToolTip = "Login or password incorrect";
-                PasswordBox.ToolTip = "Login or password incorrect";
+                var tool1 = new ToolTip();
+                tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                tool1.Content = "Login or password incorrect";
+                LoginBox.ToolTip = tool1;
+
+                var tool2 = new ToolTip();
+                tool2.Background = (Brush)Application.Current.FindResource("BackI");
+                tool2.Content = "Login or password incorrect";
+                PasswordBox.ToolTip = tool2;
             }
         }
 

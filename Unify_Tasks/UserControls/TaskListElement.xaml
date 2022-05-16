@@ -16,13 +16,13 @@
         MouseLeave="Task_MouseLeave">
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.285*"/>
+            <RowDefinition Height="0.285*" MinHeight="20px"/>
             <RowDefinition Height="0.42*" MinHeight="30px"/>
-            <RowDefinition Height="0.285*"/>
+            <RowDefinition Height="0.285*" MinHeight="20px"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.02*" MinWidth="8px"/>
-            <ColumnDefinition Width="0.032*" MinWidth="30px"/>
+            <ColumnDefinition Width="0.001*" MinWidth="8px"/>
+            <ColumnDefinition Width="0.025*" MinWidth="30px"/>
             <ColumnDefinition Width="0.531*" MinWidth="480px"/>
             <ColumnDefinition Width="0.095*" MinWidth="95px"/>
             <ColumnDefinition Width="0.02*" />
@@ -160,8 +160,8 @@
             Grid.Row="1"
             Grid.Column="13"
             Source="/Images/TrashcanRed.png"
-            VerticalAlignment="Stretch"
             HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
             RenderOptions.BitmapScalingMode="HighQuality"
             MouseEnter="Trash_MouseEnter"
             MouseLeave="Trash_MouseLeave">

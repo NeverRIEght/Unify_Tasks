@@ -43,15 +43,25 @@ namespace Unify_Tasks.DialogWindows
             //Loading prev file
             using (var context = new Unify_TasksEntities())
             {
-                var thisNote = context.Tasks.Where(n => n.TaskID == w1.currTask).FirstOrDefault();
+                Models.Task thisTask = null;
+                Models.Note thisNote = null;
+                thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
-                if (File.Exists(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                if(thisTask != null)
                 {
-                    using (FileStream fs = File.OpenRead(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
-                    {
-                        TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
+                    thisNote = context.Notes.Where(n => n.NoteID == thisTask.NoteID).FirstOrDefault();
 
-                        range1.Load(fs, DataFormats.Rtf);
+                    if(thisNote != null)
+                    {
+                        if (File.Exists(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                        {
+                            using (FileStream fs = File.OpenRead(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                            {
+                                TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
+
+                                range1.Load(fs, DataFormats.Rtf);
+                            }
+                        }
                     }
                 }
             }
@@ -124,18 +134,46 @@ namespace Unify_Tasks.DialogWindows
         {
             using (var context = new Unify_TasksEntities())
             {
-                var thisNote = context.Tasks.Where(n => n.TaskID == w1.currTask).FirstOrDefault();
+                Models.Task thisTask = null;
+                Models.Note thisNote = null;
+                thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
+                thisNote = context.Notes.Where(n => n.NoteID == thisTask.NoteID).FirstOrDefault();
 
-                if (thisNote != null)
+                if (thisTask != null)
                 {
-                    using (FileStream fs = File.Create(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                    if(thisNote == null)
                     {
-                        TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
-                        thisNote.NoteID = thisNote.TaskID;
+                        context.Notes.Local.Add(new Note()
+                        {
+                            Notepath = currPath + "/Notes/Note" + w1.currTask + ".rtf"
+                        });
                         context.SaveChanges();
-                        range1.Save(fs, DataFormats.Rtf);
-                        this.DialogResult = true;
-                        this.Close();
+
+                        thisNote = context.Notes.Where(n => n.Notepath == currPath + "/Notes/Note" + w1.currTask + ".rtf").FirstOrDefault();
+                        
+                        if (thisNote != null)
+                        {
+                            thisTask.NoteID = thisNote.NoteID;
+                            context.SaveChanges();
+
+                            using (FileStream fs = File.Create(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                            {
+                                TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
+                                range1.Save(fs, DataFormats.Rtf);
+                                this.Close();
+                            }
+                        }
+
+                        
+                    }
+                    if(thisNote != null)
+                    {
+                        using (FileStream fs = File.Create(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                        {
+                            TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
+                            range1.Save(fs, DataFormats.Rtf);
+                            this.Close();
+                        }
                     }
                 }
             }

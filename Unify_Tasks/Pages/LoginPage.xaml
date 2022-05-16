@@ -117,7 +117,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Height="50px">
-                
+
                 <TextBox
                     x:Name="LoginBox"
                     HorizontalAlignment="Left"
@@ -148,7 +148,7 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Bottom"
                 Height="50px">
-                
+
                 <PasswordBox
                     x:Name="PasswordBox"
                     HorizontalAlignment="Stretch"

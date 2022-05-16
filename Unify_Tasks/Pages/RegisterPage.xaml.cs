@@ -53,50 +53,81 @@ namespace Unify_Tasks.Pages
 
             if (Login.Length < 5)
             {
-                NickBox.ToolTip = "Nickname length must be more than 5 characters";
+                var tool1 = new ToolTip();
+                tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                tool1.Content = "Nickname length must be more than 5 characters";
+                NickBox.ToolTip = tool1;
+
                 NickBox.Background = Brushes.DarkRed;
                 NickBoxBorder.Background = Brushes.DarkRed;
             }
             else if (Login.Length > 20)
             {
-                NickBox.ToolTip = "Nickname length must be less than 20 characters";
+                var tool1 = new ToolTip();
+                tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                tool1.Content = "Nickname length must be less than 20 characters";
+                NickBox.ToolTip = tool1;
+
                 NickBox.Background = Brushes.DarkRed;
                 NickBoxBorder.Background = Brushes.DarkRed;
             }
             else if (!Regex.Match(Login, "^[A-Za-z0-9]+$").Success)
             {
-                NickBox.ToolTip = "Login must contains only english letters and numbers";
+                var tool1 = new ToolTip();
+                tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                tool1.Content = "Login must contains only english letters and numbers";
+                NickBox.ToolTip = tool1;
+
                 NickBox.Background = Brushes.DarkRed;
                 NickBoxBorder.Background = Brushes.DarkRed;
             }
             else if (Password.Length > 20)
             {
-                PasswordBox.ToolTip = "Password length must be less than 20 characters";
+                var tool1 = new ToolTip();
+                tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                tool1.Content = "Password length must be less than 20 characters";
+                PasswordBox.ToolTip = tool1;
                 PasswordBox.Background = Brushes.DarkRed;
                 PasswordBoxBorder.Background = Brushes.DarkRed;
 
             }
             else if (Password.Length < 5)
             {
-                PasswordBox.ToolTip = "Password length must be more than 5 characters";
+                var tool1 = new ToolTip();
+                tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                tool1.Content = "Password length must be more than 5 characters";
+                PasswordBox.ToolTip = tool1;
+
                 PasswordBox.Background = Brushes.DarkRed;
                 PasswordBoxBorder.Background = Brushes.DarkRed;
             }
             else if (Regex.Match(Password, "^[A-Za-z]+$").Success)
             {
-                PasswordBox.ToolTip = "Password must contains numbers too";
+                var tool1 = new ToolTip();
+                tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                tool1.Content = "Password must contains numbers too";
+                PasswordBox.ToolTip = tool1;
+
                 PasswordBox.Background = Brushes.DarkRed;
                 PasswordBoxBorder.Background = Brushes.DarkRed;
             }
             else if (Regex.Match(Password, "^[0-9]+$").Success)
             {
-                PasswordBox.ToolTip = "Password must contains letters too";
+                var tool1 = new ToolTip();
+                tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                tool1.Content = "Password must contains letters too";
+                PasswordBox.ToolTip = tool1;
+
                 PasswordBox.Background = Brushes.DarkRed;
                 PasswordBoxBorder.Background = Brushes.DarkRed;
             }
             else if (Password != RPassword)
             {
-                RepeatPasswordBox.ToolTip = "Passwords do not match";
+                var tool1 = new ToolTip();
+                tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                tool1.Content = "Passwords do not match";
+                RepeatPasswordBox.ToolTip = tool1;
+
                 RepeatPasswordBox.Background = Brushes.DarkRed;
                 RepeatPasswordBoxBorder.Background = Brushes.DarkRed;
             }

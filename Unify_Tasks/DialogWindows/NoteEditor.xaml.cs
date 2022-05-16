@@ -131,7 +131,8 @@ namespace Unify_Tasks.DialogWindows
                     using (FileStream fs = File.Create(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
                     {
                         TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
-
+                        thisNote.NoteID = thisNote.TaskID;
+                        context.SaveChanges();
                         range1.Save(fs, DataFormats.Rtf);
                         this.DialogResult = true;
                         this.Close();

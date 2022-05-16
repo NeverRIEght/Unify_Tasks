@@ -228,8 +228,11 @@ namespace Unify_Tasks.Pages
                 {
                     toDelete = context.Tasks.Where(b => b.TaskID == toDeleteID).FirstOrDefault();
 
+                    var delNote = context.Notes.Where(n => n.NoteID == toDeleteID).FirstOrDefault();
+                    
                     if (toDelete != null)
                     {
+                        context.Notes.Remove(delNote);
                         context.Tasks.Remove(toDelete);
                         context.SaveChanges();
                         UpdateTasks();
@@ -343,6 +346,19 @@ namespace Unify_Tasks.Pages
                             }
 
                             context.Tasks.Remove(everyTask);
+                        }
+                    }
+
+                    var delTags = from t in context.Tags
+                                  where t.ProjectID == w1.currProject
+                                  orderby t.ProjectID
+                                  select t;
+
+                    if(delTags != null)
+                    {
+                        foreach(var everyTag in delTags)
+                        {
+                            context.Tags.Remove(everyTag);
                         }
                     }
 

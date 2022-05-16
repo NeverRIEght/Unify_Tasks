@@ -14,12 +14,12 @@
     <Window.Resources>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="FontFamily" Value="/Fonts/#Gilroy" />
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="{DynamicResource MainI}" />
         </Style>
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="FontFamily" Value="/Fonts/#Gilroy" />
             <Setter Property="Foreground" Value="LightGray" />
-            <Setter Property="Background" Value="#646a74" />
+            <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="MaxLength" Value="24" />
             <Setter Property="MinWidth" Value="280px" />
@@ -33,7 +33,7 @@
         </Grid.RowDefinitions>
         <Grid
             Grid.Row="0"
-            Background="#373d42">
+            Background="{DynamicResource MediumI}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -44,7 +44,6 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="24"
-                Foreground="White"
                 FontWeight="Medium"
                 >Edit or create tag
             </TextBlock>
@@ -54,7 +53,6 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="24"
-                Foreground="White"
                 FontWeight="Medium"
                 >Tags for this task
             </TextBlock>
@@ -62,7 +60,7 @@
         </Grid>
         <Grid
             Grid.Row="1"
-            Background="#2c2f34">
+            Background="{DynamicResource BackI}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -93,7 +91,6 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="20"
-                    Foreground="White"
                     FontWeight="Medium"
                     >Name
                 </TextBlock>
@@ -108,7 +105,7 @@
                     VerticalAlignment="Bottom"
                     Height="50px"
                     CornerRadius="10"
-                    Background="#646a74">
+                    Background="{DynamicResource AccentI}">
                     <Border.Effect>
                         <DropShadowEffect
                         BlurRadius="20"
@@ -123,7 +120,6 @@
                         FontWeight="Medium"
                         FontSize="18px"
                         MaxLength="12"
-                        Foreground="White"
                         IsKeyboardFocusedChanged="TagNameBox_IsKeyboardFocusedChanged"
                         Text="Tag Name">
                     </TextBox>
@@ -136,7 +132,6 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="20"
-                    Foreground="White"
                     FontWeight="Medium"
                     >Color
                 </TextBlock>
@@ -162,7 +157,7 @@
                             x:Name="Border1"
                             MinHeight="20px"
                             MinWidth="100px"
-                            Background="#2c2f34"
+                            Background="{DynamicResource MediumI}"
                             Margin="0, 5, 0, 5"
                             CornerRadius="10"
                             MouseUp="Border1_MouseUp">
@@ -180,7 +175,7 @@
                             x:Name="Border2"
                             MinHeight="20px"
                             MinWidth="100px"
-                            Background="#2c2f34"
+                            Background="{DynamicResource MediumI}"
                             Margin="0, 5, 0, 5"
                             CornerRadius="10"
                             MouseUp="Border2_MouseUp">
@@ -198,7 +193,7 @@
                             x:Name="Border3"
                             MinHeight="20px"
                             MinWidth="100px"
-                            Background="#2c2f34"
+                            Background="{DynamicResource MediumI}"
                             Margin="0, 5, 0, 5"
                             CornerRadius="10"
                             MouseUp="Border3_MouseUp">
@@ -216,7 +211,7 @@
                             x:Name="Border4"
                             MinHeight="20px"
                             MinWidth="100px"
-                            Background="#2c2f34"
+                            Background="{DynamicResource MediumI}"
                             Margin="0, 5, 0, 5"
                             CornerRadius="10"
                             MouseUp="Border4_MouseUp">
@@ -256,7 +251,7 @@
                             x:Name="Border5"
                             MinHeight="20px"
                             MinWidth="100px"
-                            Background="#2c2f34"
+                            Background="{DynamicResource MediumI}"
                             Margin="0, 5, 0, 5"
                             CornerRadius="10"
                             MouseUp="Border5_MouseUp">
@@ -274,7 +269,7 @@
                             x:Name="Border6"
                             MinHeight="20px"
                             MinWidth="100px"
-                            Background="#2c2f34"
+                            Background="{DynamicResource MediumI}"
                             Margin="0, 5, 0, 5"
                             CornerRadius="10"
                             MouseUp="Border6_MouseUp">
@@ -292,7 +287,7 @@
                             x:Name="Border7"
                             MinHeight="20px"
                             MinWidth="100px"
-                            Background="#2c2f34"
+                            Background="{DynamicResource MediumI}"
                             Margin="0, 5, 0, 5"
                             CornerRadius="10"
                             MouseUp="Border7_MouseUp">
@@ -310,7 +305,7 @@
                             x:Name="Border8"
                             MinHeight="20px"
                             MinWidth="100px"
-                            Background="#2c2f34"
+                            Background="{DynamicResource MediumI}"
                             Margin="0, 5, 0, 5"
                             CornerRadius="10"
                             MouseUp="Border8_MouseUp">
@@ -333,20 +328,20 @@
 
                 <Border
                     x:Name="DelTag"
-                Grid.Row="5"
-                Grid.Column="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Height="30px"
-                Width="100px"
-                CornerRadius="10"
-                Background="#646a74"
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Height="30px"
+                    Width="100px"
+                    CornerRadius="10"
+                    Background="{DynamicResource AccentI}"
                     MouseUp="DelTag_MouseUp">
                     <Border.Effect>
                         <DropShadowEffect
-                    BlurRadius="20"
-                    Color="Black"
-                    Opacity="0.5"/>
+                        BlurRadius="20"
+                        Color="Black"
+                        Opacity="0.5"/>
                     </Border.Effect>
 
                     <TextBlock
@@ -355,8 +350,7 @@
                 Text="Delete Tag"
                 FontWeight="Light"
                 FontStyle="Italic"
-                FontSize="18px"
-                Foreground="White">
+                FontSize="18px">
                     </TextBlock>
 
                 </Border>
@@ -371,7 +365,7 @@
                     Height="30px"
                     Width="100px"
                     CornerRadius="10"
-                    Background="#646a74"
+                    Background="{DynamicResource AccentI}"
                     MouseUp="SaveTag_MouseUp">
                     <Border.Effect>
                         <DropShadowEffect
@@ -386,8 +380,7 @@
                         Text="Save Tag"
                         FontWeight="Light"
                         FontStyle="Italic"
-                        FontSize="18px"
-                        Foreground="White">
+                        FontSize="18px">
                     </TextBlock>
 
                 </Border>
@@ -413,7 +406,7 @@
                 <Border
                     Grid.Row="1"
                     Grid.Column="1"
-                    Background="#646a74"
+                    Background="{DynamicResource AccentI}"
                     CornerRadius="10">
                     <Border.Effect>
                         <DropShadowEffect

@@ -23,7 +23,7 @@
     
     <Style TargetType="{x:Type Calendar}">
         <Setter Property="Foreground" Value="{DynamicResource MainI}" />
-        <Setter Property="Background" Value="Black" />
+        <Setter Property="Background" Value="{DynamicResource MediumI}" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
     

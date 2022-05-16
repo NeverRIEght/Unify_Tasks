@@ -42,7 +42,7 @@
                 Grid.ColumnSpan="3"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Background="#3a3e44"
+                Background="{DynamicResource MediumI}"
                 CornerRadius="10">
 
                 <Grid
@@ -130,7 +130,7 @@
                 Grid.Column="2"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Background="#3a3e44"
+                Background="{DynamicResource MediumI}"
                 CornerRadius="10">
 
                 <TextBlock
@@ -138,7 +138,7 @@
                     VerticalAlignment="Center"
                     Text="New Project"
                     FontWeight="Medium"
-                    Foreground="White"
+                    Foreground="{DynamicResource MainI}"
                     FontSize="24px">
                 </TextBlock>
 
@@ -164,7 +164,7 @@
                 FontWeight="Light"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
-                Foreground="White"
+                Foreground="{DynamicResource MainI}"
                 >Projects
             </TextBlock>
             <!-- Recent -->
@@ -173,7 +173,7 @@
                 Grid.Row="5"
                 Grid.Column="1"
                 Grid.ColumnSpan="3"
-                Background="#3a3e44"
+                Background="{DynamicResource MediumI}"
                 CornerRadius="10">
                 
                 <ScrollViewer
@@ -193,7 +193,7 @@
         <Grid
             x:Name="mainpanelGrid"
             Grid.Column="1"
-            Background="#3a3e44">
+            Background="{DynamicResource MediumI}">
             
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.0075*"/>
@@ -224,7 +224,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
                 Height="60px"
-                Foreground="White"
+                Foreground="{DynamicResource MainI}"
                 Background="Transparent"
                 BorderThickness="0"
                 FontWeight="Medium"
@@ -241,7 +241,7 @@
                 Grid.Row="5"
                 Grid.Column="1"
                 Grid.ColumnSpan="7"
-                Background="#2f3136"
+                Background="{DynamicResource BackI}"
                 CornerRadius="10">
 
                 <ScrollViewer>
@@ -289,7 +289,7 @@
                 Grid.Column="2"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Background="#2f3136"
+                Background="{DynamicResource BackI}"
                 CornerRadius="10"
                 Visibility="Hidden"
                 MouseEnter="Button_MouseEnter"
@@ -302,7 +302,7 @@
                     Text="New Task"
                     FontWeight="Light"
                     FontStyle="Italic"
-                    Foreground="White"
+                    Foreground="{DynamicResource MainI}"
                     FontSize="22px">
                 </TextBlock>
             </Border>

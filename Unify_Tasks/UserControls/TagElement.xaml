@@ -11,7 +11,7 @@
     <Grid MinHeight="30px" MinWidth="80px">
         <Border
             x:Name="TagBackgroud"
-            BorderBrush="White"
+            BorderBrush="{DynamicResource MainI}"
             BorderThickness="1px"
             CornerRadius="6"
             RenderOptions.BitmapScalingMode="HighQuality">

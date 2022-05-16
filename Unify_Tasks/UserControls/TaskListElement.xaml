@@ -64,7 +64,7 @@
             x:Name="TaskHeader"
             Grid.Row="1"
             Grid.Column="2"
-            Foreground="White"
+            Foreground="{DynamicResource MainI}"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Center"
             Margin="10, 0, 10, 0"

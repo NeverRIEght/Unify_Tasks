@@ -24,12 +24,12 @@
             Grid.Row="1"
             Grid.Column="1"
             Grid.ColumnSpan="3"
-            Fill="White"
+            Fill="{DynamicResource MainI}"
             RadiusX="0.5"
             RadiusY="0.5" />
         <TextBlock
             FontSize="14pt"
-            Foreground="#b5b5b5"
+            Foreground="{DynamicResource MainI}"
             Grid.Row="0"
             Grid.Column="2" 
             VerticalAlignment="Center"

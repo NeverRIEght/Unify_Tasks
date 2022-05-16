@@ -47,7 +47,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Rectangle Fill="White" Margin="1, 0, 1, 0" RadiusX="4" RadiusY="4"></Rectangle>
+                    <Rectangle Fill="{DynamicResource MainI}" Margin="1, 0, 1, 0" RadiusX="4" RadiusY="4"></Rectangle>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

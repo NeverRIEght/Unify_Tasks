@@ -22,8 +22,7 @@
             IsTodayHighlighted="False"
             SelectionMode="SingleDate"
             BorderThickness="0"
-            Foreground="White"
-            Background="Black"
+            
             SelectedDatesChanged="Calendar_SelectedDatesChanged">
             <Calendar.LayoutTransform>
                 <ScaleTransform ScaleX="2.1" ScaleY="2.1" />

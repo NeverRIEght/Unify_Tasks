@@ -246,29 +246,6 @@ namespace Unify_Tasks.Pages
             }
         }
 
-        /*private void appendTag(TaskListElement task1, string text, string color)
-        {
-            if (task1.TagsList.Children.Count % 2 == 1)
-            {
-                ////////////////////////////////////////////////////////////////////////////////////////////////////
-            }
-            TagElement tag1 = new TagElement();
-            tag1.TagText = text;
-            switch (color)
-            {
-                case "Red":
-                    tag1.TagBackgroud.Background = Brushes.Red;
-                    break;
-                case "Green":
-                    tag1.TagBackgroud.Background = Brushes.Green;
-                    break;
-                case "Blue":
-                    tag1.TagBackgroud.Background = Brushes.Blue;
-                    break;
-            }
-            task1.TagsList.Children.Add(tag1);
-        }*/
-
         private void NewProject_Click(object sender, RoutedEventArgs e)
         {
 

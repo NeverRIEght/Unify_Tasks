@@ -14,16 +14,10 @@ namespace Unify_Tasks.Models
     
     public partial class Note
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Note()
-        {
-            this.Tasks = new HashSet<Task>();
-        }
-    
         public int NoteID { get; set; }
+        public Nullable<int> TaskID { get; set; }
         public string Notepath { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Task> Tasks { get; set; }
+        public virtual Task Task { get; set; }
     }
 }

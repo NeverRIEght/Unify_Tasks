@@ -49,8 +49,8 @@ namespace Unify_Tasks.DialogWindows
 
                 if(thisTask != null)
                 {
-                    thisNote = context.Notes.Where(n => n.NoteID == thisTask.NoteID).FirstOrDefault();
-
+                    thisNote = context.Notes.Where(n => n.TaskID == thisTask.TaskID).FirstOrDefault();
+                    
                     if(thisNote != null)
                     {
                         if (File.Exists(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
@@ -137,26 +137,25 @@ namespace Unify_Tasks.DialogWindows
                 Models.Task thisTask = null;
                 Models.Note thisNote = null;
                 thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
-                thisNote = context.Notes.Where(n => n.NoteID == thisTask.NoteID).FirstOrDefault();
-
+                thisNote = context.Notes.Where(n => n.TaskID == thisTask.TaskID).FirstOrDefault();
                 if (thisTask != null)
                 {
                     if(thisNote == null)
                     {
+                        int currNote = thisNote.NoteID;
                         context.Notes.Local.Add(new Note()
                         {
-                            Notepath = currPath + "/Notes/Note" + w1.currTask + ".rtf"
+                            Notepath = currPath + "/Notes/Note" + currNote + ".rtf"
                         });
                         context.SaveChanges();
 
-                        thisNote = context.Notes.Where(n => n.Notepath == currPath + "/Notes/Note" + w1.currTask + ".rtf").FirstOrDefault();
+                        thisNote = context.Notes.Where(n => n.Notepath == currPath + "/Notes/Note" + currNote + ".rtf").FirstOrDefault();
                         
                         if (thisNote != null)
                         {
-                            thisTask.NoteID = thisNote.NoteID;
                             context.SaveChanges();
 
-                            using (FileStream fs = File.Create(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                            using (FileStream fs = File.Create(currPath + "/Notes/Note" + currNote + ".rtf"))
                             {
                                 TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
                                 range1.Save(fs, DataFormats.Rtf);
@@ -168,7 +167,8 @@ namespace Unify_Tasks.DialogWindows
                     }
                     if(thisNote != null)
                     {
-                        using (FileStream fs = File.Create(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                        int currNote = thisNote.NoteID;
+                        using (FileStream fs = File.Create(currPath + "/Notes/Note" + currNote + ".rtf"))
                         {
                             TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
                             range1.Save(fs, DataFormats.Rtf);

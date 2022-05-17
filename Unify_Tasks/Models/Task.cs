@@ -17,6 +17,7 @@ namespace Unify_Tasks.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Task()
         {
+            this.Notes = new HashSet<Note>();
             this.Tags = new HashSet<Tag>();
         }
     
@@ -24,10 +25,10 @@ namespace Unify_Tasks.Models
         public int ProjectID { get; set; }
         public Nullable<int> Status { get; set; }
         public string Header { get; set; }
-        public Nullable<int> NoteID { get; set; }
         public Nullable<System.DateTime> Planned { get; set; }
     
-        public virtual Note Note { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Note> Notes { get; set; }
         public virtual Project Project { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tag> Tags { get; set; }

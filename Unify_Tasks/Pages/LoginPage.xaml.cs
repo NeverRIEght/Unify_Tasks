@@ -49,33 +49,46 @@ namespace Unify_Tasks.Pages
             string login = LoginBox.Text.Trim();
             string password = PasswordBox.Password.Trim();
 
-            User authUser = null;
-            using (var context = new Unify_TasksEntities())
+            try
             {
-                authUser = context.Users.Where(b => b.login == login && b.password == password).FirstOrDefault();
-            }
-            if (authUser != null)
-            {
-                HomePage homePage = new HomePage();
-                NavigationService.Navigate(new HomePage());
-                w1.currUser = authUser.UserID;
-                w1.userNickname = authUser.login;
-            }
-            else
-            {
-                LoginBox.Foreground = Brushes.DarkRed;
-                PasswordBox.Foreground = Brushes.DarkRed;
+                User authUser = null;
+                using (var context = new Unify_TasksEntities())
+                {
+                    authUser = context.Users.Where(b => b.login == login && b.password == password).FirstOrDefault();
+                }
+                if (authUser != null)
+                {
+                    HomePage homePage = new HomePage();
+                    NavigationService.Navigate(new HomePage());
+                    w1.currUser = authUser.UserID;
+                    w1.userNickname = authUser.login;
+                }
 
-                var tool1 = new ToolTip();
-                tool1.Background = (Brush)Application.Current.FindResource("BackI");
-                tool1.Content = "Login or password incorrect";
-                LoginBox.ToolTip = tool1;
 
-                var tool2 = new ToolTip();
-                tool2.Background = (Brush)Application.Current.FindResource("BackI");
-                tool2.Content = "Login or password incorrect";
-                PasswordBox.ToolTip = tool2;
+                else
+                {
+                    LoginBox.Foreground = Brushes.DarkRed;
+                    PasswordBox.Foreground = Brushes.DarkRed;
+
+                    var tool1 = new ToolTip();
+                    tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                    tool1.Content = "Login or password incorrect";
+                    LoginBox.ToolTip = tool1;
+
+                    var tool2 = new ToolTip();
+                    tool2.Background = (Brush)Application.Current.FindResource("BackI");
+                    tool2.Content = "Login or password incorrect";
+                    PasswordBox.ToolTip = tool2;
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occurred while trying to login.\r\n" +
+                                        "The application will сlose.\r\n" +
+                                        "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
+                                        "please, contact the program developer");
+            }
+            
         }
 
         private void NewAcc_MouseUp(object sender, MouseButtonEventArgs e)

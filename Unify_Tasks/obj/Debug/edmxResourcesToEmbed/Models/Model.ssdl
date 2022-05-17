@@ -5,6 +5,7 @@
       <PropertyRef Name="NoteID" />
     </Key>
     <Property Name="NoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskID" Type="int" />
     <Property Name="Notepath" Type="varchar" MaxLength="300" Nullable="false" />
   </EntityType>
   <EntityType Name="Projects">
@@ -21,7 +22,6 @@
     </Key>
     <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TaskID" Type="int" />
-    <Property Name="ProjectID" Type="int" Nullable="false" />
     <Property Name="TagHeader" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="TagColor" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
@@ -33,7 +33,6 @@
     <Property Name="ProjectID" Type="int" Nullable="false" />
     <Property Name="Status" Type="int" />
     <Property Name="Header" Type="varchar" MaxLength="70" Nullable="false" />
-    <Property Name="NoteID" Type="int" />
     <Property Name="Planned" Type="datetime" />
   </EntityType>
   <EntityType Name="Users">
@@ -44,6 +43,18 @@
     <Property Name="login" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="password" Type="varchar(max)" Nullable="false" />
   </EntityType>
+  <Association Name="FK__Notes__TaskID__2D27B809">
+    <End Role="Tasks" Type="Self.Tasks" Multiplicity="0..1" />
+    <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="Notes">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Projects__UserID__267ABA7A">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
@@ -53,18 +64,6 @@
       </Principal>
       <Dependent Role="Projects">
         <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Tags__ProjectID__30F848ED">
-    <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
-    <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Projects">
-        <PropertyRef Name="ProjectID" />
-      </Principal>
-      <Dependent Role="Tags">
-        <PropertyRef Name="ProjectID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -80,19 +79,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Tasks__NoteID__2D27B809">
-    <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
-    <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Notes">
-        <PropertyRef Name="NoteID" />
-      </Principal>
-      <Dependent Role="Tasks">
-        <PropertyRef Name="NoteID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Tasks__ProjectID__2B3F6F97">
+  <Association Name="FK__Tasks__ProjectID__29572725">
     <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
     <End Role="Tasks" Type="Self.Tasks" Multiplicity="*" />
     <ReferentialConstraint>
@@ -110,23 +97,19 @@
     <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Notes__TaskID__2D27B809" Association="Self.FK__Notes__TaskID__2D27B809">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="Notes" EntitySet="Notes" />
+    </AssociationSet>
     <AssociationSet Name="FK__Projects__UserID__267ABA7A" Association="Self.FK__Projects__UserID__267ABA7A">
       <End Role="Users" EntitySet="Users" />
       <End Role="Projects" EntitySet="Projects" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Tags__ProjectID__30F848ED" Association="Self.FK__Tags__ProjectID__30F848ED">
-      <End Role="Projects" EntitySet="Projects" />
-      <End Role="Tags" EntitySet="Tags" />
     </AssociationSet>
     <AssociationSet Name="FK__Tags__TaskID__300424B4" Association="Self.FK__Tags__TaskID__300424B4">
       <End Role="Tasks" EntitySet="Tasks" />
       <End Role="Tags" EntitySet="Tags" />
     </AssociationSet>
-    <AssociationSet Name="FK__Tasks__NoteID__2D27B809" Association="Self.FK__Tasks__NoteID__2D27B809">
-      <End Role="Notes" EntitySet="Notes" />
-      <End Role="Tasks" EntitySet="Tasks" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Tasks__ProjectID__2B3F6F97" Association="Self.FK__Tasks__ProjectID__2B3F6F97">
+    <AssociationSet Name="FK__Tasks__ProjectID__29572725" Association="Self.FK__Tasks__ProjectID__29572725">
       <End Role="Projects" EntitySet="Projects" />
       <End Role="Tasks" EntitySet="Tasks" />
     </AssociationSet>

@@ -95,19 +95,6 @@
                         MouseUp="AvatarRect_MouseUp"
                         Text="">
                     </TextBlock>
-
-                    <Image
-                        Grid.Column="3"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Source="/Images/Settings.png"
-                        Visibility="Hidden"
-                        RenderOptions.BitmapScalingMode="HighQuality"
-                        MouseEnter="Button_MouseEnter"
-                        MouseLeave="Button_MouseLeave"
-                        MouseUp="Settings_MouseUp">
-                    </Image>
-
                     <Image
                         Grid.Column="5"
                         HorizontalAlignment="Center"

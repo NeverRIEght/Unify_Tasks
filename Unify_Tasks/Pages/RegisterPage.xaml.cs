@@ -135,17 +135,31 @@ namespace Unify_Tasks.Pages
 
             else
             {
-                using (var context = new Unify_TasksEntities())
+                try
                 {
-                    context.Users.Local.Add(new User()
+                    using (var context = new Unify_TasksEntities())
                     {
-                        login = Login,
-                        password = Password,
-                    });
-                    context.SaveChanges();
+                        context.Users.Local.Add(new User()
+                        {
+                            login = Login,
+                            password = Password,
+                        });
+                        context.SaveChanges();
+                    }
+                    
                 }
-                MessageBox.Show("Register Success!");
-                NavigationService.Navigate(new Login());
+                catch (Exception)
+                {
+                        MessageBox.Show("An error occurred while trying to register a new user.\r\n" +
+                                        "The application will сlose.\r\n" +
+                                        "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
+                                        "please, contact the program developer");
+                }
+                finally
+                {
+                    MessageBox.Show("Register Success!");
+                    NavigationService.Navigate(new Login());
+                }
             }
         }
 

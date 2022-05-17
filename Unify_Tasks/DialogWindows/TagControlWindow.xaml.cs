@@ -150,7 +150,6 @@ namespace Unify_Tasks.DialogWindows
                         TagHeader = TagNameBox.Text,
                         TaskID = SelectedTask,
                         TagColor = Convert.ToString(ThisTagColor),
-                        ProjectID = w1.currProject
                     });
                     context.SaveChanges();
                     UpdateTags();

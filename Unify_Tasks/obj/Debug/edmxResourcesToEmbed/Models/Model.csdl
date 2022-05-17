@@ -5,8 +5,9 @@
       <PropertyRef Name="NoteID" />
     </Key>
     <Property Name="NoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskID" Type="Int32" />
     <Property Name="Notepath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Tasks" Relationship="Self.FK__Tasks__NoteID__2D27B809" FromRole="Notes" ToRole="Tasks" />
+    <NavigationProperty Name="Task" Relationship="Self.FK__Notes__TaskID__2D27B809" FromRole="Notes" ToRole="Tasks" />
   </EntityType>
   <EntityType Name="Project">
     <Key>
@@ -16,8 +17,7 @@
     <Property Name="ProjectHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="User" Relationship="Self.FK__Projects__UserID__267ABA7A" FromRole="Projects" ToRole="Users" />
-    <NavigationProperty Name="Tags" Relationship="Self.FK__Tags__ProjectID__30F848ED" FromRole="Projects" ToRole="Tags" />
-    <NavigationProperty Name="Tasks" Relationship="Self.FK__Tasks__ProjectID__2B3F6F97" FromRole="Projects" ToRole="Tasks" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK__Tasks__ProjectID__29572725" FromRole="Projects" ToRole="Tasks" />
   </EntityType>
   <EntityType Name="Tag">
     <Key>
@@ -25,10 +25,8 @@
     </Key>
     <Property Name="TagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TaskID" Type="Int32" />
-    <Property Name="ProjectID" Type="Int32" Nullable="false" />
     <Property Name="TagHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TagColor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Project" Relationship="Self.FK__Tags__ProjectID__30F848ED" FromRole="Tags" ToRole="Projects" />
     <NavigationProperty Name="Task" Relationship="Self.FK__Tags__TaskID__300424B4" FromRole="Tags" ToRole="Tasks" />
   </EntityType>
   <EntityType Name="Task">
@@ -39,10 +37,9 @@
     <Property Name="ProjectID" Type="Int32" Nullable="false" />
     <Property Name="Status" Type="Int32" />
     <Property Name="Header" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="NoteID" Type="Int32" />
     <Property Name="Planned" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Note" Relationship="Self.FK__Tasks__NoteID__2D27B809" FromRole="Tasks" ToRole="Notes" />
-    <NavigationProperty Name="Project" Relationship="Self.FK__Tasks__ProjectID__2B3F6F97" FromRole="Tasks" ToRole="Projects" />
+    <NavigationProperty Name="Notes" Relationship="Self.FK__Notes__TaskID__2D27B809" FromRole="Tasks" ToRole="Notes" />
+    <NavigationProperty Name="Project" Relationship="Self.FK__Tasks__ProjectID__29572725" FromRole="Tasks" ToRole="Projects" />
     <NavigationProperty Name="Tags" Relationship="Self.FK__Tags__TaskID__300424B4" FromRole="Tasks" ToRole="Tags" />
   </EntityType>
   <EntityType Name="User">
@@ -54,15 +51,15 @@
     <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Projects" Relationship="Self.FK__Projects__UserID__267ABA7A" FromRole="Users" ToRole="Projects" />
   </EntityType>
-  <Association Name="FK__Tasks__NoteID__2D27B809">
-    <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
-    <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
+  <Association Name="FK__Notes__TaskID__2D27B809">
+    <End Role="Tasks" Type="Self.Task" Multiplicity="0..1" />
+    <End Role="Notes" Type="Self.Note" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Notes">
-        <PropertyRef Name="NoteID" />
+      <Principal Role="Tasks">
+        <PropertyRef Name="TaskID" />
       </Principal>
-      <Dependent Role="Tasks">
-        <PropertyRef Name="NoteID" />
+      <Dependent Role="Notes">
+        <PropertyRef Name="TaskID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -78,19 +75,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Tags__ProjectID__30F848ED">
-    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
-    <End Role="Tags" Type="Self.Tag" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Projects">
-        <PropertyRef Name="ProjectID" />
-      </Principal>
-      <Dependent Role="Tags">
-        <PropertyRef Name="ProjectID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Tasks__ProjectID__2B3F6F97">
+  <Association Name="FK__Tasks__ProjectID__29572725">
     <End Role="Projects" Type="Self.Project" Multiplicity="1" />
     <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
     <ReferentialConstraint>
@@ -120,19 +105,15 @@
     <EntitySet Name="Tags" EntityType="Self.Tag" />
     <EntitySet Name="Tasks" EntityType="Self.Task" />
     <EntitySet Name="Users" EntityType="Self.User" />
-    <AssociationSet Name="FK__Tasks__NoteID__2D27B809" Association="Self.FK__Tasks__NoteID__2D27B809">
-      <End Role="Notes" EntitySet="Notes" />
+    <AssociationSet Name="FK__Notes__TaskID__2D27B809" Association="Self.FK__Notes__TaskID__2D27B809">
       <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="Notes" EntitySet="Notes" />
     </AssociationSet>
     <AssociationSet Name="FK__Projects__UserID__267ABA7A" Association="Self.FK__Projects__UserID__267ABA7A">
       <End Role="Users" EntitySet="Users" />
       <End Role="Projects" EntitySet="Projects" />
     </AssociationSet>
-    <AssociationSet Name="FK__Tags__ProjectID__30F848ED" Association="Self.FK__Tags__ProjectID__30F848ED">
-      <End Role="Projects" EntitySet="Projects" />
-      <End Role="Tags" EntitySet="Tags" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Tasks__ProjectID__2B3F6F97" Association="Self.FK__Tasks__ProjectID__2B3F6F97">
+    <AssociationSet Name="FK__Tasks__ProjectID__29572725" Association="Self.FK__Tasks__ProjectID__29572725">
       <End Role="Projects" EntitySet="Projects" />
       <End Role="Tasks" EntitySet="Tasks" />
     </AssociationSet>

@@ -24,6 +24,7 @@ namespace Unify_Tasks.DialogWindows
     {
         static MainWindow w1 = (MainWindow)Application.Current.MainWindow;
         string currPath = Environment.CurrentDirectory;
+        int currNote = 0;
 
 
         public NoteEditor()
@@ -41,21 +42,19 @@ namespace Unify_Tasks.DialogWindows
             win.MaxHeight = 450;
 
             //Loading prev file
-            using (var context = new Unify_TasksEntities())
+            try
             {
-                Models.Task thisTask = null;
-                Models.Note thisNote = null;
-                thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
-
-                if(thisTask != null)
+                using (var context = new Unify_TasksEntities())
                 {
-                    thisNote = context.Notes.Where(n => n.TaskID == thisTask.TaskID).FirstOrDefault();
-                    
-                    if(thisNote != null)
+                    Models.Note lastNote = null;
+                    lastNote = context.Notes.Where(n => n.TaskID == w1.currTask).FirstOrDefault();
+
+                    if(lastNote != null)
                     {
-                        if (File.Exists(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                        currNote = lastNote.NoteID;
+                        if (File.Exists(currPath + "/Notes/Note" + currNote + ".rtf"))
                         {
-                            using (FileStream fs = File.OpenRead(currPath + "/Notes/Note" + w1.currTask + ".rtf"))
+                            using (FileStream fs = File.OpenRead(currPath + "/Notes/Note" + currNote + ".rtf"))
                             {
                                 TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
 
@@ -65,7 +64,15 @@ namespace Unify_Tasks.DialogWindows
                     }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occurred while trying to open this note.\r\n" +
+                                        "The application will сlose.\r\n" +
+                                        "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
+                                        "please, contact the program developer");
+            }
         }
+
 
         private void ChangeSelectedText(DependencyProperty d, object value)
         {
@@ -132,7 +139,52 @@ namespace Unify_Tasks.DialogWindows
 
         private void Save_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            using (var context = new Unify_TasksEntities())
+            try
+            {
+                using (var context = new Unify_TasksEntities())
+                {
+                    if (currNote == 0)
+                    {
+                        Models.Note lastNote = null;
+                        lastNote = context.Notes.LastOrDefault();
+
+                        if(lastNote != null)
+                        {
+                            context.Notes.Local.Add(new Note()
+                            {
+                                Notepath = currPath + "/Notes/Note" + currNote + 1 + ".rtf",
+                            });
+                            context.SaveChanges();
+
+                            using (FileStream fs = File.Create(currPath + "/Notes/Note" + currNote + 1 + ".rtf"))
+                            {
+                                TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
+                                range1.Save(fs, DataFormats.Rtf);
+                                this.Close();
+                            }
+                        }
+                        
+                    }
+                    else if (currNote != 0)
+                    {
+                        using (FileStream fs = File.Create(currPath + "/Notes/Note" + currNote + ".rtf"))
+                        {
+                            TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
+                            range1.Save(fs, DataFormats.Rtf);
+                            this.Close();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occurred while trying to save this note.\r\n" +
+                                        "The application will сlose.\r\n" +
+                                        "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
+                                        "please, contact the program developer");
+            }
+
+            /*using (var context = new Unify_TasksEntities())
             {
                 Models.Task thisTask = null;
                 Models.Note thisNote = null;
@@ -142,6 +194,8 @@ namespace Unify_Tasks.DialogWindows
                 {
                     if(thisNote == null)
                     {
+                        Models.Note lastNote = null;
+                        lastNote = context.Notes.LastOrDefault();
                         int currNote = thisNote.NoteID;
                         context.Notes.Local.Add(new Note()
                         {
@@ -176,7 +230,7 @@ namespace Unify_Tasks.DialogWindows
                         }
                     }
                 }
-            }
+            }*/
         }
     }
 }

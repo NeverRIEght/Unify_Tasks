@@ -84,7 +84,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to login.\r\n" +
-                                        "The application will сlose.\r\n" +
+                                        
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }

@@ -83,7 +83,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to update projects list.\r\n" +
-                                        "The application will сlose.\r\n" +
+                                        
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -213,7 +213,7 @@ namespace Unify_Tasks.Pages
                                 task1.OpenNote.MouseUp += (object sender, MouseButtonEventArgs e) =>
                                 {
                                     NoteEditor ed1 = new NoteEditor();
-                                    ed1.ShowDialog();
+                                    ed1.Show();
                                 };
 
 
@@ -227,7 +227,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to update task list.\r\n" +
-                                        "The application will сlose.\r\n" +
+                                        
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -251,7 +251,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to create new project.\r\n" +
-                                        "The application will сlose.\r\n" +
+                                        
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -277,7 +277,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to rename this project.\r\n" +
-                                        "The application will сlose.\r\n" +
+                                        
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -346,7 +346,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to delete this project.\r\n" +
-                                        "The application will сlose.\r\n" +
+                                        
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -375,7 +375,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to create new task.\r\n" +
-                                        "The application will сlose.\r\n" +
+                                        
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -402,6 +402,18 @@ namespace Unify_Tasks.Pages
                             {
                                 context.Notes.Remove(delNote);
                             }
+
+
+                            var delTags = context.Tags.Where(t => t.TaskID == toDeleteID);
+
+                            if(delTags != null)
+                            {
+                                foreach(var everyTag in delTags)
+                                {
+                                    context.Tags.Remove(everyTag);
+                                }
+                            }
+
                             context.Tasks.Remove(toDelete);
                             context.SaveChanges();
                             UpdateTasks();
@@ -412,7 +424,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to delete this task.\r\n" +
-                                        "The application will сlose.\r\n" +
+                                        
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }

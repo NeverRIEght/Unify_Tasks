@@ -46,28 +46,29 @@ namespace Unify_Tasks.DialogWindows
             {
                 using (var context = new Unify_TasksEntities())
                 {
-                    Models.Note lastNote = null;
-                    lastNote = context.Notes.Where(n => n.TaskID == w1.currTask).FirstOrDefault();
+                    Models.Note currentNote = null;
+                    currentNote = context.Notes.Where(n => n.TaskID == w1.currTask).FirstOrDefault();
 
-                    if(lastNote != null)
+                    if(currentNote != null)
                     {
-                        currNote = lastNote.NoteID;
-                        if (File.Exists(currPath + "/Notes/Note" + currNote + ".rtf"))
-                        {
-                            using (FileStream fs = File.OpenRead(currPath + "/Notes/Note" + currNote + ".rtf"))
-                            {
-                                TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
+                        currNote = currentNote.NoteID;
 
-                                range1.Load(fs, DataFormats.Rtf);
-                            }
+                        using (FileStream fs = File.OpenRead(currPath + "/Notes/Note" + currNote + ".rtf"))
+                        {
+                            TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
+                            range1.Load(fs, DataFormats.Rtf);
                         }
+                    }
+                    else if(currentNote == null)
+                    {
+                        currNote = 0;
                     }
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to open this note.\r\n" +
-                                        "The application will сlose.\r\n" +
+                                        
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -143,35 +144,32 @@ namespace Unify_Tasks.DialogWindows
             {
                 using (var context = new Unify_TasksEntities())
                 {
-                    if (currNote == 0)
-                    {
-                        Models.Note lastNote = null;
-                        lastNote = context.Notes.LastOrDefault();
-
-                        if(lastNote != null)
-                        {
-                            context.Notes.Local.Add(new Note()
-                            {
-                                Notepath = currPath + "/Notes/Note" + currNote + 1 + ".rtf",
-                            });
-                            context.SaveChanges();
-
-                            using (FileStream fs = File.Create(currPath + "/Notes/Note" + currNote + 1 + ".rtf"))
-                            {
-                                TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
-                                range1.Save(fs, DataFormats.Rtf);
-                                this.Close();
-                            }
-                        }
-                        
-                    }
-                    else if (currNote != 0)
+                    if(currNote != 0)
                     {
                         using (FileStream fs = File.Create(currPath + "/Notes/Note" + currNote + ".rtf"))
                         {
                             TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
                             range1.Save(fs, DataFormats.Rtf);
                             this.Close();
+                            
+                        }
+                    }
+                    if(currNote == 0)
+                    {
+                        currNote = Calculate_LastNote() + 1;
+                        context.Notes.Local.Add(new Note()
+                        {
+                            Notepath = currPath + "/Notes/Note" + currNote + ".rtf",
+                            TaskID = w1.currTask,
+                        });
+                        context.SaveChanges();
+
+                        using (FileStream fs = File.Create(currPath + "/Notes/Note" + currNote + ".rtf"))
+                        {
+                            TextRange range1 = new TextRange(NoteText.Document.ContentStart, NoteText.Document.ContentEnd);
+                            range1.Save(fs, DataFormats.Rtf);
+                            this.Close();
+
                         }
                     }
                 }
@@ -179,7 +177,7 @@ namespace Unify_Tasks.DialogWindows
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to save this note.\r\n" +
-                                        "The application will сlose.\r\n" +
+                                        
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -231,6 +229,32 @@ namespace Unify_Tasks.DialogWindows
                     }
                 }
             }*/
+        }
+
+        private int Calculate_LastNote()
+        {
+            using (var context = new Unify_TasksEntities())
+            {
+                var Notes = context.Notes.Where(n => n.NoteID == n.NoteID);
+
+                if(Notes != null)
+                {
+                    int lastNote = 0;
+                    foreach (var everyNote in Notes)
+                    {
+                        if(lastNote < everyNote.NoteID)
+                        {
+                            lastNote = everyNote.NoteID;
+                        }
+                    }
+
+                    return lastNote;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }

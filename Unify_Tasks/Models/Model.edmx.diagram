@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8d435d0acb404804bd2ff4b2d2fca252" Name="Diagram1">
+      <Diagram DiagramId="7225535076ee4774ae0ff4f0e2acee40" Name="Diagram1">
         <EntityTypeShape EntityType="Unify_TasksModel.Note" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Unify_TasksModel.Project" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Unify_TasksModel.Tag" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Unify_TasksModel.Task" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="Unify_TasksModel.User" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
-        <AssociationConnector Association="Unify_TasksModel.FK__Notes__TaskID__2D27B809" ManuallyRouted="false" />
-        <AssociationConnector Association="Unify_TasksModel.FK__Projects__UserID__267ABA7A" ManuallyRouted="false" />
-        <AssociationConnector Association="Unify_TasksModel.FK__Tasks__ProjectID__29572725" ManuallyRouted="false" />
-        <AssociationConnector Association="Unify_TasksModel.FK__Tags__TaskID__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="Unify_TasksModel.FK__Notes__TaskID__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="Unify_TasksModel.FK__Projects__UserID__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="Unify_TasksModel.FK__Tasks__ProjectID__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="Unify_TasksModel.FK__Tags__TaskID__32E0915F" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

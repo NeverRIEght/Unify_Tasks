@@ -50,7 +50,7 @@ namespace Unify_Tasks.Pages
                     {
                         var currProjects = from p in context.Projects
                                            where p.UserID == w1.currUser
-                                           orderby p.ProjectID
+                                           orderby p.ProjectID descending
                                            select p;
                         if (currProjects != null)
                         {
@@ -100,7 +100,7 @@ namespace Unify_Tasks.Pages
                     {
                         var currTasks = from p in context1.Tasks
                                         where p.ProjectID == w1.currProject
-                                        orderby p.TaskID
+                                        orderby p.TaskID descending
                                         select p;
 
                         if (currTasks != null)
@@ -111,6 +111,7 @@ namespace Unify_Tasks.Pages
                                 task1.TaskHeader.Text = everyTask.Header;
                                 task1.TasksID = (int)everyTask.TaskID;
                                 task1.Margin = new Thickness(5, 5, 0, 0);
+
                                 if (everyTask.Status == 1)
                                 {
                                     task1.IsReady.IsChecked = true;

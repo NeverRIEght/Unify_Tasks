@@ -73,10 +73,10 @@
                     <ComboBoxItem IsSelected="True">
                         <TextBlock>
                             <Rectangle
-                                Fill="Black"
+                                Fill="White"
                                 Height="10"
                                 Width="10" />
-                            Black
+                            White
                         </TextBlock>
                     </ComboBoxItem>
                     <ComboBoxItem>
@@ -164,7 +164,7 @@
         <RichTextBox
             Grid.Row="1"
             x:Name="NoteText"
-            Foreground="Gray"
+            Foreground="White"
             FontFamily="/Fonts/#Gilroy"
             FontWeight="Normal"
             FontSize="14"

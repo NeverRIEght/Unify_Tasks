@@ -62,6 +62,13 @@ T:\150G\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\o
 T:\150G\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.csproj.CopyComplete
 T:\150G\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.exe
 T:\150G\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.pdb
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\Unify_Tasks.exe.config
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\Unify_Tasks.exe
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\Unify_Tasks.pdb
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\EntityFramework.dll
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\EntityFramework.SqlServer.dll
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\EntityFramework.xml
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\EntityFramework.SqlServer.xml
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.csproj.AssemblyReference.cache
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.csproj.SuggestedBindingRedirects.cache
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Resources\ColorsDictionary.baml
@@ -81,13 +88,6 @@ D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\De
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks_Content.g.cs
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks_MarkupCompile.cache
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks_MarkupCompile.lref
-D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\Unify_Tasks.exe.config
-D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\Unify_Tasks.exe
-D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\Unify_Tasks.pdb
-D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\EntityFramework.dll
-D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\EntityFramework.SqlServer.dll
-D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\EntityFramework.xml
-D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\bin\Debug\EntityFramework.SqlServer.xml
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\App.baml
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\DateWindow.baml
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\NoteEditor.baml

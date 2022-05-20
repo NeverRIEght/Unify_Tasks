@@ -241,7 +241,7 @@ namespace Unify_Tasks.Pages
                 {
                     context.Projects.Local.Add(new Project()
                     {
-                        ProjectHeader = "New Project",
+                        ProjectHeader = "Untitled Project",
                         UserID = w1.currUser,
                     });
                     context.SaveChanges();
@@ -364,12 +364,11 @@ namespace Unify_Tasks.Pages
                         {
                             ProjectID = w1.currProject,
                             Status = 0,
-                            Header = "New Task",
+                            Header = "Untitled Task",
                         });
                         context.SaveChanges();
                     }
                     UpdateTasks();
-                    MessageBox.Show("Task Created!");
                 }
             }
             catch (Exception)

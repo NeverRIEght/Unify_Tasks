@@ -16,9 +16,9 @@
         MouseLeave="Task_MouseLeave">
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.285*" MinHeight="20px"/>
-            <RowDefinition Height="0.42*" MinHeight="30px"/>
-            <RowDefinition Height="0.285*" MinHeight="20px"/>
+            <RowDefinition Height="0.2*" MinHeight="20px"/>
+            <RowDefinition Height="0.6*" MinHeight="30px"/>
+            <RowDefinition Height="0.2*" MinHeight="20px"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.001*" MinWidth="8px"/>
@@ -96,7 +96,7 @@
             Visibility="Hidden"
             Source="/Images/TagControl.png"
             VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
+            HorizontalAlignment="Center"
             RenderOptions.BitmapScalingMode="HighQuality"
             MouseEnter="TagControl_MouseEnter"
             MouseLeave="TagControl_MouseLeave">
@@ -109,7 +109,7 @@
             Source="/Images/TagControlBrown.png"
             Opacity="0"
             VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
+            HorizontalAlignment="Center"
             RenderOptions.BitmapScalingMode="HighQuality"
             MouseEnter="TagControl_MouseEnter"
             MouseLeave="TagControl_MouseLeave"
@@ -123,7 +123,7 @@
             Source="/Images/Watch.png"
             Visibility="Hidden"
             VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
+            HorizontalAlignment="Center"
             RenderOptions.BitmapScalingMode="HighQuality"
             MouseEnter="Watch_MouseEnter"
             MouseLeave="Watch_MouseLeave">
@@ -136,7 +136,7 @@
             Opacity="0"
             Source="/Images/WatchBlue.png"
             VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
+            HorizontalAlignment="Center"
             RenderOptions.BitmapScalingMode="HighQuality"
             MouseEnter="Watch_MouseEnter"
             MouseLeave="Watch_MouseLeave">
@@ -148,7 +148,7 @@
             Grid.Column="13"
             Source="/Images/Trashcan.png"
             VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
+            HorizontalAlignment="Center"
             RenderOptions.BitmapScalingMode="HighQuality"
             MouseEnter="Trash_MouseEnter"
             MouseLeave="Trash_MouseLeave">
@@ -160,7 +160,7 @@
             Grid.Row="1"
             Grid.Column="13"
             Source="/Images/TrashcanRed.png"
-            HorizontalAlignment="Stretch"
+            HorizontalAlignment="Center"
             VerticalAlignment="Stretch"
             RenderOptions.BitmapScalingMode="HighQuality"
             MouseEnter="Trash_MouseEnter"

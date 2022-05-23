@@ -67,8 +67,10 @@ namespace Unify_Tasks.Pages
 
                 else
                 {
-                    LoginBox.Foreground = Brushes.DarkRed;
-                    PasswordBox.Foreground = Brushes.DarkRed;
+                    LoginBox.Background = Brushes.DarkRed;
+                    LoginBorder.Background = Brushes.DarkRed;
+                    PasswordBox.Background = Brushes.DarkRed;
+                    PasswordBorder.Background = Brushes.DarkRed;
 
                     var tool1 = new ToolTip();
                     tool1.Background = (Brush)Application.Current.FindResource("BackI");
@@ -94,6 +96,22 @@ namespace Unify_Tasks.Pages
         private void NewAcc_MouseUp(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new Register());
+        }
+
+        private void LoginBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LoginBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            LoginBox.Background = Brushes.Transparent;
+            PasswordBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            PasswordBox.Background = Brushes.Transparent;
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            LoginBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            LoginBox.Background = Brushes.Transparent;
+            PasswordBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            PasswordBox.Background = Brushes.Transparent;
         }
     }
 }

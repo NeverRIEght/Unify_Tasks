@@ -123,7 +123,8 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     FontWeight="Medium"
-                    FontSize="18px">
+                    FontSize="18px"
+                    TextChanged="LoginBox_TextChanged">
                 </TextBox>
                 
             </Border>
@@ -154,7 +155,8 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
                     FontWeight="Medium"
-                    FontSize="18px">
+                    FontSize="18px"
+                    PasswordChanged="PasswordBox_PasswordChanged">
                 </PasswordBox>
                 
             </Border>

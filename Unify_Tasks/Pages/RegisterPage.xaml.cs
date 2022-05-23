@@ -167,5 +167,35 @@ namespace Unify_Tasks.Pages
         {
             NavigationService.Navigate(new Login());
         }
+
+        private void NickBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            NickBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            NickBox.Background = Brushes.Transparent;
+            PasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            PasswordBox.Background = Brushes.Transparent;
+            RepeatPasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            RepeatPasswordBox.Background = Brushes.Transparent;
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            NickBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            NickBox.Background = Brushes.Transparent;
+            PasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            PasswordBox.Background = Brushes.Transparent;
+            RepeatPasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            RepeatPasswordBox.Background = Brushes.Transparent;
+        }
+
+        private void RepeatPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            NickBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            NickBox.Background = Brushes.Transparent;
+            PasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            PasswordBox.Background = Brushes.Transparent;
+            RepeatPasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            RepeatPasswordBox.Background = Brushes.Transparent;
+        }
     }
 }

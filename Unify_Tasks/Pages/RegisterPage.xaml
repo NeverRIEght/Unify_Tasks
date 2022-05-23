@@ -119,7 +119,8 @@
                 <TextBox
                     x:Name="NickBox"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center"
+                    TextChanged="NickBox_TextChanged">
                 </TextBox>
             </Border>
             <!--Nickname input-->
@@ -146,7 +147,8 @@
                 <PasswordBox
                     x:Name="PasswordBox"
                     HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center"
+                    PasswordChanged="PasswordBox_PasswordChanged">
                 </PasswordBox>
             </Border>
             <!--Password input-->
@@ -173,7 +175,8 @@
                 <PasswordBox
                     x:Name="RepeatPasswordBox"
                     HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center"
+                    PasswordChanged="RepeatPasswordBox_PasswordChanged">
                 </PasswordBox>
             </Border>
             <!--Repeat input-->

@@ -40,8 +40,8 @@
       <PropertyRef Name="UserID" />
     </Key>
     <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="login" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="password" Type="varchar(max)" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="24" Nullable="false" />
   </EntityType>
   <Association Name="FK__Notes__TaskID__2F10007B">
     <End Role="Tasks" Type="Self.Tasks" Multiplicity="0..1" />

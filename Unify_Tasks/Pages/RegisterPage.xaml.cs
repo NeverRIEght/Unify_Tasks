@@ -51,115 +51,150 @@ namespace Unify_Tasks.Pages
             string Password = PasswordBox.Password.Trim();
             string RPassword = RepeatPasswordBox.Password.Trim();
 
-            if (Login.Length < 5)
+            int CanRegister = 1;
+
+            try
             {
-                var tool1 = new ToolTip();
-                tool1.Background = (Brush)Application.Current.FindResource("BackI");
-                tool1.Content = "Nickname length must be more than 5 characters";
-                NickBox.ToolTip = tool1;
-
-                NickBox.Background = Brushes.DarkRed;
-                NickBoxBorder.Background = Brushes.DarkRed;
-            }
-            else if (Login.Length > 20)
-            {
-                var tool1 = new ToolTip();
-                tool1.Background = (Brush)Application.Current.FindResource("BackI");
-                tool1.Content = "Nickname length must be less than 20 characters";
-                NickBox.ToolTip = tool1;
-
-                NickBox.Background = Brushes.DarkRed;
-                NickBoxBorder.Background = Brushes.DarkRed;
-            }
-            else if (!Regex.Match(Login, "^[A-Za-z0-9]+$").Success)
-            {
-                var tool1 = new ToolTip();
-                tool1.Background = (Brush)Application.Current.FindResource("BackI");
-                tool1.Content = "Login must contains only english letters and numbers";
-                NickBox.ToolTip = tool1;
-
-                NickBox.Background = Brushes.DarkRed;
-                NickBoxBorder.Background = Brushes.DarkRed;
-            }
-            else if (Password.Length > 20)
-            {
-                var tool1 = new ToolTip();
-                tool1.Background = (Brush)Application.Current.FindResource("BackI");
-                tool1.Content = "Password length must be less than 20 characters";
-                PasswordBox.ToolTip = tool1;
-                PasswordBox.Background = Brushes.DarkRed;
-                PasswordBoxBorder.Background = Brushes.DarkRed;
-
-            }
-            else if (Password.Length < 5)
-            {
-                var tool1 = new ToolTip();
-                tool1.Background = (Brush)Application.Current.FindResource("BackI");
-                tool1.Content = "Password length must be more than 5 characters";
-                PasswordBox.ToolTip = tool1;
-
-                PasswordBox.Background = Brushes.DarkRed;
-                PasswordBoxBorder.Background = Brushes.DarkRed;
-            }
-            else if (Regex.Match(Password, "^[A-Za-z]+$").Success)
-            {
-                var tool1 = new ToolTip();
-                tool1.Background = (Brush)Application.Current.FindResource("BackI");
-                tool1.Content = "Password must contains numbers too";
-                PasswordBox.ToolTip = tool1;
-
-                PasswordBox.Background = Brushes.DarkRed;
-                PasswordBoxBorder.Background = Brushes.DarkRed;
-            }
-            else if (Regex.Match(Password, "^[0-9]+$").Success)
-            {
-                var tool1 = new ToolTip();
-                tool1.Background = (Brush)Application.Current.FindResource("BackI");
-                tool1.Content = "Password must contains letters too";
-                PasswordBox.ToolTip = tool1;
-
-                PasswordBox.Background = Brushes.DarkRed;
-                PasswordBoxBorder.Background = Brushes.DarkRed;
-            }
-            else if (Password != RPassword)
-            {
-                var tool1 = new ToolTip();
-                tool1.Background = (Brush)Application.Current.FindResource("BackI");
-                tool1.Content = "Passwords do not match";
-                RepeatPasswordBox.ToolTip = tool1;
-
-                RepeatPasswordBox.Background = Brushes.DarkRed;
-                RepeatPasswordBoxBorder.Background = Brushes.DarkRed;
-            }
-
-
-            else
-            {
-                try
+                using (var context = new Unify_TasksEntities())
                 {
-                    using (var context = new Unify_TasksEntities())
+                    var UserList = context.Users.Where(u => u.UserID == u.UserID).ToList();
+
+                    if(UserList != null)
                     {
-                        context.Users.Local.Add(new User()
+                        foreach(var everyUser in UserList)
                         {
-                            login = Login,
-                            password = Password,
-                        });
-                        context.SaveChanges();
+                            if (everyUser.login == Login)
+                            {
+                                CanRegister--;
+                            }
+                        }
                     }
-                    
                 }
-                catch (Exception)
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occurred while trying to search for existing users.\r\n" +
+                                    "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
+                                    "please, contact the program developer");
+            }
+
+
+            if(CanRegister == 1)
+            {
+                if (Login.Length < 5)
                 {
+                    var tool1 = new ToolTip();
+                    tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                    tool1.Content = "Nickname must contain 5 characters or more";
+                    NickBox.ToolTip = tool1;
+
+                    NickBox.Background = Brushes.DarkRed;
+                    NickBoxBorder.Background = Brushes.DarkRed;
+                }
+                else if (Login.Length > 15)
+                {
+                    var tool1 = new ToolTip();
+                    tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                    tool1.Content = "Nickname must contain 15 characters or less";
+                    NickBox.ToolTip = tool1;
+
+                    NickBox.Background = Brushes.DarkRed;
+                    NickBoxBorder.Background = Brushes.DarkRed;
+                }
+                else if (!Regex.Match(Login, "^[A-Za-z0-9]+$").Success)
+                {
+                    var tool1 = new ToolTip();
+                    tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                    tool1.Content = "Login must contains only english letters, numbers or symbols";
+                    NickBox.ToolTip = tool1;
+
+                    NickBox.Background = Brushes.DarkRed;
+                    NickBoxBorder.Background = Brushes.DarkRed;
+                }
+
+
+
+                else if (Password.Length > 24)
+                {
+                    var tool1 = new ToolTip();
+                    tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                    tool1.Content = "Password must contain 24 characters or less";
+                    PasswordBox.ToolTip = tool1;
+                    PasswordBox.Background = Brushes.DarkRed;
+                    PasswordBoxBorder.Background = Brushes.DarkRed;
+
+                }
+                else if (Password.Length < 5)
+                {
+                    var tool1 = new ToolTip();
+                    tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                    tool1.Content = "Password must contain 5 characters or more";
+                    PasswordBox.ToolTip = tool1;
+
+                    PasswordBox.Background = Brushes.DarkRed;
+                    PasswordBoxBorder.Background = Brushes.DarkRed;
+                }
+                else if (!Regex.Match(Password, "^[A-Za-z0-9]+$").Success)
+                {
+                    var tool1 = new ToolTip();
+                    tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                    tool1.Content = "Password must contains only english letters, numbers or symbols";
+                    PasswordBox.ToolTip = tool1;
+
+                    PasswordBox.Background = Brushes.DarkRed;
+                    PasswordBoxBorder.Background = Brushes.DarkRed;
+                }
+
+
+
+                else if (Password != RPassword)
+                {
+                    var tool1 = new ToolTip();
+                    tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                    tool1.Content = "Passwords do not match";
+                    RepeatPasswordBox.ToolTip = tool1;
+
+                    RepeatPasswordBox.Background = Brushes.DarkRed;
+                    RepeatPasswordBoxBorder.Background = Brushes.DarkRed;
+                }
+
+
+
+                else
+                {
+                    try
+                    {
+                        using (var context = new Unify_TasksEntities())
+                        {
+                            context.Users.Local.Add(new User()
+                            {
+                                login = Login,
+                                password = Password,
+                            });
+                            context.SaveChanges();
+                        }
+
+                        MessageBox.Show("Register Success!");
+                        NavigationService.Navigate(new Login());
+
+                    }
+                    catch (Exception)
+                    {
                         MessageBox.Show("An error occurred while trying to register a new user.\r\n" +
-                                        
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
+                    }
                 }
-                finally
-                {
-                    MessageBox.Show("Register Success!");
-                    NavigationService.Navigate(new Login());
-                }
+            }
+            else
+            {
+                var tool1 = new ToolTip();
+                tool1.Background = (Brush)Application.Current.FindResource("BackI");
+                tool1.Content = "User with this nickname already exists, please choose another nickname";
+                NickBox.ToolTip = tool1;
+
+                NickBox.Background = Brushes.DarkRed;
+                NickBoxBorder.Background = Brushes.DarkRed;
             }
         }
 

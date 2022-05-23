@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7225535076ee4774ae0ff4f0e2acee40" Name="Diagram1">
+      <Diagram DiagramId="2ef9ce4f8a41428386d4b6f07551b281" Name="Diagram1">
         <EntityTypeShape EntityType="Unify_TasksModel.Note" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Unify_TasksModel.Project" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Unify_TasksModel.Tag" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />

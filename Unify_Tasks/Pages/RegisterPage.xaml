@@ -17,7 +17,7 @@
             <Setter Property="CaretBrush" Value="{DynamicResource MainI}" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="MaxLength" Value="24" />
+            <Setter Property="MaxLength" Value="15" />
             <Setter Property="MinWidth" Value="280px" />
             <Setter Property="Margin" Value="10, 0, 10, 0" />
             <Setter Property="FontWeight" Value="Medium" />

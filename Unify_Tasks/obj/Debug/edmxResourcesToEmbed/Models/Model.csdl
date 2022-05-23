@@ -47,8 +47,8 @@
       <PropertyRef Name="UserID" />
     </Key>
     <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Projects" Relationship="Self.FK__Projects__UserID__276EDEB3" FromRole="Users" ToRole="Projects" />
   </EntityType>
   <Association Name="FK__Notes__TaskID__2F10007B">

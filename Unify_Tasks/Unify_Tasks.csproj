@@ -241,6 +241,9 @@
     <Resource Include="Images\NewTaskGreen.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\OpenNoteWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

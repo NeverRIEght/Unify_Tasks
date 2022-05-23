@@ -23,7 +23,8 @@ namespace Unify_Tasks.Models
     
         public int TaskID { get; set; }
         public int ProjectID { get; set; }
-        public Nullable<int> Status { get; set; }
+        public string Status { get; set; }
+        public Nullable<int> Priority { get; set; }
         public string Header { get; set; }
         public Nullable<System.DateTime> Planned { get; set; }
     

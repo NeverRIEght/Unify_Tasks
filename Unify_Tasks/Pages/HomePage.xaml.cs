@@ -110,17 +110,7 @@ namespace Unify_Tasks.Pages
                             {
                                 TaskListElement task1 = new TaskListElement();
                                 task1.TaskHeader.Text = everyTask.Header;
-                                task1.TasksID = (int)everyTask.TaskID;
                                 task1.Margin = new Thickness(5, 5, 0, 0);
-
-                                if (everyTask.Status == 1)
-                                {
-                                    task1.IsReady.IsChecked = true;
-                                }
-                                else
-                                {
-                                    task1.IsReady.IsChecked = false;
-                                }
 
                                 task1.MouseEnter += (object s, MouseEventArgs ev) =>
                                 {

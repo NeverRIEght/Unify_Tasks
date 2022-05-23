@@ -31,82 +31,11 @@ namespace Unify_Tasks.UserControls
             DataContext = this;
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void Task_Loaded(object sender, RoutedEventArgs e)
         {
 
         }
-
-        private void Trash_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Trash.Opacity = 0;
-            TrashRed.Opacity = 1;
-            this.Cursor = Cursors.Hand;
-        }
-
-        private void Trash_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Trash.Opacity = 1;
-            TrashRed.Opacity = 0;
-            this.Cursor = Cursors.Arrow;
-        }
-
-        
-
-        private void Watch_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Watch.Opacity = 0;
-            WatchBlue.Opacity = 1;
-            this.Cursor = Cursors.Hand;
-        }
-        private void Watch_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Watch.Opacity = 1;
-            WatchBlue.Opacity = 0;
-            this.Cursor = Cursors.Arrow;
-        }
-
-        private void TagControl_MouseEnter(object sender, MouseEventArgs e)
-        {
-            TagControl.Opacity = 0;
-            TagControlBrown.Opacity = 1;
-            this.Cursor = Cursors.Hand;
-        }
-        private void TagControl_MouseLeave(object sender, MouseEventArgs e)
-        {
-            TagControl.Opacity = 1;
-            TagControlBrown.Opacity = 0;
-            this.Cursor = Cursors.Arrow;
-        }
-
-        private void TagControlBrown_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            TagControlWindow win1 = new TagControlWindow();
-            win1.Show();
-        }
-
-        private void Task_MouseEnter(object sender, MouseEventArgs e)
-        {
-            OpenNote.Visibility = Visibility.Visible;
-            TagControl.Visibility = Visibility.Visible;
-            Watch.Visibility = Visibility.Visible;
-        }
-        private void Task_MouseLeave(object sender, MouseEventArgs e)
-        {
-            OpenNote.Visibility = Visibility.Hidden;
-            TagControl.Visibility = Visibility.Hidden;
-            Watch.Visibility = Visibility.Hidden;
-        }
-
-        private void OpenNote_MouseEnter(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Hand;
-        }
-        private void OpenNote_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.Cursor = Cursors.Arrow;
-        }
-
-        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void Task_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             MainWindow win = (MainWindow)Window.GetWindow(this);
             if (win.Width <= 1300)
@@ -125,19 +54,98 @@ namespace Unify_Tasks.UserControls
             }
         }
 
-        public static readonly DependencyProperty TasksIDProperty =
-        DependencyProperty.Register(
-        name: "TasksID",
-        propertyType: typeof(int),
-        ownerType: typeof(TaskListElement),
-        typeMetadata: new FrameworkPropertyMetadata(
-        defaultValue: 1,
-        flags: FrameworkPropertyMetadataOptions.AffectsMeasure));
-
-        public int TasksID
+        private void Task_MouseEnter(object sender, MouseEventArgs e)
         {
-            get => (int)GetValue(TasksIDProperty);
-            set => SetValue(TasksIDProperty, value);
+            OpenNote.Visibility = Visibility.Visible;
+            Priority.BorderBrush = (Brush)Application.Current.FindResource("MainI");
+
+            using (var context = new Unify_TasksEntities())
+            {
+                var thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
+
+                if(thisTask != null)
+                {
+                    PriorityText.Text = Convert.ToString(thisTask.Priority);
+
+                    switch (thisTask.Priority)
+                    {
+                        case 0:
+                            PriorityText.Text = "";
+                            Priority.Background = Brushes.Transparent;
+                            Priority.BorderBrush = Brushes.Transparent;
+                            break;
+                        case 1:
+                            PriorityText.Text = "1";
+                            Priority.Background = (Brush)Application.Current.FindResource("CustomRed");
+                            Priority.BorderBrush = (Brush)Application.Current.FindResource("MainI");
+                            break;
+                        case 2:
+                            PriorityText.Text = "2";
+                            Priority.Background = (Brush)Application.Current.FindResource("CustomYellow");
+                            Priority.BorderBrush = (Brush)Application.Current.FindResource("MainI");
+                            break;
+                        case 3:
+                            PriorityText.Text = "3";
+                            Priority.Background = (Brush)Application.Current.FindResource("CustomGreen");
+                            Priority.BorderBrush = (Brush)Application.Current.FindResource("MainI");
+                            break;
+                        case 4:
+                            PriorityText.Text = "4";
+                            Priority.Background = (Brush)Application.Current.FindResource("CustomBlue");
+                            Priority.BorderBrush = (Brush)Application.Current.FindResource("MainI");
+                            break;
+                    }
+                }
+            }
         }
+        private void Task_MouseLeave(object sender, MouseEventArgs e)
+        {
+            OpenNote.Visibility = Visibility.Hidden;
+            Priority.BorderBrush = Brushes.Transparent;
+            Priority.Background = Brushes.Transparent;
+            PriorityText.Text = "";
+        }
+
+        private void TaskHeader_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            using (var context = new Unify_TasksEntities())
+            {
+                var thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
+
+                if (thisTask != null)
+                {
+                    thisTask.Header = TaskHeader.Text;
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        private void OpenNote_MouseEnter(object sender, MouseEventArgs e)
+        {
+            OpenNote.Visibility = Visibility.Hidden;
+            OpenNoteWhite.Visibility = Visibility.Visible;
+            this.Cursor = Cursors.Hand;
+        }
+        private void OpenNote_MouseLeave(object sender, MouseEventArgs e)
+        {
+            OpenNote.Visibility = Visibility.Visible;
+            OpenNoteWhite.Visibility = Visibility.Hidden;
+            this.Cursor = Cursors.Arrow;
+        }
+
+        private void Trash_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Trash.Visibility = Visibility.Hidden;
+            TrashRed.Visibility = Visibility.Visible;
+            this.Cursor = Cursors.Hand;
+        }
+        private void Trash_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Trash.Visibility = Visibility.Visible;
+            TrashRed.Visibility = Visibility.Hidden;
+            this.Cursor = Cursors.Arrow;
+        }
+
+
     }
 }

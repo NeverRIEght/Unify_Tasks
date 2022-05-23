@@ -5,166 +5,111 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Unify_Tasks.UserControls"
              mc:Ignorable="d" 
+             x:Name="Task"
              d:DesignHeight="70"
              d:DesignWidth="1000"
-             Loaded="UserControl_Loaded"
-             SizeChanged="UserControl_SizeChanged">
+             Loaded="Task_Loaded"
+             SizeChanged="Task_SizeChanged"
+             MouseEnter="Task_MouseEnter"
+             MouseLeave="Task_MouseLeave">
     <Grid
         x:Name="TaskGrid"
         MinHeight="70px"
         MouseEnter="Task_MouseEnter"
         MouseLeave="Task_MouseLeave">
-        
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*" MinHeight="20px"/>
-            <RowDefinition Height="0.6*" MinHeight="30px"/>
-            <RowDefinition Height="0.2*" MinHeight="20px"/>
+            <RowDefinition Height="20px" MinHeight="20px"/>
+            <RowDefinition Height="30px" MinHeight="30px"/>
+            <RowDefinition Height="20px" MinHeight="20px"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.001*" MinWidth="8px"/>
-            <ColumnDefinition Width="0.025*" MinWidth="30px"/>
-            <ColumnDefinition Width="0.531*" MinWidth="480px"/>
-            <ColumnDefinition Width="0.095*" MinWidth="95px"/>
-            <ColumnDefinition Width="0.02*" />
-            <ColumnDefinition Width="0.085*" MaxWidth="0"/>
-            <ColumnDefinition Width="0.006*" />
-            <ColumnDefinition Width="0.085*" MaxWidth="0"/>
-            <ColumnDefinition Width="0.006*" />
-            <ColumnDefinition Width="0.03*" MinWidth="30px"/>
-            <ColumnDefinition Width="0.01*" MinWidth="8px" />
-            <ColumnDefinition Width="0.03*" MinWidth="30px" />
-            <ColumnDefinition Width="0.01*" MinWidth="8px" />
-            <ColumnDefinition Width="0.03*" MinWidth="30px" />
-            <ColumnDefinition Width="0.01*" MinWidth="8px"/>
+            <ColumnDefinition Width="15px" MinWidth="15px"/>
+            <ColumnDefinition Width="600px" MinWidth="600px"/>
+            <ColumnDefinition Width="175px" />
+            <ColumnDefinition Width="210px" />
         </Grid.ColumnDefinitions>
-
+        
         <Border
-            Grid.Row="0"
-            Grid.RowSpan="3"
-            Grid.Column="0"
+            Grid.RowSpan="20"
             Grid.ColumnSpan="20"
             CornerRadius="10"
-            Background="#3d4046">
-            
+            Background="{DynamicResource MediumI}">
         </Border>
-        
-        <CheckBox
-            x:Name="IsReady"
-            Grid.Row="1"
-            Grid.Column="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Background="#646a75">
-            <CheckBox.LayoutTransform>
-                <ScaleTransform ScaleX="2" ScaleY="2" />
-            </CheckBox.LayoutTransform>
-        </CheckBox>
-        
+
         <TextBox
             x:Name="TaskHeader"
             Grid.Row="1"
-            Grid.Column="2"
-            Foreground="{DynamicResource MainI}"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center"
-            Margin="10, 0, 10, 0"
-            Background="Transparent"
-            BorderThickness="0"
-            FontWeight="Medium"
-            FontSize="21"
-            MaxLength="30"
-            Text="Textnsjnvjndsnvnsdnvnsdnnvsknjisvsidnvinsinvns">
+            Grid.Column="1"
+            Margin="0, 0, 15, 0"
+            TextChanged="TaskHeader_TextChanged">
+            
         </TextBox>
 
-        <Image
-            x:Name="OpenNote"
-            Grid.Row="1"
-            Grid.Column="3"
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Stretch"
-            Visibility="Hidden"
-            Source="/Images/OpenNote.png"
-            RenderOptions.BitmapScalingMode="HighQuality"
-            MouseEnter="OpenNote_MouseEnter"
-            MouseLeave="OpenNote_MouseLeave">
-        </Image>
+        <WrapPanel
+            x:Name="TagsList">
+        </WrapPanel>
         
-        <Image
-            x:Name="TagControl"
+        <Grid
             Grid.Row="1"
-            Grid.Column="9"
-            Visibility="Hidden"
-            Source="/Images/TagControl.png"
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Center"
-            RenderOptions.BitmapScalingMode="HighQuality"
-            MouseEnter="TagControl_MouseEnter"
-            MouseLeave="TagControl_MouseLeave">
-        </Image>
+            Grid.Column="3">
 
-        <Image
-            x:Name="TagControlBrown"
-            Grid.Row="1"
-            Grid.Column="9"
-            Source="/Images/TagControlBrown.png"
-            Opacity="0"
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Center"
-            RenderOptions.BitmapScalingMode="HighQuality"
-            MouseEnter="TagControl_MouseEnter"
-            MouseLeave="TagControl_MouseLeave"
-            MouseUp="TagControlBrown_MouseUp">
-        </Image>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15px" />
+                <ColumnDefinition Width="90px" MinWidth="30px"/>
+                <ColumnDefinition Width="15px" />
+                <ColumnDefinition Width="30px" MinWidth="30px"/>
+                <ColumnDefinition Width="15px" />
+                <ColumnDefinition Width="30px" MinWidth="30px"/>
+                <ColumnDefinition Width="15px" />
+            </Grid.ColumnDefinitions>
 
-        <Image
-            x:Name="Watch"
-            Grid.Row="1"
-            Grid.Column="11"
-            Source="/Images/Watch.png"
-            Visibility="Hidden"
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Center"
-            RenderOptions.BitmapScalingMode="HighQuality"
-            MouseEnter="Watch_MouseEnter"
-            MouseLeave="Watch_MouseLeave">
-        </Image>
+            <ComboBox
+                Grid.Column="1"
+                Name="Status"
+                Background="Black"
+                BorderThickness="5">
 
-        <Image
-            x:Name="WatchBlue"
-            Grid.Row="1"
-            Grid.Column="11"
-            Opacity="0"
-            Source="/Images/WatchBlue.png"
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Center"
-            RenderOptions.BitmapScalingMode="HighQuality"
-            MouseEnter="Watch_MouseEnter"
-            MouseLeave="Watch_MouseLeave">
-        </Image>
+                <ComboBoxItem IsSelected="True">
+                    <TextBlock>
+                            Main font
+                    </TextBlock>
+                </ComboBoxItem>
 
-        <Image
-            x:Name="Trash"
-            Grid.Row="1"
-            Grid.Column="13"
-            Source="/Images/Trashcan.png"
-            VerticalAlignment="Stretch"
-            HorizontalAlignment="Center"
-            RenderOptions.BitmapScalingMode="HighQuality"
-            MouseEnter="Trash_MouseEnter"
-            MouseLeave="Trash_MouseLeave">
-        </Image>
+            </ComboBox>
 
-        <Image
-            x:Name="TrashRed"
-            Opacity="0"
-            Grid.Row="1"
-            Grid.Column="13"
-            Source="/Images/TrashcanRed.png"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Stretch"
-            RenderOptions.BitmapScalingMode="HighQuality"
-            MouseEnter="Trash_MouseEnter"
-            MouseLeave="Trash_MouseLeave">
-        </Image>
+            <Image
+                x:Name="OpenNote"
+                Grid.Column="3"
+                Source="/Images/OpenNote.png"
+                Visibility="Hidden">
+            </Image>
+
+            <Image
+                x:Name="OpenNoteWhite"
+                Grid.Column="3"
+                Source="/Images/OpenNoteWhite.png"
+                Visibility="Hidden">
+            </Image>
+
+            <Image
+                x:Name="Trash"
+                Grid.Column="5"
+                Source="/Images/Trashcan.png"
+                MouseEnter="Trash_MouseEnter"
+                MouseLeave="Trash_MouseLeave">
+            </Image>
+
+            <Image
+                x:Name="TrashRed"
+                Grid.Column="5"
+                Source="/Images/TrashcanRed.png"
+                MouseEnter="Trash_MouseEnter"
+                MouseLeave="Trash_MouseLeave"
+                Visibility="Hidden">
+            </Image>
+
+        </Grid>
+        
     </Grid>
 </UserControl>

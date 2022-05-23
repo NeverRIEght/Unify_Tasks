@@ -35,6 +35,7 @@
           <ScalarProperty Name="TaskID" ColumnName="TaskID" />
           <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
           <ScalarProperty Name="Header" ColumnName="Header" />
           <ScalarProperty Name="Planned" ColumnName="Planned" />
         </MappingFragment>

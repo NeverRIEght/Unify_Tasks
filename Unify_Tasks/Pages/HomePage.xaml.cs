@@ -17,6 +17,7 @@ using Unify_Tasks.UserControls;
 using Unify_Tasks.Models;
 using Unify_Tasks.DialogWindows;
 using Unify_Tasks;
+using System.IO;
 
 namespace Unify_Tasks.Pages
 {
@@ -312,6 +313,17 @@ namespace Unify_Tasks.Pages
                                     {
                                         foreach (Note everyNote in delNotes)
                                         {
+                                            try
+                                            {
+                                                File.Delete(w1.currPath + "/Notes/Note" + everyNote.NoteID + ".rtf");
+                                            }
+                                            catch (Exception)
+                                            {
+                                                MessageBox.Show("An error occurred while trying to delete this note rtf file.\r\n" +
+                                                                "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
+                                                                "please, contact the program developer");
+                                            }
+
                                             context.Notes.Remove(everyNote);
                                         }
                                     }
@@ -327,6 +339,7 @@ namespace Unify_Tasks.Pages
                                             context.Tags.Remove(everyTag);
                                         }
                                     }
+
                                     context.Tasks.Remove(everyTask);
                                 }
                             }
@@ -347,7 +360,6 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to delete this project.\r\n" +
-                                        
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -400,6 +412,17 @@ namespace Unify_Tasks.Pages
 
                             if (delNote != null)
                             {
+                                try
+                                {
+                                    File.Delete(w1.currPath + "/Notes/Note" + delNote.NoteID + ".rtf");
+                                }
+                                catch (Exception)
+                                {
+                                    MessageBox.Show("An error occurred while trying to delete this note rtf file.\r\n" +
+                                                    "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
+                                                    "please, contact the program developer");
+                                }
+
                                 context.Notes.Remove(delNote);
                             }
 

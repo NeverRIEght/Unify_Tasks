@@ -56,32 +56,35 @@ namespace Unify_Tasks.DialogWindows
                     {
                         TagElement tag1 = new TagElement();
                         tag1.TagText = everyTag.TagHeader;
+                        tag1.TagBackgroud.BorderBrush = (Brush)Application.Current.FindResource("MainI");
+                        tag1.TagBackgroud.BorderThickness = new Thickness(1);
+                        tag1.TagBackgroud.CornerRadius = new CornerRadius(6);
 
                         switch (Convert.ToInt32(everyTag.TagColor))
                         {
                             case 1:
-                                tag1.Background = (Brush)Application.Current.FindResource("CustomRed");
+                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomRed");
                                 break;
                             case 2:
-                                tag1.Background = (Brush)Application.Current.FindResource("CustomGreen");
+                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomGreen");
                                 break;
                             case 3:
-                                tag1.Background = (Brush)Application.Current.FindResource("CustomBlue");
+                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomBlue");
                                 break;
                             case 4:
-                                tag1.Background = (Brush)Application.Current.FindResource("CustomBrown");
+                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomBrown");
                                 break;
                             case 5:
-                                tag1.Background = (Brush)Application.Current.FindResource("CustomGray");
+                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomGray");
                                 break;
                             case 6:
-                                tag1.Background = (Brush)Application.Current.FindResource("CustomYellow");
+                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomYellow");
                                 break;
                             case 7:
-                                tag1.Background = (Brush)Application.Current.FindResource("CustomPink");
+                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomPink");
                                 break;
                             case 8:
-                                tag1.Background = (Brush)Application.Current.FindResource("CustomPurple");
+                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomPurple");
                                 break;
                             default:
                                 Random random = new Random();
@@ -89,28 +92,28 @@ namespace Unify_Tasks.DialogWindows
                                 switch (RInt)
                                 {
                                     case 1:
-                                        tag1.Background = (Brush)Application.Current.FindResource("CustomRed");
+                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomRed");
                                         break;
                                     case 2:
-                                        tag1.Background = (Brush)Application.Current.FindResource("CustomGreen");
+                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomGreen");
                                         break;
                                     case 3:
-                                        tag1.Background = (Brush)Application.Current.FindResource("CustomBlue");
+                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomBlue");
                                         break;
                                     case 4:
-                                        tag1.Background = (Brush)Application.Current.FindResource("CustomBrown");
+                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomBrown");
                                         break;
                                     case 5:
-                                        tag1.Background = (Brush)Application.Current.FindResource("CustomGray");
+                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomGray");
                                         break;
                                     case 6:
-                                        tag1.Background = (Brush)Application.Current.FindResource("CustomYellow");
+                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomYellow");
                                         break;
                                     case 7:
-                                        tag1.Background = (Brush)Application.Current.FindResource("CustomPink");
+                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomPink");
                                         break;
                                     case 8:
-                                        tag1.Background = (Brush)Application.Current.FindResource("CustomPurple");
+                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomPurple");
                                         break;
                                 }
                                 break;
@@ -120,6 +123,9 @@ namespace Unify_Tasks.DialogWindows
                         {
                             SelectedTag = everyTag.TagID;
                             tag1.TagBackgroud.BorderBrush = Brushes.Red;
+                            tag1.TagBackgroud.BorderThickness = new Thickness(1);
+                            tag1.TagBackgroud.CornerRadius = new CornerRadius(6);
+
                             foreach (TagElement eachTag in TagsBoard.Children)
                             {
                                 if (eachTag != tag1)
@@ -142,105 +148,34 @@ namespace Unify_Tasks.DialogWindows
             using (var context = new Unify_TasksEntities())
             {
                 var Tags = context.Tags.Where(t => t.TaskID == SelectedTask);
+                var sameTag = context.Tags.Where(t => t.TagHeader == TagNameBox.Text).FirstOrDefault();
 
-                if(Tags.Count() < 2)
+
+                if(Tags.Count() < 4)
                 {
-                    context.Tags.Local.Add(new Tag()
+                    if(sameTag == null)
                     {
-                        TagHeader = TagNameBox.Text,
-                        TaskID = SelectedTask,
-                        TagColor = Convert.ToString(ThisTagColor),
-                    });
-                    context.SaveChanges();
-                    UpdateTags();
+                        MessageBox.Show("You can`t create two identical tags");
+                    }
+                    else
+                    {
+                        context.Tags.Local.Add(new Tag()
+                        {
+                            TagHeader = TagNameBox.Text,
+                            TaskID = SelectedTask,
+                            TagColor = Convert.ToString(ThisTagColor),
+                        });
+                        context.SaveChanges();
+                        UpdateTags();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("You can`t add more than 2 tags");
+                    MessageBox.Show("You can`t add more than 4 tags");
                 }
 
 
             }
-
-            /*
-            TagElement tag1 = new TagElement();
-            tag1.TagText = TagNameBox.Text;
-            tag1.TagBackgroud.CornerRadius = new CornerRadius(5);
-            tag1.Margin = new Thickness(20, 20, 20, 20);
-
-            switch(ThisTagColor)
-            {
-                case 1:
-                    tag1.Background = (Brush)Application.Current.FindResource("CustomRed");
-                    break;
-                case 2:
-                    tag1.Background = (Brush)Application.Current.FindResource("CustomGreen");
-                    break;
-                case 3:
-                    tag1.Background = (Brush)Application.Current.FindResource("CustomBlue");
-                    break;
-                case 4:
-                    tag1.Background = (Brush)Application.Current.FindResource("CustomBrown");
-                    break;
-                case 5:
-                    tag1.Background = (Brush)Application.Current.FindResource("CustomGray");
-                    break;
-                case 6:
-                    tag1.Background = (Brush)Application.Current.FindResource("CustomYellow");
-                    break;
-                case 7:
-                    tag1.Background = (Brush)Application.Current.FindResource("CustomPink");
-                    break;
-                case 8:
-                    tag1.Background = (Brush)Application.Current.FindResource("CustomPurple");
-                    break;
-                default:
-                    Random random = new Random();
-                    int RInt = random.Next(1, 9);
-                    switch (RInt)
-                    {
-                        case 1:
-                            tag1.Background = (Brush)Application.Current.FindResource("CustomRed");
-                            break;
-                        case 2:
-                            tag1.Background = (Brush)Application.Current.FindResource("CustomGreen");
-                            break;
-                        case 3:
-                            tag1.Background = (Brush)Application.Current.FindResource("CustomBlue");
-                            break;
-                        case 4:
-                            tag1.Background = (Brush)Application.Current.FindResource("CustomBrown");
-                            break;
-                        case 5:
-                            tag1.Background = (Brush)Application.Current.FindResource("CustomGray");
-                            break;
-                        case 6:
-                            tag1.Background = (Brush)Application.Current.FindResource("CustomYellow");
-                            break;
-                        case 7:
-                            tag1.Background = (Brush)Application.Current.FindResource("CustomPink");
-                            break;
-                        case 8:
-                            tag1.Background = (Brush)Application.Current.FindResource("CustomPurple");
-                            break;
-                    }
-                    break;
-            }*/
-            /*foreach(TagElement everyTag in TagsBoard.Children)
-            {
-                everyTag.MouseUp += (object s, MouseButtonEventArgs ev) =>
-                {
-                    SelectedTag = TagsBoard.Children.IndexOf(everyTag) + 1;
-                    everyTag.TagBackgroud.BorderBrush = Brushes.Red;
-                    foreach(TagElement eachTag in TagsBoard.Children)
-                    {
-                        if(eachTag != everyTag)
-                        {
-                            eachTag.TagBackgroud.BorderBrush = Brushes.White;
-                        }
-                    }
-                };
-            }*/
         }
 
         private void TagNameBox_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)

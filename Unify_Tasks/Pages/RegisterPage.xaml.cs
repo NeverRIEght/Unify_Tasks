@@ -211,6 +211,15 @@ namespace Unify_Tasks.Pages
             PasswordBox.Background = Brushes.Transparent;
             RepeatPasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
             RepeatPasswordBox.Background = Brushes.Transparent;
+
+            var tool1 = new ToolTip();
+            tool1.Background = Brushes.Transparent;
+            tool1.Foreground = Brushes.Transparent;
+            tool1.BorderThickness = new Thickness(0);
+            tool1.Content = "";
+            NickBox.ToolTip = tool1;
+            PasswordBox.ToolTip = tool1;
+            RepeatPasswordBox.ToolTip = tool1;
         }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
@@ -221,6 +230,15 @@ namespace Unify_Tasks.Pages
             PasswordBox.Background = Brushes.Transparent;
             RepeatPasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
             RepeatPasswordBox.Background = Brushes.Transparent;
+
+            var tool1 = new ToolTip();
+            tool1.Background = Brushes.Transparent;
+            tool1.Foreground = Brushes.Transparent;
+            tool1.BorderThickness = new Thickness(0);
+            tool1.Content = "";
+            NickBox.ToolTip = tool1;
+            PasswordBox.ToolTip = tool1;
+            RepeatPasswordBox.ToolTip = tool1;
         }
 
         private void RepeatPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
@@ -231,6 +249,15 @@ namespace Unify_Tasks.Pages
             PasswordBox.Background = Brushes.Transparent;
             RepeatPasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
             RepeatPasswordBox.Background = Brushes.Transparent;
+
+            var tool1 = new ToolTip();
+            tool1.Background = Brushes.Transparent;
+            tool1.Foreground = Brushes.Transparent;
+            tool1.BorderThickness = new Thickness(0);
+            tool1.Content = "";
+            NickBox.ToolTip = tool1;
+            PasswordBox.ToolTip = tool1;
+            RepeatPasswordBox.ToolTip = tool1;
         }
     }
 }

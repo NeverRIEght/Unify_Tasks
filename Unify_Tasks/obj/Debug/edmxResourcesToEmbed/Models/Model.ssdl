@@ -67,7 +67,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Tags__TaskID__32E0915F">
+  <Association Name="FK__Tags__TaskID__31EC6D26">
     <End Role="Tasks" Type="Self.Tasks" Multiplicity="0..1" />
     <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
     <ReferentialConstraint>
@@ -105,7 +105,7 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="Projects" EntitySet="Projects" />
     </AssociationSet>
-    <AssociationSet Name="FK__Tags__TaskID__32E0915F" Association="Self.FK__Tags__TaskID__32E0915F">
+    <AssociationSet Name="FK__Tags__TaskID__31EC6D26" Association="Self.FK__Tags__TaskID__31EC6D26">
       <End Role="Tasks" EntitySet="Tasks" />
       <End Role="Tags" EntitySet="Tags" />
     </AssociationSet>

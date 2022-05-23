@@ -104,6 +104,20 @@ namespace Unify_Tasks.Pages
             LoginBox.Background = Brushes.Transparent;
             PasswordBorder.Background = (Brush)Application.Current.FindResource("AccentI");
             PasswordBox.Background = Brushes.Transparent;
+
+            var tool1 = new ToolTip();
+            tool1.Background = Brushes.Transparent;
+            tool1.Foreground = Brushes.Transparent;
+            tool1.BorderThickness = new Thickness(0);
+            tool1.Content = "";
+            LoginBox.ToolTip = tool1;
+
+            var tool2 = new ToolTip();
+            tool2.Background = Brushes.Transparent;
+            tool2.Foreground = Brushes.Transparent;
+            tool2.BorderThickness = new Thickness(0);
+            tool2.Content = "";
+            PasswordBox.ToolTip = tool2;
         }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
@@ -112,6 +126,20 @@ namespace Unify_Tasks.Pages
             LoginBox.Background = Brushes.Transparent;
             PasswordBorder.Background = (Brush)Application.Current.FindResource("AccentI");
             PasswordBox.Background = Brushes.Transparent;
+
+            var tool1 = new ToolTip();
+            tool1.Background = Brushes.Transparent;
+            tool1.Foreground = Brushes.Transparent;
+            tool1.BorderThickness = new Thickness(0);
+            tool1.Content = "";
+            LoginBox.ToolTip = tool1;
+
+            var tool2 = new ToolTip();
+            tool2.Background = Brushes.Transparent;
+            tool2.Foreground = Brushes.Transparent;
+            tool2.BorderThickness = new Thickness(0);
+            tool2.Content = "";
+            PasswordBox.ToolTip = tool2;
         }
     }
 }

@@ -66,6 +66,7 @@
                     Padding="4 0 25 0"
                     Margin="10, 0, 10, 0"
                     Name="FontColor"
+                    BorderThickness="0"
                     Template="{DynamicResource ComboBoxTemplate1}"
                     SelectionChanged="FontColor_SelectionChanged">
 

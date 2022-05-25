@@ -35,5 +35,10 @@ namespace Unify_Tasks
             InitializeComponent();
             MainFrame.Content = new Login();
         }
+
+        private void MainFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            MainFrame.NavigationService.RemoveBackEntry();
+        }
     }
 }

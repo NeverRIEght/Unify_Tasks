@@ -36,6 +36,8 @@ namespace Unify_Tasks.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            MainWindow win = (MainWindow)Window.GetWindow(this);
+            win.MinWidth = 1060;
             UserNameBox.Text = w1.userNickname;
             UpdateProjects();
         }
@@ -70,8 +72,8 @@ namespace Unify_Tasks.Pages
                                     ProjectName.Visibility = Visibility.Visible;
                                     NewTask.Visibility = Visibility.Visible;
                                     TasksViewer.Visibility = Visibility.Visible;
-                                    Trash.Visibility = Visibility.Visible;
-                                    TrashRed.Visibility = Visibility.Visible;
+                                    TrashProject.Visibility = Visibility.Visible;
+                                    TrashRedProject.Visibility = Visibility.Visible;
                                     UpdateTasks();
                                 };
 
@@ -114,20 +116,8 @@ namespace Unify_Tasks.Pages
 
                                 task1.MouseEnter += (object s, MouseEventArgs ev) =>
                                 {
-                                    w1.currTask = task1.TasksID;
-                                };
-                                task1.TrashRed.MouseUp += (object sender, MouseButtonEventArgs e) =>
-                                {
-                                    int toDeleteID = w1.currTask;
-                                    MessageBoxResult result1 = MessageBox.Show("Are you sure you want to delete the task?", "Unify", MessageBoxButton.YesNo);
-                                    switch (result1)
-                                    {
-                                        case MessageBoxResult.Yes:
-                                            DeleteTask(toDeleteID);
-                                            break;
-                                        case MessageBoxResult.No:
-                                            break;
-                                    }
+                                    w1.currTask = everyTask.TaskID;
+                                    task1.TasksID = everyTask.TaskID;
                                 };
                                 task1.TaskHeader.TextChanged += (object sender, TextChangedEventArgs e) =>
                                 {
@@ -147,11 +137,134 @@ namespace Unify_Tasks.Pages
                                         }
                                     }
                                 };
-                                task1.OpenNote.MouseUp += (object sender, MouseButtonEventArgs e) =>
+
+                                var thisTags = context1.Tags.Where(t => t.TaskID == everyTask.TaskID);
+
+                                if(thisTags != null)
+                                {
+                                    task1.TagsList.Children.Clear();
+                                    foreach (var everyTag in thisTags)
+                                    {
+                                        TagElement tag1 = new TagElement();
+                                        tag1.TagText = everyTag.TagHeader;
+                                        switch (Convert.ToInt32(everyTag.TagColor))
+                                        {
+                                            case 1:
+                                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomRed");
+                                                break;
+                                            case 2:
+                                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomGreen");
+                                                break;
+                                            case 3:
+                                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomBlue");
+                                                break;
+                                            case 4:
+                                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomBrown");
+                                                break;
+                                            case 5:
+                                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomGray");
+                                                break;
+                                            case 6:
+                                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomYellow");
+                                                break;
+                                            case 7:
+                                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomPink");
+                                                break;
+                                            case 8:
+                                                tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomPurple");
+                                                break;
+                                            default:
+                                                Random random = new Random();
+                                                int RInt = random.Next(1, 9);
+                                                switch (RInt)
+                                                {
+                                                    case 1:
+                                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomRed");
+                                                        break;
+                                                    case 2:
+                                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomGreen");
+                                                        break;
+                                                    case 3:
+                                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomBlue");
+                                                        break;
+                                                    case 4:
+                                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomBrown");
+                                                        break;
+                                                    case 5:
+                                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomGray");
+                                                        break;
+                                                    case 6:
+                                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomYellow");
+                                                        break;
+                                                    case 7:
+                                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomPink");
+                                                        break;
+                                                    case 8:
+                                                        tag1.TagBackgroud.Background = (Brush)Application.Current.FindResource("CustomPurple");
+                                                        break;
+                                                }
+                                                break;
+                                        }
+
+                                        tag1.MouseUp += (object sender, MouseButtonEventArgs e) =>
+                                        {
+                                            TagControlWindow tc1 = new TagControlWindow();
+                                            tc1.Show();
+                                        };
+
+                                        tag1.Margin = new Thickness(5);
+
+                                        task1.TagsList.Children.Add(tag1);
+                                    }
+                                }
+                                
+
+                                switch(everyTask.Status)
+                                {
+                                    case "Queue":
+                                        task1.Status.Text = everyTask.Status;
+                                        task1.Status.Foreground = (Brush)Application.Current.FindResource("CustomRed");
+                                        break;
+                                    case "In Progress":
+                                        task1.Status.Text = everyTask.Status;
+                                        task1.Status.Foreground = (Brush)Application.Current.FindResource("CustomYellow");
+                                        break;
+                                    case "Done":
+                                        task1.Status.Text = everyTask.Status;
+                                        task1.Status.Foreground = (Brush)Application.Current.FindResource("CustomGreen");
+                                        break;
+                                    case "Frozen":
+                                        task1.Status.Text = everyTask.Status;
+                                        task1.Status.Foreground = (Brush)Application.Current.FindResource("CustomBlue");
+                                        break;
+                                }
+
+                                task1.StatusBorder.MouseUp += (object sender, MouseButtonEventArgs e) =>
                                 {
                                     NoteEditor ed1 = new NoteEditor();
                                     ed1.Show();
                                 };
+
+                                task1.OpenNoteWhite.MouseUp += (object sender, MouseButtonEventArgs e) =>
+                                {
+                                    NoteEditor ed1 = new NoteEditor();
+                                    ed1.Show();
+                                };
+                                task1.TrashRed.MouseUp += (object sender, MouseButtonEventArgs e) =>
+                                {
+                                    int toDeleteID = w1.currTask;
+                                    MessageBoxResult result1 = MessageBox.Show("Are you sure you want to delete the task?", "Unify", MessageBoxButton.YesNo);
+                                    switch (result1)
+                                    {
+                                        case MessageBoxResult.Yes:
+                                            DeleteTask(toDeleteID);
+                                            break;
+                                        case MessageBoxResult.No:
+                                            break;
+                                    }
+                                };
+                                
+                                
 
 
 
@@ -285,8 +398,8 @@ namespace Unify_Tasks.Pages
                             ProjectName.Visibility = Visibility.Hidden;
                             NewTask.Visibility = Visibility.Hidden;
                             TasksViewer.Visibility = Visibility.Hidden;
-                            Trash.Visibility = Visibility.Hidden;
-                            TrashRed.Visibility = Visibility.Hidden;
+                            TrashProject.Visibility = Visibility.Hidden;
+                            TrashRedProject.Visibility = Visibility.Hidden;
                             UpdateProjects();
                         }
                     }
@@ -313,6 +426,7 @@ namespace Unify_Tasks.Pages
                             ProjectID = w1.currProject,
                             Status = "Queue",
                             Header = "Untitled Task",
+                            Priority = 0,
                         });
                         context.SaveChanges();
                     }
@@ -336,10 +450,9 @@ namespace Unify_Tasks.Pages
                 {
                     using (var context = new Unify_TasksEntities())
                     {
-                        Models.Task toDelete = null;
                         Models.Note delNote = null;
 
-                        toDelete = context.Tasks.Where(b => b.TaskID == toDeleteID).FirstOrDefault();
+                        var toDelete = context.Tasks.Where(b => b.TaskID == toDeleteID).FirstOrDefault();
 
                         if (toDelete != null)
                         {
@@ -389,12 +502,7 @@ namespace Unify_Tasks.Pages
             
         }
 
-        private void IsReady_Checked(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void TrashRed_MouseUp(object sender, MouseButtonEventArgs e)
+        private void TrashRedProject_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MessageBoxResult result1 = MessageBox.Show("Are you sure you want to delete the project?", "Unify", MessageBoxButton.YesNo);
             switch (result1)
@@ -412,23 +520,21 @@ namespace Unify_Tasks.Pages
             NavigationService.Navigate(new Login());
         }
 
-        private void Trash_MouseEnter(object sender, MouseEventArgs e)
+        private void TrashProject_MouseEnter(object sender, MouseEventArgs e)
         {
-            Trash.Opacity = 0;
-            TrashRed.Opacity = 1;
+            TrashProject.Opacity = 0;
+            TrashRedProject.Opacity = 1;
         }
 
-        private void Trash_MouseLeave(object sender, MouseEventArgs e)
+        private void TrashProject_MouseLeave(object sender, MouseEventArgs e)
         {
-            Trash.Opacity = 1;
-            TrashRed.Opacity = 0;
+            TrashProject.Opacity = 1;
+            TrashRedProject.Opacity = 0;
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            MainWindow win = (MainWindow)Window.GetWindow(this);
-
-            win.MinWidth = 1060;
+            
 
         }
 

@@ -12,6 +12,6 @@
         Width="1300"
         WindowStartupLocation="CenterScreen">
     <Grid Background="#323439">
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated"></Frame>
     </Grid>
 </Window>

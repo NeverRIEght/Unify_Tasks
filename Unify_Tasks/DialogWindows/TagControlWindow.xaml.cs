@@ -151,28 +151,22 @@ namespace Unify_Tasks.DialogWindows
                 var sameTag = context.Tags.Where(t => t.TagHeader == TagNameBox.Text).FirstOrDefault();
 
 
-                if(Tags.Count() < 4)
+                if (sameTag != null)
                 {
-                    if(sameTag == null)
-                    {
-                        MessageBox.Show("You can`t create two identical tags");
-                    }
-                    else
-                    {
-                        context.Tags.Local.Add(new Tag()
-                        {
-                            TagHeader = TagNameBox.Text,
-                            TaskID = SelectedTask,
-                            TagColor = Convert.ToString(ThisTagColor),
-                        });
-                        context.SaveChanges();
-                        UpdateTags();
-                    }
+                    MessageBox.Show("You can`t create two identical tags");
                 }
                 else
                 {
-                    MessageBox.Show("You can`t add more than 4 tags");
+                    context.Tags.Local.Add(new Tag()
+                    {
+                        TagHeader = TagNameBox.Text,
+                        TaskID = SelectedTask,
+                        TagColor = Convert.ToString(ThisTagColor),
+                    });
+                    context.SaveChanges();
+                    UpdateTags();
                 }
+
 
 
             }

@@ -106,3 +106,5 @@ D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\De
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.csproj.CopyComplete
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.exe
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.pdb
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\TaskWindow.g.cs
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\TaskWindow.baml

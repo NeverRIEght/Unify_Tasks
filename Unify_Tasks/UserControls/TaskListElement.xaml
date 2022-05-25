@@ -6,41 +6,28 @@
              xmlns:local="clr-namespace:Unify_Tasks.UserControls"
              mc:Ignorable="d" 
              x:Name="Task"
-             d:DesignHeight="90"
+             d:DesignHeight="70"
              d:DesignWidth="1000"
              Loaded="Task_Loaded"
              SizeChanged="Task_SizeChanged"
              MouseEnter="Task_MouseEnter"
              MouseLeave="Task_MouseLeave">
-    <UserControl.Resources>
-        <Style TargetType="{x:Type ComboBox}">
-            <Setter Property="FontFamily" Value="/Fonts/#Gilroy" />
-            <Setter Property="Foreground" Value="{DynamicResource MainI}" />
-            <Setter Property="Background" Value="Black" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="FontWeight" Value="Medium" />
-            <Setter Property="FontSize" Value="18" />
-        </Style>
-        <Style TargetType="{x:Type ComboBoxItem}">
-            <Setter Property="Background" Value="Black" />
-        </Style>
-    </UserControl.Resources>
     <Grid
         x:Name="TaskGrid"
-        MinHeight="90px"
+        MinHeight="70px"
         MouseEnter="Task_MouseEnter"
         MouseLeave="Task_MouseLeave">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.14*" MinHeight="20px"/>
+            <RowDefinition Height="0.14*" MinHeight="10px"/>
             <RowDefinition Height="0.72*" MinHeight="50px"/>
-            <RowDefinition Height="0.14*" MinHeight="20px"/>
+            <RowDefinition Height="0.14*" MinHeight="10px"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.015*" MinWidth="15px"/>
-            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.175*"/>
-            <ColumnDefinition Width="0.21*" MinWidth="170px"/>
+            <ColumnDefinition Width="0.3*"/>
         </Grid.ColumnDefinitions>
         
         <Border
@@ -55,11 +42,17 @@
             Grid.Row="1"
             Grid.Column="1"
             Margin="0, 0, 15, 0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            FontSize="18"
+            MaxLength="50"
             TextChanged="TaskHeader_TextChanged">
             
         </TextBox>
 
         <WrapPanel
+            Grid.Row="1"
+            Grid.Column="2"
             x:Name="TagsList">
         </WrapPanel>
         
@@ -71,45 +64,59 @@
                 <ColumnDefinition Width="0.07*" MinWidth="15px"/>
                 <ColumnDefinition Width="0.56*" MinWidth="90px"/>
                 <ColumnDefinition Width="0.07*" MinWidth="15px"/>
-                <ColumnDefinition Width="0.14" MinWidth="30px"/>
+                <ColumnDefinition Width="0.14*" MinWidth="30px"/>
                 <ColumnDefinition Width="0.07*" MinWidth="15px"/>
                 <ColumnDefinition Width="0.14*" MinWidth="30px"/>
                 <ColumnDefinition Width="0.07*" MinWidth="15px"/>
             </Grid.ColumnDefinitions>
 
-            <ComboBox
+            <Border
+                x:Name="StatusBorder"
                 Grid.Column="1"
-                Template="{DynamicResource ComboBoxTemplate1}">
-                
-                <ComboBoxItem>
-                    Red
-                </ComboBoxItem>
-                
-            </ComboBox>
+                CornerRadius="6"
+                Background="Transparent"
+                BorderBrush="{DynamicResource MainI}"
+                BorderThickness="1"
+                MouseEnter="Button_MouseEnter"
+                MouseLeave="Button_MouseLeave"
+                MaxHeight="40px">
 
+                <TextBlock
+                    x:Name="Status"
+                    FontWeight="Medium"
+                    FontSize="24px"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                </TextBlock>
+            </Border>
+            
             <Image
                 x:Name="OpenNote"
                 Grid.Column="3"
                 Source="/Images/OpenNote.png"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Visibility="Hidden">
+                Visibility="Hidden"
+                MouseEnter="OpenNote_MouseEnter"
+                MouseLeave="OpenNote_MouseLeave">
             </Image>
 
             <Image
                 x:Name="OpenNoteWhite"
                 Grid.Column="3"
                 Source="/Images/OpenNoteWhite.png"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Visibility="Hidden">
+                Visibility="Hidden"
+                MouseEnter="OpenNote_MouseEnter"
+                MouseLeave="OpenNote_MouseLeave">
             </Image>
 
             <Image
                 x:Name="Trash"
                 Grid.Column="5"
                 Source="/Images/Trashcan.png"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 MouseEnter="Trash_MouseEnter"
                 MouseLeave="Trash_MouseLeave">
@@ -119,7 +126,7 @@
                 x:Name="TrashRed"
                 Grid.Column="5"
                 Source="/Images/TrashcanRed.png"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 MouseEnter="Trash_MouseEnter"
                 MouseLeave="Trash_MouseLeave"

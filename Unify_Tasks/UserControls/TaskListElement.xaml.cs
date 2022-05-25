@@ -104,5 +104,15 @@ namespace Unify_Tasks.UserControls
             get => (int)GetValue(TasksIDProperty);
             set => SetValue(TasksIDProperty, value);
         }
+
+        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
+        }
     }
 }

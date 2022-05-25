@@ -7,7 +7,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1300"
       Loaded="Page_Loaded"
-      SizeChanged="Page_SizeChanged">
+      SizeChanged="Page_SizeChanged"
+      MinWidth="1061">
 
     <Grid x:Name="layoutGrid">
         <Grid.ColumnDefinitions>
@@ -241,7 +242,7 @@
             <!--Task List Border-->
             
             <Image
-                x:Name="Trash"
+                x:Name="TrashProject"
                 Grid.Row="1"
                 Grid.Column="6"
                 MaxHeight="50px"
@@ -254,7 +255,7 @@
             <!--Trash-->
 
             <Image
-                x:Name="TrashRed"
+                x:Name="TrashRedProject"
                 Visibility="Hidden"
                 Opacity="0"
                 Grid.Row="1"
@@ -264,9 +265,9 @@
                 VerticalAlignment="Stretch"
                 HorizontalAlignment="Stretch"
                 RenderOptions.BitmapScalingMode="HighQuality"
-                MouseEnter="Trash_MouseEnter"
-                MouseLeave="Trash_MouseLeave"
-                MouseUp="TrashRed_MouseUp">
+                MouseEnter="TrashProject_MouseEnter"
+                MouseLeave="TrashProject_MouseLeave"
+                MouseUp="TrashRedProject_MouseUp">
             </Image>
             <!--TrashRed-->
 

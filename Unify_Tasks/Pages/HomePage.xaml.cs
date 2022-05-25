@@ -147,61 +147,6 @@ namespace Unify_Tasks.Pages
                                         }
                                     }
                                 };
-                                task1.IsReady.Checked += (object sender, RoutedEventArgs e) =>
-                                {
-                                    if (w1.currTask != 0)
-                                    {
-                                        using (var context = new Unify_TasksEntities())
-                                        {
-                                            Models.Task ThisTask = context.Tasks.Where(b => b.TaskID == w1.currTask).FirstOrDefault();
-
-                                            if (ThisTask != null)
-                                            {
-                                                ThisTask.Status = 1;
-                                                context.SaveChanges();
-                                            }
-                                        }
-                                    }
-                                };
-                                task1.IsReady.Unchecked += (object sender, RoutedEventArgs e) =>
-                                {
-                                    if (w1.currTask != 0)
-                                    {
-                                        using (var context = new Unify_TasksEntities())
-                                        {
-                                            Models.Task ThisTask = context.Tasks.Where(b => b.TaskID == w1.currTask).FirstOrDefault();
-
-                                            if (ThisTask != null)
-                                            {
-                                                ThisTask.Status = 0;
-                                                context.SaveChanges();
-                                            }
-                                        }
-                                    }
-                                };
-                                task1.WatchBlue.MouseUp += (object sender, MouseButtonEventArgs e) =>
-                                {
-                                    int ThisID = w1.currTask;
-                                    DateWindow date1 = new DateWindow();
-                                    date1.ShowDialog();
-                                    if (date1.DialogResult != null)
-                                        if (date1.DialogResult == true)
-                                        {
-                                            if (ThisID != 0)
-                                            {
-                                                using (var context = new Unify_TasksEntities())
-                                                {
-                                                    Models.Task ThisTask = context.Tasks.Where(b => b.TaskID == w1.currTask).FirstOrDefault();
-
-                                                    if (ThisTask != null)
-                                                    {
-                                                        ThisTask.Planned = w1.currDate;
-                                                        context.SaveChanges();
-                                                    }
-                                                }
-                                            }
-                                        }
-                                };
                                 task1.OpenNote.MouseUp += (object sender, MouseButtonEventArgs e) =>
                                 {
                                     NoteEditor ed1 = new NoteEditor();
@@ -366,7 +311,7 @@ namespace Unify_Tasks.Pages
                         context.Tasks.Local.Add(new Models.Task()
                         {
                             ProjectID = w1.currProject,
-                            Status = 0,
+                            Status = "Queue",
                             Header = "Untitled Task",
                         });
                         context.SaveChanges();

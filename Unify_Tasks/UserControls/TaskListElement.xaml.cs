@@ -38,72 +38,16 @@ namespace Unify_Tasks.UserControls
         private void Task_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             MainWindow win = (MainWindow)Window.GetWindow(this);
-            if (win.Width <= 1300)
-            {
-                TaskGrid.ColumnDefinitions[5].MinWidth = 10;
-                TaskGrid.ColumnDefinitions[7].MinWidth = 0;
-            }
-
-            if (TaskHeader.Width > 520)
-            {
-                TaskHeader.FontSize = 21;
-            }
-            if (TaskHeader.Width <= 520)
-            {
-                TaskHeader.FontSize = 16;
-            }
+            
         }
 
         private void Task_MouseEnter(object sender, MouseEventArgs e)
         {
             OpenNote.Visibility = Visibility.Visible;
-            Priority.BorderBrush = (Brush)Application.Current.FindResource("MainI");
-
-            using (var context = new Unify_TasksEntities())
-            {
-                var thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
-
-                if(thisTask != null)
-                {
-                    PriorityText.Text = Convert.ToString(thisTask.Priority);
-
-                    switch (thisTask.Priority)
-                    {
-                        case 0:
-                            PriorityText.Text = "";
-                            Priority.Background = Brushes.Transparent;
-                            Priority.BorderBrush = Brushes.Transparent;
-                            break;
-                        case 1:
-                            PriorityText.Text = "1";
-                            Priority.Background = (Brush)Application.Current.FindResource("CustomRed");
-                            Priority.BorderBrush = (Brush)Application.Current.FindResource("MainI");
-                            break;
-                        case 2:
-                            PriorityText.Text = "2";
-                            Priority.Background = (Brush)Application.Current.FindResource("CustomYellow");
-                            Priority.BorderBrush = (Brush)Application.Current.FindResource("MainI");
-                            break;
-                        case 3:
-                            PriorityText.Text = "3";
-                            Priority.Background = (Brush)Application.Current.FindResource("CustomGreen");
-                            Priority.BorderBrush = (Brush)Application.Current.FindResource("MainI");
-                            break;
-                        case 4:
-                            PriorityText.Text = "4";
-                            Priority.Background = (Brush)Application.Current.FindResource("CustomBlue");
-                            Priority.BorderBrush = (Brush)Application.Current.FindResource("MainI");
-                            break;
-                    }
-                }
-            }
         }
         private void Task_MouseLeave(object sender, MouseEventArgs e)
         {
             OpenNote.Visibility = Visibility.Hidden;
-            Priority.BorderBrush = Brushes.Transparent;
-            Priority.Background = Brushes.Transparent;
-            PriorityText.Text = "";
         }
 
         private void TaskHeader_TextChanged(object sender, TextChangedEventArgs e)
@@ -146,6 +90,19 @@ namespace Unify_Tasks.UserControls
             this.Cursor = Cursors.Arrow;
         }
 
+        public static readonly DependencyProperty TasksIDProperty =
+        DependencyProperty.Register(
+        name: "TasksID",
+        propertyType: typeof(int),
+        ownerType: typeof(TaskListElement),
+        typeMetadata: new FrameworkPropertyMetadata(
+        defaultValue: 1,
+        flags: FrameworkPropertyMetadataOptions.AffectsMeasure));
 
+        public int TasksID
+        {
+            get => (int)GetValue(TasksIDProperty);
+            set => SetValue(TasksIDProperty, value);
+        }
     }
 }

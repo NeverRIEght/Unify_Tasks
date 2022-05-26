@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="30"
              d:DesignWidth="80">
-    <Grid MinHeight="30px" MinWidth="80px">
+    <Grid>
         <Border
             x:Name="TagBackgroud"
             BorderBrush="{DynamicResource MainI}"
@@ -22,6 +22,7 @@
                 FontWeight="Medium"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
+                Margin="10, 0, 10, 2"
                 RenderOptions.BitmapScalingMode="HighQuality">
             </TextBlock>
         </Border>

@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Unify_Tasks.DialogWindows"
         mc:Ignorable="d"
-        Title="TaskWindow" Height="680" Width="970">
-    <Grid>
-        
+        Title="TaskWindow" Height="630" Width="950">
+    <Grid Background="{DynamicResource BackI}">
+        <ScrollViewer>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="105px" />
+                    <RowDefinition Height="105px" />
+                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120px" />
+                    <ColumnDefinition Width="710px" />
+                    <ColumnDefinition Width="115px" />
+                </Grid.ColumnDefinitions>
+                <TextBox
+                        x:Name="ProjectName"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        FontWeight="SemiBold"
+                        FontSize="50px"
+                        Margin="0, 20, 0, 25"
+                        TextWrapping="WrapWithOverflow">
+                        WWWWWWW WWWWWWW WWWWWWWWWW WWWWWWWW WWWWWWWWWWW WW
+                </TextBox>
+
+                    
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Window>

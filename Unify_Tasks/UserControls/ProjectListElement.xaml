@@ -37,6 +37,7 @@
             Grid.Column="2" 
             VerticalAlignment="Center"
             HorizontalAlignment="Left"
+            TextWrapping="WrapWithOverflow"
             Margin="0, 0, 0, 1"
             Text="{Binding ProjectsText, ElementName=ProjectButton}" />
     </Grid>

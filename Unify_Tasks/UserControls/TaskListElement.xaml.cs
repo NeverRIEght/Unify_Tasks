@@ -38,7 +38,6 @@ namespace Unify_Tasks.UserControls
         private void Task_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             MainWindow win = (MainWindow)Window.GetWindow(this);
-            
         }
 
         private void Task_MouseEnter(object sender, MouseEventArgs e)
@@ -48,20 +47,6 @@ namespace Unify_Tasks.UserControls
         private void Task_MouseLeave(object sender, MouseEventArgs e)
         {
             OpenNote.Visibility = Visibility.Hidden;
-        }
-
-        private void TaskHeader_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            using (var context = new Unify_TasksEntities())
-            {
-                var thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
-
-                if (thisTask != null)
-                {
-                    thisTask.Header = TaskHeader.Text;
-                    context.SaveChanges();
-                }
-            }
         }
 
         private void OpenNote_MouseEnter(object sender, MouseEventArgs e)

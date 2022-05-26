@@ -47,6 +47,73 @@ namespace Unify_Tasks.Pages
 
         private void Register_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            RegisterUser();
+        }
+
+        private void BackLogin_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Login());
+        }
+
+        private void NickBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            NickBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            NickBox.Background = Brushes.Transparent;
+            PasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            PasswordBox.Background = Brushes.Transparent;
+            RepeatPasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            RepeatPasswordBox.Background = Brushes.Transparent;
+
+            var tool1 = new ToolTip();
+            tool1.Background = Brushes.Transparent;
+            tool1.Foreground = Brushes.Transparent;
+            tool1.BorderThickness = new Thickness(0);
+            tool1.Content = "";
+            NickBox.ToolTip = tool1;
+            PasswordBox.ToolTip = tool1;
+            RepeatPasswordBox.ToolTip = tool1;
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            NickBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            NickBox.Background = Brushes.Transparent;
+            PasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            PasswordBox.Background = Brushes.Transparent;
+            RepeatPasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            RepeatPasswordBox.Background = Brushes.Transparent;
+
+            var tool1 = new ToolTip();
+            tool1.Background = Brushes.Transparent;
+            tool1.Foreground = Brushes.Transparent;
+            tool1.BorderThickness = new Thickness(0);
+            tool1.Content = "";
+            NickBox.ToolTip = tool1;
+            PasswordBox.ToolTip = tool1;
+            RepeatPasswordBox.ToolTip = tool1;
+        }
+
+        private void RepeatPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            NickBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            NickBox.Background = Brushes.Transparent;
+            PasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            PasswordBox.Background = Brushes.Transparent;
+            RepeatPasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
+            RepeatPasswordBox.Background = Brushes.Transparent;
+
+            var tool1 = new ToolTip();
+            tool1.Background = Brushes.Transparent;
+            tool1.Foreground = Brushes.Transparent;
+            tool1.BorderThickness = new Thickness(0);
+            tool1.Content = "";
+            NickBox.ToolTip = tool1;
+            PasswordBox.ToolTip = tool1;
+            RepeatPasswordBox.ToolTip = tool1;
+        }
+
+        private void RegisterUser()
+        {
             string Login = NickBox.Text.Trim();
             string Password = PasswordBox.Password.Trim();
             string RPassword = RepeatPasswordBox.Password.Trim();
@@ -59,9 +126,9 @@ namespace Unify_Tasks.Pages
                 {
                     var UserList = context.Users.Where(u => u.UserID == u.UserID).ToList();
 
-                    if(UserList != null)
+                    if (UserList != null)
                     {
-                        foreach(var everyUser in UserList)
+                        foreach (var everyUser in UserList)
                         {
                             if (everyUser.login == Login)
                             {
@@ -79,7 +146,7 @@ namespace Unify_Tasks.Pages
             }
 
 
-            if(CanRegister == 1)
+            if (CanRegister == 1)
             {
                 if (Login.Length < 5)
                 {
@@ -91,11 +158,11 @@ namespace Unify_Tasks.Pages
                     NickBox.Background = Brushes.DarkRed;
                     NickBoxBorder.Background = Brushes.DarkRed;
                 }
-                else if (Login.Length > 15)
+                else if (Login.Length > 14)
                 {
                     var tool1 = new ToolTip();
                     tool1.Background = (Brush)Application.Current.FindResource("BackI");
-                    tool1.Content = "Nickname must contain 15 characters or less";
+                    tool1.Content = "Nickname must contain 14 characters or less";
                     NickBox.ToolTip = tool1;
 
                     NickBox.Background = Brushes.DarkRed;
@@ -198,66 +265,12 @@ namespace Unify_Tasks.Pages
             }
         }
 
-        private void BackLogin_MouseUp(object sender, MouseButtonEventArgs e)
+        private void Page_KeyUp(object sender, KeyEventArgs e)
         {
-            NavigationService.Navigate(new Login());
-        }
-
-        private void NickBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            NickBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
-            NickBox.Background = Brushes.Transparent;
-            PasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
-            PasswordBox.Background = Brushes.Transparent;
-            RepeatPasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
-            RepeatPasswordBox.Background = Brushes.Transparent;
-
-            var tool1 = new ToolTip();
-            tool1.Background = Brushes.Transparent;
-            tool1.Foreground = Brushes.Transparent;
-            tool1.BorderThickness = new Thickness(0);
-            tool1.Content = "";
-            NickBox.ToolTip = tool1;
-            PasswordBox.ToolTip = tool1;
-            RepeatPasswordBox.ToolTip = tool1;
-        }
-
-        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            NickBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
-            NickBox.Background = Brushes.Transparent;
-            PasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
-            PasswordBox.Background = Brushes.Transparent;
-            RepeatPasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
-            RepeatPasswordBox.Background = Brushes.Transparent;
-
-            var tool1 = new ToolTip();
-            tool1.Background = Brushes.Transparent;
-            tool1.Foreground = Brushes.Transparent;
-            tool1.BorderThickness = new Thickness(0);
-            tool1.Content = "";
-            NickBox.ToolTip = tool1;
-            PasswordBox.ToolTip = tool1;
-            RepeatPasswordBox.ToolTip = tool1;
-        }
-
-        private void RepeatPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            NickBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
-            NickBox.Background = Brushes.Transparent;
-            PasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
-            PasswordBox.Background = Brushes.Transparent;
-            RepeatPasswordBoxBorder.Background = (Brush)Application.Current.FindResource("AccentI");
-            RepeatPasswordBox.Background = Brushes.Transparent;
-
-            var tool1 = new ToolTip();
-            tool1.Background = Brushes.Transparent;
-            tool1.Foreground = Brushes.Transparent;
-            tool1.BorderThickness = new Thickness(0);
-            tool1.Content = "";
-            NickBox.ToolTip = tool1;
-            PasswordBox.ToolTip = tool1;
-            RepeatPasswordBox.ToolTip = tool1;
+            if(e.Key == Key.Enter)
+            {
+                RegisterUser();
+            }
         }
     }
 }

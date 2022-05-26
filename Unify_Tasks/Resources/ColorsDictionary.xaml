@@ -17,7 +17,6 @@
     <SolidColorBrush x:Key="MediumI">#373d42</SolidColorBrush>
     <SolidColorBrush x:Key="AccentI">#616974</SolidColorBrush>
     <SolidColorBrush x:Key="MainI">#ffffff</SolidColorBrush>
-    
-    <SolidColorBrush x:Key="LightI">#373d42</SolidColorBrush>
-    <SolidColorBrush x:Key="DarkI">#2c2f34</SolidColorBrush>
+
+    <SolidColorBrush x:Key="GrayI">#a5a5a5</SolidColorBrush>
 </ResourceDictionary>

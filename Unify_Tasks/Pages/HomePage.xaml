@@ -7,8 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1300"
       Loaded="Page_Loaded"
-      SizeChanged="Page_SizeChanged"
-      MinWidth="1061">
+      MinWidth="1241">
 
     <Grid x:Name="layoutGrid">
         <Grid.ColumnDefinitions>
@@ -57,43 +56,17 @@
                         <ColumnDefinition Width="0.1*" MinWidth="20px"/>
                         <ColumnDefinition Width="0.04*" />
                     </Grid.ColumnDefinitions>
-
-                    <Rectangle
-                        x:Name="AvatarRect"
-                        Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        MinWidth="30"
-                        MinHeight="30"
-                        Fill="{DynamicResource CustomPurple}"
-                        RadiusX="10"
-                        RadiusY="10"
-                        MouseUp="AvatarRect_MouseUp">
-                    </Rectangle>
-
+                    
                     <TextBlock
                         Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        x:Name="AvatarLetter"
-                        Foreground="{DynamicResource MainI}"
-                        FontSize="18px"
-                        FontWeight="Medium"
-                        FontStyle="Italic"
-                        MouseUp="AvatarRect_MouseUp"
-                        >A
-                    </TextBlock>
-
-                    <TextBlock
-                        Grid.Column="2"
+                        Grid.ColumnSpan="3"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Margin="10, 0, 10, 0"
                         x:Name="UserNameBox"
                         Foreground="{DynamicResource MainI}"
-                        FontSize="22px"
+                        FontSize="24px"
                         FontWeight="Medium"
-                        MouseUp="AvatarRect_MouseUp"
                         Text="">
                     </TextBlock>
                     <Image
@@ -185,9 +158,8 @@
             
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.0075*"/>
-                <RowDefinition Height="0.075*" MinHeight="60px"/>
-                <RowDefinition Height="0.075*" MinHeight="60px"/>
-                <RowDefinition Height="0.05*"/>
+                <RowDefinition Height="0.15*" MinHeight="120px"/>
+                <RowDefinition Height="0.05*" MinHeight="30px"/>
                 <RowDefinition Height="0.01*"/>
                 <RowDefinition Height="0.7425*"/>
                 <RowDefinition Height="0.0425*"/>
@@ -195,14 +167,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.04*"/>
                 <ColumnDefinition Width="0.015*"/>
-                <ColumnDefinition Width="0.2*"/>
-                <ColumnDefinition Width="0.015*"/>
-                <ColumnDefinition Width="0.2*"/>
-                <ColumnDefinition Width="0.585*"/>
-                <ColumnDefinition Width="0.09*"/>
+                <ColumnDefinition />
                 <ColumnDefinition Width="0.015*"/>
                 <ColumnDefinition Width="0.04*"/>
             </Grid.ColumnDefinitions>
+
+
 
             <TextBox
                 x:Name="ProjectName"
@@ -210,90 +180,215 @@
                 Grid.Column="2"
                 Grid.ColumnSpan="4"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                Height="60px"
+                VerticalAlignment="Top"
                 Foreground="{DynamicResource MainI}"
                 Background="Transparent"
                 BorderThickness="0"
                 FontWeight="Medium"
-                FontSize="50px"
-                Text=""
+                FontSize="40px"
+                MaxLength="50"
+                MinLines="2"
                 Visibility="Hidden"
-                MaxLength="20"
+                TextWrapping="WrapWithOverflow"
                 TextChanged="ProjectName_TextChanged">
             </TextBox>
 
-            <Border
-                x:Name="TasksViewer"
-                Visibility="Hidden"
-                Grid.Row="5"
-                Grid.Column="1"
-                Grid.ColumnSpan="7"
-                Background="{DynamicResource BackI}"
-                CornerRadius="10">
-
-                <ScrollViewer>
-                    
-                    <StackPanel x:Name="TasksList" />
-                
-                </ScrollViewer>
-
-            </Border>
-            <!--Task List Border-->
-            
-            <Image
-                x:Name="TrashProject"
-                Grid.Row="1"
-                Grid.Column="6"
-                MaxHeight="50px"
-                Source="/Images/Trashcan.png"
-                Visibility="Hidden"
-                VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch"
-                RenderOptions.BitmapScalingMode="HighQuality">
-            </Image>
-            <!--Trash-->
-
-            <Image
-                x:Name="TrashRedProject"
-                Visibility="Hidden"
-                Opacity="0"
-                Grid.Row="1"
-                Grid.Column="6"
-                MaxHeight="50px"
-                Source="/Images/TrashcanRed.png"
-                VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch"
-                RenderOptions.BitmapScalingMode="HighQuality"
-                MouseEnter="TrashProject_MouseEnter"
-                MouseLeave="TrashProject_MouseLeave"
-                MouseUp="TrashRedProject_MouseUp">
-            </Image>
-            <!--TrashRed-->
-
-            <Border
+            <StackPanel
+                x:Name="Tools"
+                Grid.Row="2"
+                Grid.Column="2"
+                Orientation="Horizontal"
+                Visibility="Hidden">
+                <Border
                 x:Name="NewTask"
-                Grid.Row="3"
+                Grid.Row="2"
                 Grid.Column="2"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 Background="{DynamicResource BackI}"
                 CornerRadius="10"
-                Visibility="Hidden"
-                MouseEnter="Button_MouseEnter"
-                MouseLeave="Button_MouseLeave"
+                MouseEnter="Tool1_MouseEnter"
+                MouseLeave="Tool1_MouseLeave"
                 MouseUp="NewTask_MouseUp">
 
-                <TextBlock
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Text="New Task"
-                    FontWeight="Light"
-                    FontStyle="Italic"
-                    Foreground="{DynamicResource MainI}"
-                    FontSize="22px">
-                </TextBlock>
+                    <StackPanel
+                    Orientation="Horizontal">
+                        <Image
+                        Source="/Images/NewTask.png"
+                        MaxHeight="25px"
+                        Margin="10, 0, 5, 0">
+                        </Image>
+                        <Separator
+                        Width="5px"
+                        Opacity="0">
+                        </Separator>
+                        <TextBlock
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center"
+                            Text="New Task"
+                            FontWeight="Light"
+                            Foreground="{DynamicResource MainI}"
+                            FontSize="22px">
+                        </TextBlock>
+                        <Separator
+                        Width="10px"
+                        Opacity="0">
+                        </Separator>
+                    </StackPanel>
+                </Border>
+                
+                <Separator
+                    Width="10px"
+                    Opacity="0">
+                </Separator>
+                
+                <Border
+                x:Name="SortBorder"
+                Grid.Row="2"
+                Grid.Column="4"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="{DynamicResource BackI}"
+                CornerRadius="10"
+                MouseEnter="Tool2_MouseEnter"
+                MouseLeave="Tool2_MouseLeave"
+                MouseUp="SortBorder_MouseUp">
+
+                    <StackPanel
+                    Orientation="Horizontal">
+                        <Image
+                        Source="/Images/Sort.png"
+                        MaxHeight="25px"
+                        Margin="10, 0, 5, 0">
+                        </Image>
+                        <Separator
+                        Width="5px"
+                        Opacity="0">
+                        </Separator>
+                        <TextBlock
+                            x:Name="Sort"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center"
+                            FontWeight="Light"
+                            Foreground="{DynamicResource MainI}"
+                            FontSize="22px">
+                            Sort by: No sort<!--Newest, Oldest, Task header, Tags-->
+                        </TextBlock>
+                        <Separator
+                        Width="10px"
+                        Opacity="0">
+                        </Separator>
+                    </StackPanel>
+                </Border>
+
+                <Separator
+                    Width="10px"
+                    Opacity="0">
+                </Separator>
+
+                <Border
+                x:Name="EditBorder"
+                Grid.Row="2"
+                Grid.Column="6"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="{DynamicResource BackI}"
+                CornerRadius="10"
+                MouseEnter="Tool3_MouseEnter"
+                MouseLeave="Tool3_MouseLeave"
+                MouseUp="EditBorder_MouseUp">
+
+                    <StackPanel
+                    Orientation="Horizontal">
+                        <Image
+                        Source="/Images/Edit.png"
+                        MaxHeight="25px"
+                        Margin="10, 0, 5, 0">
+                        </Image>
+                        <Separator
+                        Width="5px"
+                        Opacity="0">
+                        </Separator>
+                        <TextBlock
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center"
+                            FontWeight="Light"
+                            Foreground="{DynamicResource MainI}"
+                            FontSize="22px">
+                            Rename project
+                        </TextBlock>
+                        <Separator
+                        Width="10px"
+                        Opacity="0">
+                        </Separator>
+                    </StackPanel>
+                </Border>
+
+                <Separator
+                    Width="10px"
+                    Opacity="0">
+                </Separator>
+
+                <Border
+                x:Name="DeleteBorder"
+                Grid.Row="2"
+                Grid.Column="8"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="{DynamicResource BackI}"
+                CornerRadius="10"
+                MouseEnter="Tool4_MouseEnter"
+                MouseLeave="Tool4_MouseLeave"
+                MouseUp="DeleteBorder_MouseUp">
+
+                    <StackPanel
+                    Orientation="Horizontal">
+                        <Image
+                        Source="/Images/Trashcan.png"
+                        MaxHeight="25px"
+                        Margin="10, 0, 5, 0">
+                        </Image>
+                        <Separator
+                        Width="5px"
+                        Opacity="0">
+                        </Separator>
+                        <TextBlock
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center"
+                            FontWeight="Light"
+                            Foreground="{DynamicResource MainI}"
+                            FontSize="22px">
+                            Delete project
+                        </TextBlock>
+                        <Separator
+                        Width="10px"
+                        Opacity="0">
+                        </Separator>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <Border
+                x:Name="TasksViewer"
+                Visibility="Hidden"
+                Grid.Row="4"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                Background="{DynamicResource BackI}"
+                CornerRadius="10">
+
+                <ScrollViewer>
+
+                    <StackPanel x:Name="TasksList" />
+
+                </ScrollViewer>
+
             </Border>
+
+
+
+
+
         </Grid>
     </Grid>
 </Page>

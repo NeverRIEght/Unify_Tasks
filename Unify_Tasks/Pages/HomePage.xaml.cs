@@ -27,7 +27,8 @@ namespace Unify_Tasks.Pages
     public partial class HomePage : Page
     {
         static MainWindow w1 = (MainWindow)Application.Current.MainWindow;
-        public int AvatarColor = 1;
+        public int SortType = 0;
+        public int renID = 0;
 
         public HomePage()
         {
@@ -37,8 +38,20 @@ namespace Unify_Tasks.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             MainWindow win = (MainWindow)Window.GetWindow(this);
-            win.MinWidth = 1060;
+            win.MinWidth = 1240;
             UserNameBox.Text = w1.userNickname;
+            if (w1.userNickname.Length > 12)
+            {
+                UserNameBox.Margin = new Thickness(0);
+            }
+            if (w1.userNickname.Length > 8)
+            {
+                UserNameBox.FontSize = 12;
+            }
+            if (w1.userNickname.Length > 6)
+            {
+                UserNameBox.FontSize = 18;
+            }
             UpdateProjects();
         }
 
@@ -70,10 +83,9 @@ namespace Unify_Tasks.Pages
                                     w1.currProject = project1.ProjectsID;
                                     ProjectName.Text = project1.ProjectsText;
                                     ProjectName.Visibility = Visibility.Visible;
+                                    Tools.Visibility = Visibility.Visible;
                                     NewTask.Visibility = Visibility.Visible;
                                     TasksViewer.Visibility = Visibility.Visible;
-                                    TrashProject.Visibility = Visibility.Visible;
-                                    TrashRedProject.Visibility = Visibility.Visible;
                                     UpdateTasks();
                                 };
 
@@ -86,7 +98,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to update projects list.\r\n" +
-                                        
+
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -103,8 +115,35 @@ namespace Unify_Tasks.Pages
                     {
                         var currTasks = from p in context1.Tasks
                                         where p.ProjectID == w1.currProject
-                                        orderby p.TaskID descending
                                         select p;
+                        switch (SortType)
+                        {
+                            case 1: //Newest
+                                currTasks = from p in context1.Tasks
+                                                where p.ProjectID == w1.currProject
+                                                orderby p.TaskID descending
+                                                select p;
+                                break;
+                            case 2: //Oldest
+                                currTasks = from p in context1.Tasks
+                                            where p.ProjectID == w1.currProject
+                                            orderby p.TaskID ascending
+                                            select p;
+                                break;
+                            case 3: //Alphabet
+                                currTasks = from p in context1.Tasks
+                                            where p.ProjectID == w1.currProject
+                                            orderby p.Header ascending
+                                            select p;
+                                break;
+                            case 4: //Date
+                                currTasks = from p in context1.Tasks
+                                            where p.ProjectID == w1.currProject
+                                            orderby p.Planned descending
+                                            select p;
+                                break;
+                        }
+                        
 
                         if (currTasks != null)
                         {
@@ -121,13 +160,13 @@ namespace Unify_Tasks.Pages
                                 };
                                 task1.TaskHeader.TextChanged += (object sender, TextChangedEventArgs e) =>
                                 {
-                                    int toRenameID = w1.currTask;
-                                    if (toRenameID != 0)
+                                    renID = task1.TasksID;
+                                    if (renID != 0)
                                     {
                                         Models.Task toRename = null;
                                         using (var context = new Unify_TasksEntities())
                                         {
-                                            toRename = context.Tasks.Where(b => b.TaskID == toRenameID).FirstOrDefault();
+                                            toRename = context.Tasks.Where(b => b.TaskID == renID).FirstOrDefault();
 
                                             if (toRename != null)
                                             {
@@ -140,7 +179,7 @@ namespace Unify_Tasks.Pages
 
                                 var thisTags = context1.Tags.Where(t => t.TaskID == everyTask.TaskID);
 
-                                if(thisTags != null)
+                                if (thisTags != null)
                                 {
                                     task1.TagsList.Children.Clear();
                                     foreach (var everyTag in thisTags)
@@ -217,25 +256,48 @@ namespace Unify_Tasks.Pages
                                         task1.TagsList.Children.Add(tag1);
                                     }
                                 }
-                                
 
-                                switch(everyTask.Status)
+                                switch (everyTask.Status)
                                 {
                                     case "Queue":
                                         task1.Status.Text = everyTask.Status;
-                                        task1.Status.Foreground = (Brush)Application.Current.FindResource("CustomRed");
+                                        task1.StatusBorder.Background = (Brush)Application.Current.FindResource("CustomRed");
                                         break;
                                     case "In Progress":
                                         task1.Status.Text = everyTask.Status;
-                                        task1.Status.Foreground = (Brush)Application.Current.FindResource("CustomYellow");
+                                        task1.StatusBorder.Background = (Brush)Application.Current.FindResource("CustomYellow");
                                         break;
                                     case "Done":
                                         task1.Status.Text = everyTask.Status;
-                                        task1.Status.Foreground = (Brush)Application.Current.FindResource("CustomGreen");
+                                        task1.StatusBorder.Background = (Brush)Application.Current.FindResource("CustomGreen");
                                         break;
                                     case "Frozen":
                                         task1.Status.Text = everyTask.Status;
-                                        task1.Status.Foreground = (Brush)Application.Current.FindResource("CustomBlue");
+                                        task1.StatusBorder.Background = (Brush)Application.Current.FindResource("CustomBlue");
+                                        break;
+                                }
+
+                                switch (everyTask.Priority)
+                                {
+                                    case 0:
+                                        task1.Priority.Text = "Pn";
+                                        task1.PriorityBorder.Background = Brushes.Transparent;
+                                        break;
+                                    case 1:
+                                        task1.Priority.Text = "P1";
+                                        task1.PriorityBorder.Background = (Brush)Application.Current.FindResource("CustomRed");
+                                        break;
+                                    case 2:
+                                        task1.Priority.Text = "P2";
+                                        task1.PriorityBorder.Background = (Brush)Application.Current.FindResource("CustomYellow");
+                                        break;
+                                    case 3:
+                                        task1.Priority.Text = "P3";
+                                        task1.PriorityBorder.Background = (Brush)Application.Current.FindResource("CustomGreen");
+                                        break;
+                                    case 4:
+                                        task1.Priority.Text = "P4";
+                                        task1.PriorityBorder.Background = (Brush)Application.Current.FindResource("CustomBlue");
                                         break;
                                 }
 
@@ -245,10 +307,54 @@ namespace Unify_Tasks.Pages
                                     ed1.Show();
                                 };
 
+                                task1.StatusBorder.MouseEnter += (object s, MouseEventArgs ev) =>
+                                {
+                                    task1.StatusBorder.BorderBrush = (Brush)Application.Current.FindResource("MainI");
+                                    task1.Status.Foreground = (Brush)Application.Current.FindResource("MainI");
+                                };
+                                task1.StatusBorder.MouseLeave += (object s, MouseEventArgs ev) =>
+                                {
+                                    task1.StatusBorder.BorderBrush = (Brush)Application.Current.FindResource("GrayI");
+                                    task1.Status.Foreground = (Brush)Application.Current.FindResource("GrayI");
+                                };
+
+                                task1.PriorityBorder.MouseUp += (object sender, MouseButtonEventArgs e) =>
+                                {
+
+                                };
+
+                                task1.PriorityBorder.MouseEnter += (object s, MouseEventArgs ev) =>
+                                {
+                                    task1.PriorityBorder.BorderBrush = (Brush)Application.Current.FindResource("MainI");
+                                    task1.Priority.Foreground = (Brush)Application.Current.FindResource("MainI");
+                                };
+                                task1.PriorityBorder.MouseLeave += (object s, MouseEventArgs ev) =>
+                                {
+                                    task1.PriorityBorder.BorderBrush = (Brush)Application.Current.FindResource("GrayI");
+                                    task1.Priority.Foreground = (Brush)Application.Current.FindResource("GrayI");
+                                };
+
+                                task1.DateBorder.MouseUp += (object sender, MouseButtonEventArgs e) =>
+                                {
+
+                                };
+
+                                task1.DateBorder.MouseEnter += (object s, MouseEventArgs ev) =>
+                                {
+                                    task1.DateBorder.BorderBrush = (Brush)Application.Current.FindResource("MainI");
+                                    task1.Date.Foreground = (Brush)Application.Current.FindResource("MainI");
+                                    task1.DateImage.Source = new BitmapImage(new Uri("/Images/CalendarWhite.png", UriKind.Relative));
+                                };
+                                task1.DateBorder.MouseLeave += (object s, MouseEventArgs ev) =>
+                                {
+                                    task1.DateBorder.BorderBrush = (Brush)Application.Current.FindResource("GrayI");
+                                    task1.Date.Foreground = (Brush)Application.Current.FindResource("GrayI");
+                                    task1.DateImage.Source = new BitmapImage(new Uri("/Images/Calendar.png", UriKind.Relative));
+                                };
+
                                 task1.OpenNoteWhite.MouseUp += (object sender, MouseButtonEventArgs e) =>
                                 {
-                                    NoteEditor ed1 = new NoteEditor();
-                                    ed1.Show();
+
                                 };
                                 task1.TrashRed.MouseUp += (object sender, MouseButtonEventArgs e) =>
                                 {
@@ -263,8 +369,8 @@ namespace Unify_Tasks.Pages
                                             break;
                                     }
                                 };
-                                
-                                
+
+
 
 
 
@@ -277,7 +383,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to update task list.\r\n" +
-                                        
+
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -301,7 +407,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to create new project.\r\n" +
-                                        
+
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -309,6 +415,15 @@ namespace Unify_Tasks.Pages
 
         private void ProjectName_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if(ProjectName.LineCount <= 2)
+            {
+                ProjectName.FontSize = 40;
+            }
+            if(ProjectName.LineCount > 2)
+            {
+                ProjectName.FontSize = 30;
+            }
+
             try
             {
                 Project toRename = null;
@@ -327,7 +442,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to rename this project.\r\n" +
-                                        
+
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -398,8 +513,7 @@ namespace Unify_Tasks.Pages
                             ProjectName.Visibility = Visibility.Hidden;
                             NewTask.Visibility = Visibility.Hidden;
                             TasksViewer.Visibility = Visibility.Hidden;
-                            TrashProject.Visibility = Visibility.Hidden;
-                            TrashRedProject.Visibility = Visibility.Hidden;
+                            Tools.Visibility = Visibility.Hidden;
                             UpdateProjects();
                         }
                     }
@@ -436,7 +550,7 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to create new task.\r\n" +
-                                        
+
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
@@ -477,9 +591,9 @@ namespace Unify_Tasks.Pages
 
                             var delTags = context.Tags.Where(t => t.TaskID == toDeleteID);
 
-                            if(delTags != null)
+                            if (delTags != null)
                             {
-                                foreach(var everyTag in delTags)
+                                foreach (var everyTag in delTags)
                                 {
                                     context.Tags.Remove(everyTag);
                                 }
@@ -495,14 +609,14 @@ namespace Unify_Tasks.Pages
             catch (Exception)
             {
                 MessageBox.Show("An error occurred while trying to delete this task.\r\n" +
-                                        
+
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
             }
-            
+
         }
 
-        private void TrashRedProject_MouseUp(object sender, MouseButtonEventArgs e)
+        private void TrashProject_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MessageBoxResult result1 = MessageBox.Show("Are you sure you want to delete the project?", "Unify", MessageBoxButton.YesNo);
             switch (result1)
@@ -520,71 +634,105 @@ namespace Unify_Tasks.Pages
             NavigationService.Navigate(new Login());
         }
 
-        private void TrashProject_MouseEnter(object sender, MouseEventArgs e)
-        {
-            TrashProject.Opacity = 0;
-            TrashRedProject.Opacity = 1;
-        }
-
-        private void TrashProject_MouseLeave(object sender, MouseEventArgs e)
-        {
-            TrashProject.Opacity = 1;
-            TrashRedProject.Opacity = 0;
-        }
-
-        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            
-
-        }
-
-        private void AvatarRect_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            if(AvatarColor == 8)
-            {
-                AvatarColor = 1;
-            }
-            else
-            {
-                AvatarColor += 1;
-            }
-            switch(AvatarColor)
-            {
-                case 1:
-                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomGreen");
-                    break;
-                case 2:
-                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomBlue");
-                    break;
-                case 3:
-                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomBrown");
-                    break;
-                case 4:
-                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomRed");
-                    break;
-                case 5:
-                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomGray");
-                    break;
-                case 6:
-                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomYellow");
-                    break;
-                case 7:
-                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomPink");
-                    break;
-                case 8:
-                    AvatarRect.Fill = (Brush)Application.Current.FindResource("CustomPurple");
-                    break;
-            }
-        }
-
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
             this.Cursor = Cursors.Hand;
         }
-
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
             this.Cursor = Cursors.Arrow;
+        }
+
+        private void Tool1_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            NewTask.Background = (Brush)Application.Current.FindResource("CustomGreen");
+        }
+        private void Tool1_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
+            NewTask.Background = (Brush)Application.Current.FindResource("BackI");
+        }
+
+        private void Tool2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            SortBorder.Background = (Brush)Application.Current.FindResource("CustomYellow");
+        }
+        private void Tool2_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
+            SortBorder.Background = (Brush)Application.Current.FindResource("BackI");
+        }
+
+        private void Tool3_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            EditBorder.Background = (Brush)Application.Current.FindResource("CustomBrown");
+        }
+        private void Tool3_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
+            EditBorder.Background = (Brush)Application.Current.FindResource("BackI");
+        }
+
+        private void Tool4_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+            DeleteBorder.Background = (Brush)Application.Current.FindResource("CustomRed");
+        }
+        private void Tool4_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
+            DeleteBorder.Background = (Brush)Application.Current.FindResource("BackI");
+        }
+
+        private void RenameProject()
+        {
+            ProjectName.Focus();
+            ProjectName.SelectionStart = ProjectName.Text.Length;
+        }
+
+        private void SortBorder_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            switch(SortType)
+            {
+                case 0:
+                    Sort.Text = "Sort by: Newest";
+                    SortType++;
+                    UpdateTasks();
+                    break;
+                case 1:
+                    Sort.Text = "Sort by: Oldest";
+                    SortType++;
+                    UpdateTasks();
+                    break;
+                case 2:
+                    Sort.Text = "Sort by: Alphabet";
+                    SortType++;
+                    UpdateTasks();
+                    break;
+                case 3:
+                    Sort.Text = "Sort by: Date";
+                    SortType++;
+                    UpdateTasks();
+                    break;
+                case 4:
+                    Sort.Text = "Sort by: Newest";
+                    SortType = 1;
+                    UpdateTasks();
+                    break;
+            }
+        }
+
+        private void EditBorder_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            RenameProject();
+        }
+
+        private void DeleteBorder_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            DeleteProject();
         }
     }
 }

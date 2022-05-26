@@ -209,6 +209,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Resource Include="Fonts\Gilroy-Regular.ttf" />
     <EntityDeploy Include="Models\Model.edmx">
@@ -252,6 +253,10 @@
     <Resource Include="Images\OpenNoteWhite.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Sort.png" />
+    <Resource Include="Images\Edit.png" />
+    <Resource Include="Images\Calendar.png" />
+    <Resource Include="Images\CalendarWhite.png" />
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

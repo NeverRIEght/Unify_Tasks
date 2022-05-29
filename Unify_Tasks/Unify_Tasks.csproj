@@ -257,6 +257,11 @@
     <Resource Include="Images\Edit.png" />
     <Resource Include="Images\Calendar.png" />
     <Resource Include="Images\CalendarWhite.png" />
+    <Resource Include="Images\Tags.png" />
+    <Resource Include="Images\Status.png" />
+    <Resource Include="Images\Priority.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

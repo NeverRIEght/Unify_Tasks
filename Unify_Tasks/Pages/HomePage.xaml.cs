@@ -136,7 +136,13 @@ namespace Unify_Tasks.Pages
                                             orderby p.Header ascending
                                             select p;
                                 break;
-                            case 4: //Date
+                            case 4: //Status
+                                currTasks = from p in context1.Tasks
+                                            where p.ProjectID == w1.currProject
+                                            orderby p.Status descending
+                                            select p;
+                                break;
+                            case 5: //Date
                                 currTasks = from p in context1.Tasks
                                             where p.ProjectID == w1.currProject
                                             orderby p.Planned descending
@@ -156,6 +162,7 @@ namespace Unify_Tasks.Pages
                                 task1.MouseEnter += (object s, MouseEventArgs ev) =>
                                 {
                                     w1.currTask = everyTask.TaskID;
+                                    w1.currDate = everyTask.Planned;
                                     task1.TasksID = everyTask.TaskID;
                                 };
                                 task1.TaskHeader.TextChanged += (object sender, TextChangedEventArgs e) =>
@@ -247,8 +254,10 @@ namespace Unify_Tasks.Pages
 
                                         tag1.MouseUp += (object sender, MouseButtonEventArgs e) =>
                                         {
-                                            TagControlWindow tc1 = new TagControlWindow();
-                                            tc1.Show();
+                                            /*TagControlWindow tc1 = new TagControlWindow();
+                                            tc1.Show();*/
+                                            TaskWindow tw1 = new TaskWindow();
+                                            tw1.ShowDialog();
                                         };
 
                                         tag1.Margin = new Thickness(5);
@@ -259,6 +268,10 @@ namespace Unify_Tasks.Pages
 
                                 switch (everyTask.Status)
                                 {
+                                    case "None":
+                                        task1.Status.Text = everyTask.Status;
+                                        task1.StatusBorder.Background = Brushes.Transparent;
+                                        break;
                                     case "Queue":
                                         task1.Status.Text = everyTask.Status;
                                         task1.StatusBorder.Background = (Brush)Application.Current.FindResource("CustomRed");
@@ -301,60 +314,71 @@ namespace Unify_Tasks.Pages
                                         break;
                                 }
 
+                                if (everyTask.Planned != null)
+                                {
+                                    DateTime thisDate = new DateTime();
+                                    thisDate = (DateTime)everyTask.Planned;
+                                    task1.Date.Text = thisDate.ToShortDateString();
+                                    
+                                }
+                                else
+                                {
+                                    task1.Date.Text = "No date";
+                                }
+
                                 task1.StatusBorder.MouseUp += (object sender, MouseButtonEventArgs e) =>
                                 {
-                                    NoteEditor ed1 = new NoteEditor();
-                                    ed1.Show();
+                                    TaskWindow tw1 = new TaskWindow();
+                                    tw1.ShowDialog();
+                                    UpdateTasks();
                                 };
 
                                 task1.StatusBorder.MouseEnter += (object s, MouseEventArgs ev) =>
                                 {
                                     task1.StatusBorder.BorderBrush = (Brush)Application.Current.FindResource("MainI");
-                                    task1.Status.Foreground = (Brush)Application.Current.FindResource("MainI");
                                 };
                                 task1.StatusBorder.MouseLeave += (object s, MouseEventArgs ev) =>
                                 {
                                     task1.StatusBorder.BorderBrush = (Brush)Application.Current.FindResource("GrayI");
-                                    task1.Status.Foreground = (Brush)Application.Current.FindResource("GrayI");
                                 };
 
                                 task1.PriorityBorder.MouseUp += (object sender, MouseButtonEventArgs e) =>
                                 {
-
+                                    TaskWindow tw1 = new TaskWindow();
+                                    tw1.ShowDialog();
+                                    UpdateTasks();
                                 };
 
                                 task1.PriorityBorder.MouseEnter += (object s, MouseEventArgs ev) =>
                                 {
                                     task1.PriorityBorder.BorderBrush = (Brush)Application.Current.FindResource("MainI");
-                                    task1.Priority.Foreground = (Brush)Application.Current.FindResource("MainI");
                                 };
                                 task1.PriorityBorder.MouseLeave += (object s, MouseEventArgs ev) =>
                                 {
                                     task1.PriorityBorder.BorderBrush = (Brush)Application.Current.FindResource("GrayI");
-                                    task1.Priority.Foreground = (Brush)Application.Current.FindResource("GrayI");
                                 };
 
                                 task1.DateBorder.MouseUp += (object sender, MouseButtonEventArgs e) =>
                                 {
-
+                                    TaskWindow tw1 = new TaskWindow();
+                                    tw1.ShowDialog();
+                                    UpdateTasks();
                                 };
 
                                 task1.DateBorder.MouseEnter += (object s, MouseEventArgs ev) =>
                                 {
                                     task1.DateBorder.BorderBrush = (Brush)Application.Current.FindResource("MainI");
-                                    task1.Date.Foreground = (Brush)Application.Current.FindResource("MainI");
-                                    task1.DateImage.Source = new BitmapImage(new Uri("/Images/CalendarWhite.png", UriKind.Relative));
                                 };
                                 task1.DateBorder.MouseLeave += (object s, MouseEventArgs ev) =>
                                 {
                                     task1.DateBorder.BorderBrush = (Brush)Application.Current.FindResource("GrayI");
-                                    task1.Date.Foreground = (Brush)Application.Current.FindResource("GrayI");
-                                    task1.DateImage.Source = new BitmapImage(new Uri("/Images/Calendar.png", UriKind.Relative));
                                 };
 
                                 task1.OpenNoteWhite.MouseUp += (object sender, MouseButtonEventArgs e) =>
                                 {
-
+                                    TaskWindow tw1 = new TaskWindow();
+                                    tw1.ShowDialog();
+                                    UpdateTasks();
                                 };
                                 task1.TrashRed.MouseUp += (object sender, MouseButtonEventArgs e) =>
                                 {
@@ -713,11 +737,16 @@ namespace Unify_Tasks.Pages
                     UpdateTasks();
                     break;
                 case 3:
-                    Sort.Text = "Sort by: Date";
+                    Sort.Text = "Sort by: Status";
                     SortType++;
                     UpdateTasks();
                     break;
                 case 4:
+                    Sort.Text = "Sort by: Date";
+                    SortType++;
+                    UpdateTasks();
+                    break;
+                case 5:
                     Sort.Text = "Sort by: Newest";
                     SortType = 1;
                     UpdateTasks();
@@ -732,7 +761,15 @@ namespace Unify_Tasks.Pages
 
         private void DeleteBorder_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            DeleteProject();
+            MessageBoxResult result1 = MessageBox.Show("Are you sure you want to delete the project?", "Unify", MessageBoxButton.YesNo);
+            switch (result1)
+            {
+                case MessageBoxResult.Yes:
+                    DeleteProject();
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
         }
     }
 }

@@ -4,14 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="874f48750bfa424aaf38c15cc23ad183" Name="Diagram1">
-        <EntityTypeShape EntityType="Unify_TasksModel.Note" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Unify_TasksModel.Project" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Unify_TasksModel.Tag" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Unify_TasksModel.Task" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Unify_TasksModel.User" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+      <Diagram DiagramId="55b81743c7b148898ab749e83633f8b7" Name="Diagram1">
+        <EntityTypeShape EntityType="Unify_TasksModel.Note" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Unify_TasksModel.Project" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Unify_TasksModel.Tag" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Unify_TasksModel.Task" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Unify_TasksModel.User" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
         <AssociationConnector Association="Unify_TasksModel.FK__Notes__TaskID__300424B4" ManuallyRouted="false" />
         <AssociationConnector Association="Unify_TasksModel.FK__Projects__UserID__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="Unify_TasksModel.FK__Tags__ProjectID__33D4B598" ManuallyRouted="false" />
         <AssociationConnector Association="Unify_TasksModel.FK__Tasks__ProjectID__2A4B4B5E" ManuallyRouted="false" />
         <AssociationConnector Association="Unify_TasksModel.FK__Tags__TaskID__32E0915F" ManuallyRouted="false" />
       </Diagram>

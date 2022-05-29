@@ -27,7 +27,7 @@
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="5"
-            Fill="{DynamicResource MainI}"
+            Fill="{DynamicResource GrayI}"
             RadiusX="0.5"
             RadiusY="0.5" />
         <TextBlock

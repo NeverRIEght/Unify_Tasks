@@ -4,33 +4,446 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Unify_Tasks.DialogWindows"
+        xmlns:uc ="clr-namespace:Unify_Tasks.UserControls"
         mc:Ignorable="d"
-        Title="TaskWindow" Height="630" Width="950">
-    <Grid Background="{DynamicResource BackI}">
+        Title="Edit task" Height="630" Width="950"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        ResizeMode="NoResize">
+    <Grid Background="{DynamicResource MediumI}">
         <ScrollViewer>
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="105px" />
-                    <RowDefinition Height="105px" />
-                    
-                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="120px" />
+                    <ColumnDefinition Width="120" />
                     <ColumnDefinition Width="710px" />
                     <ColumnDefinition Width="115px" />
                 </Grid.ColumnDefinitions>
-                <TextBox
-                        x:Name="ProjectName"
+
+                <StackPanel
+                    Grid.Column="1">
+
+                    <TextBox
+                        x:Name="TaskName"
                         Grid.Column="1"
                         HorizontalAlignment="Stretch"
+                        VerticalAlignment="Bottom"
                         FontWeight="SemiBold"
                         FontSize="50px"
                         Margin="0, 20, 0, 25"
-                        TextWrapping="WrapWithOverflow">
-                        WWWWWWW WWWWWWW WWWWWWWWWW WWWWWWWW WWWWWWWWWWW WW
-                </TextBox>
+                        TextWrapping="Wrap"
+                        TextChanged="TaskName_TextChanged">
+                    </TextBox>
 
+                    <StackPanel
+                        x:Name="StackTags"
+                        Grid.Column="1"
+                        Orientation="Horizontal"
+                        Margin="0, 0, 0, 20">
+
+                        <Image
+                            Source="/Images/Tags.png"
+                            Height="16px"
+                            VerticalAlignment="Center"
+                            Margin="0, 0, 8, 0">
+
+                        </Image>
+                        <TextBlock
+                            FontWeight="Medium"
+                            FontSize="20px"
+                            VerticalAlignment="Center"
+                            Width="140px">
+                        Tags
+                        </TextBlock>
+                        <WrapPanel
+                            Grid.Column="1"
+                            x:Name="TagsList"
+                            MouseUp="TagsList_MouseUp"
+                            Width="540">
+                        </WrapPanel>
+                        
+                    </StackPanel>
+
+                    <StackPanel
+                        x:Name="StackStatus"
+                        Grid.Column="1"
+                        Orientation="Horizontal"
+                        Margin="0, 0, 0, 20">
+
+                        <Image
+                            Source="/Images/Status.png"
+                            Height="20px"
+                            VerticalAlignment="Center"
+                            Margin="0, 0, 8, 0">
+
+                        </Image>
+                        <TextBlock
+                            FontWeight="Medium"
+                            FontSize="20px"
+                            VerticalAlignment="Center"
+                            Width="140px">
+                        Status
+                        </TextBlock>
+                        <WrapPanel
+                            x:Name="StatusWrap"
+                            MouseUp="StatusWrap_MouseUp">
+
+                        </WrapPanel>
+
+                    </StackPanel>
+
+                    <StackPanel
+                        x:Name="StackPriority"
+                        Grid.Column="1"
+                        Orientation="Horizontal"
+                        Margin="0, 0, 0, 20">
+
+                        <Image
+                            Source="/Images/Priority.png"
+                            Height="20px"
+                            VerticalAlignment="Center"
+                            Margin="0, 0, 8, 0">
+
+                        </Image>
+                        <TextBlock
+                            FontWeight="Medium"
+                            FontSize="20px"
+                            VerticalAlignment="Center"
+                            Width="140px">
+                        Priority
+                        </TextBlock>
+                        <WrapPanel
+                            x:Name="PriorityWrap"
+                            MouseUp="PriorityWrap_MouseUp">
+
+                        </WrapPanel>
+
+                    </StackPanel>
+
+                    <StackPanel
+                        x:Name="StackDate"
+                        Grid.Column="1"
+                        Orientation="Horizontal"
+                        Margin="0, 0, 0, 20">
+
+                        <Image
+                            Source="/Images/CalendarWhite.png"
+                            Height="20px"
+                            VerticalAlignment="Center"
+                            Margin="0, 0, 8, 0">
+
+                        </Image>
+                        <TextBlock
+                            FontWeight="Medium"
+                            FontSize="20px"
+                            VerticalAlignment="Center"
+                            Width="140px">
+                        Date
+                        </TextBlock>
+                        <WrapPanel
+                            x:Name="DateWrap"
+                            MouseUp="DateWrap_MouseUp">
+
+                        </WrapPanel>
+
+                    </StackPanel>
+
+                    <Separator />
+
+                    <ToolBar
+                        Height="35px"
+                        Background="{DynamicResource MediumI}"
+                        Foreground="{DynamicResource MainI}">
+
+                        <ToggleButton
+                            x:Name="BoldButton"
+                            Padding="4 0 4 0"
+                            Margin="5, 0, 5, 0"
+                            FontSize="22"
+                            Checked="BoldButton_Checked"
+                            Unchecked="BoldButton_Unchecked"
+                        >B
+                        </ToggleButton>
+                        <ToggleButton
+                            x:Name="ItalicButton"
+                            Padding="4 0 4 0"
+                            Margin="5, 0, 5, 0"
+                            FontSize="22"
+                            FontStyle="Italic"
+                            Checked="ItalicButton_Checked"
+                            Unchecked="ItalicButton_Unchecked"
+                            >I
+                        </ToggleButton>
+                        <ToggleButton
+                            x:Name="UnderlineButton"
+                            FontSize="22"
+                            Margin="5, 0, 5, 0"
+                            Padding="4 0 4 0"
+                            Checked="UnderlineButton_Checked"
+                            Unchecked="UnderlineButton_Unchecked">
+
+                            <TextBlock
+                                TextDecorations="Underline"
+                                >U
+                            </TextBlock>
+
+                        </ToggleButton>
+
+                        <ComboBox
+                            x:Name="FontStyle"
+                            Padding="4 0 25 0"
+                            Margin="10, 0, 10, 0"
+                            Background="{DynamicResource AccentI}"
+                            BorderThickness="0"
+                            SelectionChanged="FontStyle_SelectionChanged">
+
+                            <ComboBoxItem IsSelected="True">
+                                <TextBlock>
+                            Main font
+                                </TextBlock>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <TextBlock>
+                            Header 1
+                                </TextBlock>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <TextBlock>
+                            Header 2
+                                </TextBlock>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <TextBlock>
+                            Header 3
+                                </TextBlock>
+                            </ComboBoxItem>
+
+                        </ComboBox>
+
+                        <Border
+                            x:Name="SaveNoteBorder"
+                            Background="{DynamicResource AccentI}"
+                            CornerRadius="6"
+                            Height="25px"
+                            MouseDown="Border_MouseDown"
+                            MouseLeave="SaveNoteBorder_MouseLeave">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Margin="5, 0, 5, 0"
+                                FontSize="18px">
+                                Save Note
+                            </TextBlock>
+                        </Border>
+                        
+                    </ToolBar>
+
+                    <RichTextBox
+                        x:Name="NoteText"
+                        Foreground="White"
+                        Background="{DynamicResource BackI}"
+                        BorderThickness="0"
+                        FontFamily="/Fonts/#Gilroy"
+                        FontWeight="Normal"
+                        MinHeight="250px"
+                        FontSize="14"
+                        Margin="5"
+                        TextChanged="NoteText_TextChanged"
+                        SelectionChanged="NoteText_SelectionChanged">
+                    </RichTextBox>
+
+
+                </StackPanel>
+
+                <Popup
+                    x:Name="TagsPop"
+                    StaysOpen="False"
+                    Placement="Mouse"
+                    AllowsTransparency="True">
+
+                    <Border
+                        Width="400px"
+                        Background="{DynamicResource BackI}"
+                        CornerRadius="6">
+
+                        <StackPanel>
+
+                            <Border
+                                Background="{DynamicResource MediumI}"
+                                HorizontalAlignment="Stretch"
+                                Margin="5, 5, 5, 10"
+                                CornerRadius="6"
+                                MouseUp="TaskTagsList_MouseUp">
+
+                                <WrapPanel
+                                    Orientation="Horizontal"
+                                    x:Name="TaskTagsList"
+                                    MinHeight="30px">
+                                    <TextBox
+                                        x:Name="NewTagText"
+                                        Focusable="True"
+                                        FontWeight="Medium"
+                                        FontSize="18"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Margin="5, 2, 5, 0"
+                                        MaxLength="50"
+                                        TextChanged="NewTagText_TextChanged"
+                                        KeyUp="NewTagText_KeyUp">
+                                    </TextBox>
+
+
+                                </WrapPanel>
+                                
+                            </Border>
+
+                            <Separator Margin="5, 0, 5, 4"/>
+
+                            <TextBlock
+                                x:Name="InfoText"
+                                FontWeight="Medium"
+                                FontSize="14"
+                                Margin="15, 0, 0, 4"
+                                Foreground="{DynamicResource AccentI}">
+                                Choose from list or create new
+                            </TextBlock>
+
+                            <ScrollViewer>
+
+                                <Border
+                                    Background="{DynamicResource MediumI}"
+                                    HorizontalAlignment="Stretch"
+                                    Margin="15, 0, 0, 5"
+                                    CornerRadius="6">
+
+                                    <StackPanel
+                                        x:Name="ProjectTagsList">
+                                        
+                                    </StackPanel>
+                                    
+                                </Border>
+
+                                
+                            </ScrollViewer>
+                            
+                            
+                        </StackPanel>
+                        
+                    </Border>
                     
+                </Popup>
+
+                <Popup
+                    x:Name="StatusPop"
+                    StaysOpen="False"
+                    Placement="Mouse"
+                    AllowsTransparency="True">
+
+                    <Border
+                        Width="125px"
+                        Background="{DynamicResource BackI}"
+                        CornerRadius="6">
+
+                        <StackPanel>
+                            
+                            <TextBlock
+                                FontWeight="Medium"
+                                FontSize="14"
+                                Margin="5, 4, 5, 4"
+                                Foreground="{DynamicResource AccentI}">
+                                Choose status:
+                            </TextBlock>
+
+                            <Separator Margin="5, 0, 5, 5"/>
+                            
+                            <StackPanel
+                                        x:Name="EditStatusStack">
+
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+                    </Border>
+
+                </Popup>
+
+                <Popup
+                    x:Name="PriorityPop"
+                    StaysOpen="False"
+                    Placement="Mouse"
+                    AllowsTransparency="True">
+
+                    <Border
+                        Width="125px"
+                        Background="{DynamicResource BackI}"
+                        CornerRadius="6">
+
+                        <StackPanel>
+
+                            <TextBlock
+                                FontWeight="Medium"
+                                FontSize="14"
+                                Margin="5, 4, 5, 4"
+                                Foreground="{DynamicResource AccentI}">
+                                Choose priority:
+                            </TextBlock>
+
+                            <Separator Margin="5, 0, 5, 5"/>
+
+                            <StackPanel
+                                x:Name="EditPriorityStack">
+
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+                    </Border>
+
+                </Popup>
+
+                <Popup
+                    x:Name="DatePop"
+                    StaysOpen="False"
+                    Placement="Mouse"
+                    AllowsTransparency="True">
+
+                    <Border
+                        Width="350px"
+                        Background="{DynamicResource BackI}"
+                        CornerRadius="6">
+
+                        <StackPanel>
+
+                            <TextBlock
+                                FontWeight="Medium"
+                                FontSize="14"
+                                Margin="5, 4, 5, 4"
+                                Foreground="{DynamicResource AccentI}">
+                                Choose date:
+                            </TextBlock>
+
+                            <Separator Margin="5, 0, 5, 5"/>
+
+                            <Calendar
+                                x:Name="PlannedCalendar"
+                                Margin="5, 0, 5, 5"
+                                SelectionMode="SingleDate"
+                                IsTodayHighlighted="False"
+                                SelectedDatesChanged="Calendar_SelectedDatesChanged"
+                                Background="{DynamicResource MediumI}"
+                                Foreground="{DynamicResource MainI}">
+                                <Calendar.LayoutTransform>
+                                    <ScaleTransform ScaleX="1.8" ScaleY="1.8" />
+                                </Calendar.LayoutTransform>
+
+                            </Calendar>
+                            
+                        </StackPanel>
+
+                    </Border>
+
+                </Popup>
+
             </Grid>
         </ScrollViewer>
     </Grid>

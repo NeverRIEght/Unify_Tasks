@@ -24,6 +24,7 @@
         <MappingFragment StoreEntitySet="Tags">
           <ScalarProperty Name="TagID" ColumnName="TagID" />
           <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
           <ScalarProperty Name="TagHeader" ColumnName="TagHeader" />
           <ScalarProperty Name="TagColor" ColumnName="TagColor" />
         </MappingFragment>

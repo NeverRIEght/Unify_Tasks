@@ -22,6 +22,7 @@
     </Key>
     <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TaskID" Type="int" />
+    <Property Name="ProjectID" Type="int" />
     <Property Name="TagHeader" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="TagColor" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
@@ -31,7 +32,7 @@
     </Key>
     <Property Name="TaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProjectID" Type="int" Nullable="false" />
-    <Property Name="Status" Type="varchar" MaxLength="10" />
+    <Property Name="Status" Type="varchar" MaxLength="15" />
     <Property Name="Priority" Type="int" />
     <Property Name="Header" Type="varchar" MaxLength="70" Nullable="false" />
     <Property Name="Planned" Type="datetime" />
@@ -65,6 +66,18 @@
       </Principal>
       <Dependent Role="Projects">
         <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tags__ProjectID__33D4B598">
+    <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
+    <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="Tags">
+        <PropertyRef Name="ProjectID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -105,6 +118,10 @@
     <AssociationSet Name="FK__Projects__UserID__276EDEB3" Association="Self.FK__Projects__UserID__276EDEB3">
       <End Role="Users" EntitySet="Users" />
       <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tags__ProjectID__33D4B598" Association="Self.FK__Tags__ProjectID__33D4B598">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Tags" EntitySet="Tags" />
     </AssociationSet>
     <AssociationSet Name="FK__Tags__TaskID__32E0915F" Association="Self.FK__Tags__TaskID__32E0915F">
       <End Role="Tasks" EntitySet="Tasks" />

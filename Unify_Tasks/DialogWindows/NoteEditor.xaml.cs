@@ -66,7 +66,7 @@ namespace Unify_Tasks.DialogWindows
             }
             catch (Exception)
             {
-                MessageBox.Show("An error occurred while trying to open this note.\r\n" +
+                MessageBox.Show("An error occurred while trying to open note.\r\n" +
                                         
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");

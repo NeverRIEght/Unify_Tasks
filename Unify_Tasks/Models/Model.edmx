@@ -27,6 +27,7 @@
           </Key>
           <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TaskID" Type="int" />
+          <Property Name="ProjectID" Type="int" />
           <Property Name="TagHeader" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TagColor" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
@@ -36,7 +37,7 @@
           </Key>
           <Property Name="TaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProjectID" Type="int" Nullable="false" />
-          <Property Name="Status" Type="varchar" MaxLength="10" />
+          <Property Name="Status" Type="varchar" MaxLength="15" />
           <Property Name="Priority" Type="int" />
           <Property Name="Header" Type="varchar" MaxLength="70" Nullable="false" />
           <Property Name="Planned" Type="datetime" />
@@ -70,6 +71,18 @@
             </Principal>
             <Dependent Role="Projects">
               <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tags__ProjectID__33D4B598">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
+          <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Tags">
+              <PropertyRef Name="ProjectID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -111,6 +124,10 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Projects" EntitySet="Projects" />
           </AssociationSet>
+          <AssociationSet Name="FK__Tags__ProjectID__33D4B598" Association="Self.FK__Tags__ProjectID__33D4B598">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Tags" EntitySet="Tags" />
+          </AssociationSet>
           <AssociationSet Name="FK__Tags__TaskID__32E0915F" Association="Self.FK__Tags__TaskID__32E0915F">
             <End Role="Tasks" EntitySet="Tasks" />
             <End Role="Tags" EntitySet="Tags" />
@@ -142,6 +159,7 @@
           <Property Name="ProjectHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK__Projects__UserID__276EDEB3" FromRole="Projects" ToRole="Users" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK__Tags__ProjectID__33D4B598" FromRole="Projects" ToRole="Tags" />
           <NavigationProperty Name="Tasks" Relationship="Self.FK__Tasks__ProjectID__2A4B4B5E" FromRole="Projects" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="Tag">
@@ -150,8 +168,10 @@
           </Key>
           <Property Name="TagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TaskID" Type="Int32" />
+          <Property Name="ProjectID" Type="Int32" />
           <Property Name="TagHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TagColor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="Self.FK__Tags__ProjectID__33D4B598" FromRole="Tags" ToRole="Projects" />
           <NavigationProperty Name="Task" Relationship="Self.FK__Tags__TaskID__32E0915F" FromRole="Tags" ToRole="Tasks" />
         </EntityType>
         <EntityType Name="Task">
@@ -160,7 +180,7 @@
           </Key>
           <Property Name="TaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProjectID" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Priority" Type="Int32" />
           <Property Name="Header" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Planned" Type="DateTime" Precision="3" />
@@ -198,6 +218,18 @@
             </Principal>
             <Dependent Role="Projects">
               <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tags__ProjectID__33D4B598">
+          <End Role="Projects" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="Tags" Type="Self.Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Tags">
+              <PropertyRef Name="ProjectID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -239,6 +271,10 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Projects" EntitySet="Projects" />
           </AssociationSet>
+          <AssociationSet Name="FK__Tags__ProjectID__33D4B598" Association="Self.FK__Tags__ProjectID__33D4B598">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Tags" EntitySet="Tags" />
+          </AssociationSet>
           <AssociationSet Name="FK__Tasks__ProjectID__2A4B4B5E" Association="Self.FK__Tasks__ProjectID__2A4B4B5E">
             <End Role="Projects" EntitySet="Projects" />
             <End Role="Tasks" EntitySet="Tasks" />
@@ -277,6 +313,7 @@
               <MappingFragment StoreEntitySet="Tags">
                 <ScalarProperty Name="TagID" ColumnName="TagID" />
                 <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
                 <ScalarProperty Name="TagHeader" ColumnName="TagHeader" />
                 <ScalarProperty Name="TagColor" ColumnName="TagColor" />
               </MappingFragment>

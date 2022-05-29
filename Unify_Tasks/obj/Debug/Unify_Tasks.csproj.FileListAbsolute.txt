@@ -77,6 +77,7 @@ D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\De
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\DateWindow.g.cs
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\NoteEditor.g.cs
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\TagControlWindow.g.cs
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\TaskWindow.g.cs
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\MainWindow.g.cs
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Pages\HomePage.g.cs
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Pages\LoginPage.g.cs
@@ -92,6 +93,7 @@ D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\De
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\DateWindow.baml
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\NoteEditor.baml
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\TagControlWindow.baml
+D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\TaskWindow.baml
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\MainWindow.baml
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Pages\HomePage.baml
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Pages\LoginPage.baml
@@ -106,5 +108,3 @@ D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\De
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.csproj.CopyComplete
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.exe
 D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\Unify_Tasks.pdb
-D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\TaskWindow.g.cs
-D:\Университет\ООП_Курсовая\Unify_Tasks\Unify_Tasks\obj\Debug\DialogWindows\TaskWindow.baml

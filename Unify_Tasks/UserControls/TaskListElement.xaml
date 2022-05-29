@@ -86,7 +86,7 @@
 
                 <TextBlock
                     x:Name="Status"
-                    Foreground="{DynamicResource GrayI}"
+                    Foreground="{DynamicResource MainI}"
                     FontWeight="Medium"
                     FontSize="18px"
                     Margin="5, 0, 5, 0"
@@ -109,7 +109,7 @@
 
                 <TextBlock
                     x:Name="Priority"
-                    Foreground="{DynamicResource GrayI}"
+                    Foreground="{DynamicResource MainI}"
                     FontWeight="Medium"
                     FontSize="18px"
                     HorizontalAlignment="Center"
@@ -143,7 +143,7 @@
                         VerticalAlignment="Center"
                         FontWeight="Medium"
                         FontSize="18px"
-                        Foreground="{DynamicResource GrayI}">
+                        Foreground="{DynamicResource MainI}">
                         13.09.2022
                     </TextBlock>
 
@@ -154,7 +154,7 @@
 
                     <Image
                         x:Name="DateImage"
-                        Source="/Images/Calendar.png"
+                        Source="/Images/CalendarWhite.png"
                         MaxHeight="20px">
                     </Image>
 
@@ -175,7 +175,7 @@
                 Source="/Images/OpenNote.png"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                Visibility="Visible"
+                Visibility="Hidden"
                 MouseEnter="OpenNote_MouseEnter"
                 MouseLeave="OpenNote_MouseLeave">
             </Image>

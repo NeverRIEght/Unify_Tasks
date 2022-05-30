@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Unify_Tasks.Models;
 using Unify_Tasks.UserControls;
 
@@ -228,7 +223,7 @@ namespace Unify_Tasks.DialogWindows
                         TagsList.Children.Add(tag1);
                     }
                 }
-                if(TagsList.Children.Count == 0)
+                if (TagsList.Children.Count == 0)
                 {
                     Border newBorder = new Border();
                     newBorder.BorderBrush = Brushes.White;
@@ -277,7 +272,7 @@ namespace Unify_Tasks.DialogWindows
                 Models.Task thisTask = null;
                 thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
-                if(thisTask != null)
+                if (thisTask != null)
                 {
                     TagElement tag1 = new TagElement();
                     tag1.Margin = new Thickness(5);
@@ -384,7 +379,7 @@ namespace Unify_Tasks.DialogWindows
 
                 if (thisTask != null)
                 {
-                    if(thisTask.Planned != null)
+                    if (thisTask.Planned != null)
                     {
                         TagElement tag1 = new TagElement();
                         DateTime thisDate = new DateTime();
@@ -574,7 +569,7 @@ namespace Unify_Tasks.DialogWindows
                         tag1.MouseEnter += (s, ev) =>
                         {
                             tag1.TagBackgroud.Background = Brushes.Green;
-                            InfoText.Text = "MouseLeft - apply tag, MouseRight - delete from project";
+                            InfoText.Text = "MouseLeft - apply tag, MouseRight - change color";
                         };
                         tag1.MouseLeave += (s, ev) =>
                         {
@@ -619,6 +614,57 @@ namespace Unify_Tasks.DialogWindows
                                 }
                             }
 
+                        };
+
+                        tag1.MouseRightButtonUp += (object se, MouseButtonEventArgs ev) =>
+                        {
+                            using (var context1 = new Unify_TasksEntities())
+                            {
+                                Models.Tag thisTag = null;
+                                thisTag = context1.Tags.Where(t => t.TagID == everyTag.TagID).FirstOrDefault();
+
+                                try
+                                {
+                                    int currColor = Convert.ToInt32(thisTag.TagColor);
+                                    switch(currColor)
+                                    {
+                                        case 1:
+                                            currColor++;
+                                            break;
+                                        case 2:
+                                            currColor++;
+                                            break;
+                                        case 3:
+                                            currColor++;
+                                            break;
+                                        case 4:
+                                            currColor++;
+                                            break;
+                                        case 5:
+                                            currColor++;
+                                            break;
+                                        case 6:
+                                            currColor++;
+                                            break;
+                                        case 7:
+                                            currColor++;
+                                            break;
+                                        case 8:
+                                            currColor = 1;
+                                            break;
+                                    }
+
+                                    thisTag.TagColor = Convert.ToString(currColor);
+                                    context1.SaveChanges();
+                                    UpdateBothTags();
+                                }
+                                catch (Exception)
+                                {
+                                    MessageBox.Show("An error occurred while trying to change this tag`s color.\r\n" +
+                                        "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
+                                        "please, contact the program developer");
+                                }
+                            }
                         };
 
                         ProjectTagsList.Children.Add(tag1);
@@ -926,7 +972,7 @@ namespace Unify_Tasks.DialogWindows
 
         private void NewTagText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(NewTagText.Text != "")
+            if (NewTagText.Text != "")
             {
                 InfoText.Text = "Press Enter to add new tag";
             }
@@ -938,9 +984,9 @@ namespace Unify_Tasks.DialogWindows
 
         private void NewTagText_KeyUp(object sender, KeyEventArgs e)
         {
-            if(NewTagText.Text != "")
+            if (NewTagText.Text != "")
             {
-                if(e.Key == Key.Enter)
+                if (e.Key == Key.Enter)
                 {
                     using (var context = new Unify_TasksEntities())
                     {
@@ -953,7 +999,7 @@ namespace Unify_Tasks.DialogWindows
                             ProjectID = w1.currProject,
                             TagHeader = NewTagText.Text,
                             TagColor = Convert.ToString(RInt),
-                        });;
+                        }); ;
                         context.SaveChanges();
                         NewTagText.Text = "";
                         InfoText.Text = "Choose from list or create new";
@@ -1031,7 +1077,7 @@ namespace Unify_Tasks.DialogWindows
             {
 
             }
-            
+
 
             var style = selection.GetPropertyValue(TextElement.FontStyleProperty);
 

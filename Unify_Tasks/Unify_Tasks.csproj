@@ -68,15 +68,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DialogWindows\DateWindow.xaml.cs">
-      <DependentUpon>DateWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DialogWindows\NoteEditor.xaml.cs">
-      <DependentUpon>NoteEditor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DialogWindows\TagControlWindow.xaml.cs">
-      <DependentUpon>TagControlWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DialogWindows\TaskWindow.xaml.cs">
       <DependentUpon>TaskWindow.xaml</DependentUpon>
     </Compile>
@@ -135,18 +126,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="DialogWindows\DateWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DialogWindows\NoteEditor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DialogWindows\TagControlWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="DialogWindows\TaskWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

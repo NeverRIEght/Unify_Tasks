@@ -1,23 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Media.Animation;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Unify_Tasks.UserControls;
-using Unify_Tasks.Models;
 using Unify_Tasks.DialogWindows;
-using Unify_Tasks;
-using System.IO;
+using Unify_Tasks.Models;
+using Unify_Tasks.UserControls;
 
 namespace Unify_Tasks.Pages
 {
@@ -120,9 +111,9 @@ namespace Unify_Tasks.Pages
                         {
                             case 1: //Newest
                                 currTasks = from p in context1.Tasks
-                                                where p.ProjectID == w1.currProject
-                                                orderby p.TaskID descending
-                                                select p;
+                                            where p.ProjectID == w1.currProject
+                                            orderby p.TaskID descending
+                                            select p;
                                 break;
                             case 2: //Oldest
                                 currTasks = from p in context1.Tasks
@@ -149,7 +140,7 @@ namespace Unify_Tasks.Pages
                                             select p;
                                 break;
                         }
-                        
+
 
                         if (currTasks != null)
                         {
@@ -319,7 +310,7 @@ namespace Unify_Tasks.Pages
                                     DateTime thisDate = new DateTime();
                                     thisDate = (DateTime)everyTask.Planned;
                                     task1.Date.Text = thisDate.ToShortDateString();
-                                    
+
                                 }
                                 else
                                 {
@@ -439,11 +430,11 @@ namespace Unify_Tasks.Pages
 
         private void ProjectName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(ProjectName.LineCount <= 2)
+            if (ProjectName.LineCount <= 2)
             {
                 ProjectName.FontSize = 40;
             }
-            if(ProjectName.LineCount > 2)
+            if (ProjectName.LineCount > 2)
             {
                 ProjectName.FontSize = 30;
             }
@@ -719,7 +710,7 @@ namespace Unify_Tasks.Pages
 
         private void SortBorder_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            switch(SortType)
+            switch (SortType)
             {
                 case 0:
                     Sort.Text = "Sort by: Newest";

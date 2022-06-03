@@ -429,6 +429,7 @@
                                 Margin="5, 0, 5, 5"
                                 SelectionMode="SingleDate"
                                 IsTodayHighlighted="False"
+                                DisplayDateStart="01.01.2000"
                                 SelectedDatesChanged="Calendar_SelectedDatesChanged"
                                 Background="{DynamicResource MediumI}"
                                 Foreground="{DynamicResource MainI}">

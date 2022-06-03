@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -19,7 +20,7 @@ namespace Unify_Tasks.UserControls
 
         private void Task_Loaded(object sender, RoutedEventArgs e)
         {
-
+            
         }
         private void Task_SizeChanged(object sender, SizeChangedEventArgs e)
         {

@@ -136,7 +136,7 @@ namespace Unify_Tasks.Pages
                             case 5: //Date
                                 currTasks = from p in context1.Tasks
                                             where p.ProjectID == w1.currProject
-                                            orderby p.Planned descending
+                                            orderby p.Planned ascending
                                             select p;
                                 break;
                         }
@@ -307,10 +307,18 @@ namespace Unify_Tasks.Pages
 
                                 if (everyTask.Planned != null)
                                 {
+                                    DateTime datenow = DateTime.Now;
                                     DateTime thisDate = new DateTime();
                                     thisDate = (DateTime)everyTask.Planned;
                                     task1.Date.Text = thisDate.ToShortDateString();
-
+                                    if(thisDate < datenow)
+                                    {
+                                        task1.Date.Foreground = (Brush)Application.Current.FindResource("CustomRed");
+                                    }
+                                    else
+                                    {
+                                        task1.Date.Foreground = (Brush)Application.Current.FindResource("MainI");
+                                    }
                                 }
                                 else
                                 {

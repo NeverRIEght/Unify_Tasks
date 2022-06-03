@@ -7,8 +7,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using Unify_Tasks.DialogWindows;
-using Unify_Tasks.Models;
 using Unify_Tasks.UserControls;
+using Unify_Tasks.Code_First_Classes;
 
 namespace Unify_Tasks.Pages
 {
@@ -53,7 +53,7 @@ namespace Unify_Tasks.Pages
             {
                 if (w1.currUser != 0)
                 {
-                    using (var context = new Unify_TasksEntities())
+                    using (var context = new Context1())
                     {
                         var currProjects = from p in context.Projects
                                            where p.UserID == w1.currUser
@@ -102,7 +102,7 @@ namespace Unify_Tasks.Pages
                 TasksList.Children.Clear();
                 if (w1.currProject != 0)
                 {
-                    using (var context1 = new Unify_TasksEntities())
+                    using (var context1 = new Context1())
                     {
                         var currTasks = from p in context1.Tasks
                                         where p.ProjectID == w1.currProject
@@ -161,8 +161,8 @@ namespace Unify_Tasks.Pages
                                     renID = task1.TasksID;
                                     if (renID != 0)
                                     {
-                                        Models.Task toRename = null;
-                                        using (var context = new Unify_TasksEntities())
+                                        Task toRename = null;
+                                        using (var context = new Context1())
                                         {
                                             toRename = context.Tasks.Where(b => b.TaskID == renID).FirstOrDefault();
 
@@ -416,7 +416,7 @@ namespace Unify_Tasks.Pages
         {
             try
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
                     context.Projects.Local.Add(new Project()
                     {
@@ -450,7 +450,7 @@ namespace Unify_Tasks.Pages
             try
             {
                 Project toRename = null;
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
                     toRename = context.Projects.Where(p => p.ProjectID == w1.currProject).FirstOrDefault();
 
@@ -477,7 +477,7 @@ namespace Unify_Tasks.Pages
             {
                 if (w1.currProject != 0 && w1.currUser != 0)
                 {
-                    using (var context = new Unify_TasksEntities())
+                    using (var context = new Context1())
                     {
                         Project toDelete = null;
                         toDelete = context.Projects.Where(b => b.ProjectID == w1.currProject).FirstOrDefault();
@@ -556,9 +556,9 @@ namespace Unify_Tasks.Pages
             {
                 if (w1.currProject != 0)
                 {
-                    using (var context = new Unify_TasksEntities())
+                    using (var context = new Context1())
                     {
-                        context.Tasks.Local.Add(new Models.Task()
+                        context.Tasks.Local.Add(new Task()
                         {
                             ProjectID = w1.currProject,
                             Status = "Queue",
@@ -585,9 +585,9 @@ namespace Unify_Tasks.Pages
             {
                 if (toDeleteID != 0)
                 {
-                    using (var context = new Unify_TasksEntities())
+                    using (var context = new Context1())
                     {
-                        Models.Note delNote = null;
+                        Note delNote = null;
 
                         var toDelete = context.Tasks.Where(b => b.TaskID == toDeleteID).FirstOrDefault();
 

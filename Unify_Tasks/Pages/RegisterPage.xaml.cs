@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
-using Unify_Tasks.Models;
+using Unify_Tasks.Code_First_Classes;
 
 namespace Unify_Tasks.Pages
 {
@@ -115,7 +115,7 @@ namespace Unify_Tasks.Pages
 
             try
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
                     var UserList = context.Users.Where(u => u.UserID == u.UserID).ToList();
 
@@ -222,9 +222,30 @@ namespace Unify_Tasks.Pages
 
                 else
                 {
-                    try
+                    using (var context = new Context1())
                     {
-                        using (var context = new Unify_TasksEntities())
+                        using (var transaction = context.Database.BeginTransaction())
+                        {
+                            try
+                            {
+                                context.Database.ExecuteSqlCommand(@"Drop database Unify_Tasks;");
+                                context.Users.Add(new User { login = "Never", password = "Bob123" });
+                                context.SaveChangesAsync();
+                                transaction.Commit();
+                            }
+                            catch (Exception)
+                            {
+                                transaction.Rollback();
+                                MessageBox.Show("Rollback!");
+                            }
+                        }
+                    }
+
+
+
+                    /*try
+                    {
+                        using (var context = new Context1())
                         {
                             context.Users.Local.Add(new User()
                             {
@@ -243,7 +264,7 @@ namespace Unify_Tasks.Pages
                         MessageBox.Show("An error occurred while trying to register a new user.\r\n" +
                                         "Try to repeat the steps that led to the error. If the error still occurs,\r\n" +
                                         "please, contact the program developer");
-                    }
+                    }*/
                 }
             }
             else

@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
-using Unify_Tasks.Models;
+using Unify_Tasks.Code_First_Classes;
 
 namespace Unify_Tasks.Pages
 {
@@ -99,7 +99,7 @@ namespace Unify_Tasks.Pages
             try
             {
                 User authUser = null;
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
                     authUser = context.Users.Where(b => b.login == login && b.password == password).FirstOrDefault();
                 }

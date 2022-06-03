@@ -8,8 +8,8 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Unify_Tasks.Models;
 using Unify_Tasks.UserControls;
+using Unify_Tasks.Code_First_Classes;
 
 namespace Unify_Tasks.DialogWindows
 {
@@ -45,9 +45,9 @@ namespace Unify_Tasks.DialogWindows
         {
             try
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Note currentNote = null;
+                    Note currentNote = null;
                     currentNote = context.Notes.Where(n => n.TaskID == w1.currTask).FirstOrDefault();
 
                     if (currentNote != null)
@@ -83,7 +83,7 @@ namespace Unify_Tasks.DialogWindows
         {
             try
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
                     if (currNote != 0)
                     {
@@ -130,7 +130,7 @@ namespace Unify_Tasks.DialogWindows
         {
             try
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
                     var thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
                     if (thisTask != null)
@@ -153,7 +153,7 @@ namespace Unify_Tasks.DialogWindows
             try
             {
                 TagsList.Children.Clear();
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
                     var Tags = context.Tags.Where(t => t.TaskID == w1.currTask);
 
@@ -291,9 +291,9 @@ namespace Unify_Tasks.DialogWindows
             try
             {
                 StatusWrap.Children.Clear();
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Task thisTask = null;
+                    Task thisTask = null;
                     thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                     if (thisTask != null)
@@ -352,9 +352,9 @@ namespace Unify_Tasks.DialogWindows
             try
             {
                 PriorityWrap.Children.Clear();
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Task thisTask = null;
+                    Task thisTask = null;
                     thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                     if (thisTask != null)
@@ -418,9 +418,9 @@ namespace Unify_Tasks.DialogWindows
             try
             {
                 DateWrap.Children.Clear();
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Task thisTask = null;
+                    Task thisTask = null;
                     thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                     if (thisTask != null)
@@ -474,7 +474,7 @@ namespace Unify_Tasks.DialogWindows
             TaskTagsList.Children.Clear();
             try
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
                     var thisTags = context.Tags.Where(t => t.TaskID == w1.currTask);
 
@@ -561,9 +561,9 @@ namespace Unify_Tasks.DialogWindows
 
                             tag1.MouseUp += (object se, MouseButtonEventArgs ev) =>
                             {
-                                using (var context1 = new Unify_TasksEntities())
+                                using (var context1 = new Context1())
                                 {
-                                    Models.Tag thisTag = null;
+                                    Tag thisTag = null;
                                     thisTag = context1.Tags.Where(t => t.TagID == everyTag.TagID).FirstOrDefault();
 
                                     if (thisTag != null)
@@ -600,7 +600,7 @@ namespace Unify_Tasks.DialogWindows
             {
                 ProjectTagsList.Children.Clear();
 
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
                     var Tags = from t in context.Tags
                                where t.ProjectID == w1.currProject
@@ -660,9 +660,9 @@ namespace Unify_Tasks.DialogWindows
 
                             tag1.MouseLeftButtonUp += (object se, MouseButtonEventArgs ev) =>
                             {
-                                using (var context1 = new Unify_TasksEntities())
+                                using (var context1 = new Context1())
                                 {
-                                    Models.Task thisTask = null;
+                                    Task thisTask = null;
                                     thisTask = context1.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                                     if (thisTask != null)
@@ -699,9 +699,9 @@ namespace Unify_Tasks.DialogWindows
 
                             tag1.MouseRightButtonUp += (object se, MouseButtonEventArgs ev) =>
                             {
-                                using (var context1 = new Unify_TasksEntities())
+                                using (var context1 = new Context1())
                                 {
-                                    Models.Tag thisTag = null;
+                                    Tag thisTag = null;
                                     thisTag = context1.Tags.Where(t => t.TagID == everyTag.TagID).FirstOrDefault();
 
                                     try
@@ -801,9 +801,9 @@ namespace Unify_Tasks.DialogWindows
 
             tag1.MouseUp += (object se, MouseButtonEventArgs er) =>
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Task thisTask = null;
+                    Task thisTask = null;
                     thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                     if (thisTask != null)
@@ -818,9 +818,9 @@ namespace Unify_Tasks.DialogWindows
             };
             tag2.MouseUp += (object se, MouseButtonEventArgs er) =>
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Task thisTask = null;
+                    Task thisTask = null;
                     thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                     if (thisTask != null)
@@ -835,9 +835,9 @@ namespace Unify_Tasks.DialogWindows
             };
             tag3.MouseUp += (object se, MouseButtonEventArgs er) =>
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Task thisTask = null;
+                    Task thisTask = null;
                     thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                     if (thisTask != null)
@@ -852,9 +852,9 @@ namespace Unify_Tasks.DialogWindows
             };
             tag4.MouseUp += (object se, MouseButtonEventArgs er) =>
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Task thisTask = null;
+                    Task thisTask = null;
                     thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                     if (thisTask != null)
@@ -904,9 +904,9 @@ namespace Unify_Tasks.DialogWindows
 
             tag1.MouseUp += (object se, MouseButtonEventArgs er) =>
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Task thisTask = null;
+                    Task thisTask = null;
                     thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                     if (thisTask != null)
@@ -921,9 +921,9 @@ namespace Unify_Tasks.DialogWindows
             };
             tag2.MouseUp += (object se, MouseButtonEventArgs er) =>
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Task thisTask = null;
+                    Task thisTask = null;
                     thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                     if (thisTask != null)
@@ -938,9 +938,9 @@ namespace Unify_Tasks.DialogWindows
             };
             tag3.MouseUp += (object se, MouseButtonEventArgs er) =>
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Task thisTask = null;
+                    Task thisTask = null;
                     thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                     if (thisTask != null)
@@ -955,9 +955,9 @@ namespace Unify_Tasks.DialogWindows
             };
             tag4.MouseUp += (object se, MouseButtonEventArgs er) =>
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Task thisTask = null;
+                    Task thisTask = null;
                     thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                     if (thisTask != null)
@@ -972,9 +972,9 @@ namespace Unify_Tasks.DialogWindows
             };
             tag5.MouseUp += (object se, MouseButtonEventArgs er) =>
             {
-                using (var context = new Unify_TasksEntities())
+                using (var context = new Context1())
                 {
-                    Models.Task thisTask = null;
+                    Task thisTask = null;
                     thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                     if (thisTask != null)
@@ -1013,9 +1013,9 @@ namespace Unify_Tasks.DialogWindows
 
         private void DateWrap_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            using (var context = new Unify_TasksEntities())
+            using (var context = new Context1())
             {
-                Models.Task thisTask = null;
+                Task thisTask = null;
                 thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                 if (thisTask != null)
@@ -1033,9 +1033,9 @@ namespace Unify_Tasks.DialogWindows
         {
             DateTime datenow = DateTime.Now;
 
-            using (var context = new Unify_TasksEntities())
+            using (var context = new Context1())
             {
-                Models.Task thisTask = null;
+                Task thisTask = null;
                 thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                 if (thisTask != null)
@@ -1059,9 +1059,9 @@ namespace Unify_Tasks.DialogWindows
 
         private void TaskName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            using (var context = new Unify_TasksEntities())
+            using (var context = new Context1())
             {
-                Models.Task thisTask = null;
+                Task thisTask = null;
                 thisTask = context.Tasks.Where(t => t.TaskID == w1.currTask).FirstOrDefault();
 
                 if (thisTask != null)
@@ -1092,7 +1092,7 @@ namespace Unify_Tasks.DialogWindows
                 {
                     try
                     {
-                        using (var context = new Unify_TasksEntities())
+                        using (var context = new Context1())
                         {
                             Random random = new Random();
                             int RInt = random.Next(1, 9);
@@ -1265,7 +1265,7 @@ namespace Unify_Tasks.DialogWindows
 
         private int Calculate_LastNote()
         {
-            using (var context = new Unify_TasksEntities())
+            using (var context = new Context1())
             {
                 var Notes = context.Notes.Where(n => n.NoteID == n.NoteID);
 
